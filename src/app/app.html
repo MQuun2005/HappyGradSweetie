@@ -1,14 +1,20 @@
-<main class="app-shell">
+<main class="app-shell" [inert]="introVisible()" [attr.aria-hidden]="introVisible() ? 'true' : null">
   <app-graduation-hero [content]="content.hero" />
+  <app-graduation-invitation [content]="content.invitation" />
   <app-graduation-message [content]="content.message" />
   <app-interactive-photo-gallery
     [content]="content.gallery"
     [photos]="content.photos"
+    [suspended]="lightboxIndex() !== null"
     (photoRequested)="openLightbox($event)"
   />
   <app-graduation-letter [content]="content.letter" />
-  <app-closing-section [content]="content.closing" />
+  <app-closing-section [content]="content.closing" (replayRequested)="replayJourney()" />
 </main>
+
+@if (introVisible()) {
+  <app-gift-intro [content]="content.intro" (opened)="openGift()" />
+}
 
 <app-photo-lightbox
   [photos]="content.photos"
@@ -16,3 +22,5 @@
   (activeIndexChange)="openLightbox($event)"
   (closed)="closeLightbox()"
 />
+
+<app-music-control [config]="content.music" />

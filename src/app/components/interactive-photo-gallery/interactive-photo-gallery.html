@@ -1,10 +1,4 @@
-<section
-  id="memories"
-  class="gallery"
-  [class.gallery--entered]="hasEntered()"
-  [class.gallery--compact]="isCompact()"
-  aria-labelledby="memories-title"
->
+<section id="memories" class="gallery" [class.gallery--compact]="isCompact()" aria-labelledby="memories-title">
   <header class="gallery__header">
     <p class="gallery__eyebrow">{{ content.eyebrow }}</p>
     <h2 id="memories-title">{{ content.title }}</h2>
@@ -15,63 +9,73 @@
     #scene
     class="gallery__scene"
     role="region"
-    aria-label="Thư viện ảnh tốt nghiệp tương tác"
+    aria-label="Thư viện ảnh tốt nghiệp dạng vòng cung 3D"
     tabindex="0"
     (keydown)="onSceneKeydown($event)"
   >
-    <div class="gallery__stage" [attr.aria-busy]="isNavigating()">
-      @for (photo of visiblePhotos(); track photo.id; let localIndex = $index) {
-        @let layout = layoutFor(localIndex);
+    <div
+      class="gallery__stage"
+      [class.gallery__stage--suspended]="isSuspended()"
+      [class.gallery__stage--dragging]="isDragging()"
+      (pointerdown)="onPointerDown($event)"
+      (pointermove)="onPointerMove($event)"
+      (pointerup)="onPointerUp($event)"
+      (pointercancel)="onPointerCancel($event)"
+    >
+      @for (card of renderedCards(); track card.logicalIndex) {
         <button
           class="photo-card"
           type="button"
-          [class.photo-card--focused]="isFocused(photo.id)"
-          [class.photo-card--broken]="isBroken(photo.id)"
-          [attr.aria-label]="'Mở ' + photo.alt"
-          [attr.aria-pressed]="isFocused(photo.id)"
-          [attr.aria-posinset]="currentStart() + localIndex + 1"
-          [attr.aria-setsize]="photoCount"
-          [style.--slot]="layout.slot"
-          [style.--slot-y]="layout.offsetY + 'px'"
-          [style.--depth]="layout.depth + 'px'"
-          [style.--rotation-y]="layout.rotateY + 'deg'"
-          [style.--rotation-z]="layout.rotateZ + 'deg'"
-          [style.--focus-shift]="layout.focusShiftX + 'px'"
-          [style.--focus-z]="isFocused(photo.id) ? '280px' : '0px'"
-          [style.--focus-scale]="isFocused(photo.id) ? '1.18' : '1'"
-          [style.--focus-rotation-y]="isFocused(photo.id) ? -layout.rotateY + 'deg' : '0deg'"
-          (pointerenter)="focusPhoto(photo.id)"
-          (pointerleave)="clearFocusedPhoto()"
-          (focus)="focusPhoto(photo.id)"
-          (click)="handlePhotoClick(photo.id, localIndex)"
+          [class.photo-card--focused]="isFocused(card)"
+          [class.photo-card--buffer]="!isInteractive(card)"
+          [class.photo-card--broken]="isBroken(card.photo.id)"
+          [attr.aria-label]="'Mở ' + card.photo.alt"
+          [attr.aria-posinset]="card.layout.photoIndex + 1"
+          [attr.aria-setsize]="photos.length"
+          [attr.aria-hidden]="!isInteractive(card)"
+          [attr.tabindex]="isInteractive(card) ? 0 : -1"
+          [style.left]="leftFor(card)"
+          [style.top]="topFor(card)"
+          [style.transform]="transformFor(card)"
+          [style.opacity]="card.layout.opacity"
+          [style.background-image]="thumbnailBackgroundFor(card)"
+          [style.z-index]="zIndexFor(card)"
+          (pointerenter)="onCardPointerEnter(card)"
+          (pointerleave)="clearFocusedCard()"
+          (focus)="focusCard(card)"
+          (blur)="clearFocusedCard()"
+          (click)="requestPhoto(card)"
         >
-          @if (isBroken(photo.id)) {
-            <span class="photo-card__fallback">Không thể tải ảnh {{ photo.id }}</span>
+          @if (isBroken(card.photo.id)) {
+            <span class="photo-card__fallback">Không thể tải ảnh này</span>
           } @else {
             <img
-              [src]="photo.thumbnailSrc"
-              [alt]="photo.alt"
-              loading="lazy"
+              [src]="thumbnailUrlFor(card.photo)"
+              [alt]="card.photo.alt"
+              [loading]="isInteractive(card) ? 'eager' : 'lazy'"
               decoding="async"
-              (error)="markImageFailed(photo.id)"
+              (error)="markImageFailed(card.photo.id)"
             />
           }
           <span class="photo-card__shade"></span>
-          <span class="photo-card__caption">{{ photo.caption || photo.title }}</span>
+          @if (card.photo.caption) {
+            <span class="photo-card__caption">{{ card.photo.caption }}</span>
+          }
         </button>
       }
     </div>
   </div>
 
   <nav class="gallery__controls" aria-label="Điều hướng thư viện ảnh">
-    <button type="button" [disabled]="!canGoPrevious" (click)="previousPage()">
-      <span aria-hidden="true">←</span> Ảnh trước
+    <button type="button" (click)="previousPhoto()" [disabled]="isSuspended()" aria-label="Ảnh trước">
+      <span aria-hidden="true">←</span>
     </button>
-    <p aria-live="polite">
-      <span class="sr-only">Nhóm ảnh </span>{{ pageIndex() + 1 }} / {{ totalPages() }}
-    </p>
-    <button type="button" [disabled]="!canGoNext" (click)="nextPage()">
-      Ảnh tiếp <span aria-hidden="true">→</span>
+    <p aria-live="polite"><span class="sr-only">Ảnh đang ở tâm: </span>{{ activePhotoNumber() }} / {{ photos.length }}</p>
+    <button type="button" (click)="toggleAutoMotion()" [disabled]="isSuspended()" [attr.aria-label]="isAutoPlaying() ? 'Tạm dừng chuyển động' : 'Tiếp tục chuyển động'">
+      <span aria-hidden="true">{{ isAutoPlaying() ? 'Ⅱ' : '▶' }}</span>
+    </button>
+    <button type="button" (click)="nextPhoto()" [disabled]="isSuspended()" aria-label="Ảnh tiếp theo">
+      <span aria-hidden="true">→</span>
     </button>
   </nav>
 </section>

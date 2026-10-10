@@ -1,0 +1,17 @@
+<section class="gift-intro" role="dialog" aria-modal="true" aria-labelledby="gift-intro-title">
+  <div class="gift-intro__glow gift-intro__glow--one" aria-hidden="true"></div>
+  <div class="gift-intro__glow gift-intro__glow--two" aria-hidden="true"></div>
+
+  <div class="gift-intro__card">
+    <p class="gift-intro__eyebrow">{{ content.eyebrow }}</p>
+    <div class="gift-intro__envelope" aria-hidden="true">
+      <span class="gift-intro__seal">M</span>
+    </div>
+    <h1 id="gift-intro-title">{{ content.title }}</h1>
+    <p>{{ content.body }}</p>
+    <button type="button" (click)="opened.emit()">
+      <span>{{ content.actionLabel }}</span>
+      <span aria-hidden="true">♡</span>
+    </button>
+  </div>
+</section>

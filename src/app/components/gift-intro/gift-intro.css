@@ -1,0 +1,154 @@
+:host {
+  display: contents;
+}
+
+.gift-intro {
+  isolation: isolate;
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgb(255 249 243 / 92%);
+  backdrop-filter: blur(14px);
+}
+
+.gift-intro__card {
+  position: relative;
+  z-index: 1;
+  inline-size: min(100%, 35rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1.5rem;
+  padding: clamp(2.25rem, 7vw, 4.5rem);
+  background: var(--color-card);
+  box-shadow: 0 28px 80px rgb(39 50 75 / 18%);
+  text-align: center;
+  animation: gift-arrive 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.gift-intro__eyebrow {
+  margin: 0;
+  color: var(--color-rose);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.gift-intro__envelope {
+  position: relative;
+  inline-size: 7rem;
+  block-size: 5rem;
+  margin: 1.6rem auto;
+  border: 1px solid rgb(201 164 106 / 56%);
+  border-radius: 0.45rem;
+  background: linear-gradient(145deg, #fffdf9, #f5e6dc);
+  box-shadow: 0 12px 28px rgb(39 50 75 / 12%);
+}
+
+.gift-intro__envelope::before,
+.gift-intro__envelope::after {
+  position: absolute;
+  inset-inline: 0;
+  border-top: 1px solid rgb(201 164 106 / 52%);
+  content: '';
+}
+
+.gift-intro__envelope::before {
+  inset-block-start: 0.45rem;
+  transform: rotate(34deg) translateY(1.4rem);
+}
+
+.gift-intro__envelope::after {
+  inset-block-start: 0.45rem;
+  transform: rotate(-34deg) translateY(1.4rem);
+}
+
+.gift-intro__seal {
+  position: absolute;
+  z-index: 1;
+  inset: 50% auto auto 50%;
+  display: grid;
+  inline-size: 2.2rem;
+  block-size: 2.2rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-rose);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-style: italic;
+  transform: translate(-50%, -25%);
+}
+
+h1 {
+  max-inline-size: 13ch;
+  margin: 0 auto;
+  color: var(--color-navy);
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.gift-intro__card > p:not(.gift-intro__eyebrow) {
+  max-inline-size: 29rem;
+  margin: 1.25rem auto 0;
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-block-start: 2rem;
+  border: 1px solid var(--color-rose);
+  border-radius: 999px;
+  padding: 0.85rem 1.2rem 0.85rem 1.4rem;
+  background: var(--color-rose);
+  box-shadow: 0 10px 22px rgb(185 112 125 / 25%);
+  color: #fff;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+button:hover {
+  box-shadow: 0 15px 30px rgb(185 112 125 / 32%);
+  transform: translateY(-2px);
+}
+
+.gift-intro__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+.gift-intro__glow--one {
+  inset: -16rem auto auto -14rem;
+  inline-size: 36rem;
+  block-size: 36rem;
+  background: radial-gradient(circle, rgb(234 184 190 / 48%), transparent 68%);
+}
+
+.gift-intro__glow--two {
+  inset: auto -16rem -17rem auto;
+  inline-size: 38rem;
+  block-size: 38rem;
+  background: radial-gradient(circle, rgb(231 224 241 / 70%), transparent 68%);
+}
+
+@keyframes gift-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

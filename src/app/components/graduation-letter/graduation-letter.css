@@ -4,21 +4,21 @@
 
 .letter-section {
   padding: clamp(4rem, 9vw, 8rem) 1.5rem;
-  background: #efe5d5;
+  background: var(--color-card);
 }
 
 .letter {
   max-inline-size: 44rem;
   margin: 0 auto;
-  border: 1px solid rgb(212 176 106 / 40%);
+  border: 1px solid rgb(201 164 106 / 42%);
   box-shadow: var(--shadow-soft);
   padding: clamp(2rem, 7vw, 5rem);
-  background: #fffdf8;
+  background: rgb(255 253 249 / 94%);
 }
 
 .letter__eyebrow {
   margin: 0;
-  color: #9b7134;
+  color: var(--color-rose);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -37,8 +37,16 @@ h2 {
 
 .letter p:not(.letter__eyebrow) {
   margin: 0 0 1.15rem;
-  color: #495163;
+  color: var(--color-muted);
   line-height: 1.85;
+  opacity: 0;
+  transform: translateY(0.7rem);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.letter--entered p:not(.letter__eyebrow) {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 footer {
@@ -47,4 +55,12 @@ footer {
   font-family: var(--font-display);
   font-size: 1.7rem;
   font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter p:not(.letter__eyebrow) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

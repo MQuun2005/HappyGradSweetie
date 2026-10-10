@@ -1,0 +1,15 @@
+@if (config.src) {
+  <div class="music-control">
+    <audio #audio [src]="config.src" preload="metadata" (ended)="stop()" (error)="isUnavailable.set(true)"></audio>
+    <button
+      type="button"
+      [class.music-control__button--playing]="isPlaying()"
+      [disabled]="isUnavailable()"
+      (click)="toggle()"
+      [attr.aria-label]="isPlaying() ? 'Tạm dừng ' + config.title : 'Phát ' + config.title"
+    >
+      <span aria-hidden="true">{{ isPlaying() ? 'Ⅱ' : '♪' }}</span>
+      <span class="music-control__label">{{ isPlaying() ? 'Đang phát' : 'Bật nhạc' }}</span>
+    </button>
+  </div>
+}

@@ -3,14 +3,19 @@
 :root {
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Plus Jakarta Sans', Arial, sans-serif;
-  --color-navy: #10182a;
-  --color-navy-raised: #1e2a44;
-  --color-gold: #d4b06a;
-  --color-ivory: #f8f2e8;
-  --color-blush: #e7b9c2;
-  --color-ink: #1c2538;
-  --color-muted: #626b7d;
-  --shadow-soft: 0 24px 60px rgb(8 15 30 / 16%);
+  --color-navy: #27324b;
+  --color-navy-raised: #3b4865;
+  --color-gold: #c9a46a;
+  --color-ivory: #fff9f3;
+  --color-card: #f7ede3;
+  --color-blush: #eab8be;
+  --color-peach: #f4ccb9;
+  --color-lavender: #e7e0f1;
+  --color-rose: #b9707d;
+  --color-border: #e6d7cd;
+  --color-ink: #27324b;
+  --color-muted: #5e5a68;
+  --shadow-soft: 0 24px 60px rgb(39 50 75 / 14%);
 }
 
 *,
@@ -21,7 +26,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--color-ivory);
+  background: #fff9f3;
 }
 
 body {
@@ -46,7 +51,7 @@ button {
 
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid var(--color-gold);
+  outline: 3px solid var(--color-rose);
   outline-offset: 4px;
 }
 

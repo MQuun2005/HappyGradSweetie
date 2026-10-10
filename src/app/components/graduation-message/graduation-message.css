@@ -14,7 +14,7 @@
 
 .message__marker,
 .section__eyebrow {
-  color: #9b7134;
+  color: var(--color-rose);
 }
 
 .message__marker {

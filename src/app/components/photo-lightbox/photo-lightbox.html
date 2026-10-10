@@ -19,11 +19,20 @@
         </button>
       </header>
 
-      <div class="lightbox__media">
+      <div class="lightbox__media" [attr.aria-busy]="imageLoading()">
         @if (imageFailed()) {
           <p class="lightbox__error">Không thể tải ảnh này. Bạn vẫn có thể chuyển sang ảnh khác.</p>
         } @else {
-          <img [src]="photo.src" [alt]="photo.alt" (error)="markImageFailed()" />
+          @if (imageLoading()) {
+            <span class="lightbox__loading" aria-live="polite">Đang mở ảnh…</span>
+          }
+          <img
+            [class.lightbox__image--ready]="!imageLoading()"
+            [src]="photo.src"
+            [alt]="photo.alt"
+            (load)="markImageLoaded()"
+            (error)="markImageFailed()"
+          />
         }
       </div>
 

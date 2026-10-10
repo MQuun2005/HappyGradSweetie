@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ClosingContent } from '../../models/celebration.models';
 
@@ -10,4 +10,7 @@ import { ClosingContent } from '../../models/celebration.models';
 })
 export class ClosingSectionComponent {
   @Input({ required: true }) content!: ClosingContent;
+  @Output() readonly replayRequested = new EventEmitter<void>();
+
+  protected readonly sparkles = Array.from({ length: 12 }, (_, index) => index);
 }

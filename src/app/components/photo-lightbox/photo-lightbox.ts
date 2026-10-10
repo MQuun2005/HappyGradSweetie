@@ -34,6 +34,7 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
   @Output() readonly closed = new EventEmitter<void>();
 
   readonly imageFailed = signal(false);
+  readonly imageLoading = signal(true);
   private previousFocus?: HTMLElement;
   private originalBodyOverflow = '';
   private originalBodyPaddingRight = '';
@@ -51,12 +52,17 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
     }
 
     this.imageFailed.set(false);
+    this.imageLoading.set(true);
     const wasOpen = indexChange.previousValue !== null && indexChange.previousValue !== undefined;
     const isOpen = indexChange.currentValue !== null && indexChange.currentValue !== undefined;
 
     if (isOpen && !wasOpen) {
       this.lockScroll();
       queueMicrotask(() => this.dialogRef?.nativeElement.focus());
+    }
+
+    if (isOpen) {
+      this.preloadAdjacentImages();
     }
 
     if (!isOpen && wasOpen) {
@@ -78,22 +84,22 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
   }
 
   get canGoPrevious(): boolean {
-    return this.activeIndex !== null && this.activeIndex > 0;
+    return this.activeIndex !== null && this.photos.length > 1;
   }
 
   get canGoNext(): boolean {
-    return this.activeIndex !== null && this.activeIndex < this.photos.length - 1;
+    return this.activeIndex !== null && this.photos.length > 1;
   }
 
   previous(): void {
     if (this.canGoPrevious && this.activeIndex !== null) {
-      this.activeIndexChange.emit(this.activeIndex - 1);
+      this.activeIndexChange.emit((this.activeIndex - 1 + this.photos.length) % this.photos.length);
     }
   }
 
   next(): void {
     if (this.canGoNext && this.activeIndex !== null) {
-      this.activeIndexChange.emit(this.activeIndex + 1);
+      this.activeIndexChange.emit((this.activeIndex + 1) % this.photos.length);
     }
   }
 
@@ -124,6 +130,11 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
 
   markImageFailed(): void {
     this.imageFailed.set(true);
+    this.imageLoading.set(false);
+  }
+
+  markImageLoaded(): void {
+    this.imageLoading.set(false);
   }
 
   private lockScroll(): void {
@@ -152,5 +163,22 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
     this.isScrollLocked = false;
     this.renderer.setStyle(this.document.body, 'overflow', this.originalBodyOverflow);
     this.renderer.setStyle(this.document.body, 'padding-right', this.originalBodyPaddingRight);
+  }
+
+  private preloadAdjacentImages(): void {
+    if (typeof Image === 'undefined' || this.activeIndex === null || this.photos.length < 2) {
+      return;
+    }
+
+    const indexes = [
+      (this.activeIndex - 1 + this.photos.length) % this.photos.length,
+      (this.activeIndex + 1) % this.photos.length,
+    ];
+
+    for (const index of indexes) {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = this.photos[index].src;
+    }
   }
 }

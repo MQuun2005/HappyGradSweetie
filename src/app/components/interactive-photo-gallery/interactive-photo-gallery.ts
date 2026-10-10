@@ -5,10 +5,8 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  NgZone,
   OnDestroy,
   Output,
-  Renderer2,
   ViewChild,
   computed,
   signal,
@@ -17,13 +15,19 @@ import { gsap } from 'gsap';
 
 import { GalleryContent, Photo } from '../../models/celebration.models';
 import {
-  COMPACT_PHOTOS_PER_PAGE,
-  DESKTOP_PHOTOS_PER_PAGE,
-  GalleryCardLayout,
-  getCardLayout,
-  getPhotoPage,
-  getPhotoPageCount,
+  ArcCardLayout,
+  getArcCardLayout,
+  getClosestLogicalIndex,
+  getGalleryLayoutConfig,
+  getGalleryViewport,
+  getVirtualLogicalIndices,
 } from '../../utils/gallery-layout';
+
+interface RenderedGalleryCard {
+  readonly logicalIndex: number;
+  readonly photo: Photo;
+  readonly layout: ArcCardLayout;
+}
 
 @Component({
   selector: 'app-interactive-photo-gallery',
@@ -34,365 +38,408 @@ import {
 export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestroy {
   @ViewChild('scene') private sceneRef!: ElementRef<HTMLElement>;
 
-  @Input({ required: true })
-  set photos(value: readonly Photo[]) {
-    this.photosSource.set(value);
-    this.keepPageInRange();
+  @Input({ required: true }) content!: GalleryContent;
+
+  @Input()
+  set suspended(value: boolean) {
+    this.isSuspended.set(value);
+    this.syncAutoMotion();
   }
 
-  @Input({ required: true }) content!: GalleryContent;
+  @Input({ required: true })
+  set photos(value: readonly Photo[]) {
+    this.photosSource.set([...value].sort((left, right) => left.order - right.order));
+    this.syncAutoMotion();
+  }
 
   @Output() readonly photoRequested = new EventEmitter<number>();
 
   private readonly photosSource = signal<readonly Photo[]>([]);
-  readonly pageIndex = signal(0);
-  readonly photosPerPage = signal(DESKTOP_PHOTOS_PER_PAGE);
-  readonly activePhotoId = signal<number | null>(null);
-  readonly isNavigating = signal(false);
-  readonly hasEntered = signal(false);
-  readonly isCompact = signal(false);
+  private readonly position = signal(0);
+  private readonly viewportWidth = signal(1280);
+  readonly isSuspended = signal(false);
+  readonly focusedLogicalIndex = signal<number | null>(null);
   readonly brokenPhotoIds = signal<ReadonlySet<number>>(new Set());
+  readonly isDragging = signal(false);
+  readonly isAutoPlaying = signal(false);
 
-  readonly totalPages = computed(() =>
-    getPhotoPageCount(this.photosSource().length, this.photosPerPage()),
-  );
-  readonly visiblePhotos = computed(() =>
-    getPhotoPage(this.photosSource(), this.pageIndex(), this.photosPerPage()),
-  );
-  readonly currentStart = computed(() => this.pageIndex() * this.photosPerPage());
+  readonly layoutConfig = computed(() => getGalleryLayoutConfig(this.viewportWidth()));
+  readonly isCompact = computed(() => getGalleryViewport(this.viewportWidth()) === 'compact');
+  readonly renderedCards = computed<readonly RenderedGalleryCard[]>(() => {
+    const photos = this.photosSource();
+    if (!photos.length) {
+      return [];
+    }
 
-  private observer?: IntersectionObserver;
-  private mediaQuery?: MediaQueryList;
-  private removePointerMove?: () => void;
-  private removePointerLeave?: () => void;
-  private pointerFrame = 0;
-  private revealFrame = 0;
-  private navigationTimeline?: gsap.core.Timeline;
-  private gsapContext?: gsap.Context;
+    const position = this.position();
+    const config = this.layoutConfig();
+
+    return getVirtualLogicalIndices(position, config).map((logicalIndex) => {
+      const layout = getArcCardLayout(logicalIndex, position, photos.length, config);
+      return { logicalIndex, photo: photos[layout.photoIndex], layout };
+    });
+  });
+  readonly activePhotoNumber = computed(() => {
+    const photos = this.photosSource();
+    if (!photos.length) {
+      return 0;
+    }
+
+    return getArcCardLayout(
+      getClosestLogicalIndex(this.position()),
+      this.position(),
+      photos.length,
+      this.layoutConfig(),
+    ).photoIndex + 1;
+  });
+
+  private resizeObserver?: ResizeObserver;
+  private intersectionObserver?: IntersectionObserver;
+  private reducedMotionQuery?: MediaQueryList;
+  private autoMotion?: gsap.core.Tween;
+  private inertiaMotion?: gsap.core.Tween;
+  private autoTimeScaleTween?: gsap.core.Tween;
+  private readonly motion = { position: 0 };
+  private isViewReady = false;
+  private isInViewport = true;
+  private isDocumentVisible = true;
   private prefersReducedMotion = false;
   private supportsFinePointer = false;
-
-  constructor(
-    private readonly zone: NgZone,
-    private readonly renderer: Renderer2,
-  ) {}
+  private pointerId: number | null = null;
+  private dragStartX = 0;
+  private dragStartPosition = 0;
+  private lastDragX = 0;
+  private lastDragTime = 0;
+  private lastPosition = 0;
+  private suppressClickUntil = 0;
 
   ngAfterViewInit(): void {
-    if (typeof window === 'undefined') {
-      this.enterGallery();
-      return;
-    }
+    const scene = this.sceneRef.nativeElement;
+    this.isViewReady = true;
+    this.updateViewportWidth(scene.clientWidth);
 
-    this.mediaQuery = window.matchMedia('(max-width: 640px)');
     this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    this.updatePageSize(this.mediaQuery.matches ? COMPACT_PHOTOS_PER_PAGE : DESKTOP_PHOTOS_PER_PAGE);
-    this.mediaQuery.addEventListener('change', this.onViewportChange);
+    this.reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    this.reducedMotionQuery.addEventListener('change', this.onReducedMotionChange);
+    document.addEventListener('visibilitychange', this.onVisibilityChange);
 
-    const scene = this.sceneRef.nativeElement;
-    this.gsapContext = gsap.context(() => undefined, scene);
-
-    this.zone.runOutsideAngular(() => {
-      this.removePointerMove = this.renderer.listen(scene, 'pointermove', (event: Event) =>
-        this.onPointerMove(event as PointerEvent),
-      );
-      this.removePointerLeave = this.renderer.listen(scene, 'pointerleave', () => this.resetParallax());
-    });
-
-    if ('IntersectionObserver' in window) {
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          if (!entries.some((entry) => entry.isIntersecting)) {
-            return;
-          }
-
-          this.zone.run(() => this.enterGallery());
-          this.observer?.disconnect();
-        },
-        { threshold: 0.22 },
-      );
-      this.observer.observe(scene);
-      return;
+    if ('ResizeObserver' in window) {
+      this.resizeObserver = new ResizeObserver(([entry]) => {
+        this.updateViewportWidth(entry.contentRect.width);
+      });
+      this.resizeObserver.observe(scene);
     }
 
-    this.enterGallery();
+    if ('IntersectionObserver' in window) {
+      this.intersectionObserver = new IntersectionObserver(
+        ([entry]) => {
+          this.isInViewport = entry.isIntersecting;
+          this.syncAutoMotion();
+        },
+        { threshold: 0.16 },
+      );
+      this.intersectionObserver.observe(scene);
+    }
+
+    this.syncAutoMotion();
   }
 
   ngOnDestroy(): void {
-    this.observer?.disconnect();
-    this.mediaQuery?.removeEventListener('change', this.onViewportChange);
-    this.removePointerMove?.();
-    this.removePointerLeave?.();
-    this.navigationTimeline?.kill();
-    this.gsapContext?.revert();
+    this.resizeObserver?.disconnect();
+    this.intersectionObserver?.disconnect();
+    this.reducedMotionQuery?.removeEventListener('change', this.onReducedMotionChange);
+    document.removeEventListener('visibilitychange', this.onVisibilityChange);
+    this.autoMotion?.kill();
+    this.inertiaMotion?.kill();
+    this.autoTimeScaleTween?.kill();
+  }
 
-    if (this.pointerFrame) {
-      cancelAnimationFrame(this.pointerFrame);
+  previousPhoto(): void {
+    this.moveBy(-1);
+  }
+
+  nextPhoto(): void {
+    this.moveBy(1);
+  }
+
+  focusCard(card: RenderedGalleryCard): void {
+    if (!this.isSuspended()) {
+      this.focusedLogicalIndex.set(card.logicalIndex);
+      this.pauseAutoMotion();
     }
-    if (this.revealFrame) {
-      cancelAnimationFrame(this.revealFrame);
+  }
+
+  clearFocusedCard(): void {
+    if (this.isDragging()) {
+      return;
+    }
+
+    this.focusedLogicalIndex.set(null);
+    this.resumeAutoMotionSoon();
+  }
+
+  onCardPointerEnter(card: RenderedGalleryCard): void {
+    if (this.supportsFinePointer) {
+      this.focusCard(card);
     }
   }
 
-  get canGoPrevious(): boolean {
-    return this.pageIndex() > 0 && !this.isNavigating();
+  requestPhoto(card: RenderedGalleryCard): void {
+    if (this.isSuspended() || Date.now() < this.suppressClickUntil) {
+      return;
+    }
+
+    this.focusedLogicalIndex.set(card.logicalIndex);
+    this.photoRequested.emit(card.layout.photoIndex);
   }
 
-  get canGoNext(): boolean {
-    return this.pageIndex() < this.totalPages() - 1 && !this.isNavigating();
+  onPointerDown(event: PointerEvent): void {
+    if (this.isSuspended() || event.button !== 0) {
+      return;
+    }
+
+    this.pointerId = event.pointerId;
+    this.dragStartX = event.clientX;
+    this.dragStartPosition = this.position();
+    this.lastDragX = event.clientX;
+    this.lastDragTime = event.timeStamp;
+    this.lastPosition = this.position();
+    this.inertiaMotion?.kill();
+    this.pauseAutoMotion();
+    this.sceneRef.nativeElement.setPointerCapture(event.pointerId);
   }
 
-  get photoCount(): number {
-    return this.photosSource().length;
+  onPointerMove(event: PointerEvent): void {
+    if (event.pointerId !== this.pointerId) {
+      return;
+    }
+
+    const distance = event.clientX - this.dragStartX;
+    if (!this.isDragging() && Math.abs(distance) < 8) {
+      return;
+    }
+
+    if (!this.isDragging()) {
+      this.isDragging.set(true);
+      this.focusedLogicalIndex.set(null);
+    }
+
+    event.preventDefault();
+    const pixelsPerPhoto = this.isCompact() ? 118 : 176;
+    const nextPosition = this.dragStartPosition - distance / pixelsPerPhoto;
+    this.setPosition(nextPosition);
+    this.lastDragX = event.clientX;
+    this.lastDragTime = event.timeStamp;
   }
 
-  layoutFor(slotIndex: number): GalleryCardLayout {
-    return getCardLayout(slotIndex, this.visiblePhotos().length);
+  onPointerUp(event: PointerEvent): void {
+    if (event.pointerId !== this.pointerId) {
+      return;
+    }
+
+    if (this.sceneRef.nativeElement.hasPointerCapture(event.pointerId)) {
+      this.sceneRef.nativeElement.releasePointerCapture(event.pointerId);
+    }
+
+    this.pointerId = null;
+    if (!this.isDragging()) {
+      this.resumeAutoMotionSoon();
+      return;
+    }
+
+    this.isDragging.set(false);
+    this.suppressClickUntil = Date.now() + 250;
+    const elapsed = Math.max(16, event.timeStamp - this.lastDragTime);
+    const velocity = (this.lastDragX - event.clientX) / elapsed;
+    const inertiaDistance = Math.max(-0.85, Math.min(0.85, velocity * 0.3));
+    const target = this.position() + inertiaDistance;
+
+    this.inertiaMotion?.kill();
+    this.inertiaMotion = gsap.to(this.motion, {
+      position: target,
+      duration: 0.42,
+      ease: 'power3.out',
+      onUpdate: () => this.setPosition(this.motion.position),
+      onComplete: () => this.resumeAutoMotionSoon(),
+    });
   }
 
-  isFocused(photoId: number): boolean {
-    return this.activePhotoId() === photoId;
+  onPointerCancel(event: PointerEvent): void {
+    if (event.pointerId === this.pointerId) {
+      this.pointerId = null;
+      this.isDragging.set(false);
+      this.resumeAutoMotionSoon();
+    }
+  }
+
+  toggleAutoMotion(): void {
+    if (this.prefersReducedMotion || this.isSuspended()) {
+      return;
+    }
+
+    if (this.isAutoPlaying()) {
+      this.autoMotion?.pause();
+      this.isAutoPlaying.set(false);
+      return;
+    }
+
+    this.syncAutoMotion();
+  }
+
+  onSceneKeydown(event: KeyboardEvent): void {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      this.previousPhoto();
+      return;
+    }
+
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      this.nextPhoto();
+    }
+  }
+
+  isFocused(card: RenderedGalleryCard): boolean {
+    return this.focusedLogicalIndex() === card.logicalIndex;
+  }
+
+  isInteractive(card: RenderedGalleryCard): boolean {
+    return Math.abs(card.layout.relative) <= this.layoutConfig().visibleRadius;
   }
 
   isBroken(photoId: number): boolean {
     return this.brokenPhotoIds().has(photoId);
   }
 
-  focusPhoto(photoId: number): void {
-    if (!this.isNavigating()) {
-      this.activePhotoId.set(photoId);
-    }
-  }
-
-  clearFocusedPhoto(): void {
-    if (this.supportsFinePointer) {
-      this.activePhotoId.set(null);
-    }
-  }
-
-  handlePhotoClick(photoId: number, localIndex: number): void {
-    if (this.isNavigating()) {
-      return;
-    }
-
-    if (!this.supportsFinePointer && this.activePhotoId() !== photoId) {
-      this.activePhotoId.set(photoId);
-      return;
-    }
-
-    this.photoRequested.emit(this.currentStart() + localIndex);
-  }
-
   markImageFailed(photoId: number): void {
     this.brokenPhotoIds.update((current) => new Set(current).add(photoId));
   }
 
-  previousPage(): void {
-    this.navigateTo(this.pageIndex() - 1);
+  zIndexFor(card: RenderedGalleryCard): number {
+    return 100 - Math.round(Math.abs(card.layout.relative) * 10);
   }
 
-  nextPage(): void {
-    this.navigateTo(this.pageIndex() + 1);
+  leftFor(card: RenderedGalleryCard): string {
+    return `calc(50% + ${card.layout.x}px)`;
   }
 
-  onSceneKeydown(event: KeyboardEvent): void {
-    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+  topFor(card: RenderedGalleryCard): string {
+    return `calc(48% + ${card.layout.y}px)`;
+  }
+
+  transformFor(card: RenderedGalleryCard): string {
+    return [
+      `translate3d(-50%, -50%, ${this.zFor(card)}px)`,
+      `rotateY(${this.rotationYFor(card)}deg)`,
+      `rotateZ(${card.layout.rotateZ}deg)`,
+      `scale(${this.scaleFor(card)})`,
+    ].join(' ');
+  }
+
+  thumbnailUrlFor(photo: Photo): string {
+    // A stable version query ensures a replaced thumbnail is not reused from a
+    // browser's disk cache while the gallery itself remains cache-friendly.
+    return `${photo.thumbnailSrc}?v=arc-20261010`;
+  }
+
+  thumbnailBackgroundFor(card: RenderedGalleryCard): string {
+    return `url("${this.thumbnailUrlFor(card.photo)}")`;
+  }
+
+  scaleFor(card: RenderedGalleryCard): number {
+    return Number((card.layout.scale * (this.isFocused(card) ? 1.1 : 1)).toFixed(3));
+  }
+
+  zFor(card: RenderedGalleryCard): number {
+    return card.layout.z + (this.isFocused(card) ? 210 : 0);
+  }
+
+  rotationYFor(card: RenderedGalleryCard): number {
+    return this.isFocused(card) ? 0 : card.layout.rotateY;
+  }
+
+  private moveBy(amount: number): void {
+    if (this.isSuspended() || !this.photosSource().length) {
       return;
     }
 
-    event.preventDefault();
-    const direction = event.key === 'ArrowRight' ? 1 : -1;
-    const currentIndex = this.visiblePhotos().findIndex((photo) => photo.id === this.activePhotoId());
-    const nextIndex = currentIndex === -1 ? 0 : currentIndex + direction;
-
-    if (nextIndex >= 0 && nextIndex < this.visiblePhotos().length) {
-      this.activePhotoId.set(this.visiblePhotos()[nextIndex].id);
-      return;
-    }
-
-    this.navigateTo(this.pageIndex() + direction);
+    const nextPosition = this.position() + amount;
+    this.setPosition(nextPosition);
+    this.focusedLogicalIndex.set(getClosestLogicalIndex(nextPosition));
+    this.resumeAutoMotionSoon();
   }
 
-  private readonly onViewportChange = (): void => {
-    if (!this.mediaQuery) {
-      return;
+  private updateViewportWidth(width: number): void {
+    if (width > 0) {
+      this.viewportWidth.set(width);
     }
+  }
 
-    this.zone.run(() => {
-      this.updatePageSize(
-        this.mediaQuery?.matches ? COMPACT_PHOTOS_PER_PAGE : DESKTOP_PHOTOS_PER_PAGE,
-      );
-    });
+  private readonly onReducedMotionChange = (event: MediaQueryListEvent): void => {
+    this.prefersReducedMotion = event.matches;
+    this.syncAutoMotion();
   };
 
-  private updatePageSize(nextPageSize: number): void {
-    if (this.photosPerPage() === nextPageSize) {
-      this.isCompact.set(nextPageSize === COMPACT_PHOTOS_PER_PAGE);
-      return;
-    }
+  private readonly onVisibilityChange = (): void => {
+    this.isDocumentVisible = !document.hidden;
+    this.syncAutoMotion();
+  };
 
-    const firstVisibleIndex = this.currentStart();
-    this.photosPerPage.set(nextPageSize);
-    this.isCompact.set(nextPageSize === COMPACT_PHOTOS_PER_PAGE);
-    this.pageIndex.set(Math.floor(firstVisibleIndex / nextPageSize));
-    this.keepPageInRange();
-
-    if (this.hasEntered()) {
-      this.scheduleReveal();
-    }
+  private setPosition(value: number): void {
+    this.motion.position = value;
+    this.position.set(value);
   }
 
-  private keepPageInRange(): void {
-    const pageCount = getPhotoPageCount(this.photosSource().length, this.photosPerPage());
-    if (this.pageIndex() >= pageCount) {
-      this.pageIndex.set(pageCount - 1);
+  private syncAutoMotion(): void {
+    if (!this.isViewReady) {
+      return;
     }
+
+    const canMove =
+      !this.prefersReducedMotion &&
+      !this.isSuspended() &&
+      !this.isDragging() &&
+      this.isInViewport &&
+      this.isDocumentVisible &&
+      this.photosSource().length > 1;
+
+    if (!canMove) {
+      this.autoMotion?.pause();
+      this.isAutoPlaying.set(false);
+      return;
+    }
+
+    this.autoMotion?.kill();
+    this.motion.position = this.position();
+    this.autoMotion = gsap.to(this.motion, {
+      position: this.motion.position + 1000,
+      duration: 1000 / 0.075,
+      ease: 'none',
+      onUpdate: () => this.setPosition(this.motion.position),
+    });
+    this.isAutoPlaying.set(true);
   }
 
-  private enterGallery(): void {
-    if (this.hasEntered()) {
+  private pauseAutoMotion(): void {
+    if (!this.autoMotion || !this.isAutoPlaying()) {
       return;
     }
 
-    this.hasEntered.set(true);
-    this.scheduleReveal();
-    this.preloadNextPage();
-  }
-
-  private navigateTo(nextPage: number): void {
-    if (nextPage < 0 || nextPage >= this.totalPages() || this.isNavigating()) {
-      return;
-    }
-
-    this.isNavigating.set(true);
-    this.activePhotoId.set(null);
-
-    const commitPageChange = () => {
-      this.pageIndex.set(nextPage);
-      this.scheduleReveal(() => this.isNavigating.set(false));
-      this.preloadNextPage();
-    };
-
-    if (this.prefersReducedMotion) {
-      commitPageChange();
-      return;
-    }
-
-    const cards = this.getCardElements();
-    if (!cards.length) {
-      commitPageChange();
-      return;
-    }
-
-    this.navigationTimeline?.kill();
-    this.navigationTimeline = this.createTimeline({ onComplete: commitPageChange });
-    this.navigationTimeline.to(cards, {
-      '--enter-y': '-18px',
-      opacity: 0,
-      duration: 0.18,
-      ease: 'power2.in',
-      stagger: { each: 0.025, from: 'center' },
+    this.autoTimeScaleTween?.kill();
+    this.autoTimeScaleTween = gsap.to(this.autoMotion, {
+      timeScale: 0,
+      duration: 0.22,
+      ease: 'power2.out',
+      onComplete: () => this.isAutoPlaying.set(false),
     });
   }
 
-  private scheduleReveal(onComplete?: () => void): void {
-    if (this.revealFrame) {
-      cancelAnimationFrame(this.revealFrame);
-    }
-
-    this.revealFrame = requestAnimationFrame(() => {
-      this.revealFrame = 0;
-      this.animateCurrentCards(onComplete);
-    });
-  }
-
-  private animateCurrentCards(onComplete?: () => void): void {
-    const cards = this.getCardElements();
-    if (!cards.length) {
-      onComplete?.();
-      return;
-    }
-
-    this.navigationTimeline?.kill();
-    if (this.prefersReducedMotion) {
-      gsap.set(cards, { '--enter-y': '0px', '--enter-z': '0px', opacity: 1 });
-      onComplete?.();
-      return;
-    }
-
-    gsap.set(cards, { '--enter-y': '40px', '--enter-z': '-45px', opacity: 0 });
-    this.navigationTimeline = this.createTimeline({ onComplete });
-    this.navigationTimeline.to(cards, {
-      '--enter-y': '0px',
-      '--enter-z': '0px',
-      opacity: 1,
-      duration: 0.56,
-      ease: 'power3.out',
-      stagger: { each: 0.07, from: 'center' },
-    });
-  }
-
-  private createTimeline(vars: gsap.TimelineVars): gsap.core.Timeline {
-    let timeline!: gsap.core.Timeline;
-    const create = () => {
-      timeline = gsap.timeline(vars);
-      return timeline;
-    };
-
-    if (this.gsapContext) {
-      this.gsapContext.add(create);
-    } else {
-      create();
-    }
-
-    return timeline;
-  }
-
-  private onPointerMove(event: PointerEvent): void {
-    if (!this.supportsFinePointer || this.prefersReducedMotion || this.pointerFrame) {
-      return;
-    }
-
-    const scene = this.sceneRef.nativeElement;
-    const bounds = scene.getBoundingClientRect();
-    const normalizedX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
-    const normalizedY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
-
-    this.pointerFrame = requestAnimationFrame(() => {
-      this.pointerFrame = 0;
-      scene.style.setProperty('--pointer-x', `${Math.max(-8, Math.min(8, normalizedX * 8)).toFixed(2)}px`);
-      scene.style.setProperty('--pointer-y', `${Math.max(-6, Math.min(6, normalizedY * 6)).toFixed(2)}px`);
-    });
-  }
-
-  private resetParallax(): void {
-    if (!this.sceneRef) {
-      return;
-    }
-
-    this.sceneRef.nativeElement.style.setProperty('--pointer-x', '0px');
-    this.sceneRef.nativeElement.style.setProperty('--pointer-y', '0px');
-  }
-
-  private preloadNextPage(): void {
-    if (typeof Image === 'undefined') {
-      return;
-    }
-
-    const nextPhotos = getPhotoPage(
-      this.photosSource(),
-      this.pageIndex() + 1,
-      this.photosPerPage(),
-    );
-
-    for (const photo of nextPhotos) {
-      const image = new Image();
-      image.decoding = 'async';
-      image.src = photo.thumbnailSrc;
-    }
-  }
-
-  private getCardElements(): HTMLElement[] {
-    return Array.from(this.sceneRef?.nativeElement.querySelectorAll<HTMLElement>('.photo-card') ?? []);
+  private resumeAutoMotionSoon(): void {
+    window.setTimeout(() => {
+      if (this.focusedLogicalIndex() === null && !this.isDragging()) {
+        this.syncAutoMotion();
+      }
+    }, 320);
   }
 }

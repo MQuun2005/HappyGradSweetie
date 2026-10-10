@@ -70,6 +70,7 @@ button:disabled {
 }
 
 .lightbox__media {
+  position: relative;
   display: grid;
   min-block-size: 0;
   place-items: center;
@@ -78,9 +79,24 @@ button:disabled {
 }
 
 .lightbox__media img {
+  opacity: 0;
   max-inline-size: 100%;
   max-block-size: 100%;
   object-fit: contain;
+  transition: opacity 220ms ease;
+}
+
+.lightbox__media img.lightbox__image--ready {
+  opacity: 1;
+}
+
+.lightbox__loading {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  color: rgb(248 242 232 / 76%);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transform: translate(-50%, -50%);
 }
 
 .lightbox__error {

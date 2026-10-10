@@ -4,8 +4,16 @@ export interface Photo {
   readonly thumbnailSrc: string;
   readonly alt: string;
   readonly title: string;
-  readonly caption: string;
+  readonly caption?: string;
   readonly order: number;
+  readonly featured: boolean;
+}
+
+export interface IntroContent {
+  readonly eyebrow: string;
+  readonly title: string;
+  readonly body: string;
+  readonly actionLabel: string;
 }
 
 export interface HeroContent {
@@ -21,6 +29,16 @@ export interface TextSectionContent {
   readonly body: string;
 }
 
+export interface InvitationContent {
+  readonly eyebrow: string;
+  readonly title: string;
+  readonly recipient: string;
+  readonly degree: string;
+  readonly school: string;
+  readonly dateLabel: string;
+  readonly note: string;
+}
+
 export interface LetterContent {
   readonly eyebrow: string;
   readonly title: string;
@@ -32,6 +50,7 @@ export interface ClosingContent {
   readonly title: string;
   readonly body: string;
   readonly actionLabel: string;
+  readonly replayLabel: string;
 }
 
 export interface GalleryContent {
@@ -40,11 +59,20 @@ export interface GalleryContent {
   readonly lead: string;
 }
 
+export interface MusicConfig {
+  readonly src: string | null;
+  readonly title: string;
+  readonly volume: number;
+}
+
 export interface CelebrationContent {
+  readonly intro: IntroContent;
   readonly hero: HeroContent;
+  readonly invitation: InvitationContent;
   readonly message: TextSectionContent;
   readonly gallery: GalleryContent;
   readonly letter: LetterContent;
   readonly closing: ClosingContent;
+  readonly music: MusicConfig;
   readonly photos: readonly Photo[];
 }

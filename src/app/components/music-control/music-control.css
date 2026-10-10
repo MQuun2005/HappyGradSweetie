@@ -1,0 +1,54 @@
+:host {
+  display: contents;
+}
+
+.music-control {
+  position: fixed;
+  z-index: 90;
+  inset: auto 1rem 1rem auto;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgb(255 253 249 / 80%);
+  border-radius: 999px;
+  padding: 0.7rem 0.9rem;
+  background: rgb(39 50 75 / 92%);
+  box-shadow: 0 10px 24px rgb(39 50 75 / 22%);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+button:hover {
+  background: var(--color-rose);
+  transform: translateY(-2px);
+}
+
+.music-control__button--playing span[aria-hidden='true'] {
+  color: var(--color-peach);
+}
+
+button:disabled {
+  display: none;
+}
+
+@media (max-width: 40rem) {
+  .music-control {
+    inset: auto 0.75rem 0.75rem auto;
+  }
+
+  .music-control__label {
+    display: none;
+  }
+
+  button {
+    inline-size: 2.8rem;
+    block-size: 2.8rem;
+    justify-content: center;
+    padding: 0;
+  }
+}
