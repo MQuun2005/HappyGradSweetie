@@ -1,0 +1,50 @@
+:host {
+  display: block;
+}
+
+.letter-section {
+  padding: clamp(4rem, 9vw, 8rem) 1.5rem;
+  background: #efe5d5;
+}
+
+.letter {
+  max-inline-size: 44rem;
+  margin: 0 auto;
+  border: 1px solid rgb(212 176 106 / 40%);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(2rem, 7vw, 5rem);
+  background: #fffdf8;
+}
+
+.letter__eyebrow {
+  margin: 0;
+  color: #9b7134;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0.8rem 0 1.7rem;
+  color: var(--color-navy);
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.letter p:not(.letter__eyebrow) {
+  margin: 0 0 1.15rem;
+  color: #495163;
+  line-height: 1.85;
+}
+
+footer {
+  margin-block-start: 2rem;
+  color: var(--color-navy);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-style: italic;
+}

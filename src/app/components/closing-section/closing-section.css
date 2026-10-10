@@ -1,0 +1,48 @@
+:host {
+  display: block;
+}
+
+.closing {
+  padding: clamp(5rem, 11vw, 9rem) 1.5rem;
+  background: var(--color-navy);
+  color: var(--color-ivory);
+  text-align: center;
+}
+
+.closing__inner {
+  max-inline-size: 48rem;
+  margin: 0 auto;
+}
+
+.closing__sparkle {
+  margin: 0 0 1rem;
+  color: var(--color-gold);
+  font-size: 1.3rem;
+}
+
+h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.3rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.closing__inner > p:not(.closing__sparkle) {
+  max-inline-size: 38rem;
+  margin: 1.35rem auto 0;
+  color: rgb(248 242 232 / 78%);
+  line-height: 1.8;
+}
+
+a {
+  display: inline-flex;
+  gap: 0.6rem;
+  margin-block-start: 2rem;
+  border-bottom: 1px solid var(--color-gold);
+  padding-block-end: 0.35rem;
+  color: var(--color-ivory);
+  font-weight: 700;
+  text-decoration: none;
+}

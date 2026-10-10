@@ -1,0 +1,77 @@
+<section
+  id="memories"
+  class="gallery"
+  [class.gallery--entered]="hasEntered()"
+  [class.gallery--compact]="isCompact()"
+  aria-labelledby="memories-title"
+>
+  <header class="gallery__header">
+    <p class="gallery__eyebrow">{{ content.eyebrow }}</p>
+    <h2 id="memories-title">{{ content.title }}</h2>
+    <p>{{ content.lead }}</p>
+  </header>
+
+  <div
+    #scene
+    class="gallery__scene"
+    role="region"
+    aria-label="Thư viện ảnh tốt nghiệp tương tác"
+    tabindex="0"
+    (keydown)="onSceneKeydown($event)"
+  >
+    <div class="gallery__stage" [attr.aria-busy]="isNavigating()">
+      @for (photo of visiblePhotos(); track photo.id; let localIndex = $index) {
+        @let layout = layoutFor(localIndex);
+        <button
+          class="photo-card"
+          type="button"
+          [class.photo-card--focused]="isFocused(photo.id)"
+          [class.photo-card--broken]="isBroken(photo.id)"
+          [attr.aria-label]="'Mở ' + photo.alt"
+          [attr.aria-pressed]="isFocused(photo.id)"
+          [attr.aria-posinset]="currentStart() + localIndex + 1"
+          [attr.aria-setsize]="photoCount"
+          [style.--slot]="layout.slot"
+          [style.--slot-y]="layout.offsetY + 'px'"
+          [style.--depth]="layout.depth + 'px'"
+          [style.--rotation-y]="layout.rotateY + 'deg'"
+          [style.--rotation-z]="layout.rotateZ + 'deg'"
+          [style.--focus-shift]="layout.focusShiftX + 'px'"
+          [style.--focus-z]="isFocused(photo.id) ? '280px' : '0px'"
+          [style.--focus-scale]="isFocused(photo.id) ? '1.18' : '1'"
+          [style.--focus-rotation-y]="isFocused(photo.id) ? -layout.rotateY + 'deg' : '0deg'"
+          (pointerenter)="focusPhoto(photo.id)"
+          (pointerleave)="clearFocusedPhoto()"
+          (focus)="focusPhoto(photo.id)"
+          (click)="handlePhotoClick(photo.id, localIndex)"
+        >
+          @if (isBroken(photo.id)) {
+            <span class="photo-card__fallback">Không thể tải ảnh {{ photo.id }}</span>
+          } @else {
+            <img
+              [src]="photo.thumbnailSrc"
+              [alt]="photo.alt"
+              loading="lazy"
+              decoding="async"
+              (error)="markImageFailed(photo.id)"
+            />
+          }
+          <span class="photo-card__shade"></span>
+          <span class="photo-card__caption">{{ photo.caption || photo.title }}</span>
+        </button>
+      }
+    </div>
+  </div>
+
+  <nav class="gallery__controls" aria-label="Điều hướng thư viện ảnh">
+    <button type="button" [disabled]="!canGoPrevious" (click)="previousPage()">
+      <span aria-hidden="true">←</span> Ảnh trước
+    </button>
+    <p aria-live="polite">
+      <span class="sr-only">Nhóm ảnh </span>{{ pageIndex() + 1 }} / {{ totalPages() }}
+    </p>
+    <button type="button" [disabled]="!canGoNext" (click)="nextPage()">
+      Ảnh tiếp <span aria-hidden="true">→</span>
+    </button>
+  </nav>
+</section>

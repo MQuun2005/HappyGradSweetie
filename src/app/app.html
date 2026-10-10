@@ -1,0 +1,18 @@
+<main class="app-shell">
+  <app-graduation-hero [content]="content.hero" />
+  <app-graduation-message [content]="content.message" />
+  <app-interactive-photo-gallery
+    [content]="content.gallery"
+    [photos]="content.photos"
+    (photoRequested)="openLightbox($event)"
+  />
+  <app-graduation-letter [content]="content.letter" />
+  <app-closing-section [content]="content.closing" />
+</main>
+
+<app-photo-lightbox
+  [photos]="content.photos"
+  [activeIndex]="lightboxIndex()"
+  (activeIndexChange)="openLightbox($event)"
+  (closed)="closeLightbox()"
+/>

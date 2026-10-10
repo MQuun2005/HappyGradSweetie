@@ -1,0 +1,129 @@
+:host {
+  display: contents;
+}
+
+.lightbox {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(0.75rem, 3vw, 2rem);
+  background: rgb(7 13 25 / 82%);
+  backdrop-filter: blur(10px);
+}
+
+.lightbox__panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  inline-size: min(100%, 68rem);
+  max-block-size: min(92dvh, 60rem);
+  overflow: hidden;
+  border: 1px solid rgb(212 176 106 / 45%);
+  border-radius: 1rem;
+  background: var(--color-navy);
+  box-shadow: 0 30px 90px rgb(0 0 0 / 42%);
+  color: var(--color-ivory);
+}
+
+.lightbox__header,
+.lightbox__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+}
+
+.lightbox__header {
+  border-bottom: 1px solid rgb(248 242 232 / 13%);
+}
+
+.lightbox__header p {
+  margin: 0;
+  color: rgb(248 242 232 / 70%);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+button {
+  display: grid;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  place-items: center;
+  border: 1px solid rgb(248 242 232 / 26%);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-ivory);
+  font-size: 1.2rem;
+}
+
+button:not(:disabled):hover {
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.lightbox__media {
+  display: grid;
+  min-block-size: 0;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 20%);
+}
+
+.lightbox__media img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+  object-fit: contain;
+}
+
+.lightbox__error {
+  max-inline-size: 28rem;
+  color: rgb(248 242 232 / 82%);
+  line-height: 1.65;
+  text-align: center;
+}
+
+.lightbox__footer {
+  border-top: 1px solid rgb(248 242 232 / 13%);
+}
+
+.lightbox__footer h2,
+.lightbox__footer p {
+  margin: 0;
+}
+
+.lightbox__footer h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.lightbox__footer p {
+  margin-block-start: 0.2rem;
+  color: rgb(248 242 232 / 68%);
+  font-size: 0.82rem;
+}
+
+nav {
+  display: flex;
+  gap: 0.6rem;
+}
+
+@media (max-width: 40rem) {
+  .lightbox {
+    padding: 0;
+  }
+
+  .lightbox__panel {
+    max-block-size: 100dvh;
+    min-block-size: 100dvh;
+    border-radius: 0;
+  }
+}

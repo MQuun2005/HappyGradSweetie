@@ -1,0 +1,10 @@
+<section class="letter-section" aria-labelledby="letter-title">
+  <article class="letter">
+    <p class="letter__eyebrow">{{ content.eyebrow }}</p>
+    <h2 id="letter-title">{{ content.title }}</h2>
+    @for (paragraph of content.paragraphs; track paragraph) {
+      <p>{{ paragraph }}</p>
+    }
+    <footer>{{ content.signature }}</footer>
+  </article>
+</section>

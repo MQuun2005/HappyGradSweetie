@@ -1,0 +1,48 @@
+@if (activePhoto; as photo) {
+  <div
+    #dialog
+    class="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-title"
+    tabindex="-1"
+    cdkTrapFocus
+    [cdkTrapFocusAutoCapture]="true"
+    (click)="onBackdropClick($event)"
+    (keydown)="onKeydown($event)"
+  >
+    <section class="lightbox__panel">
+      <header class="lightbox__header">
+        <p>{{ activeIndex! + 1 }} / {{ photos.length }}</p>
+        <button type="button" (click)="close()" aria-label="Đóng ảnh phóng to">
+          <span aria-hidden="true">×</span>
+        </button>
+      </header>
+
+      <div class="lightbox__media">
+        @if (imageFailed()) {
+          <p class="lightbox__error">Không thể tải ảnh này. Bạn vẫn có thể chuyển sang ảnh khác.</p>
+        } @else {
+          <img [src]="photo.src" [alt]="photo.alt" (error)="markImageFailed()" />
+        }
+      </div>
+
+      <footer class="lightbox__footer">
+        <div>
+          <h2 id="lightbox-title">{{ photo.title }}</h2>
+          @if (photo.caption) {
+            <p>{{ photo.caption }}</p>
+          }
+        </div>
+        <nav aria-label="Điều hướng ảnh phóng to">
+          <button type="button" [disabled]="!canGoPrevious" (click)="previous()" aria-label="Ảnh trước">
+            <span aria-hidden="true">←</span>
+          </button>
+          <button type="button" [disabled]="!canGoNext" (click)="next()" aria-label="Ảnh tiếp theo">
+            <span aria-hidden="true">→</span>
+          </button>
+        </nav>
+      </footer>
+    </section>
+  </div>
+}
