@@ -6,3 +6,15 @@
   isolation: isolate;
   min-block-size: 100dvh;
 }
+
+app-graduation-hero,
+app-graduation-invitation,
+app-graduation-message,
+app-interactive-photo-gallery,
+app-graduation-letter,
+app-closing-section {
+  display: block;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  scroll-margin-top: 0;
+}

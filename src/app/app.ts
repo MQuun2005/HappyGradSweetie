@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnDestroy,
+  signal,
+} from '@angular/core';
 
 import { ClosingSectionComponent } from './components/closing-section/closing-section';
 import { GiftIntroComponent } from './components/gift-intro/gift-intro';
@@ -9,6 +17,7 @@ import { GraduationMessageComponent } from './components/graduation-message/grad
 import { InteractivePhotoGalleryComponent } from './components/interactive-photo-gallery/interactive-photo-gallery';
 import { MusicControlComponent } from './components/music-control/music-control';
 import { PhotoLightboxComponent } from './components/photo-lightbox/photo-lightbox';
+import { SectionNavigatorComponent } from './components/section-navigator/section-navigator';
 import { celebrationContent } from './data/celebration-content';
 
 @Component({
@@ -24,14 +33,80 @@ import { celebrationContent } from './data/celebration-content';
     ClosingSectionComponent,
     PhotoLightboxComponent,
     GiftIntroComponent,
+    SectionNavigatorComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
+export class App implements AfterViewInit, OnDestroy {
   protected readonly content = celebrationContent;
   protected readonly lightboxIndex = signal<number | null>(null);
   protected readonly introVisible = signal(this.shouldShowIntro());
+  protected readonly activeSectionId = signal('home');
+
+  private sectionObserver?: IntersectionObserver;
+  private isProgrammaticScroll = false;
+  private programmaticScrollTimer?: ReturnType<typeof setTimeout>;
+
+  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
+
+  ngAfterViewInit(): void {
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      const sectionIds = ['home', 'invitation', 'message', 'memories', 'letter', 'closing'];
+      const elements = sectionIds
+        .map((id) => this.document.getElementById(id))
+        .filter((el): el is HTMLElement => el !== null);
+
+      this.sectionObserver = new IntersectionObserver(
+        (entries) => {
+          if (this.isProgrammaticScroll) {
+            return;
+          }
+
+          const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+          if (visibleEntries.length > 0) {
+            visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+            const topSection = visibleEntries[0].target as HTMLElement;
+            if (topSection.id) {
+              this.activeSectionId.set(topSection.id);
+            }
+          }
+        },
+        {
+          rootMargin: '-20% 0px -35% 0px',
+          threshold: [0.15, 0.4, 0.7],
+        },
+      );
+
+      elements.forEach((el) => this.sectionObserver?.observe(el));
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.sectionObserver?.disconnect();
+    clearTimeout(this.programmaticScrollTimer);
+  }
+
+  protected scrollToSection(id: string): void {
+    const element = this.document.getElementById(id);
+    if (!element) {
+      return;
+    }
+
+    this.activeSectionId.set(id);
+    this.isProgrammaticScroll = true;
+    clearTimeout(this.programmaticScrollTimer);
+
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (typeof window !== 'undefined' && window.history?.replaceState) {
+      window.history.replaceState(null, '', `#${id}`);
+    }
+
+    this.programmaticScrollTimer = setTimeout(() => {
+      this.isProgrammaticScroll = false;
+    }, 850);
+  }
 
   protected openLightbox(index: number): void {
     if (index >= 0 && index < this.content.photos.length) {

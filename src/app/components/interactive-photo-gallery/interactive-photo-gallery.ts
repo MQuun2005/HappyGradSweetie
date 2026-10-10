@@ -64,6 +64,8 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
   readonly position = signal(0);
   private readonly viewportWidth = signal(1280);
   private resizeObserver?: ResizeObserver;
+  private intersectionObserver?: IntersectionObserver;
+  private isOffscreen = false;
   private supportsFinePointer = false;
 
   private animationFrameId?: number;
@@ -119,12 +121,23 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
       this.resizeObserver.observe(scene);
     }
 
+    if ('IntersectionObserver' in window) {
+      this.intersectionObserver = new IntersectionObserver(
+        ([entry]) => {
+          this.isOffscreen = !entry.isIntersecting;
+        },
+        { threshold: 0.15 },
+      );
+      this.intersectionObserver.observe(scene);
+    }
+
     this.startAutoMotion();
   }
 
   ngOnDestroy(): void {
     this.stopAutoMotion();
     this.resizeObserver?.disconnect();
+    this.intersectionObserver?.disconnect();
   }
 
   private startAutoMotion(): void {
@@ -141,6 +154,7 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
           !this.isSuspended() &&
           !this.isHovered &&
           !this.isPointerDown &&
+          !this.isOffscreen &&
           this.photoCount() > 1 &&
           (typeof document === 'undefined' || !document.hidden);
 
@@ -290,25 +304,28 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
   }
 
   zIndexFor(card: RenderedGalleryCard): number {
-    return card.layout.zIndex + (this.isFocused(card) ? 500 : 0);
+    return card.layout.zIndex + (this.isFocused(card) ? 800 : 0);
   }
 
   transformFor(card: RenderedGalleryCard): string {
+    const isFocused = this.isFocused(card);
+    const offsetY = card.layout.y - (isFocused ? 14 : 0);
+    const rotZ = isFocused ? 0 : card.layout.rotateZ;
     return [
       'translate(-50%, -50%)',
-      `translate3d(${card.layout.x}px, ${card.layout.y}px, ${this.zFor(card)}px)`,
+      `translate3d(${card.layout.x}px, ${offsetY}px, ${this.zFor(card)}px)`,
       `rotateY(${this.rotationYFor(card)}deg)`,
-      `rotateZ(${card.layout.rotateZ}deg)`,
+      `rotateZ(${rotZ}deg)`,
       `scale(${this.scaleFor(card)})`,
     ].join(' ');
   }
 
   scaleFor(card: RenderedGalleryCard): number {
-    return Number((card.layout.scale * (this.isFocused(card) ? 1.05 : 1)).toFixed(3));
+    return Number((card.layout.scale * (this.isFocused(card) ? 1.18 : 1)).toFixed(3));
   }
 
   zFor(card: RenderedGalleryCard): number {
-    return card.layout.z + (this.isFocused(card) ? 60 : 0);
+    return card.layout.z + (this.isFocused(card) ? 120 : 0);
   }
 
   rotationYFor(card: RenderedGalleryCard): number {

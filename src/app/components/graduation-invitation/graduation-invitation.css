@@ -6,7 +6,10 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: clamp(5rem, 10vw, 8.5rem) 1.5rem;
+  min-block-size: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(3.5rem, 7vw, 6rem) 1.5rem;
   background: var(--color-peach);
 }
 

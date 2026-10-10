@@ -1,0 +1,22 @@
+<nav class="section-nav" aria-label="Điều hướng các chương">
+  <ul class="section-nav__list">
+    @for (item of sections; track item.id) {
+      <li class="section-nav__item">
+        <button
+          type="button"
+          class="section-nav__dot"
+          [class.section-nav__dot--active]="activeSectionId === item.id"
+          [attr.aria-current]="activeSectionId === item.id ? 'step' : null"
+          [attr.aria-label]="item.number + ' – ' + item.label"
+          (click)="select(item.id)"
+        >
+          <span class="section-nav__pill"></span>
+          <span class="section-nav__tooltip" aria-hidden="true">
+            <span class="section-nav__num">{{ item.number }}</span>
+            <span class="section-nav__text">{{ item.label }}</span>
+          </span>
+        </button>
+      </li>
+    }
+  </ul>
+</nav>

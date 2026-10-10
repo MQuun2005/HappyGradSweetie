@@ -12,6 +12,13 @@
   <app-closing-section [content]="content.closing" (replayRequested)="replayJourney()" />
 </main>
 
+@if (!introVisible()) {
+  <app-section-navigator
+    [activeSectionId]="activeSectionId()"
+    (sectionSelected)="scrollToSection($event)"
+  />
+}
+
 @if (introVisible()) {
   <app-gift-intro [content]="content.intro" (opened)="openGift()" />
 }
