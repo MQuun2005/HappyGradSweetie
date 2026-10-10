@@ -1,0 +1,1184 @@
+# YÊU CẦU NÂNG CẤP TOÀN DIỆN PROJECT HAPPYGRADSWEETIE – ANGULAR GRADUATION CELEBRATION WEBSITE
+
+## 0. VAI TRÒ VÀ QUY TRÌNH LÀM VIỆC
+
+Bạn là Senior Angular Developer, Creative Frontend Engineer, UI/UX Designer và Motion Design Engineer, có kinh nghiệm xây dựng những website tương tác giàu cảm xúc, sử dụng Angular, TypeScript, GSAP, CSS 3D Transforms và animation hiện đại.
+
+Tôi muốn bạn cải thiện toàn diện project **HappyGradSweetie**, một website chúc mừng tốt nghiệp mà tôi dành tặng người yêu của mình.
+
+Đây là một dự án cá nhân rất quan trọng với tôi. Tôi không muốn website chỉ đáp ứng chức năng cơ bản mà còn phải có thiết kế đẹp, chuyển động tinh tế, trải nghiệm đáng nhớ và thể hiện được tình cảm dành cho người nhận.
+
+**QUAN TRỌNG: HIỆN TẠI BẠN ĐANG Ở PLAN MODE.**
+
+Quy trình làm việc bắt buộc:
+
+**PLAN → REVIEW → APPROVE → IMPLEMENT → TEST → REVIEW → DEPLOY**
+
+Trong lượt này, bạn CHỈ ĐƯỢC:
+
+1. Đọc và phân tích codebase thực tế của HappyGradSweetie.
+2. Đánh giá giao diện, kiến trúc, animation và trải nghiệm hiện tại.
+3. Nghiên cứu mẫu Book Hero / Foliom mà tôi cung cấp.
+4. Đề xuất phương án nâng cấp website.
+5. Thiết kế lại hiệu ứng 3D Gallery.
+6. Lập kế hoạch cải thiện UI/UX, nội dung và tính năng.
+7. Xác định chính xác những file cần sửa hoặc tạo mới.
+8. Phân chia công việc thành từng phase có thể triển khai độc lập.
+9. Xây dựng acceptance criteria và checklist kiểm thử.
+10. Trả về kế hoạch hoàn chỉnh để tôi xem xét.
+
+TUYỆT ĐỐI KHÔNG:
+
+- Tự ý chỉnh sửa source code trong Plan Mode.
+- Tạo Angular project mới.
+- Xóa hoặc ghi đè những ảnh hiện có.
+- Thay đổi project WomenDayCelebration.
+- Tự động commit, push hoặc deploy.
+- Thay đổi nhánh Git hoặc Git history.
+- Chuyển framework sang React, Next.js, Vue hoặc framework khác.
+- Cài thêm dependencies trước khi được phê duyệt.
+- Tự triển khai khi chưa được tôi chấp thuận kế hoạch.
+
+Toàn bộ kế hoạch, phần phân tích, giải thích kỹ thuật và đề xuất phải bằng tiếng Việt.
+
+---
+
+# PHẦN I. THÔNG TIN CODEBASE
+
+## 1. Project cần nâng cấp
+
+Repository:
+
+https://github.com/MQuun2005/HappyGradSweetie
+
+Local workspace dự kiến:
+
+E:\MinhQuun\PastLife\HappyGradSweetie
+
+Đây là project Angular đã được triển khai phiên bản đầu tiên.
+
+Không được tạo lại từ đầu. Phải tận dụng và refactor source code hiện tại.
+
+Các công nghệ đang sử dụng gồm:
+
+- Angular 20.3.x
+- TypeScript
+- Angular Standalone Components
+- Angular Signals
+- GSAP
+- CSS 3D Transforms
+- Angular CDK
+- Sharp để tạo thumbnail
+- GitHub Pages
+
+Hãy kiểm tra phiên bản thực tế từ package.json và package-lock.json trước khi đưa ra kế hoạch.
+
+## 2. Những file cần ưu tiên khảo sát
+
+Đặc biệt kiểm tra:
+
+- src/app/app.ts
+- src/app/app.html
+- src/app/app.config.ts
+- src/styles.css
+- src/app/components/graduation-hero/
+- src/app/components/graduation-message/
+- src/app/components/interactive-photo-gallery/
+- src/app/components/photo-lightbox/
+- src/app/components/graduation-letter/
+- src/app/components/closing-section/
+- src/app/data/celebration-content.ts
+- src/app/models/celebration.models.ts
+- src/app/utils/gallery-layout.ts
+- angular.json
+- package.json
+- .github/workflows/deploy-pages.yml
+- README.md
+- plan.md
+
+Phải đọc source code thực tế và không chỉ dựa trên tên file.
+
+## 3. Hình ảnh hiện tại
+
+Project có 34 ảnh cá nhân của người nhận:
+
+public/Image/original/1.jpg đến 34.jpg
+
+Và 34 thumbnail tương ứng:
+
+public/Image/thumb/1.jpg đến 34.jpg
+
+Yêu cầu:
+
+- Giữ nguyên toàn bộ ảnh gốc.
+- Giữ thumbnail nếu chất lượng và dung lượng phù hợp.
+- Không thay ảnh cá nhân bằng ảnh stock hoặc ảnh AI.
+- Không xóa bất kỳ hình nào.
+- Sử dụng đủ 34 ảnh trong gallery.
+- Không bắt buộc render cả 34 ảnh đồng thời.
+- Có khả năng thay đổi thứ tự và ảnh nổi bật về sau.
+- Các ảnh phải giữ nguyên tỷ lệ khi mở đầy đủ.
+
+## 4. Repository tham khảo
+
+https://github.com/MQuun2005/WomenDayCelebration
+
+Đây là project Angular trước đây của tôi.
+
+Có thể tham khảo tổ chức source code, popup, transition, animation và trải nghiệm mở món quà.
+
+Tuy nhiên:
+
+- Không thay đổi source code của project cũ.
+- Không sao chép nội dung ngày 20/10.
+- Không đưa logic không cần thiết vào project mới.
+- Không sao chép toàn bộ thiết kế cũ.
+
+HappyGradSweetie phải có bản sắc riêng.
+
+---
+
+# PHẦN II. THÔNG TIN CÁ NHÂN HÓA
+
+Website này dành tặng người yêu của tôi nhân dịp tốt nghiệp đại học.
+
+## 1. Người nhận
+
+- Họ tên: Nguyễn Võ Mai Khuê
+- Tên thường gọi: Mai Khuê
+- Biệt danh thân mật: vợ iu
+- Ngành học: Luật
+- Trường: Đại học Tôn Đức Thắng
+- Ngày tốt nghiệp: 17/10/2026
+
+## 2. Người gửi
+
+- Tên ký: Quân iu
+- Mối quan hệ: người yêu
+- Cách xưng hô trong nội dung: anh – em
+- Có thể sử dụng "vợ iu" tại những đoạn ngọt ngào hoặc điểm nhấn.
+
+## 3. Giọng điệu nội dung
+
+Tôi muốn lời chúc có sự kết hợp:
+
+- Ngọt ngào.
+- Dễ thương.
+- Lãng mạn.
+- Trưởng thành.
+- Sâu sắc.
+- Tự hào về những cố gắng của người yêu.
+- Dịu dàng, chân thành.
+
+Ưu tiên ngọt ngào và lãng mạn nhưng không quá sến.
+
+Có thể sử dụng những cách diễn đạt gần gũi như:
+
+"Chúc mừng vợ iu của anh đã tốt nghiệp rồi!"
+
+"Anh tự hào về em nhiều lắm."
+
+"Nhìn em đi đến cột mốc này, anh chỉ muốn nói rằng em đã thật sự rất giỏi."
+
+"Mong rằng những chặng đường phía trước sẽ luôn dịu dàng với em."
+
+Đây chỉ là ví dụ định hướng, không bắt buộc sử dụng nguyên văn.
+
+Tôi chưa có lời chúc cuối cùng. Bạn hãy chủ động viết những đoạn lời chúc mẫu hoàn chỉnh, có cảm xúc nhưng không dài dòng.
+
+Không tự bịa ra những kỷ niệm cụ thể mà tôi chưa cung cấp.
+
+Tất cả nội dung phải dễ chỉnh sửa thông qua file cấu hình tập trung.
+
+## 4. Thời điểm truy cập website
+
+Website không chỉ được sử dụng đúng ngày tốt nghiệp.
+
+Mai Khuê có thể mở website trước, trong hoặc sau ngày 17/10/2026.
+
+Vì vậy:
+
+- Không sử dụng countdown bắt buộc.
+- Không viết lời chúc phụ thuộc vào ngày hiện tại.
+- Tránh các cách diễn đạt như "ngày mai em sẽ tốt nghiệp" hoặc "hôm qua em đã tốt nghiệp".
+- Nội dung phải phù hợp khi xem lại nhiều tháng hoặc nhiều năm sau.
+- Ngày 17/10/2026 có thể hiển thị như một dấu mốc kỷ niệm.
+
+---
+
+# PHẦN III. ĐỊNH HƯỚNG THIẾT KẾ MỚI
+
+## 1. Phong cách tổng thể
+
+Mai Khuê rất thích những màu pastel và sự ngọt ngào.
+
+Tôi muốn thiết kế lại giao diện theo định hướng:
+
+**Pastel Romantic Graduation × Elegant Editorial × Interactive 3D Memories**
+
+Các đặc điểm chính:
+
+- Ngọt ngào và mềm mại.
+- Lãng mạn.
+- Tinh tế.
+- Dễ thương vừa đủ.
+- Sang trọng nhưng không quá nghiêm túc.
+- Có cảm giác đây là món quà được chuẩn bị riêng.
+- Nội dung và hình ảnh là trung tâm.
+- Chuyển động mềm mại và tự nhiên.
+
+## 2. Bảng màu
+
+Ưu tiên:
+
+- Warm cream.
+- Soft ivory.
+- Pastel blush pink.
+- Dusty rose.
+- Champagne gold.
+- Peach pastel.
+- Lavender rất nhẹ.
+- Muted navy làm màu tương phản.
+
+Hãy đề xuất một bảng màu thống nhất, kèm mã HEX và vai trò của từng màu.
+
+Ví dụ:
+
+- Background chính.
+- Background phụ.
+- Primary accent.
+- Secondary accent.
+- Heading.
+- Body text.
+- Border.
+- Shadow.
+- Hover states.
+
+Không lạm dụng màu hồng đậm hoặc gradient quá rực rỡ.
+
+Có thể lấy cảm hứng từ thiệp mời tốt nghiệp tôi đã cung cấp, kết hợp phong cách pastel mà Mai Khuê yêu thích.
+
+## 3. Typography
+
+Ưu tiên:
+
+- Serif thanh lịch cho tiêu đề lớn.
+- Sans-serif hiện đại, dễ đọc cho nội dung.
+- Có thể dùng script font ở một vài điểm nhấn ngọt ngào.
+- Không dùng quá nhiều font khác nhau.
+- Typography phải đẹp trên desktop và mobile.
+- Hỗ trợ dấu tiếng Việt chính xác.
+
+## 4. Animation tổng thể
+
+Website cần có animation nhưng không được gây rối mắt.
+
+Ưu tiên:
+
+- Soft fade in.
+- Smooth reveal.
+- Gentle floating.
+- Subtle parallax.
+- Stagger entrance.
+- Soft scale.
+- Smooth hover.
+- Gentle sparkle.
+- Light confetti.
+
+Tất cả hiệu ứng phải tạo cảm giác thống nhất, không phải mỗi section sử dụng một phong cách chuyển động khác nhau.
+
+---
+
+# PHẦN IV. CẤU TRÚC WEBSITE MONG MUỐN
+
+Hãy đánh giá và đề xuất thứ tự hợp lý nhất cho những section sau.
+
+## 1. Intro – Mở món quà
+
+Tôi muốn khi Mai Khuê truy cập website lần đầu sẽ có một màn hình mở đầu đặc biệt.
+
+Ví dụ:
+
+"Anh có một món quà nhỏ dành cho vợ iu."
+
+"Nhấn vào đây để xem điều bất ngờ anh chuẩn bị cho em nhé."
+
+Có nút:
+
+"Mở món quà của anh"
+
+Khi nhấn:
+
+- Intro mở ra bằng animation mềm mại.
+- Chuyển đến nội dung website.
+- Có cảm giác đang mở một bức thư hoặc món quà.
+- Không có loading giả kéo dài.
+- Không bắt người dùng phải xem intro mỗi lần điều hướng trong cùng phiên nếu không cần thiết.
+- Có thể replay intro khi bấm nút xem lại từ đầu.
+
+Hãy chọn một animation mở màn phù hợp với phong cách pastel lãng mạn.
+
+## 2. Graduation Hero
+
+Hero phải thể hiện đây là website dành riêng cho Mai Khuê.
+
+Nội dung bắt buộc có:
+
+- Nguyễn Võ Mai Khuê.
+- Chúc mừng tốt nghiệp.
+- Một câu chúc ngọt ngào.
+- CTA khám phá website.
+
+Ví dụ tiêu đề:
+
+"Congratulations, My Sweetie!"
+
+Hoặc:
+
+"Chúc Mừng Tốt Nghiệp, Vợ Iu!"
+
+Có thể kết hợp tiếng Anh và tiếng Việt ở những vị trí phù hợp.
+
+Tuy nhiên, phần lời chúc chính nên ưu tiên tiếng Việt.
+
+Hero cần được thiết kế ấn tượng hơn phiên bản hiện tại.
+
+Có thể thêm các chi tiết nhẹ:
+
+- Graduation cap.
+- Ribbon.
+- Sparkles.
+- Soft decorative shapes.
+- Typography reveal.
+
+Không làm hero trở nên quá đông chi tiết.
+
+## 3. Graduation Invitation Section
+
+Tôi muốn có một section riêng lấy cảm hứng từ tấm thiệp mời tốt nghiệp của Mai Khuê.
+
+Thông tin cần hiển thị:
+
+- Nguyễn Võ Mai Khuê.
+- Ngành Luật.
+- Đại học Tôn Đức Thắng.
+- Ngày 17/10/2026.
+
+Không đưa số điện thoại cá nhân lên website.
+
+Không bắt buộc hiển thị thời gian và địa điểm trong section chính.
+
+Hãy đề xuất một digital invitation card thiết kế theo phong cách pastel, có thể kết hợp:
+
+- Cream card.
+- Champagne border.
+- Ribbon decoration.
+- Graduation ornament.
+- Elegant typography.
+- Soft shadow.
+- Subtle entrance animation.
+
+Thiệp phải trông như một thành phần của website, không phải một ảnh poster được dán thẳng vào trang.
+
+Có thể thêm một dòng cảm xúc như:
+
+"Một ngày thật đặc biệt của cô gái anh thương."
+
+## 4. Graduation Message
+
+Tạo một section lời chúc ngắn, thể hiện sự tự hào.
+
+Nội dung nên nói về:
+
+- Sự cố gắng của Mai Khuê.
+- Thành quả tốt nghiệp.
+- Cảm giác tự hào của người yêu.
+- Mong muốn cô ấy luôn vui vẻ, tự tin và hạnh phúc.
+
+Không viết quá dài ở phần này.
+
+## 5. Interactive 3D Photo Gallery
+
+Đây là section QUAN TRỌNG NHẤT về mặt kỹ thuật và trải nghiệm.
+
+Phải thiết kế lại dựa trên yêu cầu chi tiết tại Phần V.
+
+## 6. Graduation Love Letter
+
+Một bức thư dành riêng cho Mai Khuê.
+
+Tiêu đề có thể là:
+
+"Gửi vợ iu của anh"
+
+Bức thư nên có khoảng 3–5 đoạn ngắn.
+
+Nội dung:
+
+- Chúc mừng tốt nghiệp.
+- Tự hào về cô ấy.
+- Nhắc đến những cố gắng trong hành trình học tập.
+- Khẳng định tình cảm và sự đồng hành.
+- Chúc cô ấy tương lai tốt đẹp.
+- Kết thúc ngọt ngào.
+
+Ký tên:
+
+"Quân iu"
+
+Có thể thiết kế như một bức thư giấy cao cấp, với animation mở phong thư hoặc xuất hiện từng đoạn văn.
+
+Không cần giả lập hiệu ứng lật giấy quá phức tạp nếu ảnh hưởng đến trải nghiệm.
+
+## 7. Closing Section
+
+Tạo phần kết đẹp, ấm áp.
+
+Có thể có:
+
+- Lời chúc ngắn cuối cùng.
+- Một câu yêu thương.
+- Sparkle hoặc confetti nhẹ.
+- Nút "Xem lại từ đầu".
+- Nút "Xem lại những khoảnh khắc".
+
+Phần kết nên khiến người xem cảm thấy đây là một món quà trọn vẹn.
+
+## 8. Music Control
+
+Tôi sẽ bổ sung file âm thanh sau.
+
+Hiện tại hãy thiết kế cấu trúc hỗ trợ:
+
+- File nhạc nền có thể cấu hình.
+- Nút bật/tắt nhạc.
+- Trạng thái playing/paused.
+- Volume mặc định vừa phải.
+- Không tự phát nhạc có âm thanh khi chưa có tương tác hợp lệ của người dùng.
+- Nếu chưa có file audio, không tạo request đến file không tồn tại.
+- Không hiển thị một nút nhạc có thể bấm nhưng không hoạt động.
+
+Có thể ẩn hoặc disable control cho đến khi cấu hình âm thanh hợp lệ.
+
+---
+
+# PHẦN V. THIẾT KẾ LẠI 3D GALLERY – ƯU TIÊN CAO NHẤT
+
+## 1. Reference chính
+
+Mẫu tham khảo:
+
+https://motionsites.ai/?prompt=book-hero
+
+Trong video tham khảo, có giao diện Foliom với nhiều bìa sách đứng trong không gian 3D, phân bố theo một dải có chiều sâu, tạo cảm giác như các vật thể đang di chuyển trong một không gian trưng bày.
+
+Tôi muốn thay thế các bìa sách bằng hình ảnh của Mai Khuê.
+
+Điều tôi thích:
+
+- Các vật thể có chiều sâu.
+- Bố cục có dạng vòng cung.
+- Sự phân bố gần và xa.
+- Cảm giác các đối tượng đứng độc lập trong không gian.
+- Chuyển động liên tục nhưng mềm mại.
+- Khi tương tác, một đối tượng trở thành tâm điểm.
+- Giao diện trông như một interactive 3D showcase, không phải image slider thông thường.
+
+Nếu truy cập được video gốc hoặc link demo, hãy nghiên cứu kỹ.
+
+Nếu không truy cập được, hãy dựa trên đặc tả kỹ thuật dưới đây.
+
+Không được tuyên bố tái hiện chính xác demo khi chưa xem được toàn bộ interaction.
+
+## 2. Vấn đề gallery hiện tại
+
+Hiện tại gallery dùng:
+
+- 7 ảnh trên desktop.
+- 3 ảnh trên mobile.
+- Phân trang theo nhóm.
+- Ảnh đặt theo slot cố định.
+- CSS 3D để nghiêng và tạo chiều sâu.
+- GSAP cho entrance và chuyển trang.
+- Hover phóng to ảnh.
+- Click mở Lightbox.
+
+Tôi thấy cách này chưa đủ ấn tượng.
+
+Đặc biệt:
+
+- Chuyển ảnh vẫn giống slideshow phân trang.
+- Chuyển động idle chưa có cảm giác sống động.
+- Ảnh không tạo được cảm giác orbit liên tục.
+- Chưa có sự chuyển động sâu giữa foreground và background.
+- Hover chưa tạo được hiệu ứng nổi bật như một hero object.
+- Chưa phù hợp mong muốn sử dụng 34 ảnh trong một không gian 3D liên tục.
+
+Hãy kiểm tra toàn bộ nguyên nhân dựa trên source code và đề xuất giải pháp thực sự khác biệt, không chỉ tăng scale hoặc giảm animation duration.
+
+## 3. Kiến trúc gallery mong muốn
+
+Tôi muốn một kiểu:
+
+**Continuous Kinetic 3D Arc Gallery**
+
+Kết hợp:
+
+- 3D curved carousel.
+- Continuous movement.
+- Layered depth.
+- Kinetic photo showcase.
+- Book Hero inspired interaction.
+- Smooth hover emphasis.
+- Lightbox full image.
+
+Hãy phân tích cách hiện thực một dải ảnh 3D dạng vòng cung, có thể di chuyển liên tục.
+
+Không mặc định giữ lại mô hình chia 7 ảnh thành 5 trang cứng.
+
+Ưu tiên một hệ thống liên tục có thể đi qua tất cả 34 ảnh.
+
+## 4. Cách bố trí ảnh
+
+Trên desktop:
+
+- Khoảng 7–10 ảnh được hiển thị trong vùng nhìn chính.
+- Các ảnh được phân bố trên một đường cong 3D.
+- Ảnh trung tâm gần người xem hơn.
+- Các ảnh bên cạnh có thể nghiêng theo hướng vòng cung.
+- Ảnh ở xa giảm kích thước theo perspective.
+- Có sự chênh lệch rõ ràng về chiều sâu.
+- Các ảnh trông như những tấm ảnh vật lý được dựng trong không gian.
+
+Hãy nghiên cứu mô hình vị trí dùng:
+
+- Arc angle.
+- Radius.
+- Camera perspective.
+- TranslateX.
+- TranslateY.
+- TranslateZ.
+- RotateY.
+- RotateZ.
+- Scale.
+
+Hãy mô tả công thức hoặc thuật toán tính vị trí dựa trên chỉ số ảnh và vị trí hiện tại của vòng cung.
+
+Có thể sử dụng vị trí liên tục dạng floating-point thay vì index nguyên để giúp chuyển động mượt.
+
+## 5. Tự chuyển động – Auto Motion
+
+Tôi muốn gallery tự chuyển động nhẹ khi ở trạng thái idle.
+
+Yêu cầu:
+
+- Ảnh di chuyển chậm theo cung 3D.
+- Có cảm giác các ảnh đang trôi trong không gian.
+- Không giật.
+- Không thay đổi đột ngột giữa ảnh cuối và ảnh đầu.
+- Chuyển động có thể lặp vòng qua đủ 34 ảnh.
+- Không bị tăng tốc bất thường.
+- Không tạo cảm giác chóng mặt.
+- Không có khoảng trống bất hợp lý khi loop.
+
+Hãy đề xuất tốc độ chuyển động phù hợp.
+
+Nếu dùng GSAP, hãy lên kế hoạch điều khiển continuous position hoặc animation progress thông qua một nguồn trạng thái duy nhất.
+
+Không tạo một GSAP timeline độc lập cho từng ảnh nếu có cách hiệu quả hơn.
+
+Cân nhắc virtualization để chỉ render những ảnh thực sự cần thiết.
+
+## 6. Hover Interaction
+
+Đây là điểm tương tác quan trọng nhất.
+
+Khi hover vào một ảnh:
+
+1. Ảnh đang được hover trở thành active photo.
+2. Auto movement tạm dừng hoặc giảm tốc mượt mà.
+3. Ảnh được đưa ra phía trước.
+4. Góc xoay giảm để mặt ảnh hướng gần về phía người xem.
+5. Ảnh tăng kích thước vừa phải.
+6. Có thêm shadow hoặc lighting effect.
+7. Có thể hiển thị caption ngọt ngào.
+8. Các ảnh xung quanh lùi nhẹ hoặc giảm nổi bật.
+9. Ảnh không bị cắt bởi container.
+10. Tương tác phải mượt và không gây nhảy vị trí.
+
+Tôi muốn cảm giác người xem đang chọn một tấm ảnh từ một dải ảnh 3D thật sự.
+
+### Khi rời hover
+
+- Ảnh quay lại quỹ đạo.
+- Các ảnh khác trở về trạng thái bình thường.
+- Auto movement tiếp tục từ vị trí hợp lý.
+- Không reset toàn bộ gallery về ảnh đầu.
+- Không giật hoặc thay đổi vị trí đột ngột.
+- Không kẹt active state.
+
+## 7. Click Interaction
+
+Khi click:
+
+- Mở Lightbox.
+- Hiển thị ảnh gốc chất lượng cao.
+- Có next/previous.
+- Có nút đóng.
+- Có thể dùng Escape.
+- Có thể dùng phím mũi tên.
+- Có caption nếu tồn tại.
+- Giữ nguyên vị trí gallery phía sau.
+- Tạm dừng auto movement khi Lightbox mở.
+- Đóng Lightbox thì quay lại trạng thái gallery trước đó.
+
+**Lưu ý: Hover KHÔNG mở ảnh fullscreen. Click mới mở ảnh lớn đầy đủ.**
+
+## 8. Điều khiển gallery
+
+Ngoài auto movement, hãy đề xuất cơ chế người dùng có thể chủ động khám phá ảnh.
+
+Có thể kết hợp:
+
+- Drag ngang trên desktop.
+- Swipe trên mobile.
+- Nút chuyển hướng nếu cần.
+- Wheel interaction nếu không làm hỏng việc cuộn trang.
+- Keyboard navigation.
+- Pause/resume auto motion.
+
+Chỉ lựa chọn những tương tác thực sự hữu ích.
+
+Ưu tiên drag/swipe nếu phù hợp với trải nghiệm Book Hero.
+
+Không để một thao tác drag bị nhận nhầm thành click mở Lightbox.
+
+## 9. Mobile Experience
+
+Mobile cần thiết kế riêng.
+
+Không ép nguyên layout desktop xuống điện thoại.
+
+Yêu cầu:
+
+- Vẫn giữ cảm giác 3D.
+- Hiển thị ít ảnh hơn.
+- Tập trung vào ảnh trung tâm.
+- Swipe để điều hướng.
+- Tap chọn ảnh.
+- Tap tiếp hoặc dùng nút rõ ràng để mở ảnh.
+- Có Lightbox fullscreen.
+- Không bị tràn ngang.
+- Không che mất ảnh chính.
+- Không gây xung đột giữa swipe gallery và scroll trang.
+
+## 10. Animation State Management
+
+Hãy thiết kế state machine rõ ràng:
+
+- Initial.
+- Entering.
+- Idle.
+- AutoMoving.
+- Dragging.
+- Hovering.
+- Focused.
+- OpeningLightbox.
+- LightboxOpen.
+- ClosingLightbox.
+- Resuming.
+- ReducedMotion.
+
+Mô tả chuyển đổi giữa các state.
+
+Xử lý các trường hợp:
+
+- Hover liên tục giữa nhiều ảnh.
+- Hover khi gallery đang chạy.
+- Drag trong lúc auto motion.
+- Click trong lúc đang drag.
+- Resize khi gallery đang chuyển động.
+- Mở và đóng Lightbox nhiều lần.
+- Rời viewport.
+- Component bị destroy.
+- Người dùng bật reduced motion.
+
+Không để animation conflict hoặc race condition.
+
+## 11. CSS 3D và GSAP
+
+Hãy sử dụng CSS 3D và GSAP một cách hợp lý.
+
+CSS chịu trách nhiệm:
+
+- Perspective.
+- Preserve-3d.
+- Card appearance.
+- Visual styling.
+- Layout.
+- Responsive rules.
+
+GSAP có thể điều phối:
+
+- Continuous motion.
+- Hover animation.
+- Smooth pause/resume.
+- Active photo transition.
+- Enter/exit animation.
+- Lightbox transition nếu phù hợp.
+
+Hãy kiểm tra xem CSS hiện tại có đang sử dụng biến không đúng đơn vị trong các phép rotate hay không.
+
+Cần chú ý:
+
+- rotateX và rotateY phải nhận giá trị góc hợp lệ.
+- Không sử dụng biến có đơn vị px như một góc quay.
+- Xử lý stacking context.
+- Xử lý overflow clipping.
+- Xử lý transform origin.
+- Xử lý z-index.
+- Không sử dụng quá nhiều will-change.
+- Không gây layout thrashing.
+- Cleanup GSAP và RAF khi destroy.
+
+Không thêm Three.js hoặc WebGL nếu CSS 3D kết hợp GSAP đã đủ.
+
+Nếu bạn cho rằng WebGL thực sự cần thiết, phải chứng minh vì sao và trình bày tác động tới độ phức tạp, hiệu năng và bảo trì trước khi đề xuất.
+
+## 12. Performance
+
+Gallery có 34 ảnh.
+
+Yêu cầu:
+
+- Sử dụng thumbnail cho gallery.
+- Sử dụng ảnh gốc trong Lightbox.
+- Lazy loading các ảnh chưa cần.
+- Preload ảnh có khả năng xuất hiện tiếp theo.
+- Tránh decode 34 ảnh đồng thời.
+- Không bắt Angular change detection xử lý toàn bộ pointer movement.
+- Không chạy animation nặng khi gallery ngoài viewport.
+- Hạn chế DOM nodes nếu cần.
+- Không gây memory leak.
+- Không chạy những animation không cần thiết khi Lightbox mở.
+- Reduced motion phải có phương án thay thế sử dụng được.
+
+Đề xuất các tiêu chí đo lường performance cụ thể, tránh chỉ nói chung chung rằng animation phải mượt.
+
+---
+
+# PHẦN VI. QUẢN LÝ 34 ẢNH VÀ CAPTION
+
+Tôi hiện chưa chọn ảnh nào làm nổi bật.
+
+Hãy tạo hoặc đề xuất một hệ thống dữ liệu cho phép:
+
+- Đánh dấu featured photo.
+- Thay đổi thứ tự ảnh.
+- Đặt caption cho từng ảnh.
+- Chỉnh title.
+- Chỉnh alt text.
+- Chọn thumbnail và original source.
+- Thêm ảnh sau này.
+
+Tôi muốn một số ảnh có caption ngọt ngào, những ảnh khác có caption ngắn hoặc có thể để trống.
+
+Không được bịa ra những sự kiện hoặc kỷ niệm cụ thể chỉ dựa vào ảnh.
+
+Có thể sử dụng caption chung như:
+
+- "Một chiếc ảnh xinh của vợ iu."
+- "Cô gái mà anh luôn tự hào."
+- "Rạng rỡ theo cách riêng của em."
+- "Một khoảnh khắc thật đáng yêu."
+- "Nụ cười anh thương nhất."
+- "Cứ luôn vui vẻ và hạnh phúc như thế này nhé."
+
+Hãy đề xuất cách quản lý tập trung tại celebration-content.ts hoặc data module phù hợp.
+
+---
+
+# PHẦN VII. TRẢI NGHIỆM VÀ TÍNH NĂNG BỔ SUNG
+
+Tôi muốn có đầy đủ:
+
+1. Intro mở món quà.
+2. Hero chúc mừng tốt nghiệp.
+3. Thiệp mời tốt nghiệp dạng web card.
+4. Lời chúc ngắn.
+5. 3D Gallery tự chuyển động.
+6. Lightbox xem ảnh.
+7. Bức thư gửi vợ iu.
+8. Music toggle chuẩn bị cho file nhạc sau này.
+9. Ending có sparkle/confetti nhẹ.
+10. Nút xem lại từ đầu.
+
+Yêu cầu các section phải có tính kết nối.
+
+Không được biến website thành một tập hợp component rời rạc, mỗi phần có phong cách riêng.
+
+Hãy đề xuất một trải nghiệm kể chuyện xuyên suốt từ lúc mở trang đến lúc kết thúc.
+
+---
+
+# PHẦN VIII. YÊU CẦU KỸ THUẬT CHUNG
+
+Giữ nguyên Angular 20 nếu không có lý do thực sự cần nâng cấp.
+
+Ưu tiên:
+
+- Angular Standalone Components.
+- TypeScript strict.
+- Angular Signals khi phù hợp.
+- Component CSS riêng.
+- Dữ liệu tập trung.
+- Component có trách nhiệm rõ ràng.
+- GSAP animation cleanup.
+- Responsive.
+- Accessibility.
+- Semantic HTML.
+- Keyboard interaction.
+- Touch support.
+- Prefers-reduced-motion.
+- Không tạo kiến trúc quá phức tạp.
+
+Không cần backend, database hoặc hệ thống đăng nhập.
+
+Website phải chạy được như một frontend static application.
+
+## GitHub Pages
+
+Repository:
+
+https://github.com/MQuun2005/HappyGradSweetie
+
+Website dự kiến:
+
+https://mquun2005.github.io/HappyGradSweetie/
+
+Giữ deployment đang hoạt động.
+
+Kiểm tra:
+
+- Angular base href.
+- Asset paths.
+- GitHub Actions workflow.
+- Production build.
+- Thumbnail paths.
+- Routing/fallback.
+- Không dùng absolute path sai với GitHub Pages.
+
+Không tự commit, push hoặc deploy trong Plan Mode.
+
+---
+
+# PHẦN IX. PHASE IMPLEMENTATION ĐỀ XUẤT
+
+Hãy chia kế hoạch thành các phase độc lập.
+
+## Phase 1 – Audit và Content Refactor
+
+- Khảo sát code.
+- Đánh giá kiến trúc.
+- Xác định những lỗi hiện tại.
+- Chuẩn hóa celebration data.
+- Thêm thông tin Mai Khuê.
+- Thêm nội dung tình cảm.
+- Chuẩn bị caption.
+- Bổ sung music configuration.
+
+## Phase 2 – Pastel Visual Redesign
+
+- Thiết kế pastel design system.
+- Cải thiện typography.
+- Cải thiện background.
+- Cải thiện Hero.
+- Đồng bộ spacing, cards, shadow và buttons.
+- Responsive.
+
+## Phase 3 – Intro và Graduation Invitation
+
+- Xây dựng intro mở món quà.
+- Xây dựng section thiệp tốt nghiệp.
+- Thêm thông tin ngành Luật, trường và ngày tốt nghiệp.
+- Animation mở đầu.
+
+## Phase 4 – 3D Gallery Architecture Redesign
+
+Đây là phase quan trọng nhất.
+
+- Loại bỏ mô hình phân trang cứng nếu được xác định là không phù hợp.
+- Thiết kế continuous 3D arc.
+- Xây dựng layout mathematics.
+- Quản lý active photo.
+- Quản lý visible photo window.
+- Quản lý 34 ảnh.
+- Xây dựng navigation model.
+- Đảm bảo continuity khi loop.
+
+## Phase 5 – 3D Gallery Motion Polish
+
+- Auto motion.
+- Smooth pause/resume.
+- Hover choreography.
+- Focus/active emphasis.
+- Drag/swipe.
+- Mobile adaptation.
+- Reduced motion.
+- Cleanup.
+- Performance testing.
+
+## Phase 6 – Lightbox Integration
+
+- Kết nối gallery mới với Lightbox.
+- Giữ đúng ảnh được click.
+- Pause gallery khi mở.
+- Resume khi đóng.
+- Keyboard accessibility.
+- Focus management.
+- Image loading states.
+
+## Phase 7 – Love Letter, Music và Ending
+
+- Viết thư chúc mừng.
+- Tạo interaction cho thư.
+- Thêm music toggle có cấu hình.
+- Thêm sparkle hoặc confetti.
+- Thêm nút xem lại hành trình.
+
+## Phase 8 – QA và Deployment Preparation
+
+- Kiểm tra toàn bộ nội dung.
+- Test gallery desktop.
+- Test gallery mobile.
+- Test 34 ảnh.
+- Test touch, drag, hover và click.
+- Test Lightbox.
+- Test performance.
+- Test reduced motion.
+- Test production build.
+- Test GitHub Pages base href.
+- Cập nhật README nếu cần.
+
+Khi implementation, tôi muốn được review gallery sau Phase 4 và Phase 5 trước khi hoàn thiện những phần phụ.
+
+---
+
+# PHẦN X. ACCEPTANCE CRITERIA
+
+Một bản nâng cấp chỉ được coi là đạt nếu đáp ứng những tiêu chí sau.
+
+## A. Nội dung
+
+- Tên Nguyễn Võ Mai Khuê được hiển thị chính xác.
+- Ngành Luật.
+- Đại học Tôn Đức Thắng.
+- Ngày 17/10/2026.
+- Người gửi Quân iu.
+- Lời chúc ngọt ngào.
+- Không có placeholder tên người nhận.
+- Không có số điện thoại trên thiệp.
+- Không có nội dung từ WomenDayCelebration.
+
+## B. Visual Design
+
+- Pastel là phong cách chủ đạo.
+- Giao diện tinh tế, nhẹ nhàng.
+- Typography đẹp.
+- Các section thống nhất.
+- Desktop và mobile đều đẹp.
+- Không có overflow ngoài ý muốn.
+- Không có animation quá rực rỡ hoặc gây khó chịu.
+
+## C. Gallery
+
+- 34 ảnh đều xem được.
+- Gallery có vòng cung 3D thực sự.
+- Có chuyển động tự động.
+- Chuyển động liên tục, không giật khi loop.
+- Không còn cảm giác phân trang cứng.
+- Hover làm ảnh nổi lên rõ ràng.
+- Hover không tự mở fullscreen.
+- Click mở Lightbox.
+- Không bị clipping.
+- Không kẹt animation.
+- Auto motion dừng hoặc giảm tốc hợp lý khi tương tác.
+- Drag/swipe không gây click nhầm.
+- Mobile có interaction thay thế hover.
+- Giữ được vị trí sau khi đóng Lightbox.
+- Không có lỗi console nghiêm trọng.
+- Không bị giảm hiệu năng rõ rệt khi sử dụng lâu.
+
+## D. Các tính năng khác
+
+- Intro hoạt động.
+- Thiệp tốt nghiệp hiển thị.
+- Thư hoạt động.
+- Music control có thể kích hoạt khi có file audio.
+- Ending hoạt động.
+- Nút xem lại từ đầu hoạt động.
+- Reduced motion vẫn truy cập được mọi nội dung.
+
+## E. Build và Deployment
+
+- TypeScript compile thành công.
+- Production build thành công.
+- Unit tests phù hợp được cập nhật.
+- Không làm hỏng GitHub Pages.
+- Không mất ảnh gốc.
+- Không phát sinh dependencies không cần thiết.
+
+---
+
+# PHẦN XI. FORMAT KẾ HOẠCH BẠN PHẢI TRẢ VỀ
+
+Tôi muốn một bản kế hoạch có tính triển khai thực tế, không phải vài gạch đầu dòng chung chung.
+
+Hãy trình bày lần lượt:
+
+## 1. Audit source code hiện tại
+
+Liệt kê file, vai trò, vấn đề, khả năng tái sử dụng và những phần cần refactor.
+
+## 2. Phân tích điểm yếu của gallery hiện tại
+
+Giải thích chính xác vì sao gallery chưa giống cảm giác Book Hero, dựa trên code CSS, TypeScript, thuật toán layout và animation hiện tại.
+
+## 3. Đề xuất concept UI/UX mới
+
+Mô tả toàn bộ trải nghiệm từ intro đến closing, bảng màu, typography, animation và cách tổ chức nội dung.
+
+## 4. Thiết kế kỹ thuật 3D Gallery
+
+Đây phải là phần chi tiết nhất.
+
+Bao gồm:
+
+- Kiến trúc được chọn.
+- So sánh với kiến trúc hiện tại.
+- Thuật toán bố trí ảnh.
+- Virtualization nếu cần.
+- Auto motion.
+- Hover.
+- Drag/swipe.
+- Click.
+- Lightbox.
+- Animation states.
+- GSAP timeline.
+- CSS 3D layering.
+- Performance.
+- Accessibility.
+- Responsive.
+- Edge cases.
+- Test strategy.
+
+Hãy đưa sơ đồ, pseudocode hoặc công thức khi chúng giúp tôi hiểu cách hoạt động.
+
+## 5. Nội dung mẫu cá nhân hóa
+
+Viết trước nội dung mẫu đầy đủ cho:
+
+- Intro.
+- Hero.
+- Graduation invitation.
+- Graduation message.
+- Love letter.
+- Closing.
+- Một số caption ảnh.
+
+Sử dụng tiếng Việt tự nhiên, ngọt ngào và phù hợp mối quan hệ người yêu.
+
+## 6. Cây thư mục đề xuất
+
+Chỉ rõ file giữ nguyên, file sửa và file tạo mới.
+
+## 7. Bảng file changes
+
+Với từng file:
+
+- Đường dẫn.
+- Hành động dự kiến.
+- Mục đích.
+- Phase.
+- Rủi ro.
+- Cách kiểm thử.
+
+## 8. Implementation plan chi tiết
+
+Mỗi phase phải có:
+
+- Mục tiêu.
+- Công việc cụ thể.
+- Dependencies.
+- Files.
+- Implementation notes.
+- Acceptance criteria.
+- Testing steps.
+- Điều kiện hoàn thành.
+
+## 9. Rủi ro kỹ thuật
+
+Phân tích rủi ro liên quan đến:
+
+- Continuous 3D animation.
+- GSAP conflict.
+- Transform stacking.
+- Hover clipping.
+- Auto motion loop.
+- Drag/click conflict.
+- Touch interaction.
+- Responsive.
+- Lazy loading.
+- Angular lifecycle.
+- GitHub Pages.
+
+## 10. Checklist review cuối cùng
+
+Tạo checklist rõ ràng để tôi đánh giá từng phase.
+
+## 11. Những điểm cần tôi xác nhận
+
+Chỉ hỏi các câu thực sự ảnh hưởng đến kiến trúc hoặc thiết kế.
+
+Những thông tin chưa có như file audio, caption chính thức hoặc ảnh nổi bật thì hãy đưa ra giải pháp cấu hình mặc định, không chặn việc lập kế hoạch.
+
+---
+
+# PHẦN XII. QUY TẮC SAU KHI TÔI PHÊ DUYỆT
+
+Sau khi bạn hoàn thành plan, hãy DỪNG và chờ tôi duyệt.
+
+Không triển khai ngay.
+
+Khi tôi chuyển sang Implementation Mode và yêu cầu thực hiện:
+
+1. Chỉ chỉnh sửa HappyGradSweetie.
+2. Thực hiện theo plan đã duyệt.
+3. Triển khai theo phase.
+4. Báo cáo file thay đổi.
+5. Kiểm thử sau từng phase.
+6. Ưu tiên chất lượng visual và 3D interaction.
+7. Không tự ý tạo commit hoặc push.
+8. Không tự deploy nếu tôi chưa yêu cầu.
+9. Không xóa hoặc ghi đè ảnh cá nhân.
+10. Nếu cần thay đổi lớn ngoài plan, phải giải thích và xin xác nhận.
+
+---
+
+# YÊU CẦU CUỐI CÙNG
+
+Tôi không muốn chỉ sửa màu sắc hoặc tăng độ phóng to khi hover.
+
+Tôi muốn một đợt nâng cấp thực sự, biến HappyGradSweetie thành một website chúc mừng tốt nghiệp mang phong cách pastel ngọt ngào, có tính cá nhân sâu sắc và trải nghiệm 3D nổi bật.
+
+**Ba ưu tiên quan trọng nhất:**
+
+**Ưu tiên 1 – 3D Gallery:** Thiết kế lại thành một continuous kinetic 3D arc gallery lấy cảm hứng từ Book Hero / Foliom, có chuyển động tự động, vòng cung có chiều sâu, hover nổi bật và click mở ảnh đầy đủ.
+
+**Ưu tiên 2 – Personalization:** Website phải thực sự dành riêng cho Nguyễn Võ Mai Khuê, có thông tin tốt nghiệp, lời chúc từ Quân iu, thiệp mời, bức thư và những nội dung ngọt ngào.
+
+**Ưu tiên 3 – Pastel Visual Experience:** Toàn bộ website phải có thiết kế thống nhất, đẹp mắt, tinh tế, lãng mạn và phù hợp sở thích pastel của Mai Khuê.
+
+Hãy đọc toàn bộ source code thực tế, phân tích kỹ các vấn đề và lập một bản kế hoạch nâng cấp đầy đủ, có tính khả thi cao.
+
+**BÂY GIỜ CHỈ LẬP KẾ HOẠCH BẰNG TIẾNG VIỆT. TUYỆT ĐỐI CHƯA SỬA CODE. CHỜ TÔI PHÊ DUYỆT TRƯỚC KHI IMPLEMENT.**

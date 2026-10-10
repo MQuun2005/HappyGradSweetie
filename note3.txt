@@ -1,0 +1,1086 @@
+# P0 BUG FIX & COMPLETE 3D GALLERY REBUILD – HAPPYGRADSWEETIE
+
+## 0. VAI TRÒ VÀ YÊU CẦU QUAN TRỌNG
+
+Bạn là Senior Angular Engineer, Frontend Architect, Creative Developer và 3D Motion Engineer, chuyên sâu về:
+
+- Angular 20
+- TypeScript
+- Angular Signals
+- Angular Change Detection
+- CSS 3D Transforms
+- GSAP 3
+- Browser Rendering
+- Frontend Performance
+- Responsive UI/UX
+- Interactive 3D Gallery
+- Browser Debugging
+- Automated Testing
+
+Tôi muốn bạn khắc phục triệt để các lỗi hiện tại và hoàn thiện phần **Interactive 3D Photo Gallery** trong project HappyGradSweetie.
+
+Đây là website chúc mừng tốt nghiệp dành cho người yêu của tôi, Nguyễn Võ Mai Khuê.
+
+Các section còn lại đã tương đối ổn. Tôi KHÔNG muốn bạn làm lại toàn bộ website.
+
+**MỤC TIÊU CHÍNH: SỬA LỖI HIỂN THỊ GALLERY VÀ XÂY DỰNG HIỆU ỨNG 3D THỰC SỰ HOẠT ĐỘNG, ĐẸP, MƯỢT VÀ GẦN VỚI PHONG CÁCH BOOK HERO / FOLIOM.**
+
+### QUY TRÌNH BẮT BUỘC
+
+Hiện tại tôi đang sử dụng Codex ở PLAN MODE.
+
+Quy trình làm việc:
+
+PLAN → REVIEW → APPROVE → IMPLEMENT → TEST → VISUAL REVIEW → DEPLOY
+
+Trong lượt Plan Mode:
+
+1. Đọc source code thực tế.
+2. Phân tích lỗi.
+3. Xác định nguyên nhân.
+4. Đề xuất hướng sửa.
+5. Thiết kế lại animation nếu cần.
+6. Lập kế hoạch triển khai chi tiết.
+7. Đề xuất test cases.
+8. Chờ tôi phê duyệt.
+
+Không được tự ý chỉnh sửa file, cài dependency, commit, push hoặc deploy trong Plan Mode.
+
+Sau khi tôi duyệt kế hoạch, mới được chuyển sang Implementation Mode để thực hiện.
+
+Toàn bộ phần giải thích, phân tích, kế hoạch và báo cáo phải viết bằng tiếng Việt.
+
+---
+
+# PHẦN I. BỐI CẢNH PROJECT
+
+## 1. Repository
+
+Repository chính:
+
+https://github.com/MQuun2005/HappyGradSweetie
+
+Local project:
+
+E:\MinhQuun\PastLife\HappyGradSweetie
+
+Framework hiện tại:
+
+- Angular 20.3.x
+- TypeScript
+- Angular Standalone Components
+- Angular Signals
+- GSAP
+- CSS 3D Transforms
+- Angular CDK
+
+Không được tạo project mới.
+
+Không được chuyển sang React, Next.js, Three.js hoặc WebGL khi chưa có lý do kỹ thuật thuyết phục và chưa được tôi chấp thuận.
+
+## 2. Phạm vi chỉnh sửa
+
+Tập trung vào những file sau:
+
+- src/app/components/interactive-photo-gallery/interactive-photo-gallery.ts
+- src/app/components/interactive-photo-gallery/interactive-photo-gallery.html
+- src/app/components/interactive-photo-gallery/interactive-photo-gallery.css
+- src/app/utils/gallery-layout.ts
+- src/app/utils/gallery-layout.spec.ts
+- src/app/data/celebration-content.ts
+- src/app/models/celebration.models.ts
+- src/app/components/photo-lightbox/
+
+Chỉ chỉnh sửa những file khác khi chúng ảnh hưởng trực tiếp đến gallery.
+
+## 3. Những phần cần giữ nguyên
+
+Website hiện tại đã có:
+
+- Intro mở món quà.
+- Graduation Hero.
+- Graduation Invitation.
+- Graduation Message.
+- Graduation Love Letter.
+- Closing Section.
+- Music Control.
+- Giao diện pastel.
+- Nội dung cá nhân hóa dành cho Mai Khuê.
+- GitHub Pages deployment.
+
+Những phần này đang tương đối ổn.
+
+Không được tự ý thiết kế lại chúng.
+
+Giữ nguyên:
+
+- Bảng màu pastel hiện có.
+- Typography chính.
+- Nội dung lời chúc.
+- Thông tin tốt nghiệp.
+- Nhạc nền.
+- Các assets hiện tại.
+- Cấu hình GitHub Pages đang hoạt động.
+
+---
+
+# PHẦN II. LỖI RUNTIME ĐÃ XÁC ĐỊNH CHÍNH XÁC
+
+## 1. Thông báo lỗi thực tế
+
+Tại:
+
+http://localhost:4200/#memories
+
+DevTools Console liên tục báo:
+
+ERROR TypeError: Cannot read properties of undefined (reading 'length')
+
+at InteractivePhotoGalleryComponent_Template
+
+interactive-photo-gallery.html:73:72
+
+Lỗi xuất hiện lặp lại nhiều lần trong quá trình Angular render.
+
+Đây là lỗi runtime nghiêm trọng, có thể khiến quá trình rendering của gallery bị gián đoạn.
+
+## 2. Nguyên nhân đã được xác định từ source code
+
+Trong file:
+
+src/app/components/interactive-photo-gallery/interactive-photo-gallery.ts
+
+Input photos hiện tại được định nghĩa thông qua setter:
+
+```typescript
+@Input({ required: true })
+set photos(value: readonly Photo[]) {
+  this.photosSource.set(
+    [...value].sort((left, right) => left.order - right.order)
+  );
+  this.syncAutoMotion();
+}
+```
+
+Đây là setter dùng để đưa danh sách ảnh vào private signal.
+
+Nó không phải getter có thể đọc trực tiếp.
+
+Tuy nhiên, HTML template đang truy cập:
+
+```html
+{{ activePhotoNumber() }} / {{ photos.length }}
+```
+
+Và:
+
+```html
+[attr.aria-setsize]="photos.length"
+```
+
+Do không tồn tại getter `photos`, Angular nhận giá trị undefined tại runtime.
+
+Khi truy cập `.length`, template phát sinh TypeError.
+
+### Yêu cầu sửa
+
+Phải sửa toàn bộ trường hợp template đang đọc `photos.length` không hợp lệ.
+
+Ưu tiên tạo một computed signal public hoặc readonly:
+
+```typescript
+readonly photoCount = computed(
+  () => this.photosSource().length
+);
+```
+
+Sau đó thay các vị trí sử dụng không hợp lệ trong template thành:
+
+```html
+{{ activePhotoNumber() }} / {{ photoCount() }}
+```
+
+Và:
+
+```html
+[attr.aria-setsize]="photoCount()"
+```
+
+Không được chỉ sửa một vị trí rồi bỏ sót những vị trí khác.
+
+### Yêu cầu bổ sung
+
+Kiểm tra toàn bộ Angular template để tìm:
+
+- Input setter bị đọc như getter.
+- Thuộc tính không tồn tại.
+- Signal được đọc sai cách.
+- Computed signal được sử dụng sai.
+- Truy cập thuộc tính của undefined/null.
+- Binding có thể gây TypeError.
+- Những lỗi template khác bị che khuất bởi exception hiện tại.
+
+Không chỉ xử lý triệu chứng bằng optional chaining nếu bản chất là kiến trúc binding sai.
+
+Phải sửa đúng nguồn dữ liệu.
+
+---
+
+# PHẦN III. KẾT QUẢ KIỂM TRA ẢNH
+
+Tôi đã tự kiểm tra trên trình duyệt:
+
+http://localhost:4200/Image/thumb/1.jpg
+
+KẾT QUẢ: ẢNH HIỂN THỊ THÀNH CÔNG.
+
+Đây là ảnh chân dung tốt nghiệp của Mai Khuê.
+
+Điều này chứng minh:
+
+- Angular local server có thể phục vụ thumbnail số 1.
+- File ảnh số 1 tồn tại.
+- URL thumbnail số 1 hợp lệ.
+- Trình duyệt có thể hiển thị ảnh số 1.
+
+Vì vậy, không được kết luận toàn bộ lỗi gallery là do thiếu ảnh.
+
+Tuy nhiên, vẫn phải xác minh các ảnh khác và sự khác biệt giữa hiển thị trực tiếp bằng URL và hiển thị trong Angular template.
+
+## 1. Danh sách ảnh
+
+Có 34 ảnh gốc:
+
+public/Image/original/1.jpg đến 34.jpg
+
+Và 34 thumbnail:
+
+public/Image/thumb/1.jpg đến 34.jpg
+
+## 2. Yêu cầu
+
+- Không xóa ảnh.
+- Không đổi tên ảnh tùy tiện.
+- Không tạo ảnh placeholder để che giấu lỗi.
+- Không thay thế ảnh bằng ảnh stock.
+- Không thay đổi nội dung ảnh.
+- Gallery dùng thumbnail.
+- Lightbox dùng ảnh gốc.
+- Phải hiển thị được đủ 34 ảnh.
+
+---
+
+# PHẦN IV. TRIỆU CHỨNG GALLERY HIỆN TẠI
+
+Sau khi chạy Angular local server, tại phần:
+
+"Những khoảnh khắc anh muốn ngắm mãi"
+
+Giao diện hiển thị:
+
+- Background màu pastel lavender vẫn đúng.
+- Tiêu đề và mô tả vẫn hiển thị.
+- Chỉ xuất hiện một khung ảnh trống màu kem.
+- Khung ảnh nằm lệch bên trái.
+- Shadow rất đậm, tạo cảm giác nhiều khung chồng lên nhau.
+- Không nhìn thấy nhiều ảnh theo vòng cung 3D.
+- Không thấy ảnh Mai Khuê bên trong khung.
+- Không thấy chuyển động gallery như mong muốn.
+- Các nút điều hướng có xuất hiện nhưng gallery không hoạt động đúng.
+
+Tôi đã cung cấp screenshot thực tế.
+
+Đây là lỗi P0 cần ưu tiên sửa trước mọi animation nâng cao.
+
+### Lưu ý quan trọng
+
+Không được kết luận gallery đã sửa xong chỉ vì:
+
+- npm run build thành công.
+- Unit tests thành công.
+- TypeScript không báo lỗi.
+- Không còn runtime exception.
+
+Phải xác minh bằng giao diện trình duyệt thật rằng các ảnh xuất hiện và tương tác hoạt động.
+
+---
+
+# PHẦN V. CHẨN ĐOÁN TOÀN DIỆN
+
+Sau khi xử lý lỗi photos.length, tiếp tục kiểm tra hệ thống gallery.
+
+## 1. Kiểm tra Angular Rendering
+
+Phân tích:
+
+- photosSource.
+- renderedCards.
+- position.
+- viewportWidth.
+- layoutConfig.
+- activePhotoNumber.
+- focusedLogicalIndex.
+- isSuspended.
+- isDragging.
+- isAutoPlaying.
+
+Kiểm tra:
+
+1. photosSource có đúng 34 ảnh không.
+2. renderedCards() có trả đúng số lượng không.
+3. HTML có tạo đủ các button.photo-card không.
+4. logicalIndex có ổn định không.
+5. photoIndex có ánh xạ đúng ảnh không.
+6. Có runtime exception nào khác không.
+7. Signal position có cập nhật hợp lệ không.
+8. Angular OnPush có render đúng không.
+9. Có thay đổi giá trị khi component chưa được initialize đầy đủ không.
+
+Phải phân biệt rõ lỗi dữ liệu, lỗi Angular và lỗi trình duyệt.
+
+## 2. Kiểm tra Layout Mathematics
+
+Đọc kỹ:
+
+src/app/utils/gallery-layout.ts
+
+Đặc biệt các hàm:
+
+- getGalleryLayoutConfig().
+- getVirtualLogicalIndices().
+- getArcCardLayout().
+- getClosestLogicalIndex().
+- positiveModulo().
+
+Kiểm tra phép tính:
+
+- relative position.
+- angle.
+- radians.
+- x.
+- y.
+- z.
+- rotateY.
+- rotateZ.
+- scale.
+- opacity.
+
+Xác minh:
+
+- Không tạo NaN.
+- Không tạo Infinity.
+- Không tạo giá trị vị trí vượt viewport ngoài ý muốn.
+- Không có lỗi chuyển đổi đơn vị.
+- Không có lỗi tính khoảng cách theo bán kính.
+- Không có lỗi tính vị trí trung tâm.
+- Không có khoảng trống lớn bất thường khi chuyển từ ảnh cuối về ảnh đầu.
+
+## 3. Kiểm tra CSS 3D
+
+Đọc kỹ:
+
+interactive-photo-gallery.css
+
+Kiểm tra:
+
+- perspective.
+- transform-style.
+- transform-origin.
+- translate3d.
+- rotateY.
+- rotateZ.
+- opacity.
+- visibility.
+- z-index.
+- position.
+- left.
+- top.
+- overflow.
+- stacking context.
+- isolation.
+
+Đặc biệt kiểm tra kết quả của:
+
+- leftFor(card).
+- topFor(card).
+- transformFor(card).
+- zIndexFor(card).
+- zFor(card).
+- rotationYFor(card).
+- scaleFor(card).
+
+Kiểm tra liệu có trường hợp tất cả card chồng lên nhau hoặc cùng nhận một transform do runtime binding bị lỗi.
+
+## 4. Kiểm tra DOM thực tế
+
+Khi triển khai sau khi được duyệt, nếu có quyền truy cập browser automation hoặc Chrome DevTools, hãy kiểm tra:
+
+- Số lượng photo-card thực tế.
+- Số lượng img.
+- img.complete.
+- img.naturalWidth.
+- img.naturalHeight.
+- computedStyle.transform.
+- computedStyle.opacity.
+- computedStyle.visibility.
+- getBoundingClientRect().
+- Số lượng ảnh thực tế nằm trong viewport.
+
+Phải chứng minh ít nhất 7 ảnh xuất hiện trên desktop.
+
+Nếu không có khả năng chạy browser automation, hãy cung cấp đoạn JavaScript read-only để tôi chạy trong DevTools rồi gửi kết quả cho bạn.
+
+Không tự tuyên bố đã kiểm tra trình duyệt nếu thực tế chỉ kiểm tra code.
+
+## 5. Kiểm tra cách render ảnh
+
+Hiện tại photo-card có cả:
+
+- background-image.
+- thẻ img.
+
+Hãy đánh giá liệu có thực sự cần sử dụng đồng thời cả hai không.
+
+Ưu tiên giải pháp rõ ràng, dễ bảo trì.
+
+Kiểm tra:
+
+- Ảnh bị che bởi lớp khác.
+- CSS Grid làm ảnh không có chiều cao đúng.
+- object-fit.
+- opacity.
+- background-size.
+- Image loading.
+- Border và shadow.
+- 3D flattening.
+- Vấn đề stacking context.
+
+---
+
+# PHẦN VI. KHÔI PHỤC GALLERY TĨNH TRƯỚC
+
+Đây là giai đoạn bắt buộc trước khi sửa animation.
+
+## Phase A – Static 3D Gallery
+
+Mục tiêu:
+
+Hiển thị chính xác nhiều ảnh Mai Khuê trong bố cục vòng cung 3D khi auto motion chưa hoạt động.
+
+### Yêu cầu
+
+- Tạm vô hiệu hóa auto motion một cách có kiểm soát.
+- Giữ lại thuật toán layout nếu đúng.
+- Sửa thuật toán nếu sai.
+- Sửa lỗi template.
+- Sửa lỗi positioning.
+- Sửa lỗi image rendering.
+- Kiểm tra viewport và perspective.
+
+### Kết quả cần đạt
+
+Trên desktop:
+
+- Có 7–9 ảnh xuất hiện.
+- Ảnh trung tâm nằm gần giữa.
+- Các ảnh bên trái và phải nằm theo vòng cung.
+- Có sự khác biệt về chiều sâu Z.
+- Ảnh hai bên nghiêng theo phối cảnh.
+- Không có khung ảnh trống.
+- Không có ảnh chồng khít bất thường.
+- Không có ảnh bị kéo lệch hoàn toàn về một bên.
+- Tất cả ảnh nhìn thấy phải là ảnh thật của Mai Khuê.
+
+Trên mobile:
+
+- Có khoảng 1–3 ảnh chính.
+- Ảnh trung tâm nhìn rõ.
+- Các ảnh bên cạnh có chiều sâu nhẹ.
+- Không có horizontal overflow.
+
+### Điều kiện bắt buộc
+
+CHỈ ĐƯỢC CHUYỂN SANG PHASE B KHI PHASE A ĐÃ HIỂN THỊ ĐÚNG.
+
+Nếu chưa kiểm tra được kết quả trực quan, phải báo cáo rằng Phase A chưa được xác minh hoàn toàn.
+
+---
+
+# PHẦN VII. THIẾT KẾ 3D GALLERY THEO BOOK HERO / FOLIOM
+
+## 1. Mẫu tham khảo
+
+https://motionsites.ai/?prompt=book-hero
+
+Phong cách tôi muốn:
+
+**Continuous Kinetic 3D Arc Photo Gallery**
+
+Lấy cảm hứng từ một dãy bìa sách được bố trí trong không gian 3D.
+
+Thay thế các bìa sách bằng 34 ảnh tốt nghiệp của Mai Khuê.
+
+Tôi muốn cảm giác:
+
+- Ảnh có chiều sâu.
+- Ảnh được bố trí theo vòng cung.
+- Ảnh đứng như những vật thể trong không gian.
+- Có chuyển động tự nhiên.
+- Ảnh trung tâm nổi bật.
+- Các ảnh khác nghiêng theo góc nhìn.
+- Toàn bộ gallery giống một không gian trưng bày ảnh sống động.
+
+Không được chỉ làm một slideshow 2D thông thường.
+
+Không được chỉ tăng scale của ảnh hiện tại rồi gọi đó là hoàn thiện 3D.
+
+## 2. Vòng cung 3D
+
+Hãy đề xuất một mô hình layout ổn định.
+
+Mỗi ảnh có các thông số:
+
+- logicalIndex.
+- photoIndex.
+- relativePosition.
+- angle.
+- radius.
+- x.
+- y.
+- z.
+- rotateY.
+- rotateZ.
+- scale.
+- opacity.
+- depthOrder.
+
+Ưu tiên các phép biến đổi CSS 3D.
+
+Ảnh trung tâm phải dễ nhìn, không bị ảnh khác che.
+
+Các ảnh xung quanh phải tạo chiều sâu rõ ràng.
+
+## 3. Continuous Auto Motion
+
+Sau khi static gallery hoạt động đúng, triển khai chuyển động tự động.
+
+Yêu cầu:
+
+- Gallery tự dịch chuyển theo vòng cung.
+- Chuyển động chậm và mượt.
+- Đi qua đủ 34 ảnh.
+- Có khả năng loop.
+- Không giật khi chuyển từ ảnh 34 sang ảnh 1.
+- Không tạo khoảng trống bất thường.
+- Không gây reset vị trí đột ngột.
+- Không để DOM liên tục mount/unmount gây nhấp nháy.
+- Không gây memory leak.
+
+### Quan trọng
+
+Hãy xem lại cách GSAP hiện tại animate motion.position.
+
+Đánh giá:
+
+- Có nên tiếp tục sử dụng một motion object không.
+- Có nên sử dụng một animation ticker hoặc timeline tập trung không.
+- Cách đồng bộ GSAP với Angular Signals.
+- Cách chuẩn hóa giá trị position theo chu kỳ 34 ảnh.
+- Cách quản lý virtualized window.
+- Cách hạn chế Angular change detection khi chạy animation liên tục.
+
+Không tạo nhiều animation vô hạn không cần thiết.
+
+## 4. Hover Interaction
+
+Trên desktop, khi hover vào một ảnh:
+
+1. Ảnh đó trở thành active photo.
+2. Auto movement giảm tốc và dừng mượt.
+3. Ảnh tiến về phía trước.
+4. Ảnh xoay gần về mặt phẳng hướng người xem.
+5. Ảnh phóng to vừa phải.
+6. Hình ảnh hiển thị rõ ràng.
+7. Shadow thay đổi tự nhiên.
+8. Caption có thể xuất hiện.
+9. Các ảnh còn lại giảm độ nổi bật nhẹ.
+10. Không xảy ra flicker hoặc nhảy vị trí.
+
+Khi rời hover:
+
+- Ảnh trở lại quỹ đạo.
+- Các ảnh xung quanh trở về bình thường.
+- Auto movement tiếp tục.
+- Không reset gallery.
+- Không giật.
+- Không bị kẹt ở trạng thái focused.
+
+Hover KHÔNG được tự động mở fullscreen.
+
+## 5. Click và Lightbox
+
+Khi click:
+
+- Mở đúng ảnh được chọn.
+- Dùng ảnh gốc chất lượng cao.
+- Có next/previous.
+- Có nút đóng.
+- Có Escape.
+- Có keyboard navigation.
+- Có focus management.
+- Có scroll lock.
+- Không làm mất vị trí gallery phía sau.
+
+Trong lúc Lightbox đang mở:
+
+- Gallery ngừng auto motion.
+- Không nhận drag hoặc hover tương tác phía sau.
+
+Khi Lightbox đóng:
+
+- Trả focus về ảnh kích hoạt.
+- Gallery trở lại vị trí cũ.
+- Có thể tiếp tục auto movement theo trạng thái phù hợp.
+
+## 6. Drag và Swipe
+
+Desktop:
+
+- Cho phép kéo ngang bằng chuột.
+- Kéo sang trái/phải làm gallery di chuyển theo cung.
+- Có thể thêm inertia nhẹ.
+- Không nhầm thao tác drag thành click.
+- Không có hiện tượng ảnh nhảy vị trí sau khi thả chuột.
+
+Mobile:
+
+- Cho phép swipe.
+- Có thể tap để chọn ảnh.
+- Tap lần nữa hoặc nút phù hợp để mở Lightbox.
+- Không xung đột với scroll dọc.
+- Không yêu cầu hover.
+- Không khiến trang khó sử dụng bằng cảm ứng.
+
+Kiểm tra pointer capture, pointer cancel và trạng thái kết thúc drag.
+
+## 7. Trạng thái Animation
+
+Hãy thiết kế rõ các trạng thái:
+
+- Initial.
+- Ready.
+- Idle.
+- AutoMoving.
+- Hovering.
+- Dragging.
+- Inertia.
+- LightboxOpen.
+- Paused.
+- Offscreen.
+- ReducedMotion.
+- Destroyed.
+
+Phải giải thích chuyển trạng thái khi:
+
+- Hover rồi click.
+- Hover liên tiếp giữa nhiều ảnh.
+- Kéo khi auto motion đang chạy.
+- Rời chuột sau khi drag.
+- Mở Lightbox rồi đóng.
+- Chuyển sang tab khác.
+- Gallery rời viewport.
+- Resize trình duyệt.
+- Bật reduced motion.
+- Destroy component.
+
+Kiểm tra đặc biệt logic pause/resume hiện tại.
+
+Không cho phép nhiều GSAP tweens cùng ghi vào một thuộc tính position và gây xung đột.
+
+Các timer phục vụ resume phải được quản lý và cleanup khi component destroy.
+
+---
+
+# PHẦN VIII. PERFORMANCE
+
+Gallery phải hoạt động với 34 ảnh.
+
+Yêu cầu:
+
+- Dùng thumbnail khi hiển thị trong gallery.
+- Dùng original trong Lightbox.
+- Lazy load hợp lý.
+- Preload ảnh sắp xuất hiện.
+- Không decode toàn bộ ảnh gốc đồng thời.
+- Hạn chế số DOM nodes.
+- Chỉ render visible window và buffer phù hợp.
+- Không tạo lại toàn bộ card không cần thiết mỗi animation frame.
+- Hạn chế layout thrashing.
+- Ưu tiên transform và opacity.
+- Tránh animation trực tiếp các thuộc tính layout nặng.
+- Không dùng will-change cho mọi phần tử một cách vô điều kiện.
+- Không chạy animation khi gallery ra ngoài viewport.
+- Không chạy animation nền khi tab bị ẩn.
+- Cleanup GSAP, ResizeObserver, IntersectionObserver và các event listener.
+
+Mục tiêu:
+
+- Trải nghiệm mượt trên desktop phổ thông.
+- Không có long task rõ rệt do animation.
+- Không tăng bộ nhớ liên tục sau khi sử dụng lâu.
+- Không giật khi đi qua ranh giới loop.
+- Không mất ảnh khi thay đổi kích thước viewport.
+
+Hãy đề xuất cách đo hiệu năng thực tế bằng Chrome DevTools Performance nếu môi trường cho phép.
+
+---
+
+# PHẦN IX. ACCESSIBILITY VÀ RESPONSIVE
+
+Cần hỗ trợ:
+
+- Desktop 1920px.
+- Desktop 1440px.
+- Laptop 1366px.
+- Tablet 768px.
+- Mobile 390px.
+- Mobile 360px.
+
+Không được chỉ kiểm tra trên một độ phân giải.
+
+Accessibility:
+
+- Keyboard navigation.
+- Focus indicator.
+- Alt text.
+- Semantic buttons.
+- aria-label phù hợp.
+- aria-setsize đúng.
+- Tab order hợp lý.
+- Reduced motion.
+- Touch support.
+- Lightbox focus trap.
+
+Khi bật prefers-reduced-motion:
+
+- Tắt auto motion.
+- Không bắt buộc chạy animation phức tạp.
+- Vẫn xem được tất cả 34 ảnh.
+- Vẫn có thể chuyển ảnh.
+- Vẫn mở Lightbox.
+- Không làm mất nội dung.
+
+---
+
+# PHẦN X. YÊU CẦU TESTING
+
+Đây là một trong những phần quan trọng nhất.
+
+Ở phiên bản trước, Angular build thành công nhưng gallery vẫn không hiển thị được.
+
+Vì vậy, phải bổ sung kiểm thử thực tế.
+
+## 1. Unit Tests
+
+Kiểm tra:
+
+- positiveModulo.
+- getGalleryLayoutConfig.
+- getVirtualLogicalIndices.
+- getArcCardLayout.
+- photoIndex mapping.
+- Loop qua 34 ảnh.
+- Position khi di chuyển thuận/ngược.
+- Tọa độ hợp lệ.
+- Không tạo NaN/Infinity.
+- Logic active photo.
+
+## 2. Angular Component Tests
+
+Bổ sung test phù hợp cho:
+
+- Input setter.
+- photoCount().
+- renderedCards().
+- Template bindings.
+- DOM rendering.
+- Empty photo list.
+- Single photo.
+- 34 photos.
+- Không phát sinh undefined length.
+- Nút điều hướng.
+- Click ảnh.
+- Event emit mở Lightbox.
+
+Đặc biệt thêm regression test cho lỗi:
+
+`Cannot read properties of undefined (reading 'length')`
+
+Để tránh lỗi này xuất hiện trở lại.
+
+## 3. Runtime Tests
+
+Phải kiểm tra:
+
+- Console không còn TypeError.
+- Ảnh thực sự xuất hiện.
+- Gallery hiển thị nhiều card.
+- Các card có vị trí hợp lý.
+- Ảnh không bị biến mất.
+- Hover hoạt động.
+- Auto movement hoạt động.
+- Lightbox mở đúng ảnh.
+- Không có lỗi khi resize.
+
+## 4. Visual Tests
+
+Nếu có công cụ browser automation:
+
+- Mở localhost.
+- Cuộn tới #memories.
+- Chụp screenshot.
+- Kiểm tra trạng thái static.
+- Chụp screenshot sau khi auto motion chạy.
+- Hover vào ảnh.
+- Chụp screenshot hover.
+- Click ảnh.
+- Chụp screenshot Lightbox.
+- Kiểm tra mobile viewport.
+
+Phải đánh giá kết quả thực tế, không chỉ báo rằng automation chạy thành công.
+
+Nếu không có browser automation:
+
+- Nêu rõ hạn chế.
+- Hướng dẫn tôi kiểm tra bằng trình duyệt.
+- Đưa đoạn DevTools JavaScript chỉ đọc nếu cần.
+- Yêu cầu tôi cung cấp screenshot để hoàn tất visual QA.
+
+Không được đánh dấu Visual QA là Passed nếu chưa có bằng chứng thực tế.
+
+---
+
+# PHẦN XI. THỨ TỰ TRIỂN KHAI
+
+Khi tôi duyệt kế hoạch, hãy chia implementation thành các giai đoạn sau.
+
+## Phase 1 – Runtime Bug Fix
+
+- Sửa photos.length.
+- Bổ sung photoCount().
+- Audit các template bindings.
+- Kiểm tra Angular rendering.
+- Chạy regression tests.
+- Xác nhận không còn runtime exception.
+
+## Phase 2 – Static 3D Gallery Recovery
+
+- Kiểm tra DOM.
+- Kiểm tra image loading.
+- Kiểm tra CSS transform.
+- Kiểm tra layout math.
+- Sửa các card bị chồng hoặc không hiển thị.
+- Đảm bảo nhiều ảnh xuất hiện đúng vòng cung.
+- Kiểm tra desktop và mobile.
+
+Phải kiểm tra trực quan trước khi tiếp tục.
+
+## Phase 3 – Continuous Gallery Motion
+
+- Thiết kế auto motion ổn định.
+- Điều chỉnh GSAP state.
+- Kiểm tra loop 34 ảnh.
+- Kiểm tra virtualization.
+- Kiểm tra pause/resume.
+- Kiểm tra performance.
+
+## Phase 4 – Hover và Interaction Polish
+
+- Hover nổi ảnh.
+- Smooth 3D transforms.
+- Các ảnh xung quanh phản hồi.
+- Drag.
+- Swipe.
+- Keyboard.
+- Không có interaction conflict.
+
+## Phase 5 – Lightbox Integration
+
+- Click mở ảnh đúng.
+- Điều hướng toàn bộ 34 ảnh.
+- Focus management.
+- Khóa scroll.
+- Pause/resume gallery.
+- Responsive.
+
+## Phase 6 – Browser QA & Final Polish
+
+- Unit tests.
+- Component tests.
+- Production build.
+- Browser console.
+- Visual QA.
+- Cross-browser QA.
+- Performance.
+- Reduced motion.
+- Kiểm tra GitHub Pages assets.
+- Cập nhật tài liệu kỹ thuật nếu cần.
+
+---
+
+# PHẦN XII. ACCEPTANCE CRITERIA
+
+Chỉ coi nhiệm vụ hoàn thành khi đạt toàn bộ các yêu cầu thiết yếu sau.
+
+### Runtime
+
+- Không còn lỗi photos.length.
+- Không có TypeError trong gallery.
+- Không có unhandled promise rejection do gallery.
+- Angular render ổn định.
+
+### Hình ảnh
+
+- 34 ảnh đều có thể truy cập.
+- Gallery sử dụng thumbnail thật.
+- Lightbox sử dụng ảnh gốc.
+- Không còn khung ảnh trống do lỗi rendering.
+- Không có ảnh bị biến mất bất thường.
+
+### Layout
+
+- Desktop hiển thị nhiều ảnh.
+- Vòng cung 3D rõ ràng.
+- Ảnh trung tâm nằm đúng vị trí.
+- Có chiều sâu phối cảnh.
+- Không bị clipping bất thường.
+- Không có stacking lỗi.
+
+### Animation
+
+- Gallery tự chuyển động.
+- Loop liên tục.
+- Không giật.
+- Không reset vị trí.
+- Không xảy ra animation conflict.
+- Hover phản hồi mượt.
+- Pause/resume hoạt động đúng.
+
+### Interaction
+
+- Hover nổi bật ảnh.
+- Click mở Lightbox.
+- Drag và swipe hoạt động.
+- Không click nhầm khi drag.
+- Keyboard hoạt động.
+- Mobile sử dụng được.
+- Reduced motion sử dụng được.
+
+### Quality
+
+- npm run build thành công.
+- Các unit tests liên quan thành công.
+- Regression test cho lỗi template thành công.
+- Runtime QA thành công.
+- Visual QA được xác minh thực tế.
+- Không làm hỏng các section khác.
+
+---
+
+# PHẦN XIII. FORMAT KẾ HOẠCH CẦN TRẢ VỀ
+
+Trong Plan Mode, hãy trả lời theo cấu trúc:
+
+1. **Root Cause Analysis:** Lỗi đã xác nhận và những nguyên nhân còn cần xác minh.
+2. **Source Code Audit:** Các file liên quan và vấn đề trong từng file.
+3. **Immediate Fix:** Cách sửa triệt để photos.length và template bindings.
+4. **Static Rendering Recovery:** Phương án để các ảnh hiện ra đúng.
+5. **3D Gallery Architecture:** Thiết kế vòng cung và thuật toán.
+6. **GSAP Animation Design:** Auto motion, hover, pause/resume, loop.
+7. **Interaction Design:** Drag, swipe, click và Lightbox.
+8. **Performance Strategy:** Virtualization, loading và optimization.
+9. **File Change List:** File cần sửa/tạo cùng mục đích.
+10. **Implementation Phases:** Công việc, thứ tự, kết quả và điều kiện hoàn thành.
+11. **Test Plan:** Unit, component, runtime và visual testing.
+12. **Acceptance Checklist:** Danh sách có thể đánh dấu.
+13. **Risks & Mitigations:** Rủi ro và cách khắc phục.
+
+Hãy phân biệt rõ:
+
+- Lỗi đã được xác nhận bằng source code.
+- Lỗi được suy luận từ screenshot.
+- Lỗi cần kiểm tra thêm bằng runtime.
+- Vấn đề về kỹ thuật.
+- Vấn đề về chất lượng animation và thẩm mỹ.
+
+Không trình bày giả thuyết như một sự thật đã được kiểm chứng.
+
+---
+
+# PHẦN XIV. QUY TẮC KHI CHUYỂN SANG IMPLEMENTATION
+
+Sau khi tôi duyệt kế hoạch và yêu cầu triển khai:
+
+- Chỉ sửa project HappyGradSweetie.
+- Không tạo project mới.
+- Không thay đổi các section đã ổn.
+- Không thay đổi nội dung dành cho Mai Khuê.
+- Không xóa hoặc chỉnh sửa 34 ảnh gốc.
+- Không tự ý commit.
+- Không tự ý push.
+- Không tự ý deploy.
+- Không thay đổi Git remote.
+- Không tự thay đổi branch.
+- Không thêm dependency không cần thiết.
+- Báo cáo file thay đổi sau mỗi phase.
+- Chạy kiểm thử phù hợp.
+- Không chuyển phase nếu phase trước còn lỗi nghiêm trọng.
+
+Đặc biệt:
+
+Sau Phase 2, tôi muốn xem kết quả gallery hiển thị đúng ảnh và vòng cung 3D trước khi tiếp tục Phase 3.
+
+Sau Phase 4, tôi muốn xem animation và hover thực tế trước khi hoàn thiện các bước còn lại.
+
+Nếu môi trường cho phép kiểm thử bằng browser automation, hãy sử dụng để có bằng chứng trực quan.
+
+---
+
+# YÊU CẦU CUỐI CÙNG
+
+Tôi đã mất nhiều lần yêu cầu chỉnh sửa gallery nhưng kết quả vẫn không đúng.
+
+Vì vậy, lần này tôi muốn bạn ưu tiên **chẩn đoán đúng và chứng minh kết quả**, thay vì liên tục thay đổi animation bằng phỏng đoán.
+
+Mục tiêu của tôi không phải chỉ làm biến mất lỗi Console.
+
+Mục tiêu cuối cùng là có một **Interactive 3D Photo Gallery thực sự đẹp và hoạt động ổn định**, bao gồm:
+
+1. 34 ảnh thật của Mai Khuê.
+2. Bố cục vòng cung 3D theo phong cách Book Hero / Foliom.
+3. Nhiều ảnh hiện diện trong không gian có chiều sâu.
+4. Auto movement mượt và liên tục.
+5. Hover làm ảnh nổi lên rõ ràng.
+6. Click mở ảnh lớn.
+7. Drag/swipe để khám phá.
+8. Responsive desktop/mobile.
+9. Không có runtime errors.
+10. Đã kiểm tra trực quan bằng trình duyệt thực tế.
+
+**Thứ tự ưu tiên tuyệt đối:**
+
+P0 – Sửa runtime exception và khôi phục ảnh hiển thị.
+
+P1 – Khôi phục static 3D arc layout chính xác.
+
+P2 – Xây dựng continuous auto motion ổn định.
+
+P3 – Hoàn thiện hover, drag, swipe và Lightbox.
+
+P4 – Visual QA, performance và regression testing.
+
+KHÔNG ĐƯỢC BỎ QUA P0 HOẶC P1 ĐỂ CHUYỂN THẲNG SANG ANIMATION.
+
+BÂY GIỜ HÃY ĐỌC SOURCE CODE THỰC TẾ CỦA HAPPYGRADSWEETIE, PHÂN TÍCH NGUYÊN NHÂN VÀ TRẢ VỀ KẾ HOẠCH SỬA LỖI, HOÀN THIỆN 3D GALLERY CỰC KỲ CHI TIẾT BẰNG TIẾNG VIỆT.
+
+**HIỆN TẠI CHỈ LẬP KẾ HOẠCH. CHƯA SỬA CODE. CHỜ TÔI DUYỆT.**

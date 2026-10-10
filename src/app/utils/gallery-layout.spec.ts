@@ -16,19 +16,51 @@ describe('gallery layout', () => {
     const config = getGalleryLayoutConfig(1440);
     const cards = getVirtualLogicalIndices(33.8, config);
 
-    expect(cards).toHaveSize(13);
-    expect(cards[0]).toBe(27);
-    expect(cards.at(-1)).toBe(39);
+    expect(cards).toHaveSize(11);
+    expect(cards[0]).toBe(28);
+    expect(cards.at(-1)).toBe(38);
   });
 
-  it('places the centered card closest to the viewer with valid angular values', () => {
+  it('keeps the centered card closest after the 3/4 camera projection', () => {
     const config = getGalleryLayoutConfig(1440);
     const center = getArcCardLayout(18, 18, 34, config);
-    const side = getArcCardLayout(14, 18, 34, config);
+    const leftRail = getArcCardLayout(15, 18, 34, config);
+    const rightRail = getArcCardLayout(21, 18, 34, config);
 
-    expect(center.z).toBe(0);
-    expect(side.z).toBeLessThan(center.z);
-    expect(side.rotateY).not.toBe(0);
-    expect(side.scale).toBeLessThan(center.scale);
+    expect(center.projectedDepth).toBeGreaterThan(leftRail.projectedDepth);
+    expect(center.projectedDepth).toBeGreaterThan(rightRail.projectedDepth);
+    expect(leftRail.rotateY).not.toBe(0);
+    expect(rightRail.rotateY).not.toBe(0);
+    expect(Math.abs(leftRail.rotateY)).toBeLessThanOrEqual(48);
+    expect(Math.abs(rightRail.rotateY)).toBeLessThanOrEqual(48);
+    expect(leftRail.scale).toBeLessThan(center.scale);
+    expect(rightRail.scale).toBeLessThan(center.scale);
+  });
+
+  it('uses a shallow rail elevation instead of the symmetric photo-fan lift', () => {
+    const config = getGalleryLayoutConfig(1440);
+    const leftRail = getArcCardLayout(15, 18, 34, config);
+    const rightRail = getArcCardLayout(21, 18, 34, config);
+
+    expect(Math.abs(leftRail.y)).toBeLessThan(40);
+    expect(Math.abs(rightRail.y)).toBeLessThan(40);
+    expect(leftRail.y).not.toBe(rightRail.y);
+  });
+
+  it('creates finite geometry for every responsive viewport', () => {
+    for (const width of [360, 390, 768, 1366, 1440, 1920]) {
+      const config = getGalleryLayoutConfig(width);
+      const cards = getVirtualLogicalIndices(33.8, config);
+
+      expect(cards).toHaveSize((config.visibleRadius + config.buffer) * 2 + 1);
+      for (const logicalIndex of cards) {
+        const layout = getArcCardLayout(logicalIndex, 33.8, 34, config);
+        expect(Number.isFinite(layout.x)).toBeTrue();
+        expect(Number.isFinite(layout.y)).toBeTrue();
+        expect(Number.isFinite(layout.z)).toBeTrue();
+        expect(layout.photoIndex).toBeGreaterThanOrEqual(0);
+        expect(layout.photoIndex).toBeLessThan(34);
+      }
+    }
   });
 });
