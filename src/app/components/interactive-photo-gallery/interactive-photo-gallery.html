@@ -12,6 +12,12 @@
     aria-label="Thư viện ảnh tốt nghiệp dạng vòng cung 3D"
     tabindex="0"
     (keydown)="onSceneKeydown($event)"
+    (pointerenter)="onScenePointerEnter()"
+    (pointerleave)="onScenePointerLeave()"
+    (pointerdown)="onPointerDown($event)"
+    (pointermove)="onPointerMove($event)"
+    (pointerup)="onPointerUp()"
+    (pointercancel)="onPointerUp()"
   >
     @if (photoCount() === 0) {
       <p class="gallery__empty" role="status">Chưa có ảnh để hiển thị.</p>
@@ -25,19 +31,19 @@
           <button
             class="photo-card"
             type="button"
+            [class.photo-card--front]="card.layout.isFront"
+            [class.photo-card--back]="!card.layout.isFront"
             [class.photo-card--focused]="isFocused(card)"
-            [class.photo-card--buffer]="!isInteractive(card)"
             [class.photo-card--broken]="isBroken(card.photo.id)"
-            [attr.aria-label]="'Mở ' + card.photo.alt"
+            [attr.aria-label]="card.layout.isFront ? 'Mở ' + card.photo.alt : null"
             [attr.aria-current]="isActive(card) ? 'true' : null"
             [attr.aria-posinset]="card.layout.photoIndex + 1"
             [attr.aria-setsize]="photoCount()"
-            [attr.aria-hidden]="!isInteractive(card)"
-            [attr.tabindex]="isInteractive(card) ? 0 : -1"
-            [style.left]="leftFor(card)"
-            [style.top]="topFor(card)"
+            [attr.aria-hidden]="!card.layout.isFront"
+            [attr.tabindex]="card.layout.isFront ? 0 : -1"
             [style.transform]="transformFor(card)"
             [style.opacity]="card.layout.opacity"
+            [style.z-index]="zIndexFor(card)"
             (pointerenter)="onCardPointerEnter(card)"
             (pointerleave)="clearFocusedCard()"
             (focus)="focusCard(card)"
@@ -50,7 +56,7 @@
               <img
                 [src]="card.photo.thumbnailSrc"
                 [alt]="card.photo.alt"
-                [loading]="isInteractive(card) ? 'eager' : 'lazy'"
+                [loading]="card.layout.isFront ? 'eager' : 'lazy'"
                 decoding="async"
                 (error)="markImageFailed(card.photo.id)"
               />
@@ -64,24 +70,4 @@
       </div>
     }
   </div>
-
-  <nav class="gallery__controls" aria-label="Điều hướng thư viện ảnh">
-    <button
-      type="button"
-      (click)="previousPhoto()"
-      [disabled]="isSuspended() || photoCount() < 2"
-      aria-label="Ảnh trước"
-    >
-      <span aria-hidden="true">←</span>
-    </button>
-    <p aria-live="polite"><span class="sr-only">Ảnh đang ở tâm: </span>{{ activePhotoNumber() }} / {{ photoCount() }}</p>
-    <button
-      type="button"
-      (click)="nextPhoto()"
-      [disabled]="isSuspended() || photoCount() < 2"
-      aria-label="Ảnh tiếp theo"
-    >
-      <span aria-hidden="true">→</span>
-    </button>
-  </nav>
 </section>

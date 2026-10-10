@@ -17,7 +17,7 @@ describe('InteractivePhotoGalleryComponent', () => {
     fixture.componentRef.setInput('content', celebrationContent.gallery);
   });
 
-  it('renders the virtual 34-photo gallery without reading an input setter as a getter', () => {
+  it('renders the virtual 34-photo gallery with front and back cards', () => {
     fixture.componentRef.setInput('photos', celebrationContent.photos);
 
     expect(() => fixture.detectChanges()).not.toThrow();
@@ -26,8 +26,16 @@ describe('InteractivePhotoGalleryComponent', () => {
     expect(fixture.nativeElement.querySelectorAll('.photo-card img').length).toBe(component.renderedCards().length);
     expect(component.renderedCards().length).toBeGreaterThan(0);
     expect(component.renderedCards().length).toBeLessThanOrEqual(11);
-    expect(fixture.nativeElement.querySelector('.gallery__controls p')?.textContent).toContain('1 / 34');
     expect(fixture.nativeElement.querySelector('.photo-card')?.getAttribute('aria-setsize')).toBe('34');
+
+    // Controls buttons are removed per user request
+    expect(fixture.nativeElement.querySelector('.gallery__controls')).toBeNull();
+
+    // Verify front cards exist and back cards exist
+    const frontCards = fixture.nativeElement.querySelectorAll('.photo-card--front');
+    const backCards = fixture.nativeElement.querySelectorAll('.photo-card--back');
+    expect(frontCards.length).toBeGreaterThan(0);
+    expect(backCards.length).toBeGreaterThan(0);
   });
 
   it('handles an empty gallery without a runtime exception', () => {
@@ -39,18 +47,22 @@ describe('InteractivePhotoGalleryComponent', () => {
     expect(fixture.nativeElement.querySelector('.gallery__empty')).not.toBeNull();
   });
 
-  it('loops controls and emits the selected photo index', () => {
+  it('allows clicking front cards to open photo and blocks back cards', () => {
     fixture.componentRef.setInput('photos', celebrationContent.photos);
     fixture.detectChanges();
     const requested: number[] = [];
     component.photoRequested.subscribe((index) => requested.push(index));
 
-    component.previousPhoto();
-    fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.gallery__controls p')?.textContent).toContain('34 / 34');
+    // Clicking an active front card emits photo requested
+    const frontCard = fixture.nativeElement.querySelector('.photo-card--front') as HTMLButtonElement;
+    expect(frontCard).not.toBeNull();
+    frontCard.click();
+    expect(requested.length).toBe(1);
 
-    const activeCard = fixture.nativeElement.querySelector('[aria-current="true"]') as HTMLButtonElement;
-    activeCard.click();
-    expect(requested).toEqual([33]);
+    // Clicking a back card does NOT emit photo requested
+    const backCard = fixture.nativeElement.querySelector('.photo-card--back') as HTMLButtonElement;
+    expect(backCard).not.toBeNull();
+    backCard.click();
+    expect(requested.length).toBe(1); // count remains 1
   });
 });

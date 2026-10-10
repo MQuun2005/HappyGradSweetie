@@ -12,6 +12,7 @@ export interface GalleryLayoutConfig {
   readonly verticalDrop: number;
   readonly cameraYaw: number;
   readonly cameraPitch: number;
+  readonly frontRadius: number;
 }
 
 export interface ArcCardLayout {
@@ -26,6 +27,8 @@ export interface ArcCardLayout {
   readonly scale: number;
   readonly opacity: number;
   readonly projectedDepth: number;
+  readonly isFront: boolean;
+  readonly zIndex: number;
 }
 
 export function positiveModulo(value: number, modulo: number): number {
@@ -55,6 +58,7 @@ export function getGalleryLayoutConfig(viewportWidth: number): GalleryLayoutConf
         verticalDrop: 10,
         cameraYaw: -18,
         cameraPitch: 5,
+        frontRadius: 1.0,
       };
     case 'regular':
       return {
@@ -69,6 +73,7 @@ export function getGalleryLayoutConfig(viewportWidth: number): GalleryLayoutConf
         verticalDrop: 15,
         cameraYaw: -26,
         cameraPitch: 6,
+        frontRadius: 1.5,
       };
     default:
       // Keep the rail inside a narrow desktop scene while retaining the full
@@ -86,6 +91,7 @@ export function getGalleryLayoutConfig(viewportWidth: number): GalleryLayoutConf
         verticalDrop: 18,
         cameraYaw: -30,
         cameraPitch: 7,
+        frontRadius: 1.85,
       };
   }
 }
@@ -110,7 +116,6 @@ export function getArcCardLayout(
   const distance = Math.abs(relative);
   const angle = Math.max(-80, Math.min(80, relative * config.angleStep));
   const radians = (angle * Math.PI) / 180;
-  const beyondVisible = Math.max(0, distance - config.visibleRadius);
   const x = config.radiusX * Math.sin(radians);
   const z =
     config.nearOffset +
@@ -120,6 +125,15 @@ export function getArcCardLayout(
     config.verticalTravel * Math.sin(radians) -
     config.verticalDrop * (1 - Math.cos(radians));
   const yawRadians = (config.cameraYaw * Math.PI) / 180;
+  const projectedDepth = -x * Math.sin(yawRadians) + z * Math.cos(yawRadians);
+
+  // Smooth opacity curve: cards fade gently towards the outer rails so entry/exit is seamless
+  const beyondVisible = Math.max(0, distance - config.visibleRadius);
+  const fadeRange = Math.max(0.01, config.buffer);
+  const opacityProgress = Math.min(1, beyondVisible / fadeRange);
+  const opacity = Math.max(0, 1 - Math.pow(opacityProgress, 1.4));
+
+  const isFront = distance <= config.frontRadius;
 
   return {
     logicalIndex,
@@ -131,8 +145,10 @@ export function getArcCardLayout(
     rotateY: Number(Math.max(-48, Math.min(48, -angle * 0.45)).toFixed(2)),
     rotateZ: Number((-angle * 0.12).toFixed(2)),
     scale: Number(Math.max(0.74, 1 - distance * 0.035).toFixed(3)),
-    opacity: Number(Math.max(0.18, 1 - beyondVisible * 0.4).toFixed(3)),
-    projectedDepth: Number((-x * Math.sin(yawRadians) + z * Math.cos(yawRadians)).toFixed(2)),
+    opacity: Number(opacity.toFixed(3)),
+    projectedDepth: Number(projectedDepth.toFixed(2)),
+    isFront,
+    zIndex: Math.round(projectedDepth + 1000),
   };
 }
 

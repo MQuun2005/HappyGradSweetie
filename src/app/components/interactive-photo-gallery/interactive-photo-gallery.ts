@@ -1,10 +1,12 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
   Input,
+  NgZone,
   OnDestroy,
   Output,
   ViewChild,
@@ -23,7 +25,7 @@ import {
   positiveModulo,
 } from '../../utils/gallery-layout';
 
-interface RenderedGalleryCard {
+export interface RenderedGalleryCard {
   readonly logicalIndex: number;
   readonly photo: Photo;
   readonly layout: ArcCardLayout;
@@ -59,10 +61,20 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
   @Output() readonly photoRequested = new EventEmitter<number>();
 
   private readonly photosSource = signal<readonly Photo[]>([]);
-  private readonly position = signal(0);
+  readonly position = signal(0);
   private readonly viewportWidth = signal(1280);
   private resizeObserver?: ResizeObserver;
   private supportsFinePointer = false;
+
+  private animationFrameId?: number;
+  private lastTimestamp = 0;
+  private readonly autoSpeed = 0.22; // cards per second (gentle drift across all 34 photos)
+  private isHovered = false;
+  private isPointerDown = false;
+  private isDragging = false;
+  private dragStartX = 0;
+  private dragStartPosition = 0;
+  private readonly dragThreshold = 6;
 
   readonly isSuspended = signal(false);
   readonly focusedLogicalIndex = signal<number | null>(null);
@@ -90,6 +102,11 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
     return count === 0 ? 0 : positiveModulo(this.activeLogicalIndex(), count) + 1;
   });
 
+  constructor(
+    private readonly ngZone: NgZone,
+    private readonly cdr: ChangeDetectorRef,
+  ) {}
+
   ngAfterViewInit(): void {
     const scene = this.sceneRef.nativeElement;
     this.updateViewportWidth(scene.clientWidth);
@@ -101,10 +118,94 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
       });
       this.resizeObserver.observe(scene);
     }
+
+    this.startAutoMotion();
   }
 
   ngOnDestroy(): void {
+    this.stopAutoMotion();
     this.resizeObserver?.disconnect();
+  }
+
+  private startAutoMotion(): void {
+    this.ngZone.runOutsideAngular(() => {
+      const step = (timestamp: number) => {
+        if (!this.lastTimestamp) {
+          this.lastTimestamp = timestamp;
+        }
+
+        const deltaMs = timestamp - this.lastTimestamp;
+        this.lastTimestamp = timestamp;
+
+        const shouldMove =
+          !this.isSuspended() &&
+          !this.isHovered &&
+          !this.isPointerDown &&
+          this.photoCount() > 1 &&
+          (typeof document === 'undefined' || !document.hidden);
+
+        if (shouldMove) {
+          const dt = Math.min(deltaMs / 1000, 0.1);
+          const nextPos = this.position() + this.autoSpeed * dt;
+          this.position.set(nextPos);
+          this.cdr.detectChanges();
+        }
+
+        this.animationFrameId = requestAnimationFrame(step);
+      };
+
+      this.animationFrameId = requestAnimationFrame(step);
+    });
+  }
+
+  private stopAutoMotion(): void {
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = undefined;
+    }
+  }
+
+  onScenePointerEnter(): void {
+    this.isHovered = true;
+  }
+
+  onScenePointerLeave(): void {
+    this.isHovered = false;
+    this.isPointerDown = false;
+    this.clearFocusedCard();
+  }
+
+  onPointerDown(event: PointerEvent): void {
+    if (this.isSuspended() || event.button !== 0) {
+      return;
+    }
+    this.isPointerDown = true;
+    this.isDragging = false;
+    this.dragStartX = event.clientX;
+    this.dragStartPosition = this.position();
+  }
+
+  onPointerMove(event: PointerEvent): void {
+    if (!this.isPointerDown) {
+      return;
+    }
+
+    const deltaX = event.clientX - this.dragStartX;
+    if (Math.abs(deltaX) > this.dragThreshold) {
+      this.isDragging = true;
+      const sensitivity = 1 / 280;
+      this.position.set(this.dragStartPosition - deltaX * sensitivity);
+      this.cdr.detectChanges();
+    }
+  }
+
+  onPointerUp(): void {
+    this.isPointerDown = false;
+    if (this.isDragging) {
+      setTimeout(() => {
+        this.isDragging = false;
+      }, 50);
+    }
   }
 
   previousPhoto(): void {
@@ -116,7 +217,7 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
   }
 
   focusCard(card: RenderedGalleryCard): void {
-    if (!this.isSuspended()) {
+    if (!this.isSuspended() && card.layout.isFront) {
       this.focusedLogicalIndex.set(card.logicalIndex);
     }
   }
@@ -126,13 +227,13 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
   }
 
   onCardPointerEnter(card: RenderedGalleryCard): void {
-    if (this.supportsFinePointer) {
+    if (this.supportsFinePointer && card.layout.isFront) {
       this.focusCard(card);
     }
   }
 
   requestPhoto(card: RenderedGalleryCard): void {
-    if (this.isSuspended()) {
+    if (this.isSuspended() || !card.layout.isFront || this.isDragging) {
       return;
     }
 
@@ -167,8 +268,12 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
     return this.activeLogicalIndex() === card.logicalIndex;
   }
 
+  isFront(card: RenderedGalleryCard): boolean {
+    return card.layout.isFront;
+  }
+
   isInteractive(card: RenderedGalleryCard): boolean {
-    return Math.abs(card.layout.relative) <= this.layoutConfig().visibleRadius;
+    return card.layout.isFront;
   }
 
   isBroken(photoId: number): boolean {
@@ -179,23 +284,19 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
     this.brokenPhotoIds.update((current) => new Set(current).add(photoId));
   }
 
-  leftFor(card: RenderedGalleryCard): string {
-    return `calc(50% + ${card.layout.x}px)`;
-  }
-
-  topFor(card: RenderedGalleryCard): string {
-    return `calc(52% + ${card.layout.y}px)`;
-  }
-
   stageTransform(): string {
     const config = this.layoutConfig();
     return `rotateX(${config.cameraPitch}deg) rotateY(${config.cameraYaw}deg)`;
   }
 
+  zIndexFor(card: RenderedGalleryCard): number {
+    return card.layout.zIndex + (this.isFocused(card) ? 500 : 0);
+  }
+
   transformFor(card: RenderedGalleryCard): string {
     return [
       'translate(-50%, -50%)',
-      `translateZ(${this.zFor(card)}px)`,
+      `translate3d(${card.layout.x}px, ${card.layout.y}px, ${this.zFor(card)}px)`,
       `rotateY(${this.rotationYFor(card)}deg)`,
       `rotateZ(${card.layout.rotateZ}deg)`,
       `scale(${this.scaleFor(card)})`,
@@ -203,11 +304,11 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
   }
 
   scaleFor(card: RenderedGalleryCard): number {
-    return Number((card.layout.scale * (this.isFocused(card) ? 1.045 : 1)).toFixed(3));
+    return Number((card.layout.scale * (this.isFocused(card) ? 1.05 : 1)).toFixed(3));
   }
 
   zFor(card: RenderedGalleryCard): number {
-    return card.layout.z + (this.isFocused(card) ? 72 : 0);
+    return card.layout.z + (this.isFocused(card) ? 60 : 0);
   }
 
   rotationYFor(card: RenderedGalleryCard): number {
@@ -219,9 +320,10 @@ export class InteractivePhotoGalleryComponent implements AfterViewInit, OnDestro
       return;
     }
 
-    const nextPosition = this.position() + amount;
+    const nextPosition = Math.round(this.position()) + amount;
     this.position.set(nextPosition);
     this.focusedLogicalIndex.set(getClosestLogicalIndex(nextPosition));
+    this.cdr.detectChanges();
   }
 
   private openActivePhoto(): void {

@@ -48,7 +48,13 @@ h2 {
   perspective: 1500px;
   perspective-origin: 50% 44%;
   touch-action: pan-y;
+  cursor: grab;
   outline: none;
+  user-select: none;
+}
+
+.gallery__scene:active {
+  cursor: grabbing;
 }
 
 .gallery__scene:focus-visible {
@@ -78,6 +84,8 @@ h2 {
 
 .photo-card {
   position: absolute;
+  top: 52%;
+  left: 50%;
   display: block;
   inline-size: clamp(9.25rem, 16vw, 14.5rem);
   aspect-ratio: 1706 / 2560;
@@ -86,13 +94,46 @@ h2 {
   border-radius: 0.45rem;
   padding: 0;
   background: var(--color-card);
-  box-shadow: 0 18px 34px rgb(39 50 75 / 20%), 0 0 0 1px rgb(201 164 106 / 16%);
-  cursor: pointer;
+  box-shadow: 0 16px 32px rgb(39 50 75 / 18%), 0 0 0 1px rgb(201 164 106 / 16%);
   transform-origin: center center;
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  transition: transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms ease,
-    filter 220ms ease, opacity 220ms ease;
+  /* During continuous motion, do not fight RAF with transform transitions */
+  transition: box-shadow 260ms ease, filter 260ms ease;
+  user-select: none;
+}
+
+/* Front cards: hoverable, clickable */
+.photo-card--front {
+  pointer-events: auto;
+  cursor: pointer;
+  filter: brightness(1) saturate(1);
+}
+
+.photo-card--front:hover,
+.photo-card--focused {
+  box-shadow: 0 32px 64px rgb(39 50 75 / 35%), 0 0 0 2px rgb(201 164 106 / 50%);
+  filter: brightness(1.04) saturate(1.05);
+}
+
+.photo-card--front:hover .photo-card__shade,
+.photo-card--focused .photo-card__shade,
+.photo-card--front:hover .photo-card__caption,
+.photo-card--focused .photo-card__caption {
+  opacity: 1;
+}
+
+.photo-card--front:hover .photo-card__caption,
+.photo-card--focused .photo-card__caption {
+  transform: translateY(0);
+}
+
+/* Back cards: non-interactive, no hover, subtle depth styling */
+.photo-card--back {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none;
+  filter: brightness(0.8) contrast(0.92);
 }
 
 .photo-card img {
@@ -103,6 +144,9 @@ h2 {
   block-size: 100%;
   max-inline-size: none;
   object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .photo-card__shade {
@@ -111,7 +155,7 @@ h2 {
   background: linear-gradient(180deg, transparent 48%, rgb(39 50 75 / 74%));
   opacity: 0;
   pointer-events: none;
-  transition: opacity 180ms ease;
+  transition: opacity 220ms ease;
 }
 
 .photo-card__caption {
@@ -125,28 +169,11 @@ h2 {
   pointer-events: none;
   text-align: start;
   transform: translateY(0.4rem);
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.photo-card--focused {
-  box-shadow: 0 30px 58px rgb(39 50 75 / 33%), 0 0 0 1px rgb(201 164 106 / 32%);
-}
-
-.photo-card--focused .photo-card__shade,
-.photo-card--focused .photo-card__caption {
-  opacity: 1;
-}
-
-.photo-card--focused .photo-card__caption {
-  transform: translateY(0);
+  transition: opacity 220ms ease, transform 220ms ease;
 }
 
 .gallery__stage:has(.photo-card--focused) .photo-card:not(.photo-card--focused) {
-  filter: brightness(0.82) saturate(0.88);
-}
-
-.photo-card--buffer {
-  pointer-events: none;
+  filter: brightness(0.78) saturate(0.85);
 }
 
 .photo-card--broken {
@@ -162,47 +189,6 @@ h2 {
   line-height: 1.45;
   text-align: center;
   transform: translateY(-50%);
-}
-
-.gallery__controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-block-start: 1.25rem;
-}
-
-.gallery__controls p {
-  min-inline-size: 4rem;
-  margin: 0;
-  color: var(--color-navy);
-  font-size: 0.84rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.gallery__controls button {
-  display: grid;
-  inline-size: 2.8rem;
-  block-size: 2.8rem;
-  place-items: center;
-  border: 1px solid rgb(39 50 75 / 18%);
-  border-radius: 50%;
-  background: rgb(255 253 249 / 72%);
-  color: var(--color-navy);
-  font-size: 1.05rem;
-  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
-}
-
-.gallery__controls button:not(:disabled):hover {
-  background: var(--color-rose);
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-.gallery__controls button:disabled {
-  cursor: not-allowed;
-  opacity: 0.45;
 }
 
 .sr-only {
@@ -228,11 +214,5 @@ h2 {
   .photo-card {
     inline-size: clamp(9.8rem, 50vw, 12.5rem);
     border-width: 0.42rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .photo-card {
-    transition: none;
   }
 }
