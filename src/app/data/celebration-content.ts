@@ -80,6 +80,7 @@ export const celebrationContent: CelebrationContent = {
     src: 'Audio/Ariana Grande bye Altare Remix.mp3',
     title: 'Bản nhạc dành cho Mai Khuê',
     volume: 0.35,
+    loop: true,
   },
   photos,
 };

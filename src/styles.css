@@ -16,6 +16,11 @@
   --color-ink: #27324b;
   --color-muted: #5e5a68;
   --shadow-soft: 0 24px 60px rgb(39 50 75 / 14%);
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  --chapter-viewport: 100dvh;
 }
 
 *,
@@ -39,6 +44,13 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (hover: none), (pointer: coarse) {
+  :root {
+    /* A stable height avoids snap targets moving with Safari's browser chrome. */
+    --chapter-viewport: 100svh;
+  }
 }
 
 button,

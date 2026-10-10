@@ -10,7 +10,8 @@
   display: grid;
   overflow: hidden;
   place-items: center;
-  padding: 1.25rem;
+  padding: max(1.25rem, var(--safe-area-top)) max(1.25rem, var(--safe-area-right))
+    max(1.25rem, var(--safe-area-bottom)) max(1.25rem, var(--safe-area-left));
   background: rgb(255 249 243 / 92%);
   backdrop-filter: blur(14px);
 }

@@ -63,4 +63,14 @@ describe('gallery layout', () => {
       }
     }
   });
+
+  it('keeps tablet touch profiles distinct from desktop geometry', () => {
+    const ipadPortrait = getGalleryLayoutConfig(820, 1180, true);
+    const ipadLandscape = getGalleryLayoutConfig(1180, 820, true);
+
+    expect(ipadPortrait.visibleRadius).toBe(2);
+    expect(ipadLandscape.visibleRadius).toBe(3);
+    expect(ipadLandscape.cameraYaw).toBeGreaterThan(ipadPortrait.cameraYaw);
+    expect(ipadLandscape.verticalTravel).toBeLessThan(18);
+  });
 });

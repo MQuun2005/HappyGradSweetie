@@ -36,9 +36,20 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
   readonly imageFailed = signal(false);
   readonly imageLoading = signal(true);
   private previousFocus?: HTMLElement;
-  private originalBodyOverflow = '';
-  private originalBodyPaddingRight = '';
+  private originalBodyStyles?: {
+    position: string;
+    top: string;
+    left: string;
+    right: string;
+    width: string;
+    overflow: string;
+    paddingRight: string;
+  };
   private isScrollLocked = false;
+  private lockedScrollY = 0;
+  private swipePointerId?: number;
+  private swipeStartX = 0;
+  private swipeStartY = 0;
 
   constructor(
     @Inject(DOCUMENT) private readonly document: Document,
@@ -128,6 +139,38 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
     }
   }
 
+  onMediaPointerDown(event: PointerEvent): void {
+    if (event.pointerType === 'mouse' && event.button !== 0) {
+      return;
+    }
+    this.swipePointerId = event.pointerId;
+    this.swipeStartX = event.clientX;
+    this.swipeStartY = event.clientY;
+    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+  }
+
+  onMediaPointerUp(event: PointerEvent): void {
+    if (event.pointerId !== this.swipePointerId) {
+      return;
+    }
+    const deltaX = event.clientX - this.swipeStartX;
+    const deltaY = event.clientY - this.swipeStartY;
+    this.swipePointerId = undefined;
+    if (Math.abs(deltaX) >= 44 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0) {
+        this.next();
+      } else {
+        this.previous();
+      }
+    }
+  }
+
+  clearMediaPointer(event: PointerEvent): void {
+    if (event.pointerId === this.swipePointerId) {
+      this.swipePointerId = undefined;
+    }
+  }
+
   markImageFailed(): void {
     this.imageFailed.set(true);
     this.imageLoading.set(false);
@@ -144,11 +187,24 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
 
     this.isScrollLocked = true;
     this.previousFocus = this.document.activeElement instanceof HTMLElement ? this.document.activeElement : undefined;
-    this.originalBodyOverflow = this.document.body.style.overflow;
-    this.originalBodyPaddingRight = this.document.body.style.paddingRight;
+    this.lockedScrollY = typeof window === 'undefined' ? 0 : window.scrollY;
+    this.originalBodyStyles = {
+      position: this.document.body.style.position,
+      top: this.document.body.style.top,
+      left: this.document.body.style.left,
+      right: this.document.body.style.right,
+      width: this.document.body.style.width,
+      overflow: this.document.body.style.overflow,
+      paddingRight: this.document.body.style.paddingRight,
+    };
 
     const scrollbarWidth =
       typeof window === 'undefined' ? 0 : window.innerWidth - this.document.documentElement.clientWidth;
+    this.renderer.setStyle(this.document.body, 'position', 'fixed');
+    this.renderer.setStyle(this.document.body, 'top', `-${this.lockedScrollY}px`);
+    this.renderer.setStyle(this.document.body, 'left', '0');
+    this.renderer.setStyle(this.document.body, 'right', '0');
+    this.renderer.setStyle(this.document.body, 'width', '100%');
     this.renderer.setStyle(this.document.body, 'overflow', 'hidden');
     if (scrollbarWidth > 0) {
       this.renderer.setStyle(this.document.body, 'padding-right', `${scrollbarWidth}px`);
@@ -161,8 +217,13 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
     }
 
     this.isScrollLocked = false;
-    this.renderer.setStyle(this.document.body, 'overflow', this.originalBodyOverflow);
-    this.renderer.setStyle(this.document.body, 'padding-right', this.originalBodyPaddingRight);
+    if (this.originalBodyStyles) {
+      Object.assign(this.document.body.style, this.originalBodyStyles);
+    }
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: this.lockedScrollY, behavior: 'auto' });
+    }
+    this.originalBodyStyles = undefined;
   }
 
   private preloadAdjacentImages(): void {

@@ -43,7 +43,11 @@ export function getGalleryViewport(viewportWidth: number): GalleryViewport {
   return viewportWidth < 1024 ? 'regular' : 'wide';
 }
 
-export function getGalleryLayoutConfig(viewportWidth: number): GalleryLayoutConfig {
+export function getGalleryLayoutConfig(
+  viewportWidth: number,
+  viewportHeight = 900,
+  isCoarsePointer = false,
+): GalleryLayoutConfig {
   switch (getGalleryViewport(viewportWidth)) {
     case 'compact':
       return {
@@ -65,8 +69,8 @@ export function getGalleryLayoutConfig(viewportWidth: number): GalleryLayoutConf
         visibleRadius: 2,
         buffer: 2,
         angleStep: 17,
-        radiusX: 390,
-        radiusZ: 350,
+        radiusX: isCoarsePointer && viewportHeight > viewportWidth ? 360 : 390,
+        radiusZ: isCoarsePointer && viewportHeight > viewportWidth ? 330 : 350,
         nearOffset: 80,
         cameraCompensation: 170,
         verticalTravel: 15,
@@ -79,18 +83,19 @@ export function getGalleryLayoutConfig(viewportWidth: number): GalleryLayoutConf
       // Keep the rail inside a narrow desktop scene while retaining the full
       // values on the 1184px-wide desktop canvas.
       const railScale = Math.max(0.78, Math.min(1, viewportWidth / 1184));
+      const isTouchLandscape = isCoarsePointer && viewportHeight < viewportWidth;
       return {
         visibleRadius: 3,
         buffer: 2,
-        angleStep: 15.5,
-        radiusX: Math.round(580 * railScale),
-        radiusZ: Math.round(460 * railScale),
+        angleStep: isTouchLandscape ? 14.5 : 15.5,
+        radiusX: Math.round((isTouchLandscape ? 535 : 580) * railScale),
+        radiusZ: Math.round((isTouchLandscape ? 420 : 460) * railScale),
         nearOffset: Math.round(105 * railScale),
         cameraCompensation: Math.round(310 * railScale),
-        verticalTravel: 18,
-        verticalDrop: 16,
-        cameraYaw: -24,
-        cameraPitch: 6.5,
+        verticalTravel: isTouchLandscape ? 14 : 18,
+        verticalDrop: isTouchLandscape ? 12 : 16,
+        cameraYaw: isTouchLandscape ? -20 : -24,
+        cameraPitch: isTouchLandscape ? 5 : 6.5,
         frontRadius: 1.85,
       };
   }

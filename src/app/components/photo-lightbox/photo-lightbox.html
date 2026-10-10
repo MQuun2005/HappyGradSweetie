@@ -19,7 +19,13 @@
         </button>
       </header>
 
-      <div class="lightbox__media" [attr.aria-busy]="imageLoading()">
+      <div
+        class="lightbox__media"
+        [attr.aria-busy]="imageLoading()"
+        (pointerdown)="onMediaPointerDown($event)"
+        (pointerup)="onMediaPointerUp($event)"
+        (pointercancel)="clearMediaPointer($event)"
+      >
         @if (imageFailed()) {
           <p class="lightbox__error">Không thể tải ảnh này. Bạn vẫn có thể chuyển sang ảnh khác.</p>
         } @else {

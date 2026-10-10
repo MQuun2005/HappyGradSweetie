@@ -3,10 +3,11 @@
 }
 
 .letter-section {
-  min-block-size: 100dvh;
+  min-block-size: var(--chapter-viewport);
   display: grid;
   place-items: center;
-  padding: clamp(3.5rem, 7vw, 6rem) 1.5rem;
+  padding: max(3.5rem, calc(2.5rem + var(--safe-area-top))) max(1.5rem, var(--safe-area-right))
+    max(3.5rem, calc(2.5rem + var(--safe-area-bottom))) max(1.5rem, var(--safe-area-left));
   background: var(--color-card);
 }
 

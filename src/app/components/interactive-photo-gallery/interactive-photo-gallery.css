@@ -5,11 +5,12 @@
 .gallery {
   position: relative;
   isolation: isolate;
-  min-block-size: 100dvh;
+  min-block-size: var(--chapter-viewport);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(3.5rem, 6vw, 5.5rem) 1rem clamp(3rem, 5vw, 4.5rem);
+  padding: max(3.5rem, calc(2.5rem + var(--safe-area-top))) max(1rem, var(--safe-area-right))
+    max(3rem, calc(2.25rem + var(--safe-area-bottom))) max(1rem, var(--safe-area-left));
   background: var(--color-lavender);
 }
 
@@ -47,7 +48,7 @@ h2 {
 .gallery__scene {
   position: relative;
   max-inline-size: 74rem;
-  block-size: clamp(29rem, 52vw, 40rem);
+  block-size: clamp(28rem, 47vw, 37rem);
   margin: clamp(2.5rem, 6vw, 4.5rem) auto 0;
   perspective: 1100px;
   perspective-origin: 50% 46%;
@@ -55,6 +56,7 @@ h2 {
   cursor: grab;
   outline: none;
   user-select: none;
+  overscroll-behavior-inline: contain;
 }
 
 .gallery__scene:active {
@@ -102,9 +104,10 @@ h2 {
   transform-origin: center center;
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  /* During continuous motion, do not fight RAF with transform transitions */
-  transition: box-shadow 260ms ease, filter 260ms ease, opacity 260ms ease;
+  /* RAF owns transform and opacity; CSS only animates visual treatment. */
+  transition: box-shadow 260ms ease, filter 260ms ease;
   user-select: none;
+  will-change: transform, opacity;
 }
 
 /* Front cards: hoverable, clickable */
@@ -121,7 +124,7 @@ h2 {
 }
 
 .photo-card--focused {
-  transition: transform 340ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms ease, filter 320ms ease;
+  transition: box-shadow 320ms ease, filter 320ms ease;
 }
 
 .photo-card--front:hover .photo-card__shade,
@@ -215,7 +218,7 @@ h2 {
   }
 
   .gallery__scene {
-    block-size: 30rem;
+    block-size: min(30rem, 58svh);
     margin-block-start: 2rem;
     perspective: 1050px;
   }
@@ -223,5 +226,34 @@ h2 {
   .photo-card {
     inline-size: clamp(9.8rem, 50vw, 12.5rem);
     border-width: 0.42rem;
+  }
+}
+
+@media (min-width: 40.0625rem) and (max-width: 63.999rem) and (pointer: coarse) {
+  .gallery__scene {
+    block-size: min(35rem, 56svh);
+    margin-block-start: 2.75rem;
+  }
+
+  .photo-card {
+    inline-size: clamp(10.5rem, 26vw, 14rem);
+  }
+}
+
+@media (min-width: 64rem) and (orientation: landscape) and (pointer: coarse) {
+  .gallery__scene {
+    block-size: clamp(26rem, 54svh, 32rem);
+    margin-block-start: 2.25rem;
+  }
+
+  .gallery__header > p:last-child {
+    line-height: 1.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-card {
+    transition: none;
+    will-change: auto;
   }
 }

@@ -5,7 +5,7 @@
   <app-interactive-photo-gallery
     [content]="content.gallery"
     [photos]="content.photos"
-    [suspended]="lightboxIndex() !== null"
+    [suspended]="lightboxIndex() !== null || introVisible()"
     (photoRequested)="openLightbox($event)"
   />
   <app-graduation-letter [content]="content.letter" />
@@ -30,4 +30,4 @@
   (closed)="closeLightbox()"
 />
 
-<app-music-control [config]="content.music" />
+<app-music-control #music [config]="content.music" [autoplayEnabled]="!introVisible()" />

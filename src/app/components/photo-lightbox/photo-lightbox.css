@@ -9,7 +9,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(0.75rem, 3vw, 2rem);
+  padding: max(0.75rem, var(--safe-area-top)) max(0.75rem, var(--safe-area-right))
+    max(0.75rem, var(--safe-area-bottom)) max(0.75rem, var(--safe-area-left));
   background: rgb(7 13 25 / 84%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -70,8 +71,8 @@
 
 button {
   display: grid;
-  inline-size: 2.35rem;
-  block-size: 2.35rem;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
   place-items: center;
   border: 1px solid rgb(248 242 232 / 24%);
   border-radius: 50%;
@@ -104,6 +105,7 @@ button:disabled {
   padding: 0.85rem 1.25rem;
   background: rgb(0 0 0 / 25%);
   overflow: hidden;
+  touch-action: pan-y;
 }
 
 .lightbox__media img {

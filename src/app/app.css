@@ -4,7 +4,7 @@
 
 .app-shell {
   isolation: isolate;
-  min-block-size: 100dvh;
+  min-block-size: var(--chapter-viewport);
 }
 
 app-graduation-hero,

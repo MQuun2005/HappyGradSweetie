@@ -1,4 +1,10 @@
-<section id="memories" class="gallery" [class.gallery--compact]="isCompact()" aria-labelledby="memories-title">
+<section
+  id="memories"
+  class="gallery"
+  [class.gallery--compact]="isCompact()"
+  [class.gallery--tablet]="isTablet()"
+  aria-labelledby="memories-title"
+>
   <header class="gallery__header">
     <p class="gallery__eyebrow">{{ content.eyebrow }}</p>
     <h2 id="memories-title">{{ content.title }}</h2>
@@ -12,12 +18,11 @@
     aria-label="Thư viện ảnh tốt nghiệp dạng vòng cung 3D"
     tabindex="0"
     (keydown)="onSceneKeydown($event)"
-    (pointerenter)="onScenePointerEnter()"
     (pointerleave)="onScenePointerLeave()"
     (pointerdown)="onPointerDown($event)"
     (pointermove)="onPointerMove($event)"
-    (pointerup)="onPointerUp()"
-    (pointercancel)="onPointerUp()"
+    (pointerup)="onPointerUp($event)"
+    (pointercancel)="onPointerCancel($event)"
   >
     @if (photoCount() === 0) {
       <p class="gallery__empty" role="status">Chưa có ảnh để hiển thị.</p>
@@ -29,6 +34,7 @@
       >
         @for (card of renderedCards(); track card.logicalIndex) {
           <button
+            #card
             class="photo-card"
             type="button"
             [class.photo-card--front]="card.layout.isFront"
@@ -41,13 +47,13 @@
             [attr.aria-setsize]="photoCount()"
             [attr.aria-hidden]="!card.layout.isFront"
             [attr.tabindex]="card.layout.isFront ? 0 : -1"
+            [attr.data-logical-index]="card.logicalIndex"
             [style.transform]="transformFor(card)"
             [style.opacity]="card.layout.opacity"
-            [style.z-index]="zIndexFor(card)"
             (pointerenter)="onCardPointerEnter(card)"
-            (pointerleave)="clearFocusedCard()"
+            (pointerleave)="onCardPointerLeave(card)"
             (focus)="focusCard(card)"
-            (blur)="clearFocusedCard()"
+            (blur)="clearFocusedCard(card)"
             (click)="requestPhoto(card)"
           >
             @if (isBroken(card.photo.id)) {

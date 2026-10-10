@@ -9,7 +9,7 @@
     </div>
     <h1 id="gift-intro-title">{{ content.title }}</h1>
     <p>{{ content.body }}</p>
-    <button type="button" (click)="opened.emit()">
+    <button #openButton type="button" (click)="opened.emit()">
       <span>{{ content.actionLabel }}</span>
       <span aria-hidden="true">♡</span>
     </button>

@@ -63,6 +63,7 @@ export interface MusicConfig {
   readonly src: string | null;
   readonly title: string;
   readonly volume: number;
+  readonly loop: boolean;
 }
 
 export interface CelebrationContent {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 import { IntroContent } from '../../models/celebration.models';
 
@@ -8,7 +8,12 @@ import { IntroContent } from '../../models/celebration.models';
   templateUrl: './gift-intro.html',
   styleUrl: './gift-intro.css',
 })
-export class GiftIntroComponent {
+export class GiftIntroComponent implements AfterViewInit {
+  @ViewChild('openButton') private openButton?: ElementRef<HTMLButtonElement>;
   @Input({ required: true }) content!: IntroContent;
   @Output() readonly opened = new EventEmitter<void>();
+
+  ngAfterViewInit(): void {
+    queueMicrotask(() => this.openButton?.nativeElement.focus());
+  }
 }
