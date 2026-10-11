@@ -1,140 +1,146 @@
 # HappyGradSweetie — Kế hoạch triển khai và checklist
 
-## Mục tiêu
+> Website quà tốt nghiệp dành cho Nguyễn Võ Mai Khuê. Tài liệu này là nguồn tham chiếu cho kiến trúc, phạm vi, tiến độ và nghiệm thu.
 
-Xây dựng website chúc mừng tốt nghiệp bằng Angular 20.3.x, thiên về trải nghiệm kể chuyện, ảnh kỷ niệm và gallery 3D. Chỉ thay đổi repository `HappyGradSweetie`; không sửa WomenDayCeleration, không ghi đè ảnh gốc, favicon hoặc `note.txt`, không commit/push/deploy tự động.
+## 1. Mục tiêu và nguyên tắc
 
-## Quyết định kỹ thuật
+HappyGradSweetie là trải nghiệm kể chuyện tương tác một trang: mở món quà, xem lời chúc, khám phá 34 kỷ niệm bằng gallery 3D, đọc thư và khép lại bằng lời nhắn yêu thương.
 
-- Angular 20.3.x, standalone components, TypeScript strict và không dùng Angular Router: đây là trang cuộn một trang.
-- CSS sở hữu bố cục, responsive, hover và CSS 3D; GSAP chỉ chạy reveal, chuyển nhóm ảnh và animation lightbox có thể hủy an toàn.
-- Curved 3D carousel là gallery chính: desktop hiển thị 7 ảnh/lượt theo 5 nhóm `1–7`, `8–14`, `15–21`, `22–28`, `29–34`.
-- Tạo thumbnail 640px tại `public/Image/thumb/`; giữ nguyên 34 ảnh gốc và dùng chúng cho lightbox.
-- Không có nhạc nền ở phiên bản đầu.
-- GitHub Pages dùng base href `/HappyGradSweetie/`; chỉ chuẩn bị workflow, không tự triển khai.
+- Giữ nguyên nội dung Mai Khuê/Quân iu và 34 ảnh gốc.
+- Không sửa `WomenDayCeleration`, không thêm framework/WebGL hoặc thư viện carousel nặng.
+- Không để animation ảnh hưởng khả năng đọc, điều hướng và accessibility.
+- Mọi thay đổi lớn phải qua test, build và visual QA phù hợp.
 
-## Cấu trúc dự kiến
+## 2. Trạng thái hiện tại
+
+Source đã có Angular standalone/strict TypeScript, intro `sessionStorage` và replay, sáu chương Hero/Invitation/Message/Memories/Letter/Closing, gallery 3D continuous position với virtual window và RAF motion, drag/swipe/keyboard, Lightbox ảnh gốc với preload/focus trap/loading/error/scroll restore, audio gesture-aware, responsive phone/iPad, safe-area và GitHub Pages.
+
+Visual QA vẫn cần xác nhận bằng screenshot/preview: chiều sâu 3D, clipping, Safari/iOS thật, audio policy và performance profile.
+
+## 3. Kiến trúc
 
 ```text
-src/
-  app/
-    components/{graduation-hero,graduation-message,interactive-photo-gallery,photo-lightbox,graduation-letter,closing-section}/
-    data/celebration-content.ts
-    models/celebration.models.ts
-    utils/gallery-layout.ts
-    app.ts | app.html | app.css | app.config.ts
-  main.ts | index.html | styles.css
-public/Image/                  # ảnh gốc, chỉ đọc
-public/Image/thumb/            # ảnh sinh mới
+src/app/
+  app.ts | app.html | app.css
+  components/{gift-intro,graduation-hero,graduation-invitation,
+    graduation-message,interactive-photo-gallery,photo-lightbox,
+    graduation-letter,closing-section,music-control,section-navigator}/
+  data/celebration-content.ts
+  models/celebration.models.ts
+  utils/gallery-layout.ts
+src/index.html | src/styles.css
+public/Image/{original,thumb}/
+public/Audio/
 scripts/{generate-thumbnails,prepare-github-pages}.mjs
 .github/workflows/deploy-pages.yml
 ```
 
-`celebration-content.ts` là nguồn dữ liệu duy nhất cho người nhận, thông tin tốt nghiệp, thông điệp, thư, lời kết và metadata ảnh. Khi chưa có dữ liệu thật, dùng placeholder dạng `[Tên người nhận]`.
+`celebration-content.ts` là nguồn dữ liệu duy nhất cho copy, metadata ảnh và audio.
 
-## Thiết kế và tương tác
+## 4. Quyết định kỹ thuật
 
-- Palette: midnight navy `#10182A`, navy elevated `#1E2A44`, champagne gold `#D4B06A`, warm ivory `#F8F2E8`, blush accent `#E7B9C2`.
-- Hành trình: Graduation Hero → Graduation Message → Our Beautiful Memories → Personal Graduation Letter → Closing.
-- Gallery có `perspective`, `transform-style: preserve-3d`, ảnh trung tâm gần hơn và ảnh hai bên lùi dần theo Z. Hover/focus nâng card, xoay về hướng dễ xem, tăng z-index và làm các card khác dịu đi.
-- Parallax con trỏ cập nhật CSS variables qua một `requestAnimationFrame`, chạy ngoài Angular change detection. Mobile dùng tap chọn/tap mở, swipe ngang có `touch-action: pan-y`.
-- Lightbox hỗ trợ click backdrop, Escape, mũi tên trái/phải, focus trap, khóa scroll và khôi phục focus về ảnh kích hoạt.
-- Reduced motion bỏ tween/parallax nhưng giữ đủ điều hướng, lightbox và nội dung.
+### Nền tảng và visual
 
-## Hợp đồng dữ liệu và state
+- Angular 20.3.x, standalone components, Signals, strict TypeScript.
+- Angular CDK cho focus trap; Sharp cho thumbnail; GSAP có sẵn cho animation phù hợp.
+- Không dùng Three.js/WebGL, Router hay thư viện carousel/state-management mới.
+- Palette pastel: ivory `#FFF9F3`, cream `#F7EDE3`, blush `#EAB8BE`, peach `#F4CCB9`, lavender `#E7E0F1`, gold `#C9A46A`, dusty rose `#B9707D`, navy `#27324B`, body `#5E5A68`.
+- Cormorant Garamond cho heading, Plus Jakarta Sans cho body; motion transform/opacity 300–650ms và tôn trọng reduced motion.
 
-- `Photo`: `id`, `src`, `thumbnailSrc`, `alt`, `title`, `caption`, `order`.
-- `CelebrationContent`: Hero, message, letter, closing và `readonly photos`.
-- Gallery state: `before-enter → entering → idle ↔ focused → lightbox-open`; `navigating` khóa thao tác chuyển nhóm cho tới khi tween kết thúc.
-- Khi destroy: hủy GSAP context/timeline, cancel RAF, disconnect observer, bỏ listener và phục hồi scroll body.
+### Gallery 3D
 
-## Phases và tiêu chí hoàn thành
+Continuous logical position thay cho phân trang. Geometry tính theo relative position, camera profile và virtual window; desktop tối đa 11 card DOM. Thumbnail chỉ tải trong window, original chỉ tải khi Lightbox mở.
 
-### 0. Lưu kế hoạch
+RAF là single writer cho transform/opacity. Signals chỉ cập nhật active photo và virtual anchor. State ưu tiên: `destroyed > reduced-motion > suspended > offscreen > dragging > inertia > hovering/focused > paused > auto-moving`.
 
-- File này được tạo trước bất kỳ source code nào và là chuẩn để review tiến độ.
-- Mỗi phase dưới đây sẽ được đánh dấu/đối chiếu sau khi thực hiện.
+### Scroll, navigation và audio
 
-### 1. Foundation
+- Native CSS scroll snap `proximity`, không chặn wheel/touch.
+- Active section lấy quanh narrative line ở 42% viewport, có hysteresis 64px.
+- ID chuẩn: `home`, `invitation`, `message`, `memories`, `letter`, `closing`.
+- Intro/Lightbox khóa scroll nền và khôi phục vị trí.
+- Một audio element duy nhất; `openGift()` gọi play trong user gesture, bắt rejection, loop và fade-in.
 
-- Tạo Angular workspace trực tiếp ở repository root bằng các file mới; không chạy `ng new` trên folder có asset.
-- Thêm scripts build/test/thumbnail/GitHub Pages và cấu hình TypeScript strict.
-- Hoàn thành khi `npm install`, build và test chạy được, không sinh nested project.
+## 5. Data và asset contract
 
-### 2. UI foundation
+`Photo`: `id`, `src`, `thumbnailSrc`, `alt`, `title`, `caption`, `order`, `featured`.
 
-- Thêm models, data config, global tokens, Hero và Message.
-- Hoàn thành khi CTA cuộn đúng section, copy chỉ đọc từ data file, không horizontal overflow ở desktop/mobile.
+- `Image/original/{id}.jpg` và `Image/thumb/{id}.jpg`.
+- ID/order duy nhất 1–34, `featured` mặc định `false`.
+- Không ghi đè, đổi tên hoặc chỉnh sửa ảnh gốc.
 
-### 3. Gallery foundation
+## 6. Phases
 
-- Tạo thumbnail từ ảnh gốc, 34 bản ghi `Photo`, layout curved carousel, controls và lazy loading.
-- Hoàn thành khi xem được đủ 34 ảnh theo đúng thứ tự, nhóm cuối có 6 ảnh và ảnh lỗi có fallback UI.
+### Phase 0 — Kế hoạch
 
-### 4. Animation và interaction
+Lưu tài liệu trước source; dùng checklist này làm chuẩn review.
 
-- Thêm reveal, CSS 3D hover/focus, parallax, keyboard, touch/swipe và cleanup.
-- Hoàn thành khi hover liên tiếp không kẹt state, reduced-motion vẫn đầy đủ chức năng và không render Angular liên tục theo pointer.
+### Phase 1 — Foundation và content
 
-### 5. Lightbox
+Chuẩn hóa Angular/strict TS, scripts, models, nội dung Mai Khuê và 34 metadata; kiểm tra paths.
 
-- Thêm modal truy cập được với focus trap, navigation, image error state và scroll lock.
-- Hoàn thành khi mở/đóng liên tục không mất vị trí gallery và focus quay về đúng card.
+### Phase 2 — Visual foundation
 
-### 6. Letter và Closing
+Áp dụng pastel tokens, typography, spacing, focus state và safe area; kiểm tra 390/768/1440px.
 
-- Hoàn thiện bức thư, lời kết và animation trang trí tối giản.
-- Hoàn thành khi toàn bộ hành trình liền mạch, không thêm nội dung 20/10 hay thông tin cá nhân hard-code.
+### Phase 3 — Intro, invitation và journey
 
-### 7. Quality assurance
+Hoàn thiện mở quà, replay, invitation và CTA; khóa/mở scroll nền đúng lifecycle.
 
-- Kiểm tra build, tests, 1440px/768px/390px, keyboard, touch, resize, image errors, 34 ảnh, reduced motion và cleanup.
-- Hoàn thành khi không có TypeScript/runtime error nghiêm trọng, broken asset path hay overflow không chủ đích.
+### Phase 4 — Static 3D gallery
 
-### 8. GitHub Pages preparation
+Chốt geometry rail, camera 3/4, depth sorting, responsive profile và virtual window. Dừng để review screenshot trước autoplay.
 
-- Thêm `github-pages` configuration với base href đúng, 404 redirect, `.nojekyll`, script copy artifact và workflow Pages cho `master`.
-- Hoàn thành khi artifact ở `dist/happy-grad-sweetie/browser` và không còn đường dẫn WomenDay.
+### Phase 5 — Motion và interaction
 
-## Dependencies
+Thêm auto motion, pause/resume, hover/focus, pointer capture, drag/swipe, inertia, keyboard và cleanup; loop 34 → 1 không jump.
 
-- Giữ Angular 20.3.x, RxJS, Zone.js, TypeScript 5.9.x và tooling Angular tương thích.
-- Thêm `gsap` 3.x, `@angular/cdk` cùng major Angular (focus trap), `sharp` ở devDependencies (thumbnail).
-- Không thêm Three.js/WebGL, Tailwind, carousel/state-management library, React/Framer Motion hay ảnh ngoài.
+### Phase 6 — Lightbox
 
-## Rủi ro và kiểm soát
+Tích hợp pause gallery, original image, loading/error, circular navigation, preload, focus trap và restore vị trí.
+
+### Phase 7 — Letter, audio và closing
+
+Reveal thư, sparkle nhẹ, audio lifecycle duy nhất và replay journey; không hiển thị control nhạc chết.
+
+### Phase 8 — QA và phát hành
+
+Chạy tests/build/Pages build, kiểm tra artifact, screenshot, console, network, reduced motion, keyboard và touch. Commit/push/deploy chỉ theo yêu cầu.
+
+## 7. Test và nghiệm thu
+
+Tự động: `npm test`, `npm run build`, `npm run build:github-pages`; unit test geometry/modulo/window/responsive/content; component test empty/single/34 photos, ARIA, controls, audio và Lightbox.
+
+Visual: desktop 1366×768, 1440×900, 1920×1080; iPhone 16 393×852; iPad Gen 10 820×1180 và 1180×820; kiểm tra first visit, replay, `#memories`, back/forward, 30–60 giây gallery, Lightbox, orientation và reduced motion.
+
+### Acceptance checklist
+
+- [ ] 34 original + 34 thumbnail nguyên vẹn, paths hợp lệ.
+- [ ] Không placeholder, không console/runtime error.
+- [ ] Gallery có near/mid/far depth, không clipping/overflow, loop liên tục.
+- [ ] Hover, drag, swipe, keyboard và Lightbox không xung đột.
+- [ ] Audio rejection an toàn, không duplicate/reset.
+- [ ] Safe-area, touch target và responsive phone/iPad đạt yêu cầu.
+- [ ] Ba lệnh test/build ở trên đều thành công.
+
+## 8. Rủi ro và nhật ký
 
 | Rủi ro | Kiểm soát |
 | --- | --- |
-| 3D stacking/clipping | `preserve-3d`, z-index rõ, scene không clip, focus shift có giới hạn. |
-| Tải/memory của 34 ảnh | Thumbnail, lazy load, preload nhóm kế tiếp; ảnh gốc chỉ ở lightbox. |
-| CSS/GSAP conflict | GSAP animate opacity/CSS variables, CSS sở hữu transform. |
-| Listener/tween tồn đọng | Cleanup đủ observer, RAF, GSAP và scroll lock trong `ngOnDestroy`. |
-| Touch/responsive | Tap chọn/tap mở, swipe có ngưỡng, layout riêng desktop/tablet/mobile. |
-| Base path GitHub Pages | Một base href `/HappyGradSweetie/`, asset relative và kiểm tra artifact. |
-| Mất asset hiện hữu | Không sửa/xóa `public/Image/*.jpg`, favicon hoặc `note.txt`. |
+| CSS 3D clipping/stacking | perspective, preserve-3d, virtual window và screenshot QA |
+| Angular render quá nhiều | RAF single-writer, Signals chỉ semantic |
+| Drag xung đột scroll dọc | threshold 8px, ưu tiên hướng ngang |
+| Autoplay bị chặn | play trong gesture, bắt Promise rejection |
+| Safari dynamic viewport | svh/dvh và safe-area variables |
+| Pages sai asset path | base href `/HappyGradSweetie/` và Pages build |
+| Mất dữ liệu cá nhân | bảo vệ original, content source và file ngoài phạm vi |
 
-## Checklist phát hành
-
-- [x] Build production và unit tests thành công.
-- [x] 34 ảnh gốc còn nguyên, 34 thumbnail có mặt.
-- [ ] Gallery 3D/hover desktop không clipping — cần visual QA trên browser ở desktop.
-- [ ] Mobile xem và mở đủ 34 ảnh không cần hover — cần visual QA trên thiết bị hoặc browser mobile emulation.
-- [ ] Lightbox đạt keyboard, focus, close và image-error behavior — đã có implementation, cần thao tác QA thủ công.
-- [ ] Reduced motion vẫn có đủ nội dung và điều hướng — đã có CSS/logic, cần thao tác QA thủ công.
-- [x] Không còn nội dung/đường dẫn của WomenDay trong source/configuration mới.
-- [x] GitHub Pages artifact đúng subpath; chưa deploy nếu chưa được yêu cầu.
-
-## Nhật ký implementation
-
-| Phase | Trạng thái | Bằng chứng |
+| Hạng mục | Trạng thái | Bằng chứng |
 | --- | --- | --- |
-| 0. Lưu kế hoạch | Hoàn thành | File `plan.md` này được tạo trước source code. |
-| 1. Foundation | Hoàn thành | Angular 20.3.x, strict TypeScript, standalone bootstrap; production build pass. |
-| 2. UI foundation | Hoàn thành | Hero, Message, design tokens và data source tập trung đã có. |
-| 3. Gallery foundation | Hoàn thành | 34 metadata records, 34 thumbnail, phân trang 7 ảnh desktop/3 ảnh mobile. |
-| 4. Animation & interaction | Hoàn thành code | CSS 3D, GSAP reveal/navigation, parallax RAF, keyboard/tap state và cleanup đã có; còn visual QA. |
-| 5. Lightbox | Hoàn thành code | Modal, focus trap, keyboard, image-error state, scroll lock và restore focus đã có; còn thao tác QA. |
-| 6. Letter & Closing | Hoàn thành | Hai section dùng dữ liệu từ configuration đã có. |
-| 7. Quality assurance | Hoàn thành tự động | 4 Jasmine tests pass qua Edge headless; build production và Pages artifact pass. |
-| 8. GitHub Pages | Đã chuẩn bị | Workflow, `404.html`, `.nojekyll`, base href và local artifact đã kiểm tra; không deploy. |
+| Foundation/content | Hoàn thành | Angular 20, strict TS, 34 metadata |
+| UI/responsive base | Hoàn thành code | pastel tokens, safe area, phone/iPad profiles |
+| Gallery/Lightbox | Hoàn thành code | continuous position, RAF, virtual window, focus trap |
+| Audio | Hoàn thành code | audio-only, loop, gesture play, rejection handling |
+| Tests/build | Hoàn thành | 16 Jasmine tests; production/Pages build pass |
+| Browser visual QA | Chờ kiểm tra | cần Chromium preview hoặc screenshot/video thiết bị |
+| Git | Đã push | commit `d88ed00` trên `master`; workflow Pages tự chạy |
