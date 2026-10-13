@@ -1,0 +1,1301 @@
+# HAPPYGRADSWEETIE – THE FINAL CINEMATIC LOVE LETTER EXPERIENCE
+
+## 0. VAI TRÒ VÀ NGUYÊN TẮC LÀM VIỆC
+
+Bạn là Senior Creative Frontend Engineer, Angular Architect, GSAP Motion Designer, Interactive Web Experience Designer và UI/UX Specialist.
+
+Tôi muốn thực hiện một bản nâng cấp UI/UX lớn, gần như cuối cùng, cho website HappyGradSweetie – món quà chúc mừng tốt nghiệp dành cho người yêu của tôi, Nguyễn Võ Mai Khuê.
+
+Project chính:
+
+https://github.com/MQuun2005/HappyGradSweetie
+
+Local workspace:
+
+E:\MinhQuun\PastLife\HappyGradSweetie
+
+Repository tham khảo:
+
+https://github.com/tuanasish/portfolio-dev
+
+Tôi đã cung cấp một ảnh chân dung tốt nghiệp của Mai Khuê. Tôi muốn sử dụng chính bức ảnh này để tạo một cinematic Hero mới, trong đó nhân vật được tách khỏi background, xuất hiện nổi bật trên website và chuyển động theo hành trình cuộn trang.
+
+Tên concept:
+
+**HappyGradSweetie – A Love Letter in Motion**
+
+Đây là một website tốt nghiệp được kể như một bức thư tình bằng hình ảnh và chuyển động.
+
+### Quy trình bắt buộc
+
+Hiện tại tôi đang sử dụng PLANNING MODE.
+
+Bạn chỉ được:
+
+1. Đọc source code local mới nhất.
+2. Nghiên cứu hai repository.
+3. Phân tích UI/UX hiện tại.
+4. Đề xuất concept thiết kế mới.
+5. Lập storyboard cho các animation.
+6. Lập kế hoạch xử lý ảnh chân dung.
+7. Thiết kế kiến trúc scroll-linked animation.
+8. Đề xuất nâng cấp 3D Gallery.
+9. Hoàn thiện nội dung lời chúc bằng tiếng Việt.
+10. Lập danh sách file và kế hoạch implementation.
+11. Chuẩn bị kế hoạch kiểm thử thực tế.
+12. Chờ tôi phê duyệt.
+
+KHÔNG sửa code, xóa file, cài dependency, tạo commit, push hoặc deploy trong lượt Planning.
+
+Quy trình:
+
+AUDIT → CREATIVE DIRECTION → MOTION STORYBOARD → TECHNICAL PLAN → REVIEW → APPROVE → IMPLEMENT → VISUAL QA → DEPLOY.
+
+Không tạo Angular project mới.
+
+Không chuyển project sang React.
+
+Không sao chép nguyên bản giao diện của repository tham khảo.
+
+Không tự chỉnh sửa ảnh gốc của Mai Khuê.
+
+---
+
+# I. BỐI CẢNH DỰ ÁN
+
+## 1. Thông tin
+
+Website dành cho:
+
+- Họ tên: Nguyễn Võ Mai Khuê.
+- Tên thân mật: vợ iu.
+- Ngành học: Luật.
+- Trường: Đại học Tôn Đức Thắng.
+- Ngày tốt nghiệp: 17/10/2026.
+- Người gửi: Quân iu.
+- Mối quan hệ: người yêu.
+
+Tôi muốn website thật ngọt ngào, lãng mạn, dịu dàng, mang cảm giác cá nhân và có chất lượng thiết kế cao.
+
+Mai Khuê rất thích pastel và sự ngọt ngào.
+
+Tuy nhiên, website không được quá trẻ con, rối mắt hoặc sử dụng animation quá mức.
+
+## 2. Công nghệ
+
+Giữ Angular 20, TypeScript, Standalone Components, Angular Signals và các thư viện đang hoạt động tốt.
+
+Hiện project đã có GSAP.
+
+Có thể nghiên cứu GSAP ScrollTrigger, ScrollSmoother hoặc Lenis, nhưng chỉ thêm dependency khi chứng minh được lợi ích và khả năng tương thích.
+
+Không tự thêm Three.js chỉ vì repository tham khảo sử dụng Three.js.
+
+---
+
+# II. NGHIÊN CỨU REPOSITORY PORTFOLIO-DEV
+
+Repository tham khảo:
+
+https://github.com/tuanasish/portfolio-dev
+
+Hãy đọc đặc biệt:
+
+- src/components/Character/Scene.tsx
+- src/components/utils/GsapScroll.ts
+- src/components/Landing.tsx
+- src/components/MainContainer.tsx
+- src/components/styles/Landing.css
+- package.json
+
+Project này có các đặc điểm đáng tham khảo:
+
+- Nhân vật là điểm nhấn chính của trang.
+- Có trải nghiệm 3D.
+- Chuyển động liên kết với scroll.
+- Camera hoặc nhân vật thay đổi khi người dùng cuộn.
+- Có hiệu ứng parallax.
+- Các section chuyển tiếp có chủ đích.
+- Typography lớn và tương tác với nhân vật.
+- Chuyển động được điều phối bằng GSAP.
+
+Tôi muốn lấy cảm hứng từ trải nghiệm đó, nhưng chuyển thành một website pastel chúc mừng tốt nghiệp.
+
+ĐIỀU QUAN TRỌNG:
+
+Tôi không muốn xây dựng mô hình 3D nhân vật Mai Khuê.
+
+Tôi muốn sử dụng ảnh thật của cô ấy, tách background và tạo cảm giác 2.5D cinematic bằng layering, transform, scale, parallax và GSAP ScrollTrigger.
+
+Không cần tái tạo hình học 3D của người thật.
+
+Không giả lập xoay nhân vật 3D gây biến dạng khuôn mặt.
+
+---
+
+# III. Ý TƯỞNG THIẾT KẾ CHỦ ĐẠO
+
+Concept:
+
+**PASTEL ROMANTIC EDITORIAL × IMMERSIVE PORTRAIT × SCROLL STORYTELLING**
+
+Website phải tạo cảm giác:
+
+- Một món quà riêng tư và đặc biệt.
+- Ngọt ngào.
+- Mềm mại.
+- Sang trọng.
+- Có yếu tố điện ảnh.
+- Có nhân vật trung tâm.
+- Có trải nghiệm khám phá theo scroll.
+- Có không gian ảnh 3D thật đẹp.
+- Có lời chúc chân thành.
+
+Bảng màu có thể giữ nền tảng:
+
+- Warm Ivory: #FFF9F3
+- Pastel Blush: #EAB8BE
+- Lavender: #E7E0F1
+- Champagne Gold: #C9A46A
+- Muted Navy: #27324B
+- Rose: #B9707D
+
+Có thể bổ sung những sắc độ trung gian để background chuyển màu mượt hơn.
+
+Typography:
+
+- Editorial serif cho heading.
+- Sans-serif dễ đọc cho nội dung.
+- Script font chỉ làm điểm nhấn.
+- Không làm ảnh hưởng khả năng đọc tiếng Việt.
+
+Tôi muốn UI có khoảng thở, nhưng không để các section quá trống.
+
+---
+
+# IV. XỬ LÝ ẢNH CHÂN DUNG MAI KHUÊ
+
+ĐÂY LÀ PHẦN ƯU TIÊN RẤT CAO.
+
+## 1. Ảnh nguồn
+
+Tôi đã cung cấp ảnh chân dung Mai Khuê mặc áo tốt nghiệp, đội mũ đen, có dây tua vàng.
+
+Độ phân giải ảnh đính kèm: 1364 × 2048.
+
+Ảnh có background gồm cột và không gian cây xanh.
+
+Hãy xác minh ảnh nguồn có mặt trong local workspace không.
+
+Nếu ảnh chưa có trong workspace, hãy yêu cầu tôi đặt ảnh vào một đường dẫn cụ thể. Có thể kiểm tra `public/Image/original/1.jpg` xem có phải cùng ảnh hay không, nhưng không được tự giả định khi chưa xác nhận.
+
+## 2. Background Removal
+
+Tôi muốn:
+
+- Tách background hoàn toàn.
+- Giữ Mai Khuê là chủ thể chính.
+- Giữ nguyên mũ tốt nghiệp.
+- Giữ nguyên tóc.
+- Giữ dây tua mũ.
+- Giữ trang phục.
+- Giữ màu sắc ảnh tự nhiên.
+- Không sửa gương mặt.
+- Không thay đổi vóc dáng.
+- Không thay người bằng ảnh AI khác.
+
+Ưu tiên image segmentation chất lượng cao.
+
+Cần chú ý:
+
+- Tóc có nhiều chi tiết nhỏ.
+- Dây tua mũ mảnh.
+- Mép mũ đen.
+- Các vùng trang phục có màu gần với background.
+- Tay và viền áo cần được giữ chính xác.
+
+Không chấp nhận viền trắng, viền xanh hoặc halo rõ rệt quanh nhân vật.
+
+Nếu phần cơ thể phía dưới ảnh bị bàn hoặc bố cục gốc che khuất, hãy thiết kế crop/mask sao cho tự nhiên. Không được tự tạo thêm tay, chân hoặc phần cơ thể không có trong ảnh.
+
+Xuất:
+
+- Transparent PNG chất lượng cao làm master.
+- Transparent WebP tối ưu cho production nếu tương thích.
+- Có fallback hợp lý.
+
+Gợi ý đường dẫn:
+
+public/Image/hero/mai-khue-cutout.png
+
+public/Image/hero/mai-khue-cutout.webp
+
+Không ghi đè ảnh nguồn.
+
+## 3. Hiệu ứng chiều sâu
+
+Nhân vật phải có cảm giác đứng trước background.
+
+Thiết kế theo nhiều layer:
+
+Layer 1: Pastel gradient background.
+
+Layer 2: Decorative ribbons, sparkles, ánh sáng.
+
+Layer 3: Large editorial typography.
+
+Layer 4: Portrait Mai Khuê đã tách nền.
+
+Layer 5: Một vài foreground ornaments nếu phù hợp.
+
+Tạo hiệu ứng typography nằm phía sau một phần cơ thể hoặc mũ của Mai Khuê.
+
+Tuy nhiên, không được để tên hoặc lời chúc bị che hoàn toàn.
+
+Không tạo quá nhiều lớp gây rối mắt.
+
+---
+
+# V. CINEMATIC HERO – THIẾT KẾ LẠI
+
+## 1. Bố cục desktop
+
+Tôi muốn Hero mở đầu thật ấn tượng.
+
+Có thể sử dụng:
+
+- Full viewport Hero.
+- Chân dung Mai Khuê ở trung tâm hoặc lệch phải.
+- Typography lớn ở phía sau.
+- Một dòng phụ nhỏ phía trên.
+- Lời chúc ngọt ngào.
+- Một lời gợi ý kéo xuống.
+
+Không nhất thiết giữ bố cục chữ căn giữa hiện tại.
+
+Hãy đề xuất bố cục editorial đẹp nhất.
+
+## 2. Nội dung Hero
+
+Eyebrow:
+
+"17.10.2026 · Ngày đặc biệt của vợ iu"
+
+Heading chính:
+
+"Vợ iu tốt nghiệp rồi!"
+
+Subheading:
+
+"Một cột mốc thật đẹp của Nguyễn Võ Mai Khuê."
+
+Lead:
+
+"Vợ iu của anh đã làm được rồi. Anh chỉ mong mỗi lần nhìn lại ngày này, vợ iu sẽ nhớ mình đã giỏi giang và đáng tự hào đến nhường nào."
+
+Scroll hint:
+
+"Vợ iu kéo xuống xem tiếp nha ♡"
+
+Có thể bố trí heading thành nhiều dòng nếu giúp typography đẹp hơn.
+
+Ưu tiên dùng chữ "vợ iu" thay cho cách gọi "em" trong các nội dung chính.
+
+Không lặp "vợ iu" quá nhiều đến mức câu văn trở nên gượng ép.
+
+## 3. Entrance Animation
+
+Khi người dùng mở món quà:
+
+- Background hiện dần.
+- Typography xuất hiện theo từng dòng.
+- Chân dung Mai Khuê xuất hiện mềm mại.
+- Có scale/translate nhẹ.
+- Decorative elements hiện sau.
+- Không sử dụng animation quá mạnh.
+- Không làm nhân vật rung hoặc nảy liên tục.
+
+Tổng cảm giác phải như đang mở đầu một video kỷ niệm được thiết kế tinh tế.
+
+---
+
+# VI. SCROLL-LINKED PORTRAIT – ĐIỂM NHẤN LỚN NHẤT
+
+Tôi muốn chân dung Mai Khuê chuyển động theo hành trình cuộn trang.
+
+Hãy nghiên cứu GSAP ScrollTrigger với `scrub`.
+
+## 1. Giai đoạn ban đầu
+
+Khi Hero mới xuất hiện:
+
+- Mai Khuê ở foreground.
+- Có chiều sâu so với typography.
+- Background gần như đứng yên.
+- Trang không tự di chuyển khi người dùng chưa tương tác.
+
+## 2. Khi người dùng cuộn xuống
+
+Scroll progress điều khiển:
+
+- TranslateY của nhân vật.
+- TranslateX nhẹ nếu phù hợp.
+- Scale.
+- Opacity.
+- Typography position.
+- Background parallax.
+- Decorative elements.
+
+Nhân vật có thể di chuyển xuống hoặc lệch nhẹ sang bên theo quỹ đạo thiết kế.
+
+Tôi muốn chuyển động có cảm giác tự nhiên, không phải chỉ kéo ảnh thẳng xuống.
+
+Có thể giữ Hero bằng pin/sticky trong một đoạn scroll ngắn để tạo chuyển cảnh điện ảnh.
+
+Không pin quá lâu khiến người dùng mệt.
+
+## 3. Chuyển cảnh sang Invitation
+
+Khi người dùng tiếp tục cuộn:
+
+- Typography Hero mờ dần.
+- Chân dung thu nhỏ hoặc dịch chuyển sang bên.
+- Invitation card xuất hiện từ phía sau hoặc tiến lên vùng nhìn.
+- Background đổi màu mềm mại.
+- Nhân vật dần rời khỏi scene một cách tự nhiên.
+
+Đây là một chuyển cảnh nối tiếp, không phải hai section hoàn toàn tách biệt.
+
+## 4. Giới hạn phạm vi
+
+Không bắt buộc giữ ảnh nhân vật theo người dùng trên toàn website.
+
+Tôi ưu tiên nhân vật đồng hành qua Hero và phần chuyển tiếp sang Invitation, sau đó biến mất mềm mại.
+
+Các section Message, Gallery, Letter và Closing nên có không gian riêng.
+
+Không để nhân vật che nội dung của những section sau.
+
+## 5. Mobile
+
+Trên iPhone:
+
+- Nhân vật ưu tiên ở trung tâm.
+- Chỉ dùng translate/scale nhẹ.
+- Giảm thời gian pin hoặc bỏ pin nếu cần.
+- Không để đầu hoặc mũ bị cắt.
+- Không để chữ nằm sau nhân vật tới mức không đọc được.
+- Không gây scroll trap.
+- Không tạo giật khi Safari toolbar thay đổi.
+
+Trên iPad:
+
+- Tận dụng màn hình rộng.
+- Portrait và landscape có bố cục khác nhau nếu cần.
+- Scroll-linked animation vẫn mượt.
+- Không bắt buộc sử dụng cùng thông số với desktop.
+
+---
+
+# VII. THIẾT KẾ LẠI HÀNH TRÌNH WEBSITE
+
+Tôi muốn website được kể theo sáu chương chính.
+
+## Chapter 1 – Cô gái đặc biệt
+
+Hero với chân dung tách nền.
+
+Thông điệp:
+
+"Vợ iu tốt nghiệp rồi!"
+
+## Chapter 2 – Ngày của vợ iu
+
+Invitation Card.
+
+Giữ:
+
+- Nguyễn Võ Mai Khuê.
+- Cử nhân Luật.
+- Đại học Tôn Đức Thắng.
+- 17/10/2026.
+
+Không hiển thị số điện thoại.
+
+Tạo transition từ Hero Portrait sang thiệp.
+
+## Chapter 3 – Anh tự hào về vợ iu
+
+Một lời nhắn ngắn, chân thành.
+
+Có thể thêm text reveal nhẹ theo scroll.
+
+Không sử dụng typewriter quá chậm.
+
+## Chapter 4 – Những khoảnh khắc của vợ iu
+
+3D Photo Gallery.
+
+Đây là điểm nhấn tương tác thứ hai sau Hero.
+
+## Chapter 5 – Một bức thư nhỏ
+
+Love Letter.
+
+Thiết kế như một trang thư ấm áp.
+
+Lời chúc thật mềm mại.
+
+## Chapter 6 – Mình cùng bước tiếp nhé
+
+Closing.
+
+Có thể thêm confetti rất nhẹ, sparkle và CTA xem lại hành trình.
+
+---
+
+# VIII. NÂNG CẤP 3D GALLERY LÊN CHẤT LƯỢNG CAO HƠN
+
+Gallery hiện tại đã có kiến trúc curved 3D và virtualization.
+
+Không yêu cầu viết lại toàn bộ nếu phần lõi đang ổn.
+
+Tuy nhiên, tôi muốn visual quality cao hơn rõ rệt.
+
+## 1. Hướng thiết kế
+
+Tên concept:
+
+**3D Memory Orbit**
+
+Cảm giác:
+
+- 34 ảnh tồn tại trong một không gian có chiều sâu.
+- Ảnh di chuyển nhẹ theo vòng cung.
+- Camera nhìn chéo.
+- Có sự khác biệt giữa foreground và background.
+- Ảnh đang nổi bật hướng về người xem.
+- Có ánh sáng và shadow tinh tế.
+- Không trông như quạt ảnh 2D.
+
+## 2. Auto Motion
+
+- Di chuyển chậm.
+- Loop liên tục.
+- Không giật giữa ảnh 34 và ảnh 1.
+- Không render lại toàn bộ Angular UI mỗi frame.
+- Pause khi gallery ngoài viewport.
+- Pause khi Lightbox mở.
+- Respect reduced motion.
+
+## 3. Hover
+
+Khi hover một ảnh:
+
+- Dòng chuyển động giảm tốc.
+- Ảnh được chọn tiến về phía camera.
+- Góc quay điều chỉnh để ảnh gần chính diện.
+- Ảnh nổi bật rõ ràng.
+- Các ảnh khác nhường không gian.
+- Có hiệu ứng shadow mềm.
+- Caption có thể xuất hiện.
+
+Không sử dụng shadow quá đậm khiến gallery mất sự nhẹ nhàng của pastel.
+
+## 4. Click
+
+Click mở Lightbox dùng ảnh gốc.
+
+Đảm bảo:
+
+- Giữ đúng vị trí Gallery.
+- Không reset auto motion.
+- Có previous/next.
+- Có keyboard support.
+- Không lỗi khi đóng và mở nhiều lần.
+
+## 5. Touch
+
+Trên iPhone và iPad:
+
+- Vuốt ngang để khám phá ảnh.
+- Không yêu cầu hover.
+- Tap mở ảnh.
+- Không xung đột scroll dọc.
+- Không gây click nhầm sau drag.
+- Có inertia nhẹ nếu phù hợp.
+
+## 6. Performance
+
+Kiểm tra thực tế:
+
+- requestAnimationFrame.
+- DOM updates.
+- Virtualized window.
+- Image decoding.
+- Layout calculation.
+- GPU compositing.
+- Transform/opacity.
+- Browser memory.
+- Safari rendering.
+
+Không sử dụng `will-change` vô điều kiện trên quá nhiều ảnh.
+
+Đảm bảo animation không tranh chấp với ScrollTrigger ở Hero.
+
+---
+
+# IX. SCROLL EXPERIENCE – LIỀN MẠCH NHƯ MỘT CÂU CHUYỆN
+
+Hiện tại project đã có:
+
+- CSS Scroll Snap proximity.
+- Section Navigator.
+- IntersectionObserver.
+- Scroll settlement.
+- Hash navigation.
+- Logic xử lý section cao hơn viewport.
+
+Hãy đọc và đánh giá lại những cơ chế này.
+
+Tôi muốn một trải nghiệm mượt hơn theo phong cách portfolio-dev.
+
+## 1. Kết hợp scroll và animation
+
+Có thể sử dụng GSAP ScrollTrigger để điều khiển:
+
+- Hero portrait.
+- Hero typography.
+- Background transition.
+- Invitation entrance.
+- Message reveal.
+- Gallery entrance.
+- Letter reveal.
+- Closing reveal.
+
+Tuy nhiên, không cần gắn ScrollTrigger phức tạp cho mọi phần tử.
+
+## 2. Scroll Snapping
+
+Khi người dùng cuộn đến cuối một section ngắn:
+
+- Trang có thể tự căn đúng section tiếp theo.
+- Chuyển động mượt.
+- Không tạo bước nhảy đột ngột.
+- Không chuyển qua nhiều section ngoài ý muốn.
+
+Với những section dài hơn viewport:
+
+- Phải cho phép đọc toàn bộ.
+- Không ép cuộn qua nội dung.
+- Không gây scroll trap.
+
+Không được để GSAP pinning và CSS scroll snapping tranh chấp.
+
+Nếu hai cơ chế xung đột, hãy ưu tiên thiết kế lại một hệ thống thống nhất.
+
+## 3. Khả năng điều hướng
+
+Giữ các section ID hiện tại:
+
+- home
+- invitation
+- message
+- memories
+- letter
+- closing
+
+Đảm bảo:
+
+- Click navigation đúng.
+- Refresh tại hash đúng.
+- Back/forward hoạt động.
+- Lightbox không làm thay đổi vị trí trang.
+- Replay Intro hoạt động.
+- Không bị lệch khi Safari toolbar thay đổi chiều cao.
+
+## 4. Smooth Scrolling
+
+Nghiên cứu Lenis nếu thật sự phù hợp.
+
+Nếu tích hợp:
+
+- Không làm mất native touch behavior.
+- Không ảnh hưởng accessibility.
+- Đồng bộ với GSAP ScrollTrigger.
+- Có cơ chế cleanup.
+- Có thể disable trên mobile nếu phù hợp.
+- Không ảnh hưởng scroll locking khi Lightbox mở.
+
+Nếu native browser scrolling kết hợp GSAP đã đủ mượt, không cần thêm Lenis.
+
+---
+
+# X. HOÀN THIỆN TOÀN BỘ NỘI DUNG TIẾNG VIỆT
+
+Đây là yêu cầu quan trọng.
+
+Tôi muốn lời chúc mềm mại, ngọt ngào và gần gũi hơn phiên bản hiện tại.
+
+Ưu tiên cách gọi:
+
+"vợ iu"
+
+Có thể dùng linh hoạt:
+
+- vợ iu
+- vợ iu của anh
+- Khuê của anh
+- cô gái anh thương
+- bé yêu
+
+Nhưng trong những câu trực tiếp gửi người nhận, ưu tiên "vợ iu" thay vì lặp "em".
+
+Không được thay thế máy móc tất cả từ "em" bằng "vợ iu" nếu khiến câu không tự nhiên.
+
+Dưới đây là bộ nội dung chính tôi muốn sử dụng. Hãy rà soát ngôn ngữ và chỉ điều chỉnh nhẹ nếu cần để phù hợp bố cục UI.
+
+## 1. Intro
+
+Eyebrow:
+
+"Một món quà nhỏ dành riêng cho vợ iu"
+
+Title:
+
+"Anh có một điều muốn dành cho vợ iu…"
+
+Body:
+
+"Không phải điều gì quá lớn lao đâu. Chỉ là anh muốn dành một góc thật xinh để cất lại niềm vui của vợ iu trong ngày đặc biệt này."
+
+CTA:
+
+"Vợ iu mở quà nhé ♡"
+
+## 2. Hero
+
+Eyebrow:
+
+"17.10.2026 · Ngày đặc biệt của vợ iu"
+
+Title:
+
+"Vợ iu tốt nghiệp rồi!"
+
+Lead:
+
+"Vợ iu của anh đã làm được rồi. Anh mong khoảnh khắc này sẽ luôn nhắc vợ iu nhớ rằng mình đã giỏi giang, mạnh mẽ và đáng tự hào đến nhường nào."
+
+CTA:
+
+"Cùng anh xem tiếp nha"
+
+Scroll hint:
+
+"Kéo xuống một chút nữa nha, vợ iu."
+
+## 3. Invitation
+
+Eyebrow:
+
+"Một ngày thật đặc biệt"
+
+Title:
+
+"Ngày của vợ iu"
+
+Recipient:
+
+"Nguyễn Võ Mai Khuê"
+
+Degree:
+
+"Cử nhân Luật"
+
+School:
+
+"Đại học Tôn Đức Thắng"
+
+Date:
+
+"17 tháng 10 năm 2026"
+
+Note:
+
+"Một ngày thật đẹp để đánh dấu những cố gắng của vợ iu. Và cũng là một ngày mà anh muốn cất giữ thật lâu trong tim."
+
+Không hiển thị số điện thoại từ thiệp gốc.
+
+## 4. Graduation Message
+
+Eyebrow:
+
+"Từ anh, gửi vợ iu"
+
+Title:
+
+"Anh tự hào về vợ iu nhiều lắm"
+
+Body:
+
+"Có những thành quả không chỉ được đo bằng một tấm bằng, mà còn bằng cả một hành trình cố gắng phía sau. Anh vui vì vợ iu đã đi đến một cột mốc thật đẹp. Mong vợ iu sẽ luôn tự tin, luôn mỉm cười và luôn nhớ rằng bản thân xứng đáng với rất nhiều điều tốt đẹp."
+
+## 5. Gallery
+
+Eyebrow:
+
+"Những khoảnh khắc thật xinh"
+
+Title:
+
+"34 khoảnh khắc anh muốn ngắm mãi"
+
+Lead:
+
+"Mỗi bức ảnh là một chút rạng rỡ rất riêng của vợ iu. Anh muốn giữ lại tất cả ở đây, để bất cứ khi nào ghé xem, vợ iu cũng có thể mỉm cười vì những ngày tháng thật đẹp của mình."
+
+Instruction:
+
+"Chạm vào một bức ảnh để ngắm vợ iu rõ hơn nhé."
+
+## 6. Love Letter
+
+Eyebrow:
+
+"Một lá thư nhỏ từ anh"
+
+Title:
+
+"Gửi vợ iu của anh"
+
+Paragraph 1:
+
+"Vợ iu à, vậy là một cột mốc thật đẹp đã được đánh dấu rồi. Anh biết phía sau ngày hôm nay là cả một hành trình mà vợ iu đã dành rất nhiều sự kiên trì và cố gắng. Anh chỉ muốn ôm vợ iu một cái thật lâu và nói rằng: vợ iu của anh giỏi lắm."
+
+Paragraph 2:
+
+"Anh thích nhìn vợ iu vui, thích những lúc vợ iu cười và càng thích hơn khi thấy vợ iu tự hào về chính mình. Ngày tốt nghiệp này không chỉ là một lời chúc mừng, mà còn là dịp để anh nhắc vợ iu nhớ rằng những điều mình đã cố gắng đều thật đáng trân trọng."
+
+Paragraph 3:
+
+"Anh không biết những chặng đường tiếp theo sẽ mang đến bao nhiêu điều mới mẻ, nhưng anh mong vợ iu sẽ luôn giữ được sự dịu dàng, niềm tin và những ước mơ của riêng mình. Có những ngày thật vui, cũng có thể sẽ có những ngày hơi mệt một chút. Dù thế nào, anh vẫn mong vợ iu luôn biết rằng mình không phải đối diện với mọi thứ một mình."
+
+Paragraph 4:
+
+"Anh sẽ luôn muốn được ở bên, được lắng nghe những câu chuyện nhỏ mỗi ngày và cùng vợ iu giữ lại thêm thật nhiều kỷ niệm đẹp. Cảm ơn vợ iu vì đã là một người đặc biệt trong cuộc sống của anh. Chúc mừng tốt nghiệp nhé, tình yêu của anh."
+
+Signature:
+
+"Thương vợ iu rất nhiều,
+Quân iu"
+
+Hãy giữ format xuống dòng của chữ ký.
+
+Không tự bịa kỷ niệm cụ thể mà tôi chưa cung cấp.
+
+## 7. Closing
+
+Title:
+
+"Vợ iu ơi, hành trình đẹp nhất vẫn còn ở phía trước"
+
+Body:
+
+"Chúc vợ iu luôn được làm những điều mình yêu, gặp những người thật tốt và có thật nhiều ngày bình yên, hạnh phúc. Còn anh, anh mong mình sẽ được cùng vợ iu đi qua thêm thật nhiều cột mốc đáng nhớ nữa."
+
+Final highlight:
+
+"Anh thương vợ iu. Nhiều lắm."
+
+CTA chính:
+
+"Ngắm lại những khoảnh khắc của vợ iu"
+
+Replay CTA:
+
+"Mở lại món quà của anh"
+
+## 8. Caption ảnh
+
+Tôi có 34 ảnh cá nhân của Mai Khuê.
+
+Hãy tạo hệ thống caption dễ chỉnh sửa.
+
+Một số caption mẫu:
+
+- "Chiếc ảnh xinh của vợ iu."
+- "Cô gái mà anh luôn muốn ngắm mãi."
+- "Rạng rỡ theo cách của riêng vợ iu."
+- "Vợ iu của anh giỏi quá đi thôi."
+- "Một khoảnh khắc thật đáng yêu."
+- "Anh thích nụ cười này lắm."
+- "Một chút dịu dàng anh muốn giữ lại."
+- "Vợ iu cứ luôn tự tin như thế nhé."
+- "Chiếc mũ tốt nghiệp xinh thật, nhưng vợ iu còn xinh hơn."
+- "Thêm một kỷ niệm thật đẹp của vợ iu."
+
+Không bắt buộc tất cả ảnh đều có caption.
+
+Không viết caption mô tả một sự kiện cụ thể nếu chưa có bằng chứng trong dữ liệu.
+
+## 9. Cấu trúc nội dung
+
+Tiếp tục tập trung toàn bộ content trong:
+
+src/app/data/celebration-content.ts
+
+Nếu cần, mở rộng interfaces/models để hỗ trợ các trường mới như:
+
+- hero.scrollHint
+- hero.portraitSrc
+- hero.portraitFallback
+- closing.finalHighlight
+- letter.signature
+- section transition labels
+
+Không hardcode lời chúc vào nhiều HTML template.
+
+---
+
+# XI. AUDIO
+
+Hiện project đã có cơ chế phát nhạc khi người dùng mở món quà, không cần nút bật nhạc.
+
+Giữ cơ chế đó nếu đang hoạt động tốt.
+
+Không thêm lại Music Button.
+
+Không bắt buộc autoplay có tiếng trước tương tác vì trình duyệt có thể chặn.
+
+Nhạc phải tiếp tục xuyên suốt hành trình nếu được phép phát.
+
+Không để animation hoặc section navigation làm nhạc khởi động lại.
+
+Nếu phát không thành công, website vẫn phải hoạt động bình thường.
+
+---
+
+# XII. RESPONSIVE IPHONE 16 VÀ IPAD GEN 10
+
+Đây là yêu cầu bắt buộc.
+
+## iPhone 16
+
+Viewport tham chiếu: 393 × 852 CSS pixels.
+
+Cần kiểm tra:
+
+- Hero Portrait.
+- Typography overlap.
+- Safe area.
+- Dynamic Island.
+- Safari toolbar.
+- Invitation.
+- Gallery swipe.
+- Lightbox.
+- Love Letter.
+- Scroll animation.
+- Landscape.
+
+Không để portrait che heading hoặc CTA.
+
+Không ép hiệu ứng pin desktop xuống mobile khi không phù hợp.
+
+## iPad Gen 10
+
+Portrait: 820 × 1180.
+
+Landscape: 1180 × 820.
+
+Cần thiết kế riêng:
+
+- Tỷ lệ và vị trí portrait.
+- Typography.
+- Gallery 3D.
+- Touch interaction.
+- Section navigation.
+- ScrollTrigger ranges.
+- Orientation change.
+
+Đừng coi iPad là iPhone phóng to.
+
+Không dựa vào hover trên iPad.
+
+## Reduced Motion
+
+Khi bật prefers-reduced-motion:
+
+- Hero vẫn hiển thị ảnh.
+- Bỏ pin/scrub phức tạp nếu cần.
+- Các section vẫn đọc được.
+- Gallery vẫn điều hướng được.
+- Không mất nội dung.
+- Không tạo motion gây khó chịu.
+
+---
+
+# XIII. HIỆU NĂNG VÀ ĐỘ MƯỢT
+
+Đây là yêu cầu chất lượng quan trọng.
+
+Tôi muốn website mượt, không chỉ đẹp trên screenshot.
+
+Hãy kiểm tra:
+
+- First load.
+- LCP.
+- CLS.
+- Long tasks.
+- Scroll frame pacing.
+- Animation main-thread cost.
+- Image decoding.
+- GPU compositing.
+- Memory growth.
+- Font loading.
+- Bundle size.
+- Safari/iPadOS differences.
+
+Đối với Hero cutout:
+
+- Ưu tiên ảnh tối ưu dung lượng.
+- Khai báo kích thước/tỷ lệ ảnh.
+- Preload ảnh Hero khi thực sự cần.
+- Có fallback.
+- Không tạo layout shift khi ảnh tải xong.
+- Không resize layout liên tục trong animation.
+
+Đối với GSAP:
+
+- Tạo timeline trong đúng lifecycle.
+- Cleanup ScrollTriggers.
+- Cleanup observers.
+- Không tạo timeline trùng lặp sau resize.
+- Refresh layout khi ảnh và font đã sẵn sàng.
+- Không để animation xung đột với Angular.
+- Không điều khiển cùng một transform bằng CSS transition và GSAP đồng thời.
+
+Hãy đo đạc thực tế và phân biệt mục tiêu hiệu năng với kết quả đã kiểm chứng.
+
+---
+
+# XIV. ĐỀ XUẤT CẤU TRÚC SOURCE CODE
+
+Hãy đánh giá phương án bổ sung một số component chuyên biệt:
+
+- graduation-portrait/
+- cinematic-hero/
+- scroll-story-controller/
+- section-transition/
+
+Đây chỉ là tên gợi ý.
+
+Không bắt buộc tạo tất cả.
+
+Ưu tiên tái sử dụng component hiện có nếu giúp kiến trúc gọn hơn.
+
+Các file hiện tại cần audit:
+
+- src/app/app.ts
+- src/app/app.html
+- src/app/app.css
+- src/styles.css
+- src/app/components/graduation-hero/
+- src/app/components/graduation-invitation/
+- src/app/components/graduation-message/
+- src/app/components/interactive-photo-gallery/
+- src/app/components/graduation-letter/
+- src/app/components/closing-section/
+- src/app/components/section-navigator/
+- src/app/components/photo-lightbox/
+- src/app/data/celebration-content.ts
+- src/app/models/celebration.models.ts
+- package.json
+- angular.json
+
+Không làm hỏng cấu hình GitHub Pages.
+
+Không thêm asset references dạng root-absolute sai với base href `/HappyGradSweetie/`.
+
+---
+
+# XV. KẾ HOẠCH TRIỂN KHAI THEO PHASE
+
+Tôi muốn bạn chia implementation thành những phase có thể kiểm chứng.
+
+## Phase 1 – Full UI/UX Audit
+
+- Đọc toàn bộ source code.
+- Đánh giá giao diện hiện tại.
+- Nghiên cứu portfolio-dev.
+- Xác định những phần cần giữ.
+- Xác định những phần cần thay đổi.
+- Đề xuất creative direction.
+- Lập storyboard animation.
+
+## Phase 2 – Portrait Asset Preparation
+
+- Xác minh ảnh nguồn.
+- Tách background.
+- Giữ nguyên chủ thể.
+- Xử lý mép tóc, mũ và dây tua.
+- Xuất PNG/WebP transparent.
+- Kiểm tra visual quality.
+- Tối ưu dung lượng.
+
+Đầu ra phải có preview của ảnh tách nền.
+
+Nếu chưa có công cụ tách nền, báo rõ phương pháp thực hiện và những bước người dùng cần hỗ trợ.
+
+## Phase 3 – Cinematic Hero
+
+- Tạo bố cục Hero mới.
+- Đặt portrait foreground.
+- Đặt typography phía sau.
+- Bổ sung pastel layers.
+- Tạo entrance animation.
+- Responsive desktop/iPhone/iPad.
+
+Đầu ra: screenshot Hero tại các viewport chính.
+
+## Phase 4 – Scroll-Linked Storytelling
+
+- Thiết kế ScrollTrigger timeline.
+- Tạo portrait movement.
+- Typography parallax.
+- Background transitions.
+- Hero-to-Invitation transition.
+- Cleanup và reduced motion.
+- Xử lý xung đột scroll snap.
+
+Đầu ra: video ngắn hoặc browser recording.
+
+## Phase 5 – 3D Gallery Final Polish
+
+- Đánh giá visual quality.
+- Nâng cấp hover.
+- Nâng cấp chiều sâu.
+- Tinh chỉnh tốc độ auto movement.
+- Responsive.
+- Performance.
+- Drag/swipe.
+- Lightbox.
+
+Đầu ra: video/screenshot Gallery thực tế.
+
+## Phase 6 – Final Content Integration
+
+- Cập nhật toàn bộ nội dung mẫu phía trên.
+- Chuẩn hóa cách gọi vợ iu.
+- Đảm bảo nội dung ngọt ngào và tự nhiên.
+- Cập nhật caption.
+- Kiểm tra chính tả.
+- Kiểm tra khoảng trống và xuống dòng của text.
+- Không để nội dung bị che bởi hiệu ứng.
+
+## Phase 7 – End-to-End Visual QA
+
+Kiểm tra:
+
+- Mở website.
+- Intro.
+- Hero.
+- Scroll-linked portrait.
+- Invitation.
+- Message.
+- Gallery.
+- Lightbox.
+- Love Letter.
+- Closing.
+- Replay.
+- Music.
+- Desktop.
+- iPhone 16.
+- iPad Gen 10.
+- Keyboard.
+- Reduced motion.
+- Safari tương thích.
+- Production build.
+- GitHub Pages.
+
+Không đánh dấu Visual QA Passed khi chưa thực sự kiểm tra bằng browser hoặc chưa có ảnh/video xác minh.
+
+---
+
+# XVI. ACCEPTANCE CRITERIA
+
+## A. Portrait
+
+- Ảnh tách nền thật.
+- Không mất tóc, tua mũ hoặc trang phục.
+- Không thay đổi mặt Mai Khuê.
+- Không có viền background.
+- Không bị cắt trên iPhone.
+- Không mất chất lượng rõ rệt.
+- Có fallback.
+
+## B. Cinematic Hero
+
+- Portrait là trọng tâm.
+- Typography đẹp.
+- Có layering rõ ràng.
+- Phong cách pastel.
+- Không bị rối mắt.
+- Entrance animation mượt.
+
+## C. Scroll Experience
+
+- Portrait chuyển động theo scroll.
+- Chuyển cảnh Hero → Invitation liền mạch.
+- Không bị jump.
+- Không scroll trap.
+- Không xung đột với snap.
+- Các section dài vẫn đọc được.
+- Deep links hoạt động.
+
+## D. Gallery
+
+- 34 ảnh đầy đủ.
+- Vòng cung 3D rõ ràng.
+- Auto motion mượt.
+- Hover nổi bật.
+- Click mở Lightbox.
+- Swipe hoạt động.
+- Không clipping.
+- Không runtime error.
+- Không memory leak.
+
+## E. Content
+
+- Nội dung sử dụng cách gọi vợ iu tự nhiên.
+- Không còn những lời chúc cứng nhắc.
+- Tên Nguyễn Võ Mai Khuê chính xác.
+- Ngành và trường chính xác.
+- Ngày tốt nghiệp chính xác.
+- Người gửi Quân iu.
+- Không xuất hiện số điện thoại.
+- Không bịa kỷ niệm cụ thể.
+
+## F. Responsive
+
+- Desktop đẹp.
+- iPhone 16 đẹp.
+- iPad Gen 10 portrait đẹp.
+- iPad Gen 10 landscape đẹp.
+- Touch hoạt động.
+- Lightbox dễ dùng.
+- Không overflow ngang.
+- Không mất chữ do viewport động.
+
+## G. Build
+
+- npm run build thành công.
+- Tests liên quan thành công.
+- Không làm hỏng workflow GitHub Pages.
+- Không xóa ảnh gốc.
+- Không phát sinh dependency không cần thiết.
+
+---
+
+# XVII. KẾT QUẢ MONG MUỐN TỪ PLANNING MODE
+
+Hãy trả về:
+
+1. Audit codebase hiện tại.
+2. Đối chiếu với portfolio-dev.
+3. Những ý tưởng nên học hỏi.
+4. Những ý tưởng không nên sao chép.
+5. Concept UI/UX cuối cùng.
+6. Storyboard từng giai đoạn scroll.
+7. Thiết kế Hero Portrait.
+8. Phương án background removal.
+9. Phương án layer và z-index.
+10. Kiến trúc GSAP ScrollTrigger.
+11. Cách phối hợp với scroll snap hiện tại.
+12. Thiết kế nâng cấp 3D Gallery.
+13. Bộ content cuối cùng.
+14. Responsive strategy.
+15. Danh sách files cần thay đổi.
+16. Implementation phases.
+17. Visual QA plan.
+18. Performance plan.
+19. Rủi ro và phương án xử lý.
+20. Những quyết định quan trọng cần tôi phê duyệt.
+
+Hãy trình bày thật cụ thể.
+
+Với mỗi phase, nêu:
+
+- Công việc.
+- File changes.
+- Animation behavior.
+- Layout behavior.
+- Testing.
+- Expected result.
+- Acceptance criteria.
+
+Nếu có Browser Preview, hãy chụp screenshot hiện trạng trước để so sánh sau nâng cấp.
+
+---
+
+# XVIII. QUY TẮC THỰC HIỆN SAU KHI PHÊ DUYỆT
+
+Sau khi tôi duyệt plan:
+
+- Thực hiện theo từng phase.
+- Không thay framework.
+- Không xóa ảnh.
+- Không sửa thông tin cá nhân hóa ngoài nội dung đã duyệt.
+- Không tự ý commit.
+- Không tự push.
+- Không tự deploy.
+- Không tự thay nhạc.
+- Không tạo mô hình 3D người thật.
+- Không dùng ảnh AI làm thay đổi gương mặt Mai Khuê.
+- Không thêm hiệu ứng chỉ để phô diễn kỹ thuật.
+- Ưu tiên trải nghiệm thật trên trình duyệt.
+
+Tôi muốn được review:
+
+1. Ảnh Portrait đã tách nền.
+2. Hero mới.
+3. Scroll-linked Hero transition.
+4. Gallery 3D.
+5. Toàn bộ website trên mobile.
+
+Không chuyển sang phần tiếp theo khi có vấn đề visual lớn chưa được giải quyết.
+
+---
+
+# YÊU CẦU CUỐI CÙNG
+
+Tôi muốn biến HappyGradSweetie thành một món quà tốt nghiệp thật sự đáng nhớ, không chỉ là một website có vài section và hình ảnh.
+
+Khi Mai Khuê mở website, tôi muốn cô ấy nhìn thấy chính mình là nhân vật trung tâm của câu chuyện.
+
+Khi cô ấy cuộn xuống, mọi thứ chuyển động mềm mại như một bức thư đang được mở ra.
+
+Khi đến Gallery, cô ấy có thể khám phá 34 tấm ảnh của mình trong một không gian 3D đẹp mắt.
+
+Khi đọc thư, cô ấy cảm nhận được sự yêu thương và tự hào từ Quân.
+
+Khi kết thúc, website để lại một cảm giác ấm áp và có thể mở lại bất cứ lúc nào.
+
+Đây là đợt BIG UI/UX UPDATE gần như cuối cùng.
+
+Tôi ưu tiên:
+
+1. Visual quality.
+2. Emotional storytelling.
+3. Smooth interactions.
+4. Cinematic portrait.
+5. 3D gallery.
+6. Responsive.
+7. Performance.
+8. Maintainable Angular architecture.
+
+BÂY GIỜ HÃY ĐỌC CODEBASE LOCAL, NGHIÊN CỨU REPOSITORY THAM KHẢO VÀ TRẢ VỀ MỘT BẢN KẾ HOẠCH NÂNG CẤP CUỐI CÙNG, CHI TIẾT, CÓ STORYBOARD VÀ CÓ THỂ TRIỂN KHAI THỰC TẾ.
+
+CHỈ LẬP KẾ HOẠCH BẰNG TIẾNG VIỆT.
+
+CHƯA CHỈNH SỬA CODE. CHỜ TÔI PHÊ DUYỆT.

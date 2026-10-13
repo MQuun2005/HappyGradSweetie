@@ -1,0 +1,245 @@
+{
+  "verifiedAt": "2026-10-12T14:16:57.174Z",
+  "alignmentCases": 96,
+  "maxAlignmentError": 0.5,
+  "unchangedPhotos": 68,
+  "failures": [],
+  "sources": [
+    {
+      "file": "src/app/app.config.ts",
+      "sha256": "95de03f192890a937cf2ca8997bd8d44e1ff145974607017d6cd738cbd321670"
+    },
+    {
+      "file": "src/app/app.css",
+      "sha256": "4d688f4c57087c75ef43d1cad04640fdbcb75c47545a79e08c8c249a7e6d0cd9"
+    },
+    {
+      "file": "src/app/app.html",
+      "sha256": "3e9e930505a0b9c6702a5beae84cfdd8b768590f916c506bd5f742b85bc57d16"
+    },
+    {
+      "file": "src/app/app.spec.ts",
+      "sha256": "081f8fa4fa959807898eb912659be9465646a132ff7a72090a030f03589ae4e4"
+    },
+    {
+      "file": "src/app/app.ts",
+      "sha256": "f4fee62400cef1fc41496a2e9544500f48b3acf87056cf3a0116c01cde9d9c47"
+    },
+    {
+      "file": "src/app/components/closing-section/closing-section.css",
+      "sha256": "a270060e4c2d4b3d630eb8176f3c17059b721f21a86f3f96efc3aea1318fe6fa"
+    },
+    {
+      "file": "src/app/components/closing-section/closing-section.html",
+      "sha256": "e9b23596f313d1f7962611f996ae17600aea1b66f58b1da2759f9eb50134a4cc"
+    },
+    {
+      "file": "src/app/components/closing-section/closing-section.ts",
+      "sha256": "e35d02dc091d9ad6cfaf96bc7e67a1deb7338b5723a7ec7ea9c9358162ccc0e2"
+    },
+    {
+      "file": "src/app/components/gift-intro/gift-intro.css",
+      "sha256": "37b1ae40e8fdcbdbfdfbd88c75150fe01c72151bc7649151fc745a032903943a"
+    },
+    {
+      "file": "src/app/components/gift-intro/gift-intro.html",
+      "sha256": "b240a9aebcd3751d18884eb3f0877dae239a8ec757b1803c35a650c2f06e1cb3"
+    },
+    {
+      "file": "src/app/components/gift-intro/gift-intro.ts",
+      "sha256": "cabf6eb321f7e60325cf55efec736e5dc876f4d4d31b3bfd6718b0bedce6ba90"
+    },
+    {
+      "file": "src/app/components/graduation-hero/graduation-hero.css",
+      "sha256": "59467b9a18adaf4fefa1bbdc5ee3615229e92a9bf67021c4a207c17a63423635"
+    },
+    {
+      "file": "src/app/components/graduation-hero/graduation-hero.html",
+      "sha256": "743348b597ef1369922a27de72a09c4205f179041ef3f76d12201a605b37ba16"
+    },
+    {
+      "file": "src/app/components/graduation-hero/graduation-hero.spec.ts",
+      "sha256": "eefe12777b9a011e87a11e671b887afe91c2b2d3cca03cbbfd3984ce915dafa3"
+    },
+    {
+      "file": "src/app/components/graduation-hero/graduation-hero.ts",
+      "sha256": "85a362ff63e21fd7b7dcd03e801686840fe8a39f21eca72490369e0b375f9987"
+    },
+    {
+      "file": "src/app/components/graduation-invitation/graduation-invitation.css",
+      "sha256": "7c6cea5c86800c07e890eb8770dc599eb55e096aa109df38b05907d57b3fb95f"
+    },
+    {
+      "file": "src/app/components/graduation-invitation/graduation-invitation.html",
+      "sha256": "4d26336850cb2806eaf834367d6ed666a06c3bc9440b9a489125a8c0337fff03"
+    },
+    {
+      "file": "src/app/components/graduation-invitation/graduation-invitation.ts",
+      "sha256": "88f15d250051f2ad73d2f4550d96a8444164a7f307d7e0aaa5da1d0d1679bc6a"
+    },
+    {
+      "file": "src/app/components/graduation-letter/graduation-letter.css",
+      "sha256": "a78b59188d3ddafc295fcaac1ed7e312b62f9e91cdcf4a9b1d35b48134458952"
+    },
+    {
+      "file": "src/app/components/graduation-letter/graduation-letter.html",
+      "sha256": "7f638a3678db4e4c38755524b279f44d6c270dd9d96fbae39270a454d6916f11"
+    },
+    {
+      "file": "src/app/components/graduation-letter/graduation-letter.ts",
+      "sha256": "f84fbc5c1f4b739a32b96e4f202c96df30eff5ecdeb50174b340c236a9c01a36"
+    },
+    {
+      "file": "src/app/components/graduation-message/graduation-message.css",
+      "sha256": "3ad39572653c1872b9f561621711659a50632d00c2843d01b13836c761e0a9ec"
+    },
+    {
+      "file": "src/app/components/graduation-message/graduation-message.html",
+      "sha256": "5aa38d1e4f467d4b1cc94e3d98ee15d3868649aac64700b87d04d3f4ba5ef09d"
+    },
+    {
+      "file": "src/app/components/graduation-message/graduation-message.ts",
+      "sha256": "66ddc57379982a0542ea0804577776c0f56b317269fdd6650033a6dc202e37f5"
+    },
+    {
+      "file": "src/app/components/graduation-portrait/graduation-portrait.css",
+      "sha256": "b865e401ce9ddf05aaca5226bd1f5afacd8d5a6d8b4530d400293cc82b3ed09f"
+    },
+    {
+      "file": "src/app/components/graduation-portrait/graduation-portrait.html",
+      "sha256": "f39e4af1ed921f9c902bd3c7c395dbdcbcc43724a44555a3b1052112c953a53c"
+    },
+    {
+      "file": "src/app/components/graduation-portrait/graduation-portrait.spec.ts",
+      "sha256": "3492581009dea697ce776819b4f538b4f404d7f6d0f5c0db879f9ba977c9b6a3"
+    },
+    {
+      "file": "src/app/components/graduation-portrait/graduation-portrait.ts",
+      "sha256": "ee50c33da6f1e2f91bb381263ff4a6fa861f8d454d178d69e5685fc3b5fbb11d"
+    },
+    {
+      "file": "src/app/components/interactive-photo-gallery/interactive-photo-gallery.css",
+      "sha256": "a2ccf5e6eee97a465c8a7ec13ead6fe96ed8494dc8ee7442911ec233b9d9f467"
+    },
+    {
+      "file": "src/app/components/interactive-photo-gallery/interactive-photo-gallery.html",
+      "sha256": "2a370d860000efadde7ba158d583a4662227c1188ff16905ea16040145c43411"
+    },
+    {
+      "file": "src/app/components/interactive-photo-gallery/interactive-photo-gallery.spec.ts",
+      "sha256": "54a2b0445d775cbac5cd0c38d7cd7f4d296bfc041d3f03b24b9a9193bfaa2d42"
+    },
+    {
+      "file": "src/app/components/interactive-photo-gallery/interactive-photo-gallery.ts",
+      "sha256": "5be377af7128f6a48e00bed451c184cd6e52eead79e565d104164f82512d25a6"
+    },
+    {
+      "file": "src/app/components/music-control/music-control.css",
+      "sha256": "185f1bd23a4b83e324051c74f3774b75125be6f369eca23f4cdac89b8f10c730"
+    },
+    {
+      "file": "src/app/components/music-control/music-control.html",
+      "sha256": "a14d948faefeb36aa53c7ceb75a4d6d72e715984b008dc09bceb24dcd167c4a0"
+    },
+    {
+      "file": "src/app/components/music-control/music-control.spec.ts",
+      "sha256": "25070a6876439604e8c6d87a2a629666b8959f2a0e4d316da0f4ddc440cb6973"
+    },
+    {
+      "file": "src/app/components/music-control/music-control.ts",
+      "sha256": "20d0ad9fb02889b467537ca8be7f37273fccafb7cc584c398be7434256308924"
+    },
+    {
+      "file": "src/app/components/photo-lightbox/photo-lightbox.css",
+      "sha256": "f7c6979991cffa64b2e4f8a750717c330ae811fc3f3d99dc054ca83a278fb245"
+    },
+    {
+      "file": "src/app/components/photo-lightbox/photo-lightbox.html",
+      "sha256": "913c1a733ddc7cc358f74f9ddaa209ec437c0d174db3954171a8ea85203153be"
+    },
+    {
+      "file": "src/app/components/photo-lightbox/photo-lightbox.ts",
+      "sha256": "7949396d51fd240b4df00e2883c3792f209c48f423669a010919edeea79b0429"
+    },
+    {
+      "file": "src/app/components/section-navigator/section-navigator.css",
+      "sha256": "090f1524a36f43bb08e6d1cb2174fad428aff7abfe8a0ab66d9b0e8e4b071cbd"
+    },
+    {
+      "file": "src/app/components/section-navigator/section-navigator.html",
+      "sha256": "549499d4bc7fc86c5cc74cdf98316ef445935f4c96b1b6672cb66ac5d4edd3c9"
+    },
+    {
+      "file": "src/app/components/section-navigator/section-navigator.spec.ts",
+      "sha256": "5b9de5babe2771dc3ba54b41822467f35eec88602176d26c84a85c64ae531a47"
+    },
+    {
+      "file": "src/app/components/section-navigator/section-navigator.ts",
+      "sha256": "a15154f4a332a6691f9e03f6eb9f2675c6f988098a7d9a3acec7014003f223e5"
+    },
+    {
+      "file": "src/app/data/celebration-content.spec.ts",
+      "sha256": "aaf80a98871b4161426a1b8202f0b46f285df013305017ef35c2e0805877fe3a"
+    },
+    {
+      "file": "src/app/data/celebration-content.ts",
+      "sha256": "ec7f3d5e1b2a1e7f3ed88d519b5645517904d2b28c8e01fb19ff2d3695fd14f2"
+    },
+    {
+      "file": "src/app/directives/opening-story.directive.spec.ts",
+      "sha256": "a2e1bbd93a3e9ba0a4e693df0165ee89ec1716bb4fcf3b8638df18ce156bd19c"
+    },
+    {
+      "file": "src/app/directives/opening-story.directive.ts",
+      "sha256": "573c7331940b8528ef19c1cf49f26bd1d825fb75571220e003cc8c5b4f71564b"
+    },
+    {
+      "file": "src/app/models/celebration.models.ts",
+      "sha256": "d37badfb4148d8f3db73cbd88b301038f0a11f5d714cbeb24038052c1d50525a"
+    },
+    {
+      "file": "src/app/utils/gallery-layout.spec.ts",
+      "sha256": "735371b8738c8eecf3871d1f23a28a6abd2b1ba71adfd1e592f7256c04f22edd"
+    },
+    {
+      "file": "src/app/utils/gallery-layout.ts",
+      "sha256": "fd0c23a47b92410a285b18c3ccab93a067b0637670df72a5d090d9cf8a899b7d"
+    },
+    {
+      "file": "src/app/utils/opening-story.spec.ts",
+      "sha256": "e02df1ba747eae33bf98c717ca7e47327bbf7be0f322eff8440e4860ca721348"
+    },
+    {
+      "file": "src/app/utils/opening-story.ts",
+      "sha256": "411977c3eec4f17710f2066a5e2aa1f6bc3391e1446a49a2718268ed41ca9531"
+    },
+    {
+      "file": "src/app/utils/section-alignment.spec.ts",
+      "sha256": "97b6d76631a89ad4975493725e002c172bd5b62b86d07f4f90faef12ed8110a3"
+    },
+    {
+      "file": "src/app/utils/section-alignment.ts",
+      "sha256": "95cb397344c4be57e064ef543a9d44d15e84c8866b24cfcb250162b3e3aae492"
+    },
+    {
+      "file": "src/app/utils/section-scroll-controller.spec.ts",
+      "sha256": "6857758ec9922f3b8e08c52d9e7a95888cb671103f3204594e6008b25d6749ba"
+    },
+    {
+      "file": "src/app/utils/section-scroll-controller.ts",
+      "sha256": "cc111e2b7e9cef7ff9a8fdce358dd3f47c70c0beb4232f3162b2a21dbe6e1ee9"
+    },
+    {
+      "file": "src/index.html",
+      "sha256": "b4e938a2d80aa88c8bed8eeb1faaa36c2dbaabc94a88db9afc5ff7bd1bbec202"
+    },
+    {
+      "file": "src/main.ts",
+      "sha256": "5e221b3afc582920a8ddba7983c538e9792b6ae99c9591c4acf2fb5ca78fbe74"
+    },
+    {
+      "file": "src/styles.css",
+      "sha256": "15a440cb30784c01fd498db70acabca36adaa20334cacd40b0a62a96dd6262db"
+    }
+  ]
+}
