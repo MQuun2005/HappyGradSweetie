@@ -6,6 +6,35 @@ import {
 } from './gallery-layout';
 
 describe('gallery layout', () => {
+  it('does not duplicate photos in empty and small collections', () => {
+    const config = getGalleryLayoutConfig(1440);
+    for (const count of [0, 1, 2, 5, 34]) {
+      const indices = getVirtualLogicalIndices(33.95, config, count);
+      expect(indices.length).toBe(Math.min(count, 11));
+      expect(new Set(indices.map(i => positiveModulo(i, count))).size).toBe(indices.length);
+    }
+  });
+
+  it('keeps photo identity and geometry continuous through 34 to 1 in either direction', () => {
+    const config = getGalleryLayoutConfig(1184);
+    for (const index of [31, 32, 33, 34, 35, 36]) {
+      const a = getArcCardLayout(index, 33.95, 34, config);
+      const b = getArcCardLayout(index, 34.05, 34, config);
+      expect(a.photoIndex).toBe(b.photoIndex);
+      expect(Math.abs(a.x-b.x)).toBeLessThan(17);
+      expect(Math.abs(a.z-b.z)).toBeLessThan(19);
+      const normalized = getArcCardLayout(index-34, .05, 34, config);
+      expect(normalized.x).toBe(b.x);
+      expect(normalized.z).toBe(b.z);
+      expect(normalized.photoIndex).toBe(b.photoIndex);
+    }
+  });
+
+  it('keeps a low-height touch phone in the three-photo profile even in landscape', () => {
+    expect(getGalleryLayoutConfig(852, 393, true).visibleRadius).toBe(1);
+    expect(getGalleryLayoutConfig(820, 1180, true).visibleRadius).toBe(2);
+    expect(getGalleryLayoutConfig(1180, 820, true).visibleRadius).toBe(3);
+  });
   it('maps logical indexes through the 34-photo loop in both directions', () => {
     expect(positiveModulo(34, 34)).toBe(0);
     expect(positiveModulo(-1, 34)).toBe(33);

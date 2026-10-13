@@ -1,10 +1,9 @@
-:host {
-  display: block;
-}
-
+:host { display: block; }
 .gallery {
   position: relative;
   isolation: isolate;
+  overflow-x: clip;
+  overflow-y: visible;
   min-block-size: var(--chapter-viewport);
   display: flex;
   flex-direction: column;
@@ -13,247 +12,94 @@
     max(3rem, calc(2.25rem + var(--safe-area-bottom))) max(1rem, var(--safe-area-left));
   background: var(--color-lavender);
 }
-
-.gallery__header {
-  max-inline-size: 43rem;
-  margin: 0 auto;
-  text-align: center;
-}
-
+.gallery__header { max-inline-size: 43rem; margin: 0 auto; text-align: center; }
 .gallery__eyebrow {
-  margin: 0;
-  color: var(--color-rose);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  margin: 0; color: var(--color-rose); font-size: .72rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
 }
-
 h2 {
-  margin: 0.8rem auto 1rem;
-  color: var(--color-navy);
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5.4rem);
-  font-weight: 600;
-  line-height: 0.9;
-  letter-spacing: -0.045em;
+  margin: .8rem auto 1rem; color: var(--color-navy); font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.4rem); font-weight: 600; line-height: .9; letter-spacing: -.045em;
 }
-
-.gallery__header > p:last-child {
-  margin: 0 auto;
-  color: var(--color-muted);
-  line-height: 1.75;
-}
-
+.gallery__header > p:last-child { margin: 0 auto; color: var(--color-muted); line-height: 1.75; }
 .gallery__scene {
-  position: relative;
-  max-inline-size: 74rem;
+  position: relative; inline-size: 100%; max-inline-size: 74rem;
   block-size: clamp(28rem, 47vw, 37rem);
   margin: clamp(2.5rem, 6vw, 4.5rem) auto 0;
   perspective: 1100px;
-  perspective-origin: 50% 46%;
-  touch-action: pan-y;
-  cursor: grab;
-  outline: none;
-  user-select: none;
+  perspective-origin: 50% 50%;
+  touch-action: pan-y pinch-zoom;
+  cursor: grab; outline: none; user-select: none;
   overscroll-behavior-inline: contain;
 }
-
-.gallery__scene:active {
-  cursor: grabbing;
-}
-
-.gallery__scene:focus-visible {
-  outline: 2px solid var(--color-rose);
-  outline-offset: 0.75rem;
-}
-
+.gallery__scene:active { cursor: grabbing; }
+.gallery__scene:focus-visible { outline: 2px solid var(--color-rose); outline-offset: .75rem; }
 .gallery__stage {
-  position: absolute;
-  inset: 0;
-  transform-origin: 50% 53%;
+  position: absolute; inset: 0;
+  transform-origin: 50% 50%;
   transform-style: preserve-3d;
-  will-change: transform;
+  /* The invisible camera plane must not intercept cards behind its z=0 plane.
+     Only each card's hit surface participates; events still bubble to the scene. */
+  pointer-events: none;
+  /* No opacity/filter/overflow/will-change grouping on the camera. */
 }
-
-.gallery__stage--suspended {
+.gallery__stage--suspended { pointer-events: none; }
+.gallery__empty { display: grid; block-size: 100%; place-items: center; margin: 0; color: var(--color-muted); }
+.photo-card__rail {
+  position: absolute; top: 50%; left: 50%;
+  inline-size: var(--card-width, 232px); aspect-ratio: 1706 / 2560;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
   pointer-events: none;
 }
-
-.gallery__empty {
-  display: grid;
-  block-size: 100%;
-  place-items: center;
-  margin: 0;
-  color: var(--color-muted);
-}
-
 .photo-card {
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  display: block;
-  inline-size: clamp(9.25rem, 16vw, 14.5rem);
-  aspect-ratio: 1706 / 2560;
-  overflow: hidden;
-  border: 0.5rem solid rgb(255 253 249 / 96%);
-  border-radius: 0.45rem;
-  padding: 0;
+  --hover-progress: 0;
+  position: absolute; inset: 0; display: block;
+  inline-size: 100%; block-size: 100%;
+  border: .5rem solid rgb(255 253 249 / 96%); border-radius: .45rem;
+  overflow: hidden; padding: 0;
   background: var(--color-card);
   box-shadow: 0 16px 32px rgb(39 50 75 / 18%), 0 0 0 1px rgb(201 164 106 / 16%);
-  transform-origin: center center;
-  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
   backface-visibility: hidden;
-  /* RAF owns transform and opacity; CSS only animates visual treatment. */
-  transition: box-shadow 260ms ease, filter 260ms ease;
   user-select: none;
-  will-change: transform, opacity;
+  /* Only the single RAF writes transforms. Material is a flat leaf inside the 3D rail. */
 }
-
-/* Front cards: hoverable, clickable */
-.photo-card--front {
-  pointer-events: auto;
-  cursor: pointer;
-  filter: brightness(1) saturate(1);
+.photo-card--front { cursor: pointer; }
+.photo-card--back { pointer-events: none; cursor: default; }
+.photo-card--presented {
+  box-shadow: 0 26px 48px rgb(39 50 75 / 26%), 0 0 0 1px rgb(201 164 106 / 50%);
 }
-
-.photo-card--front:hover,
-.photo-card--focused {
-  box-shadow: 0 35px 75px rgb(39 50 75 / 45%), 0 0 0 2px rgb(201 164 106 / 75%), 0 0 30px rgb(201 164 106 / 25%);
-  filter: brightness(1.05) saturate(1.08);
-}
-
-.photo-card--focused {
-  transition: box-shadow 320ms ease, filter 320ms ease;
-}
-
-.photo-card--front:hover .photo-card__shade,
-.photo-card--focused .photo-card__shade,
-.photo-card--front:hover .photo-card__caption,
-.photo-card--focused .photo-card__caption {
-  opacity: 1;
-}
-
-.photo-card--front:hover .photo-card__caption,
-.photo-card--focused .photo-card__caption {
-  transform: translateY(0);
-}
-
-/* Back cards: non-interactive, no hover, subtle depth styling */
-.photo-card--back {
-  pointer-events: none !important;
-  cursor: default !important;
-  user-select: none;
-  filter: brightness(0.78) contrast(0.92);
-}
-
+.photo-card:focus-visible { outline: 3px solid var(--color-rose); outline-offset: 3px; }
 .photo-card img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  inline-size: 100%;
-  block-size: 100%;
-  max-inline-size: none;
-  object-fit: cover;
-  pointer-events: none;
-  user-select: none;
+  position: absolute; inset: 0; display: block; inline-size: 100%; block-size: 100%;
+  max-inline-size: none; object-fit: contain; pointer-events: none; user-select: none;
   -webkit-user-drag: none;
 }
-
-.photo-card__shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 48%, rgb(39 50 75 / 74%));
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 220ms ease;
-}
-
 .photo-card__caption {
-  position: absolute;
-  inset: auto 0.7rem 0.7rem;
-  color: #fff;
-  font-size: 0.74rem;
-  font-weight: 700;
-  line-height: 1.4;
-  opacity: 0;
-  pointer-events: none;
-  text-align: start;
-  transform: translateY(0.4rem);
-  transition: opacity 220ms ease, transform 220ms ease;
+  position: absolute; inset: auto .3rem .3rem; padding: .45rem .55rem;
+  border-radius: .25rem; color: var(--color-navy); background: rgb(255 249 243 / 94%);
+  font-size: .7rem; font-weight: 600; line-height: 1.4; text-align: start;
+  opacity: var(--hover-progress); pointer-events: none;
 }
-
-.gallery__stage:has(.photo-card--focused) .photo-card:not(.photo-card--focused) {
-  filter: brightness(0.72) saturate(0.85);
-  opacity: 0.65;
-}
-
-.photo-card--broken {
-  color: var(--color-navy);
-}
-
-.photo-card__fallback {
-  position: absolute;
-  inset: 50% 0 auto;
-  padding: 1rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1.45;
-  text-align: center;
-  transform: translateY(-50%);
-}
-
-.sr-only {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
+.photo-card--broken { color: var(--color-navy); }
+.photo-card__fallback { position: absolute; inset: 50% 0 auto; padding: 1rem; font-size: .8rem;
+  font-weight: 700; line-height: 1.45; text-align: center; transform: translateY(-50%); }
+.gallery__hint { margin: 1rem 0 0; text-align: center; font-size: .75rem; color: var(--color-muted); }
+.sr-only { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; }
 @media (max-width: 40rem) {
-  .gallery {
-    padding-inline: 0.5rem;
-  }
-
-  .gallery__scene {
-    block-size: min(30rem, 58svh);
-    margin-block-start: 2rem;
-    perspective: 1050px;
-  }
-
-  .photo-card {
-    inline-size: clamp(9.8rem, 50vw, 12.5rem);
-    border-width: 0.42rem;
-  }
+  .gallery { padding-inline: .5rem; }
+  .gallery__scene { block-size: min(30rem, 58svh); margin-block-start: 2rem; }
+  .photo-card { border-width: .42rem; }
 }
-
-@media (min-width: 40.0625rem) and (max-width: 63.999rem) and (pointer: coarse) {
-  .gallery__scene {
-    block-size: min(35rem, 56svh);
-    margin-block-start: 2.75rem;
-  }
-
-  .photo-card {
-    inline-size: clamp(10.5rem, 26vw, 14rem);
-  }
+@media (min-width: 40.0625rem) and (max-width: 63.999rem) and (any-pointer: coarse) {
+  .gallery__scene { block-size: min(35rem, 56svh); margin-block-start: 2.75rem; }
 }
-
-@media (min-width: 64rem) and (orientation: landscape) and (pointer: coarse) {
-  .gallery__scene {
-    block-size: clamp(26rem, 54svh, 32rem);
-    margin-block-start: 2.25rem;
-  }
-
-  .gallery__header > p:last-child {
-    line-height: 1.55;
-  }
+@media (min-width: 64rem) and (orientation: landscape) and (any-pointer: coarse) {
+  .gallery__scene { block-size: clamp(26rem, 54svh, 32rem); margin-block-start: 2.25rem; }
+  .gallery__header > p:last-child { line-height: 1.55; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .photo-card {
-    transition: none;
-    will-change: auto;
-  }
+@media (max-height: 30rem) and (any-pointer: coarse) {
+  .gallery__scene { block-size: 22rem; margin-block-start: 1.5rem; }
 }

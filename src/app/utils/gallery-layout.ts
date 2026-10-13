@@ -13,6 +13,7 @@ export interface GalleryLayoutConfig {
   readonly cameraYaw: number;
   readonly cameraPitch: number;
   readonly frontRadius: number;
+  readonly cardYawBias: number;
 }
 
 export interface ArcCardLayout {
@@ -28,11 +29,10 @@ export interface ArcCardLayout {
   readonly opacity: number;
   readonly projectedDepth: number;
   readonly isFront: boolean;
-  readonly zIndex: number;
 }
 
 export function positiveModulo(value: number, modulo: number): number {
-  return ((value % modulo) + modulo) % modulo;
+  return modulo > 0 && Number.isFinite(value) ? ((value % modulo) + modulo) % modulo : 0;
 }
 
 export function getGalleryViewport(viewportWidth: number): GalleryViewport {
@@ -48,21 +48,22 @@ export function getGalleryLayoutConfig(
   viewportHeight = 900,
   isCoarsePointer = false,
 ): GalleryLayoutConfig {
-  switch (getGalleryViewport(viewportWidth)) {
+  switch (isCoarsePointer && viewportHeight < 500 ? 'compact' : getGalleryViewport(viewportWidth)) {
     case 'compact':
       return {
         visibleRadius: 1,
         buffer: 1,
         angleStep: 20,
-        radiusX: 220,
-        radiusZ: 260,
+        radiusX: 280,
+        radiusZ: 800,
         nearOffset: 54,
-        cameraCompensation: 70,
+        cameraCompensation: 90,
         verticalTravel: 10,
         verticalDrop: 10,
         cameraYaw: -18,
         cameraPitch: 5,
-        frontRadius: 1.0,
+        frontRadius: 1.5,
+        cardYawBias: isCoarsePointer ? 14 : 0,
       };
     case 'regular':
       return {
@@ -70,14 +71,16 @@ export function getGalleryLayoutConfig(
         buffer: 2,
         angleStep: 17,
         radiusX: isCoarsePointer && viewportHeight > viewportWidth ? 360 : 390,
-        radiusZ: isCoarsePointer && viewportHeight > viewportWidth ? 330 : 350,
+        // A deeper touch rail keeps the front portrait unobscured without hover.
+        radiusZ: isCoarsePointer && viewportHeight > viewportWidth ? 820 : 350,
         nearOffset: 80,
         cameraCompensation: 170,
         verticalTravel: 15,
         verticalDrop: 14,
         cameraYaw: -22,
         cameraPitch: 6,
-        frontRadius: 1.5,
+        frontRadius: 2.5,
+        cardYawBias: isCoarsePointer ? 17.6 : 0,
       };
     default:
       // Keep the rail inside a narrow desktop scene while retaining the full
@@ -89,14 +92,15 @@ export function getGalleryLayoutConfig(
         buffer: 2,
         angleStep: isTouchLandscape ? 14.5 : 15.5,
         radiusX: Math.round((isTouchLandscape ? 535 : 580) * railScale),
-        radiusZ: Math.round((isTouchLandscape ? 420 : 460) * railScale),
+        radiusZ: Math.round((isTouchLandscape ? 700 : 460) * railScale),
         nearOffset: Math.round(105 * railScale),
         cameraCompensation: Math.round(310 * railScale),
         verticalTravel: isTouchLandscape ? 14 : 18,
         verticalDrop: isTouchLandscape ? 12 : 16,
         cameraYaw: isTouchLandscape ? -20 : -24,
         cameraPitch: isTouchLandscape ? 5 : 6.5,
-        frontRadius: 1.85,
+        frontRadius: 3.5,
+        cardYawBias: isTouchLandscape ? 16 : 0,
       };
   }
 }
@@ -104,11 +108,13 @@ export function getGalleryLayoutConfig(
 export function getVirtualLogicalIndices(
   position: number,
   config: GalleryLayoutConfig,
+  photoCount = Infinity,
 ): readonly number[] {
   const center = Math.floor(position);
   const radius = config.visibleRadius + config.buffer;
 
-  return Array.from({ length: radius * 2 + 1 }, (_, index) => center - radius + index);
+  const length = Math.max(0, Math.min(radius * 2 + 1, photoCount));
+  return Array.from({ length }, (_, index) => center - Math.floor(length / 2) + index);
 }
 
 export function getArcCardLayout(
@@ -147,13 +153,14 @@ export function getArcCardLayout(
     x: Number(x.toFixed(2)),
     y: Number(y.toFixed(2)),
     z: Number(z.toFixed(2)),
-    rotateY: Number(Math.max(-48, Math.min(48, -angle * 0.45)).toFixed(2)),
+    // Touch has no hover reveal: keep the front face legible while the rail/camera
+    // still provide near/far depth. This also avoids intersecting adjacent planes.
+    rotateY: Number(Math.max(-48, Math.min(48, -angle * 0.45 + config.cardYawBias)).toFixed(2)),
     rotateZ: Number((-angle * 0.12).toFixed(2)),
-    scale: Number(Math.max(0.74, 1 - distance * 0.035).toFixed(3)),
+    scale: Number(Math.max(0.74, 1 - distance * (config.visibleRadius === 1 ? 0.10 : 0.035)).toFixed(3)),
     opacity: Number(opacity.toFixed(3)),
     projectedDepth: Number(projectedDepth.toFixed(2)),
     isFront,
-    zIndex: Math.round(projectedDepth + 1000),
   };
 }
 
