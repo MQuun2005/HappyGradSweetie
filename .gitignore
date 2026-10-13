@@ -10,3 +10,10 @@
 .idea/
 *.log
 .DS_Store
+
+# Local visual-QA captures; curated evidence is explicitly tracked.
+/qa/plan1/*/
+/qa/plan1/PHASE5-VERIFICATION.json
+
+# Unapproved portrait experiment (keep locally; never ship as a personal asset).
+/public/Image/original/canva.png
