@@ -35,6 +35,12 @@ html {
   background: #fff9f3;
 }
 
+/* Stable for this controller's lifetime: never two competing snap owners. */
+html[data-scroll-coordinator] {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
 body {
   min-width: 20rem;
   margin: 0;

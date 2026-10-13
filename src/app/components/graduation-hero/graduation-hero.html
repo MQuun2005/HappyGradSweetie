@@ -1,23 +1,59 @@
 <section id="home" class="hero" aria-labelledby="hero-title">
-  <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
-  <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+  <div class="hero__backdrop" data-hero-glow aria-hidden="true"></div>
 
-  <div class="hero__content">
-    <p class="hero__eyebrow">{{ content.eyebrow }}</p>
-    <div class="hero__ornament" aria-hidden="true">
-      <span></span><i></i><span></span>
+  <div class="hero__layout">
+    <header class="hero__heading">
+      <p class="hero__eyebrow" data-hero-heading>{{ content.eyebrow }}</p>
+      <h1 id="hero-title" data-hero-heading>{{ content.title }}</h1>
+      <p class="hero__subheading" data-hero-heading>{{ content.subheading }}</p>
+    </header>
+
+    <!-- A normal-flow aspect ratio reserves the approved portrait footprint. -->
+    <div class="hero__portrait hero__portrait-slot" aria-hidden="true">
+      <div class="hero__portrait-scroll"></div>
     </div>
-    <h1 id="hero-title">{{ content.title }}</h1>
-    <p class="hero__lead">{{ content.lead }}</p>
-    <a class="hero__cta" href="#invitation">
-      <span>{{ content.ctaLabel }}</span>
-      <span aria-hidden="true">↓</span>
-    </a>
-  </div>
 
-  <div class="hero__cap" aria-hidden="true">
-    <span class="hero__cap-top"></span>
-    <span class="hero__cap-base"></span>
-    <span class="hero__tassel"></span>
+    <div class="hero__details">
+      <div data-hero-details>
+        <p class="hero__lead">{{ content.lead }}</p>
+        <a class="hero__cta" href="#invitation" (click)="navigateToInvitation($event)">
+          <span>{{ content.ctaLabel }}</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+
+    <p class="hero__scroll-hint" data-hero-details>
+      <span aria-hidden="true"></span>{{ content.scrollHint }}
+    </p>
   </div>
 </section>
+
+<!-- One portrait DOM throughout both chapters; no reparenting on scroll or resize. -->
+<div class="hero__portrait-track">
+  <div class="hero__portrait-stage">
+    <div class="hero__portrait-position">
+      <div class="hero__portrait-motion">
+        <div class="hero__portrait" [class.hero__portrait--fallback]="portraitFallback()">
+          <div class="hero__halo" data-hero-glow aria-hidden="true"></div>
+          <p class="hero__name" data-hero-decoration aria-hidden="true">Mai <em>Khuê</em></p>
+          <!-- Separate transform owners: Phase 3 entrance; Phase 4 scroll motion. -->
+          <div class="hero__portrait-scroll">
+            <div class="hero__portrait-entrance" data-hero-portrait>
+              <app-graduation-portrait
+                [content]="content"
+                (fallbackChanged)="portraitFallback.set($event)"
+              />
+            </div>
+          </div>
+          <span class="hero__sparkle hero__sparkle--one" data-hero-decoration aria-hidden="true"
+            >✧</span
+          >
+          <span class="hero__sparkle hero__sparkle--two" data-hero-decoration aria-hidden="true"
+            >✧</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

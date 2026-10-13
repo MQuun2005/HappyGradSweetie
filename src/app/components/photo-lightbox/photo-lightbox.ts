@@ -32,6 +32,7 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
   @Input() activeIndex: number | null = null;
   @Output() readonly activeIndexChange = new EventEmitter<number>();
   @Output() readonly closed = new EventEmitter<void>();
+  @Output() readonly scrollRestored = new EventEmitter<void>();
 
   readonly imageFailed = signal(false);
   readonly imageLoading = signal(true);
@@ -69,7 +70,9 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
 
     if (isOpen && !wasOpen) {
       this.lockScroll();
-      queueMicrotask(() => this.dialogRef?.nativeElement.focus());
+      // Own focus restoration as well as capture: CDK's automatic return can scroll
+      // an off-centre gallery card back into view after the saved offset is restored.
+      queueMicrotask(() => this.dialogRef?.nativeElement.focus({ preventScroll: true }));
     }
 
     if (isOpen) {
@@ -78,7 +81,10 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
 
     if (!isOpen && wasOpen) {
       this.unlockScroll();
-      queueMicrotask(() => this.previousFocus?.focus());
+      queueMicrotask(() => {
+        this.previousFocus?.focus({ preventScroll: true });
+        this.scrollRestored.emit();
+      });
     }
   }
 
@@ -206,7 +212,8 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
     this.renderer.setStyle(this.document.body, 'right', '0');
     this.renderer.setStyle(this.document.body, 'width', '100%');
     this.renderer.setStyle(this.document.body, 'overflow', 'hidden');
-    if (scrollbarWidth > 0) {
+    // Mobile layout overflow is not a scrollbar (it can be hundreds of pixels).
+    if (scrollbarWidth > 0 && scrollbarWidth <= 32) {
       this.renderer.setStyle(this.document.body, 'padding-right', `${scrollbarWidth}px`);
     }
   }
@@ -221,7 +228,7 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
       Object.assign(this.document.body.style, this.originalBodyStyles);
     }
     if (typeof window !== 'undefined') {
-      window.scrollTo({ top: this.lockedScrollY, behavior: 'auto' });
+      window.scrollTo({ top: this.lockedScrollY, behavior: 'instant' });
     }
     this.originalBodyStyles = undefined;
   }

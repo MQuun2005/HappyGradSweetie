@@ -21,9 +21,10 @@ import { MusicControlComponent } from './components/music-control/music-control'
 import { PhotoLightboxComponent } from './components/photo-lightbox/photo-lightbox';
 import { SectionNavigatorComponent } from './components/section-navigator/section-navigator';
 import { celebrationContent } from './data/celebration-content';
+import { OpeningStoryDirective } from './directives/opening-story.directive';
 
-const SECTION_IDS = ['home', 'invitation', 'message', 'memories', 'letter', 'closing'] as const;
-type SectionId = (typeof SECTION_IDS)[number];
+import { isSectionId, SectionId } from './utils/section-alignment';
+import { SectionScrollController } from './utils/section-scroll-controller';
 
 @Component({
   selector: 'app-root',
@@ -39,6 +40,7 @@ type SectionId = (typeof SECTION_IDS)[number];
     PhotoLightboxComponent,
     GiftIntroComponent,
     SectionNavigatorComponent,
+    OpeningStoryDirective,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
@@ -46,20 +48,24 @@ type SectionId = (typeof SECTION_IDS)[number];
 export class App implements AfterViewInit, OnDestroy {
   @ViewChild(MusicControlComponent) private musicControl?: MusicControlComponent;
 
+  @ViewChild(OpeningStoryDirective) private openingStory?: OpeningStoryDirective;
+
   protected readonly content = celebrationContent;
   protected readonly lightboxIndex = signal<number | null>(null);
   protected readonly introVisible = signal(this.shouldShowIntro());
   protected readonly activeSectionId = signal<SectionId>('home');
+  protected readonly replayToken = signal(0);
 
-  private readonly sections: HTMLElement[] = [];
-  private sectionObserver?: IntersectionObserver;
-  private resizeObserver?: ResizeObserver;
-  private sectionFrame?: number;
-  private settleTimer?: ReturnType<typeof setTimeout>;
-  private programmaticTarget?: SectionId;
-  private programmaticTimer?: ReturnType<typeof setTimeout>;
+  private scrolling?: SectionScrollController;
   private pageLockScrollY = 0;
-  private pageLockStyles?: { position: string; top: string; left: string; right: string; width: string; overflow: string };
+  private pageLockStyles?: {
+    position: string;
+    top: string;
+    left: string;
+    right: string;
+    width: string;
+    overflow: string;
+  };
 
   constructor(
     @Inject(DOCUMENT) private readonly document: Document,
@@ -67,42 +73,38 @@ export class App implements AfterViewInit, OnDestroy {
   ) {}
 
   ngAfterViewInit(): void {
-    this.collectSections();
-    this.installSectionTracking();
-    this.setActiveFromHash();
-    this.scheduleSectionEvaluation();
-
-    if (this.introVisible()) {
-      this.lockPageScroll();
-    }
+    this.ngZone.runOutsideAngular(() => {
+      this.scrolling = new SectionScrollController(this.document, {
+        active: (id) => this.ngZone.run(() => this.activeSectionId.set(id)),
+        layout: () => this.openingStory?.refreshLayout(),
+        synchronize: () => this.openingStory?.synchronize(),
+      });
+    });
+    if (this.introVisible()) this.lockPageScroll();
   }
 
   ngOnDestroy(): void {
-    this.sectionObserver?.disconnect();
-    this.resizeObserver?.disconnect();
-    if (this.sectionFrame !== undefined) {
-      cancelAnimationFrame(this.sectionFrame);
-    }
-    clearTimeout(this.settleTimer);
-    clearTimeout(this.programmaticTimer);
-    this.removeWindowListeners();
+    this.scrolling?.destroy();
     this.unlockPageScroll();
   }
 
   protected scrollToSection(id: string): void {
-    if (this.isSectionId(id)) {
-      this.navigateToSection(id, 'push', 'smooth');
-    }
+    if (isSectionId(id)) this.scrolling?.navigate(id);
   }
 
   protected openLightbox(index: number): void {
     if (index >= 0 && index < this.content.photos.length) {
+      this.scrolling?.suspend();
       this.lightboxIndex.set(index);
     }
   }
 
   protected closeLightbox(): void {
     this.lightboxIndex.set(null);
+  }
+
+  protected onLightboxRestored(): void {
+    if (!this.introVisible()) this.scrolling?.resume();
   }
 
   protected replayJourney(): void {
@@ -113,13 +115,10 @@ export class App implements AfterViewInit, OnDestroy {
       // Session storage is optional; replay remains available.
     }
 
-    if (typeof window !== 'undefined') {
-      window.history.replaceState({ section: 'home' }, '', '#home');
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    }
-
+    this.scrolling?.navigate('home', 'replace', false);
     this.activeSectionId.set('home');
     this.introVisible.set(true);
+    this.replayToken.update((token) => token + 1);
     this.lockPageScroll();
   }
 
@@ -135,203 +134,7 @@ export class App implements AfterViewInit, OnDestroy {
     this.introVisible.set(false);
     this.unlockPageScroll();
 
-    const hashSection = this.getHashSection();
-    if (hashSection && hashSection !== 'home') {
-      queueMicrotask(() => this.navigateToSection(hashSection, 'none', 'auto'));
-    }
-  }
-
-  private collectSections(): void {
-    for (const id of SECTION_IDS) {
-      const element = this.document.getElementById(id);
-      if (element) {
-        this.sections.push(element);
-      }
-    }
-  }
-
-  private installSectionTracking(): void {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    if ('IntersectionObserver' in window) {
-      this.sectionObserver = new IntersectionObserver(
-        () => this.scheduleSectionEvaluation(),
-        { threshold: [0, 0.15, 0.42, 0.7, 1] },
-      );
-      this.sections.forEach((section) => this.sectionObserver?.observe(section));
-    }
-
-    if ('ResizeObserver' in window) {
-      this.resizeObserver = new ResizeObserver(() => this.scheduleSectionEvaluation());
-      this.sections.forEach((section) => this.resizeObserver?.observe(section));
-    }
-
-    this.ngZone.runOutsideAngular(() => {
-      window.addEventListener('scroll', this.onWindowScroll, { passive: true });
-      window.addEventListener('scrollend', this.onScrollEnd, { passive: true });
-      window.addEventListener('hashchange', this.onHashChange);
-      window.addEventListener('popstate', this.onHistoryNavigation);
-      window.visualViewport?.addEventListener('resize', this.onVisualViewportResize, { passive: true });
-    });
-  }
-
-  private removeWindowListeners(): void {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    window.removeEventListener('scroll', this.onWindowScroll);
-    window.removeEventListener('scrollend', this.onScrollEnd);
-    window.removeEventListener('hashchange', this.onHashChange);
-    window.removeEventListener('popstate', this.onHistoryNavigation);
-    window.visualViewport?.removeEventListener('resize', this.onVisualViewportResize);
-  }
-
-  private readonly onWindowScroll = (): void => {
-    this.scheduleSectionEvaluation();
-    this.armScrollEndFallback();
-  };
-
-  private readonly onScrollEnd = (): void => {
-    this.completeScroll();
-  };
-
-  private readonly onHashChange = (): void => {
-    const id = this.getHashSection();
-    if (id) {
-      this.navigateToSection(id, 'none', 'auto');
-    }
-  };
-
-  private readonly onHistoryNavigation = (): void => {
-    const id = this.getHashSection();
-    if (id) {
-      this.navigateToSection(id, 'none', 'auto');
-    }
-  };
-
-  private readonly onVisualViewportResize = (): void => {
-    this.scheduleSectionEvaluation();
-  };
-
-  private navigateToSection(id: SectionId, historyMode: 'push' | 'none', behavior: ScrollBehavior): void {
-    const section = this.document.getElementById(id);
-    if (!section) {
-      return;
-    }
-
-    this.programmaticTarget = id;
-    this.setActiveSection(id);
-    clearTimeout(this.programmaticTimer);
-
-    if (historyMode === 'push' && typeof window !== 'undefined') {
-      window.history.pushState({ section: id }, '', `#${id}`);
-    }
-
-    section.scrollIntoView({ behavior: this.prefersReducedMotion() ? 'auto' : behavior, block: 'start' });
-    this.programmaticTimer = setTimeout(() => this.completeScroll(), behavior === 'auto' ? 40 : 1200);
-  }
-
-  private completeScroll(): void {
-    clearTimeout(this.settleTimer);
-    clearTimeout(this.programmaticTimer);
-    this.programmaticTarget = undefined;
-    this.scheduleSectionEvaluation();
-    this.settleNearestShortSection();
-  }
-
-  private armScrollEndFallback(): void {
-    clearTimeout(this.settleTimer);
-    this.settleTimer = setTimeout(() => this.completeScroll(), 150);
-  }
-
-  private scheduleSectionEvaluation(): void {
-    if (this.sectionFrame !== undefined || this.sections.length === 0) {
-      return;
-    }
-
-    this.sectionFrame = requestAnimationFrame(() => {
-      this.sectionFrame = undefined;
-      this.evaluateActiveSection();
-    });
-  }
-
-  private evaluateActiveSection(): void {
-    if (this.programmaticTarget || typeof window === 'undefined') {
-      return;
-    }
-
-    const line = this.getViewportHeight() * 0.42;
-    const current = this.document.getElementById(this.activeSectionId());
-    const currentRect = current?.getBoundingClientRect();
-    const currentOwnsLine =
-      currentRect !== undefined && line >= currentRect.top - 64 && line <= currentRect.bottom + 64;
-
-    const containing = this.sections.find((section) => {
-      const rect = section.getBoundingClientRect();
-      return rect.top <= line && rect.bottom >= line;
-    });
-    const closest = containing ?? this.sections.reduce((best, section) => {
-      const sectionRect = section.getBoundingClientRect();
-      const bestRect = best.getBoundingClientRect();
-      const distance = Math.min(Math.abs(sectionRect.top - line), Math.abs(sectionRect.bottom - line));
-      const bestDistance = Math.min(Math.abs(bestRect.top - line), Math.abs(bestRect.bottom - line));
-      return distance < bestDistance ? section : best;
-    });
-
-    if (closest.id && (!currentOwnsLine || closest.id === this.activeSectionId())) {
-      this.setActiveSection(closest.id as SectionId);
-    }
-  }
-
-  private settleNearestShortSection(): void {
-    if (this.programmaticTarget || this.introVisible() || this.lightboxIndex() !== null || typeof window === 'undefined') {
-      return;
-    }
-
-    const viewportHeight = this.getViewportHeight();
-    const threshold = Math.min(viewportHeight * 0.22, 220);
-    const target = this.sections
-      .filter((section) => section.getBoundingClientRect().height <= viewportHeight * 1.12)
-      .map((section) => ({ section, distance: Math.abs(section.getBoundingClientRect().top) }))
-      .sort((left, right) => left.distance - right.distance)[0];
-
-    if (target && target.distance > 3 && target.distance <= threshold) {
-      this.navigateToSection(target.section.id as SectionId, 'none', 'smooth');
-    }
-  }
-
-  private setActiveFromHash(): void {
-    this.setActiveSection(this.getHashSection() ?? 'home');
-  }
-
-  private setActiveSection(id: SectionId): void {
-    if (this.activeSectionId() !== id) {
-      this.ngZone.run(() => this.activeSectionId.set(id));
-    }
-  }
-
-  private getHashSection(): SectionId | undefined {
-    if (typeof window === 'undefined') {
-      return undefined;
-    }
-
-    const id = decodeURIComponent(window.location.hash.replace(/^#/, ''));
-    return this.isSectionId(id) ? id : undefined;
-  }
-
-  private isSectionId(id: string): id is SectionId {
-    return (SECTION_IDS as readonly string[]).includes(id);
-  }
-
-  private getViewportHeight(): number {
-    return typeof window === 'undefined' ? 0 : window.visualViewport?.height ?? window.innerHeight;
-  }
-
-  private prefersReducedMotion(): boolean {
-    return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.scrolling?.resume();
   }
 
   private lockPageScroll(): void {
@@ -339,6 +142,7 @@ export class App implements AfterViewInit, OnDestroy {
       return;
     }
 
+    this.scrolling?.suspend();
     const body = this.document.body;
     this.pageLockScrollY = window.scrollY;
     this.pageLockStyles = {
@@ -366,7 +170,7 @@ export class App implements AfterViewInit, OnDestroy {
     Object.assign(body.style, this.pageLockStyles);
     const scrollY = this.pageLockScrollY;
     this.pageLockStyles = undefined;
-    window.scrollTo({ top: scrollY, behavior: 'auto' });
+    window.scrollTo({ top: scrollY, behavior: 'instant' });
   }
 
   private shouldShowIntro(): boolean {

@@ -1,6 +1,18 @@
-<main class="app-shell" [inert]="introVisible()" [attr.aria-hidden]="introVisible() ? 'true' : null">
-  <app-graduation-hero [content]="content.hero" />
-  <app-graduation-invitation [content]="content.invitation" />
+<main
+  class="app-shell"
+  [inert]="introVisible()"
+  [attr.aria-hidden]="introVisible() ? 'true' : null"
+>
+  <div
+    class="opening-story"
+    appOpeningStory
+    [enabled]="!introVisible()"
+    [suspended]="lightboxIndex() !== null"
+    [replayToken]="replayToken()"
+  >
+    <app-graduation-hero [content]="content.hero" (sectionRequested)="scrollToSection($event)" />
+    <app-graduation-invitation [content]="content.invitation" />
+  </div>
   <app-graduation-message [content]="content.message" />
   <app-interactive-photo-gallery
     [content]="content.gallery"
@@ -28,6 +40,7 @@
   [activeIndex]="lightboxIndex()"
   (activeIndexChange)="openLightbox($event)"
   (closed)="closeLightbox()"
+  (scrollRestored)="onLightboxRestored()"
 />
 
 <app-music-control #music [config]="content.music" [autoplayEnabled]="!introVisible()" />

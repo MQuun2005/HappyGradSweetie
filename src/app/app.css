@@ -7,6 +7,23 @@
   min-block-size: var(--chapter-viewport);
 }
 
+.opening-story {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;
+}
+
+.opening-story > app-graduation-hero {
+  display: contents;
+}
+
+.opening-story > app-graduation-invitation {
+  grid-column: 1;
+  grid-row: 2;
+  position: relative;
+}
+
 app-graduation-hero,
 app-graduation-invitation,
 app-graduation-message,
