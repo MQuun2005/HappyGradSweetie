@@ -1,0 +1,27 @@
+@if (fallbackStep() < 3) {
+  <picture>
+    @if (fallbackStep() === 0) {
+      <source
+        type="image/webp"
+        [srcset]="content.portraitSrcSet || content.portraitSrc"
+        sizes="(max-width: 767px) 300px, (max-width: 1023px) 420px, 512px"
+      />
+    }
+    <img
+      [src]="fallbackStep() < 2 ? content.portraitFallback : 'Image/original/1.jpg'"
+      [alt]="content.portraitAlt"
+      [width]="content.portraitWidth"
+      [height]="content.portraitHeight"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      draggable="false"
+      (error)="onImageError()"
+    />
+  </picture>
+} @else {
+  <div class="portrait__unavailable" role="status">
+    <span aria-hidden="true">♡</span>
+    <p>Ảnh chưa tải được. Lời chúc vẫn ở đây, dành cho vợ iu.</p>
+  </div>
+}

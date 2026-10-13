@@ -30,14 +30,23 @@ export const celebrationContent: CelebrationContent = {
   intro: {
     eyebrow: 'Một món quà nhỏ',
     title: 'Anh có một món quà nhỏ dành cho vợ iu.',
-    body: 'Dành cho Mai Khuê, để giữ lại thật dịu dàng dấu mốc đẹp này.',
+    body: 'Dành cho vợ iu, để giữ lại thật dịu dàng dấu mốc đẹp này.',
     actionLabel: 'Mở món quà của anh',
   },
   hero: {
-    eyebrow: '17.10.2026 · Một dấu mốc thật đẹp',
-    title: 'Chúc mừng tốt nghiệp, Mai Khuê của anh',
-    lead: 'Anh tự hào về em nhiều lắm — về sự kiên trì, dịu dàng và cách em đã đi đến cột mốc rực rỡ này.',
-    ctaLabel: 'Xem thiệp tốt nghiệp',
+    eyebrow: '17.10.2026 · Ngày đặc biệt của vợ iu',
+    title: 'Vợ iu tốt nghiệp rồi!',
+    subheading: 'Một cột mốc thật đẹp của Nguyễn Võ Mai Khuê.',
+    lead: 'Vợ iu của anh đã làm được rồi. Anh mong khoảnh khắc này sẽ luôn nhắc vợ iu nhớ rằng mình đã giỏi giang, mạnh mẽ và đáng tự hào đến nhường nào.',
+    ctaLabel: 'Cùng anh xem tiếp nha',
+    scrollHint: 'Kéo xuống một chút nữa nha, vợ iu.',
+    portraitSrc: 'Image/hero/mai-khue-cutout.webp',
+    portraitFallback: 'Image/hero/mai-khue-cutout.png',
+    portraitSrcSet:
+      'Image/hero/mai-khue-cutout-480.webp 480w, Image/hero/mai-khue-cutout-768.webp 768w, Image/hero/mai-khue-cutout.webp 1024w',
+    portraitAlt: 'Mai Khuê trong trang phục tốt nghiệp, với mũ đen và tua vàng.',
+    portraitWidth: 1024,
+    portraitHeight: 1536,
   },
   invitation: {
     eyebrow: 'Graduation celebration',
@@ -49,10 +58,9 @@ export const celebrationContent: CelebrationContent = {
     note: 'Một dấu mốc thật đáng tự hào, được giữ lại bằng tất cả yêu thương.',
   },
   message: {
-    eyebrow: 'Dành cho Mai Khuê',
+    eyebrow: 'Dành cho vợ iu của anh',
     title: 'Cô gái anh luôn tự hào',
-    body:
-      'Từng ngày kiên trì đã góp lại thành thành quả thật đẹp hôm nay. Anh mong em sẽ luôn tự tin, vui vẻ và hạnh phúc trên mọi chặng đường phía trước.',
+    body: 'Từng ngày kiên trì đã góp lại thành thành quả thật đẹp hôm nay. Anh mong em sẽ luôn tự tin, vui vẻ và hạnh phúc trên mọi chặng đường phía trước.',
   },
   gallery: {
     eyebrow: 'Kỷ niệm tốt nghiệp',

@@ -19,8 +19,16 @@ export interface IntroContent {
 export interface HeroContent {
   readonly eyebrow: string;
   readonly title: string;
+  readonly subheading: string;
   readonly lead: string;
   readonly ctaLabel: string;
+  readonly scrollHint: string;
+  readonly portraitSrc: string;
+  readonly portraitFallback: string;
+  readonly portraitSrcSet: string;
+  readonly portraitAlt: string;
+  readonly portraitWidth: number;
+  readonly portraitHeight: number;
 }
 
 export interface TextSectionContent {

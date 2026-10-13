@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  aspect-ratio: 2 / 3;
+}
+
+picture,
+img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+img {
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+:host(.portrait--editorial) {
+  padding: 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.6rem;
+  background: var(--color-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.portrait__unavailable {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  block-size: 100%;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8rem 8rem 1rem 1rem;
+  background: var(--color-card);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.portrait__unavailable span {
+  color: var(--color-rose);
+  font-size: 2rem;
+}
