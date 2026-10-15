@@ -15,5 +15,9 @@
 /qa/plan1/*/
 /qa/plan1/PHASE5-VERIFICATION.json
 
+# Historical rejected-portrait review notes were moved with Docs; retain local-only status.
+/Docs/Reviews/plan1/portrait-canva-2026-10-11/
+/Docs/Reviews/plan1/portrait-review-2026-10-11/
+
 # Unapproved portrait experiment (keep locally; never ship as a personal asset).
 /public/Image/original/canva.png

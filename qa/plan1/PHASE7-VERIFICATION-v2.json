@@ -1,0 +1,681 @@
+{
+  "date": "2026-10-15",
+  "timezone": "Asia/Saigon",
+  "createdAt": "2026-10-15T14:40:28.973Z",
+  "checks": [
+    {
+      "label": "34 original + 34 thumbnail baselines",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/1.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/10.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/11.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/12.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/13.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/14.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/15.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/16.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/17.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/18.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/19.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/2.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/20.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/21.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/22.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/23.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/24.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/25.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/26.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/27.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/28.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/29.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/3.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/30.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/31.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/32.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/33.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/34.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/4.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/5.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/6.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/7.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/8.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/original/9.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/1.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/10.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/11.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/12.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/13.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/14.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/15.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/16.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/17.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/18.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/19.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/2.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/20.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/21.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/22.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/23.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/24.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/25.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/26.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/27.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/28.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/29.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/3.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/30.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/31.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/32.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/33.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/34.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/4.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/5.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/6.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/7.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/8.jpg",
+      "passed": true
+    },
+    {
+      "label": "Unchanged asset: public/Image/thumb/9.jpg",
+      "passed": true
+    },
+    {
+      "label": "Approved Hero PNG unchanged",
+      "passed": true
+    },
+    {
+      "label": "Approved note4 unchanged",
+      "passed": true
+    },
+    {
+      "label": "Phase 6 approved personal content unchanged",
+      "passed": true
+    },
+    {
+      "label": "Audio bytes unchanged from Git checkpoint",
+      "passed": true
+    },
+    {
+      "label": "final-journey-2026-10-15-handoff collector completed",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-journey-2026-10-15-handoff assertions passed",
+      "passed": true,
+      "actual": {
+        "checks": 342,
+        "failed": []
+      }
+    },
+    {
+      "label": "final-journey-2026-10-15-handoff source provenance",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-journey-2026-10-15-handoff built artifact 404.html",
+      "passed": true
+    },
+    {
+      "label": "final-journey-2026-10-15-handoff built artifact index.html",
+      "passed": true
+    },
+    {
+      "label": "final-journey-2026-10-15-handoff built artifact main-OUJE5TSM.js",
+      "passed": true
+    },
+    {
+      "label": "final-journey-2026-10-15-handoff built artifact polyfills-5CFQRCPP.js",
+      "passed": true
+    },
+    {
+      "label": "final-journey-2026-10-15-handoff built artifact styles-X2MFHRCQ.css",
+      "passed": true
+    },
+    {
+      "label": "final-scroll-2026-10-15-handoff collector completed",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-scroll-2026-10-15-handoff assertions passed",
+      "passed": true,
+      "actual": {
+        "checks": 232,
+        "failed": []
+      }
+    },
+    {
+      "label": "final-scroll-2026-10-15-handoff source provenance",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-scroll-2026-10-15-handoff built artifact 404.html",
+      "passed": true
+    },
+    {
+      "label": "final-scroll-2026-10-15-handoff built artifact index.html",
+      "passed": true
+    },
+    {
+      "label": "final-scroll-2026-10-15-handoff built artifact main-OUJE5TSM.js",
+      "passed": true
+    },
+    {
+      "label": "final-scroll-2026-10-15-handoff built artifact polyfills-5CFQRCPP.js",
+      "passed": true
+    },
+    {
+      "label": "final-scroll-2026-10-15-handoff built artifact styles-X2MFHRCQ.css",
+      "passed": true
+    },
+    {
+      "label": "final-contrast-2026-10-15-handoff collector completed",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-contrast-2026-10-15-handoff assertions passed",
+      "passed": true,
+      "actual": {
+        "checks": 30,
+        "failed": []
+      }
+    },
+    {
+      "label": "final-contrast-2026-10-15-handoff source provenance",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-contrast-2026-10-15-handoff built artifact 404.html",
+      "passed": true
+    },
+    {
+      "label": "final-contrast-2026-10-15-handoff built artifact index.html",
+      "passed": true
+    },
+    {
+      "label": "final-contrast-2026-10-15-handoff built artifact main-OUJE5TSM.js",
+      "passed": true
+    },
+    {
+      "label": "final-contrast-2026-10-15-handoff built artifact polyfills-5CFQRCPP.js",
+      "passed": true
+    },
+    {
+      "label": "final-contrast-2026-10-15-handoff built artifact styles-X2MFHRCQ.css",
+      "passed": true
+    },
+    {
+      "label": "final-loop-2026-10-15-pass1 collector completed",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-loop-2026-10-15-pass1 assertions passed",
+      "passed": true,
+      "actual": {
+        "checks": 8,
+        "failed": []
+      }
+    },
+    {
+      "label": "final-loop-2026-10-15-pass1 source provenance",
+      "passed": true,
+      "actual": [
+        {
+          "file": "src/app/components/graduation-invitation/graduation-invitation.css",
+          "captured": "b0fab43b1dced9139f50925ce7f03cc2c08ea7d69ff71d806046c9a90fc50225",
+          "current": "bd30b916070f42cd34242b87699e4f8fa5436a709687cd0a063dd9ea9bcd4ef8"
+        }
+      ]
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-final collector completed",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-final assertions passed",
+      "passed": true,
+      "actual": {
+        "checks": 31,
+        "failed": []
+      }
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-final source provenance",
+      "passed": true,
+      "actual": [
+        {
+          "file": "src/app/components/graduation-invitation/graduation-invitation.css",
+          "captured": "b0fab43b1dced9139f50925ce7f03cc2c08ea7d69ff71d806046c9a90fc50225",
+          "current": "bd30b916070f42cd34242b87699e4f8fa5436a709687cd0a063dd9ea9bcd4ef8"
+        }
+      ]
+    },
+    {
+      "label": "final-resilience-2026-10-15-final collector completed",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-resilience-2026-10-15-final assertions passed",
+      "passed": true,
+      "actual": {
+        "checks": 13,
+        "failed": []
+      }
+    },
+    {
+      "label": "final-resilience-2026-10-15-final source provenance",
+      "passed": true,
+      "actual": [
+        {
+          "file": "src/app/components/graduation-invitation/graduation-invitation.css",
+          "captured": "b0fab43b1dced9139f50925ce7f03cc2c08ea7d69ff71d806046c9a90fc50225",
+          "current": "bd30b916070f42cd34242b87699e4f8fa5436a709687cd0a063dd9ea9bcd4ef8"
+        }
+      ]
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-soak collector completed",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-soak assertions passed",
+      "passed": true,
+      "actual": {
+        "checks": 51,
+        "failed": []
+      }
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-soak source provenance",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-soak built artifact 404.html",
+      "passed": true
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-soak built artifact index.html",
+      "passed": true
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-soak built artifact main-OUJE5TSM.js",
+      "passed": true
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-soak built artifact polyfills-5CFQRCPP.js",
+      "passed": true
+    },
+    {
+      "label": "final-lifecycle-2026-10-15-soak built artifact styles-X2MFHRCQ.css",
+      "passed": true
+    },
+    {
+      "label": "Encoded video container: qa/plan1/final-loop-2026-10-15-pass1/gallery-45s.webm",
+      "passed": true
+    },
+    {
+      "label": "Encoded video container: qa/plan1/final-journey-2026-10-15-handoff/desktop-journey.webm",
+      "passed": true
+    },
+    {
+      "label": "Encoded video container: qa/plan1/final-journey-2026-10-15-handoff/iphone-journey.webm",
+      "passed": true
+    },
+    {
+      "label": "Encoded video container: qa/plan1/final-journey-2026-10-15-handoff/ipad-p-journey.webm",
+      "passed": true
+    },
+    {
+      "label": "Pages base path",
+      "passed": true
+    }
+  ],
+  "failed": [],
+  "evidence": [
+    {
+      "file": "qa/plan1/final-journey-2026-10-15-handoff/final.json",
+      "sha256": "b66535779d90451425d1274c982bf5daf10c5f9fe78d87efcbcdef76c77c4e97",
+      "checks": 342,
+      "sourceDifferences": [],
+      "scope": "Exact handoff source and built artifact"
+    },
+    {
+      "file": "qa/plan1/final-scroll-2026-10-15-handoff/final.json",
+      "sha256": "0e292a78a3339de2aeea2934ffdfa3cca9ae0d5fd9f2b8277e26e06c44ddd1a0",
+      "checks": 232,
+      "sourceDifferences": [],
+      "scope": "Exact handoff source and built artifact"
+    },
+    {
+      "file": "qa/plan1/final-contrast-2026-10-15-handoff/final.json",
+      "sha256": "73afa2aab76bb65b0b9f6a0e62b49aa17a6bbd22a8d8a21cb24dea1677987688",
+      "checks": 30,
+      "sourceDifferences": [],
+      "scope": "Exact handoff source and built artifact"
+    },
+    {
+      "file": "qa/plan1/final-loop-2026-10-15-pass1/final.json",
+      "sha256": "ff4d73430bd0ceacbdf5f78fd963cf3f04fd5f236fe119b00cf322efb9086a05",
+      "checks": 8,
+      "sourceDifferences": [
+        {
+          "file": "src/app/components/graduation-invitation/graduation-invitation.css",
+          "captured": "b0fab43b1dced9139f50925ce7f03cc2c08ea7d69ff71d806046c9a90fc50225",
+          "current": "bd30b916070f42cd34242b87699e4f8fa5436a709687cd0a063dd9ea9bcd4ef8"
+        }
+      ],
+      "scope": "Before ribbon padding only; application logic/Gallery/audio/Lightbox source unchanged. Not a full-loop rerun of the final bundle."
+    },
+    {
+      "file": "qa/plan1/final-lifecycle-2026-10-15-final/final.json",
+      "sha256": "834cdfaec3040daafb8280352ee22014396b73369ae30f854dbe277848b653a6",
+      "checks": 31,
+      "sourceDifferences": [
+        {
+          "file": "src/app/components/graduation-invitation/graduation-invitation.css",
+          "captured": "b0fab43b1dced9139f50925ce7f03cc2c08ea7d69ff71d806046c9a90fc50225",
+          "current": "bd30b916070f42cd34242b87699e4f8fa5436a709687cd0a063dd9ea9bcd4ef8"
+        }
+      ],
+      "scope": "Before ribbon padding only; application logic/Gallery/audio/Lightbox source unchanged. Not a full-loop rerun of the final bundle."
+    },
+    {
+      "file": "qa/plan1/final-resilience-2026-10-15-final/final.json",
+      "sha256": "2f0bb64114e24e98863340da617df9f6ffa352e0d60a33762944d02d1cc183ea",
+      "checks": 13,
+      "sourceDifferences": [
+        {
+          "file": "src/app/components/graduation-invitation/graduation-invitation.css",
+          "captured": "b0fab43b1dced9139f50925ce7f03cc2c08ea7d69ff71d806046c9a90fc50225",
+          "current": "bd30b916070f42cd34242b87699e4f8fa5436a709687cd0a063dd9ea9bcd4ef8"
+        }
+      ],
+      "scope": "Before ribbon padding only; application logic/Gallery/audio/Lightbox source unchanged. Not a full-loop rerun of the final bundle."
+    },
+    {
+      "file": "qa/plan1/final-lifecycle-2026-10-15-soak/final.json",
+      "sha256": "cf023c136d7b95a91cdbb2209750d031dcdd1a2f6bb119683839e2b8d87ce200",
+      "checks": 51,
+      "sourceDifferences": [],
+      "scope": "Exact handoff source and built artifact"
+    }
+  ],
+  "media": [
+    {
+      "file": "qa/plan1/final-loop-2026-10-15-pass1/gallery-45s.webm",
+      "bytes": 11654561,
+      "sha256": "8bb2023c0a3cb115c203f0f818211435642ad995c680b944528ce40bc7e0d9fb",
+      "metadata": {
+        "width": 1440,
+        "height": 900,
+        "frames": 1030,
+        "sourceDuration": 44620,
+        "encodedWallMs": 44944.60000000149,
+        "type": "video/webm;codecs=vp9",
+        "source": "E:\\MinhQuun\\PastLife\\HappyGradSweetie\\qa\\plan1\\final-loop-2026-10-15-pass1\\gallery-45s-frames",
+        "renderer": "Edge MediaRecorder, actual frames, no audio"
+      }
+    },
+    {
+      "file": "qa/plan1/final-journey-2026-10-15-handoff/desktop-journey.webm",
+      "bytes": 3356979,
+      "sha256": "3e23c8346e09afce823313c53fe1f5fa9098d9095f0a5e3ad4fe2e5ec0c4a1e0",
+      "metadata": {
+        "width": 1440,
+        "height": 900,
+        "frames": 311,
+        "sourceDuration": 19919,
+        "encodedWallMs": 20219.19999999553,
+        "type": "video/webm;codecs=vp9",
+        "source": "E:\\MinhQuun\\PastLife\\HappyGradSweetie\\qa\\plan1\\final-journey-2026-10-15-handoff\\desktop-journey-frames",
+        "renderer": "Edge MediaRecorder, actual frames, no audio"
+      }
+    },
+    {
+      "file": "qa/plan1/final-journey-2026-10-15-handoff/iphone-journey.webm",
+      "bytes": 3148489,
+      "sha256": "7a3988bad29c70d3fdeca9f4c7e30aa542ffa84400a9a25f999cd16e6eb60be2",
+      "metadata": {
+        "width": 393,
+        "height": 852,
+        "frames": 305,
+        "sourceDuration": 20475,
+        "encodedWallMs": 20756.40000000596,
+        "type": "video/webm;codecs=vp9",
+        "source": "E:\\MinhQuun\\PastLife\\HappyGradSweetie\\qa\\plan1\\final-journey-2026-10-15-handoff\\iphone-journey-frames",
+        "renderer": "Edge MediaRecorder, actual frames, no audio"
+      }
+    },
+    {
+      "file": "qa/plan1/final-journey-2026-10-15-handoff/ipad-p-journey.webm",
+      "bytes": 3155013,
+      "sha256": "e5c11623356226a9dbba03823ec61f83df9bdbf9b477396fdb4a6b3e647c92e4",
+      "metadata": {
+        "width": 820,
+        "height": 1180,
+        "frames": 297,
+        "sourceDuration": 20472,
+        "encodedWallMs": 20748,
+        "type": "video/webm;codecs=vp9",
+        "source": "E:\\MinhQuun\\PastLife\\HappyGradSweetie\\qa\\plan1\\final-journey-2026-10-15-handoff\\ipad-p-journey-frames",
+        "renderer": "Edge MediaRecorder, actual frames, no audio"
+      }
+    }
+  ],
+  "pending": [
+    "Physical Safari/iPhone/iPad, toolbar/safe area, pinch/real trackpad, audible audio",
+    "Long-term heap plateau not proven by 30 bounded cycles",
+    "User Final QA and Final Creative Review"
+  ],
+  "note": "Unit/build outcomes are recorded separately in the review, not inferred from this verifier."
+}

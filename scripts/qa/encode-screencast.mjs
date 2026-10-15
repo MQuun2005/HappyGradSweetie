@@ -16,7 +16,7 @@ const allowed=new Set(frames.map(f=>f.file));
 const page=`<!doctype html><canvas></canvas><script>
 window.encode=async()=>{
  const frames=${JSON.stringify(frames)},canvas=document.querySelector('canvas');
- const load=async f=>{const image=new Image();image.src='/'+f.file;await image.decode();return image};
+ const load=async f=>{const image=new Image();image.src='/'+f.file;try{await image.decode()}catch(error){throw Error('Cannot decode '+f.file+': '+error.message)}return image};
  const first=await load(frames[0]);canvas.width=first.width;canvas.height=first.height;
  const ctx=canvas.getContext('2d');ctx.drawImage(first,0,0);
  const stream=canvas.captureStream(0),track=stream.getVideoTracks()[0],chunks=[];
@@ -42,7 +42,7 @@ const server=createServer(async(req,res)=>{try{
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const profile=await mkdtemp(path.join(tmpdir(),'happygrad-encode-'));
 const browser=spawn('C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',[
- '--headless=new','--no-first-run','--disable-background-timer-throttling','--disable-renderer-backgrounding',
+ '--headless=new','--no-first-run','--edge-skip-compat-layer-relaunch','--disable-background-timer-throttling','--disable-renderer-backgrounding',
  '--disable-backgrounding-occluded-windows','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'
 ],{windowsHide:true,stdio:['ignore','ignore','pipe']});
 let ws,id=0,session,log='';const pending=new Map();

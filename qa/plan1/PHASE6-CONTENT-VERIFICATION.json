@@ -1,0 +1,2045 @@
+{
+  "verifiedAt": "2026-10-14T11:20:12.733Z",
+  "reportFile": "qa/plan1/content-2026-10-14-final/content.json",
+  "checks": 508,
+  "failures": [],
+  "details": [
+    {
+      "label": "Approved brief: intro.eyebrow",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: intro.title",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: intro.body",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: intro.actionLabel",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: invitation.eyebrow",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: invitation.title",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: invitation.recipient",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: invitation.degree",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: invitation.school",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: invitation.dateLabel",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: invitation.note",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: message.eyebrow",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: message.title",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: message.body",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: gallery.eyebrow",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: gallery.title",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: gallery.lead",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: gallery.instruction",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: letter.eyebrow",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: letter.title",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: letter.paragraphs.0",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: letter.paragraphs.1",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: letter.paragraphs.2",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: letter.paragraphs.3",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: letter.signature",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: closing.title",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: closing.body",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: closing.finalHighlight",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: closing.actionLabel",
+      "passed": true
+    },
+    {
+      "label": "Approved brief: closing.replayLabel",
+      "passed": true
+    },
+    {
+      "label": "Approved Hero data unchanged",
+      "passed": true
+    },
+    {
+      "label": "Audio path/config unchanged",
+      "passed": true
+    },
+    {
+      "label": "34 photos",
+      "passed": true
+    },
+    {
+      "label": "Caption ID set unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 1: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 1: caption from approved samples",
+      "passed": true
+    },
+    {
+      "label": "Photo 2: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 3: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 4: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 5: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 5: caption from approved samples",
+      "passed": true
+    },
+    {
+      "label": "Photo 6: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 7: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 8: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 9: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 9: caption from approved samples",
+      "passed": true
+    },
+    {
+      "label": "Photo 10: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 11: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 12: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 13: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 14: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 14: caption from approved samples",
+      "passed": true
+    },
+    {
+      "label": "Photo 15: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 16: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 17: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 18: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 18: caption from approved samples",
+      "passed": true
+    },
+    {
+      "label": "Photo 19: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 20: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 21: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 22: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 23: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 23: caption from approved samples",
+      "passed": true
+    },
+    {
+      "label": "Photo 24: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 25: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 26: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 27: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 28: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 29: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 29: caption from approved samples",
+      "passed": true
+    },
+    {
+      "label": "Photo 30: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 31: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 32: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 33: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 34: metadata/paths unchanged",
+      "passed": true
+    },
+    {
+      "label": "Photo 34: caption from approved samples",
+      "passed": true
+    },
+    {
+      "label": "Four complete letter paragraphs",
+      "passed": true
+    },
+    {
+      "label": "Two-line signature",
+      "passed": true
+    },
+    {
+      "label": "No contact number in copy",
+      "passed": true
+    },
+    {
+      "label": "68 original/thumbnail baselines",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/1.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/10.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/11.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/12.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/13.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/14.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/15.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/16.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/17.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/18.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/19.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/2.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/20.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/21.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/22.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/23.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/24.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/25.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/26.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/27.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/28.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/29.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/3.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/30.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/31.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/32.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/33.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/34.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/4.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/5.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/6.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/7.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/8.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/original/9.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/1.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/10.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/11.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/12.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/13.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/14.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/15.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/16.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/17.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/18.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/19.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/2.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/20.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/21.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/22.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/23.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/24.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/25.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/26.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/27.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/28.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/29.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/3.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/30.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/31.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/32.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/33.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/34.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/4.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/5.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/6.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/7.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/8.jpg",
+      "passed": true
+    },
+    {
+      "label": "Asset unchanged: public/Image/thumb/9.jpg",
+      "passed": true
+    },
+    {
+      "label": "Approved portrait unchanged",
+      "passed": true
+    },
+    {
+      "label": "Original brief unchanged",
+      "passed": true
+    },
+    {
+      "label": "Collector completed",
+      "passed": true
+    },
+    {
+      "label": "Nine content QA profiles",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/app.config.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/app.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/app.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/app.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/app.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/closing-section/closing-section.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/closing-section/closing-section.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/closing-section/closing-section.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/gift-intro/gift-intro.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/gift-intro/gift-intro.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/gift-intro/gift-intro.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-hero/graduation-hero.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-hero/graduation-hero.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-hero/graduation-hero.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-hero/graduation-hero.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-invitation/graduation-invitation.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-invitation/graduation-invitation.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-invitation/graduation-invitation.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-letter/graduation-letter.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-letter/graduation-letter.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-letter/graduation-letter.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-message/graduation-message.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-message/graduation-message.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-message/graduation-message.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-portrait/graduation-portrait.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-portrait/graduation-portrait.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-portrait/graduation-portrait.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/graduation-portrait/graduation-portrait.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/interactive-photo-gallery/interactive-photo-gallery.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/interactive-photo-gallery/interactive-photo-gallery.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/interactive-photo-gallery/interactive-photo-gallery.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/interactive-photo-gallery/interactive-photo-gallery.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/music-control/music-control.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/music-control/music-control.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/music-control/music-control.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/music-control/music-control.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/photo-lightbox/photo-lightbox.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/photo-lightbox/photo-lightbox.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/photo-lightbox/photo-lightbox.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/section-navigator/section-navigator.css",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/section-navigator/section-navigator.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/section-navigator/section-navigator.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/components/section-navigator/section-navigator.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/data/celebration-content.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/data/celebration-content.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/directives/opening-story.directive.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/directives/opening-story.directive.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/models/celebration.models.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/gallery-layout.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/gallery-layout.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/gallery-presentation.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/gallery-presentation.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/opening-story.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/opening-story.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/section-alignment.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/section-alignment.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/section-scroll-controller.spec.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/app/utils/section-scroll-controller.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/index.html",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/main.ts",
+      "passed": true
+    },
+    {
+      "label": "Capture matches current source: src/styles.css",
+      "passed": true
+    },
+    {
+      "label": "Console/runtime/network: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "HTTP assets: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Six chapters: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Intro action reachable: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Intro native scroll: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Intro first lines reachable: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-small/home",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-small/home",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-small/home",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-small/invitation",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-small/invitation",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-small/invitation",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-small/message",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-small/message",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-small/message",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-small/memories",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-small/memories",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-small/memories",
+      "passed": true
+    },
+    {
+      "label": "Virtual window bounded: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Gallery instruction DOM: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-small/letter",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-small/letter",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-small/letter",
+      "passed": true
+    },
+    {
+      "label": "Signature DOM: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Signature CSS: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Complete Letter DOM: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Long letter reading position: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-small/closing",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-small/closing",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-small/closing",
+      "passed": true
+    },
+    {
+      "label": "Closing highlight DOM: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Single audio: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Audio not reset by chapters: desktop-small",
+      "passed": true
+    },
+    {
+      "label": "Console/runtime/network: desktop",
+      "passed": true
+    },
+    {
+      "label": "HTTP assets: desktop",
+      "passed": true
+    },
+    {
+      "label": "Six chapters: desktop",
+      "passed": true
+    },
+    {
+      "label": "Intro action reachable: desktop",
+      "passed": true
+    },
+    {
+      "label": "Intro native scroll: desktop",
+      "passed": true
+    },
+    {
+      "label": "Intro first lines reachable: desktop",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop/home",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop/home",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop/home",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop/invitation",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop/invitation",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop/invitation",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop/message",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop/message",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop/message",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop/memories",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop/memories",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop/memories",
+      "passed": true
+    },
+    {
+      "label": "Virtual window bounded: desktop",
+      "passed": true
+    },
+    {
+      "label": "Gallery instruction DOM: desktop",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop/letter",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop/letter",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop/letter",
+      "passed": true
+    },
+    {
+      "label": "Signature DOM: desktop",
+      "passed": true
+    },
+    {
+      "label": "Signature CSS: desktop",
+      "passed": true
+    },
+    {
+      "label": "Complete Letter DOM: desktop",
+      "passed": true
+    },
+    {
+      "label": "Long letter reading position: desktop",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop/closing",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop/closing",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop/closing",
+      "passed": true
+    },
+    {
+      "label": "Closing highlight DOM: desktop",
+      "passed": true
+    },
+    {
+      "label": "Single audio: desktop",
+      "passed": true
+    },
+    {
+      "label": "Audio not reset by chapters: desktop",
+      "passed": true
+    },
+    {
+      "label": "Console/runtime/network: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "HTTP assets: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Six chapters: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Intro action reachable: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Intro native scroll: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Intro first lines reachable: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-large/home",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-large/home",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-large/home",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-large/invitation",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-large/invitation",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-large/invitation",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-large/message",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-large/message",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-large/message",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-large/memories",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-large/memories",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-large/memories",
+      "passed": true
+    },
+    {
+      "label": "Virtual window bounded: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Gallery instruction DOM: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-large/letter",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-large/letter",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-large/letter",
+      "passed": true
+    },
+    {
+      "label": "Signature DOM: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Signature CSS: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Complete Letter DOM: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: desktop-large/closing",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: desktop-large/closing",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: desktop-large/closing",
+      "passed": true
+    },
+    {
+      "label": "Closing highlight DOM: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Single audio: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Audio not reset by chapters: desktop-large",
+      "passed": true
+    },
+    {
+      "label": "Console/runtime/network: iphone",
+      "passed": true
+    },
+    {
+      "label": "HTTP assets: iphone",
+      "passed": true
+    },
+    {
+      "label": "Six chapters: iphone",
+      "passed": true
+    },
+    {
+      "label": "Intro action reachable: iphone",
+      "passed": true
+    },
+    {
+      "label": "Intro native scroll: iphone",
+      "passed": true
+    },
+    {
+      "label": "Intro first lines reachable: iphone",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone/home",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone/home",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone/home",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone/invitation",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone/invitation",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone/invitation",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone/message",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone/message",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone/message",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone/memories",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone/memories",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone/memories",
+      "passed": true
+    },
+    {
+      "label": "Virtual window bounded: iphone",
+      "passed": true
+    },
+    {
+      "label": "Gallery instruction DOM: iphone",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone/letter",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone/letter",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone/letter",
+      "passed": true
+    },
+    {
+      "label": "Signature DOM: iphone",
+      "passed": true
+    },
+    {
+      "label": "Signature CSS: iphone",
+      "passed": true
+    },
+    {
+      "label": "Complete Letter DOM: iphone",
+      "passed": true
+    },
+    {
+      "label": "Long letter reading position: iphone",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone/closing",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone/closing",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone/closing",
+      "passed": true
+    },
+    {
+      "label": "Closing highlight DOM: iphone",
+      "passed": true
+    },
+    {
+      "label": "Single audio: iphone",
+      "passed": true
+    },
+    {
+      "label": "Audio not reset by chapters: iphone",
+      "passed": true
+    },
+    {
+      "label": "Console/runtime/network: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "HTTP assets: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Six chapters: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Intro action reachable: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Intro native scroll: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Intro first lines reachable: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape/home",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape/home",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape/home",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape/invitation",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape/invitation",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape/invitation",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape/message",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape/message",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape/message",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape/memories",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape/memories",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape/memories",
+      "passed": true
+    },
+    {
+      "label": "Virtual window bounded: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Gallery instruction DOM: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape/letter",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape/letter",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape/letter",
+      "passed": true
+    },
+    {
+      "label": "Signature DOM: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Signature CSS: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Complete Letter DOM: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Long letter reading position: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape/closing",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape/closing",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape/closing",
+      "passed": true
+    },
+    {
+      "label": "Closing highlight DOM: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Single audio: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Audio not reset by chapters: iphone-landscape",
+      "passed": true
+    },
+    {
+      "label": "Console/runtime/network: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "HTTP assets: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Six chapters: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Intro action reachable: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Intro native scroll: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Intro first lines reachable: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-p/home",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-p/home",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-p/home",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-p/invitation",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-p/invitation",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-p/invitation",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-p/message",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-p/message",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-p/message",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-p/memories",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-p/memories",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-p/memories",
+      "passed": true
+    },
+    {
+      "label": "Virtual window bounded: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Gallery instruction DOM: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-p/letter",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-p/letter",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-p/letter",
+      "passed": true
+    },
+    {
+      "label": "Signature DOM: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Signature CSS: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Complete Letter DOM: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-p/closing",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-p/closing",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-p/closing",
+      "passed": true
+    },
+    {
+      "label": "Closing highlight DOM: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Single audio: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Audio not reset by chapters: ipad-p",
+      "passed": true
+    },
+    {
+      "label": "Console/runtime/network: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "HTTP assets: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Six chapters: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Intro action reachable: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Intro native scroll: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Intro first lines reachable: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-l/home",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-l/home",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-l/home",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-l/invitation",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-l/invitation",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-l/invitation",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-l/message",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-l/message",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-l/message",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-l/memories",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-l/memories",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-l/memories",
+      "passed": true
+    },
+    {
+      "label": "Virtual window bounded: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Gallery instruction DOM: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-l/letter",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-l/letter",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-l/letter",
+      "passed": true
+    },
+    {
+      "label": "Signature DOM: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Signature CSS: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Complete Letter DOM: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Long letter reading position: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: ipad-l/closing",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: ipad-l/closing",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: ipad-l/closing",
+      "passed": true
+    },
+    {
+      "label": "Closing highlight DOM: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Single audio: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Audio not reset by chapters: ipad-l",
+      "passed": true
+    },
+    {
+      "label": "Console/runtime/network: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "HTTP assets: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Six chapters: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Intro action reachable: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Intro native scroll: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Intro first lines reachable: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-text200/home",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-text200/home",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-text200/home",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-text200/invitation",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-text200/invitation",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-text200/invitation",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-text200/message",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-text200/message",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-text200/message",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-text200/memories",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-text200/memories",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-text200/memories",
+      "passed": true
+    },
+    {
+      "label": "Virtual window bounded: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Gallery instruction DOM: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-text200/letter",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-text200/letter",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-text200/letter",
+      "passed": true
+    },
+    {
+      "label": "Signature DOM: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Signature CSS: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Complete Letter DOM: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Long letter reading position: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-text200/closing",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-text200/closing",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-text200/closing",
+      "passed": true
+    },
+    {
+      "label": "Closing highlight DOM: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Single audio: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Audio not reset by chapters: iphone-text200",
+      "passed": true
+    },
+    {
+      "label": "Console/runtime/network: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "HTTP assets: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Six chapters: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Intro action reachable: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Intro native scroll: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Intro first lines reachable: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape-reduced/home",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape-reduced/home",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape-reduced/home",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape-reduced/invitation",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape-reduced/invitation",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape-reduced/invitation",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape-reduced/message",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape-reduced/message",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape-reduced/message",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape-reduced/memories",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape-reduced/memories",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape-reduced/memories",
+      "passed": true
+    },
+    {
+      "label": "Virtual window bounded: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Gallery instruction DOM: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape-reduced/letter",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape-reduced/letter",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape-reduced/letter",
+      "passed": true
+    },
+    {
+      "label": "Signature DOM: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Signature CSS: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Complete Letter DOM: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Long letter reading position: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "No widened viewport/overflow: iphone-landscape-reduced/closing",
+      "passed": true
+    },
+    {
+      "label": "No inline text clipping: iphone-landscape-reduced/closing",
+      "passed": true
+    },
+    {
+      "label": "Text revealed: iphone-landscape-reduced/closing",
+      "passed": true
+    },
+    {
+      "label": "Closing highlight DOM: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Single audio: iphone-landscape-reduced",
+      "passed": true
+    },
+    {
+      "label": "Audio not reset by chapters: iphone-landscape-reduced",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Muted output: playback state does not prove audible music.",
+    "Dev preview, not a performance benchmark.",
+    "Text zoom uses 200% root font size; not a physical pinch or Safari toolbar test."
+  ]
+}

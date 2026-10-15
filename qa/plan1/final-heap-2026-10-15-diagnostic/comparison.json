@@ -1,0 +1,3601 @@
+{
+  "before": {
+    "file": "qa/plan1/final-heap-2026-10-15-diagnostic/heap-cycle-10.heapsnapshot",
+    "sha256": "cb7a105a85a19c97d1dc8b050162af45649e354e702ecd6365d5c926dac14f3b"
+  },
+  "after": {
+    "file": "qa/plan1/final-heap-2026-10-15-diagnostic/heap-cycle-30.heapsnapshot",
+    "sha256": "92fa248c8b2a7549157b0385e8d71dc2793bd748a8246a812936f04ce6be285a"
+  },
+  "method": "V8 node type/name shallow-size comparison, stable object IDs and selected strong paths to root. Not total retained-size/dominator analysis; snapshots/DevTools can influence memory.",
+  "totals": {
+    "beforeNodes": 128496,
+    "afterNodes": 130526,
+    "beforeShallow": 7787259,
+    "afterShallow": 8105032,
+    "added": 29220,
+    "removed": 27190
+  },
+  "byType": [
+    {
+      "key": "code",
+      "before": {
+        "count": 38149,
+        "shallowBytes": 2862976
+      },
+      "after": {
+        "count": 38933,
+        "shallowBytes": 3078096
+      },
+      "countDelta": 784,
+      "shallowBytesDelta": 215120
+    },
+    {
+      "key": "native",
+      "before": {
+        "count": 37476,
+        "shallowBytes": 3651135
+      },
+      "after": {
+        "count": 38689,
+        "shallowBytes": 3753864
+      },
+      "countDelta": 1213,
+      "shallowBytesDelta": 102729
+    },
+    {
+      "key": "string",
+      "before": {
+        "count": 21365,
+        "shallowBytes": 220796
+      },
+      "after": {
+        "count": 21384,
+        "shallowBytes": 221024
+      },
+      "countDelta": 19,
+      "shallowBytesDelta": 228
+    },
+    {
+      "key": "object",
+      "before": {
+        "count": 5339,
+        "shallowBytes": 186292
+      },
+      "after": {
+        "count": 5344,
+        "shallowBytes": 186380
+      },
+      "countDelta": 5,
+      "shallowBytesDelta": 88
+    },
+    {
+      "key": "number",
+      "before": {
+        "count": 9721,
+        "shallowBytes": 6072
+      },
+      "after": {
+        "count": 9735,
+        "shallowBytes": 6108
+      },
+      "countDelta": 14,
+      "shallowBytesDelta": 36
+    },
+    {
+      "key": "object shape",
+      "before": {
+        "count": 6151,
+        "shallowBytes": 342272
+      },
+      "after": {
+        "count": 6151,
+        "shallowBytes": 342296
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 24
+    },
+    {
+      "key": "synthetic",
+      "before": {
+        "count": 32,
+        "shallowBytes": 0
+      },
+      "after": {
+        "count": 32,
+        "shallowBytes": 0
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 0
+    },
+    {
+      "key": "symbol",
+      "before": {
+        "count": 67,
+        "shallowBytes": 192
+      },
+      "after": {
+        "count": 67,
+        "shallowBytes": 192
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 0
+    },
+    {
+      "key": "closure",
+      "before": {
+        "count": 7458,
+        "shallowBytes": 221092
+      },
+      "after": {
+        "count": 7458,
+        "shallowBytes": 221092
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 0
+    },
+    {
+      "key": "regexp",
+      "before": {
+        "count": 28,
+        "shallowBytes": 672
+      },
+      "after": {
+        "count": 28,
+        "shallowBytes": 672
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 0
+    },
+    {
+      "key": "sliced string",
+      "before": {
+        "count": 1,
+        "shallowBytes": 20
+      },
+      "after": {
+        "count": 1,
+        "shallowBytes": 20
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 0
+    },
+    {
+      "key": "concatenated string",
+      "before": {
+        "count": 1690,
+        "shallowBytes": 33800
+      },
+      "after": {
+        "count": 1683,
+        "shallowBytes": 33660
+      },
+      "countDelta": -7,
+      "shallowBytesDelta": -140
+    },
+    {
+      "key": "array",
+      "before": {
+        "count": 1019,
+        "shallowBytes": 261940
+      },
+      "after": {
+        "count": 1021,
+        "shallowBytes": 261628
+      },
+      "countDelta": 2,
+      "shallowBytesDelta": -312
+    }
+  ],
+  "topGrowingGroups": [
+    {
+      "key": "code / system / InstructionStream",
+      "before": {
+        "count": 1477,
+        "shallowBytes": 1275776
+      },
+      "after": {
+        "count": 1582,
+        "shallowBytes": 1404864
+      },
+      "countDelta": 105,
+      "shallowBytesDelta": 129088
+    },
+    {
+      "key": "code / system / TrustedByteArray",
+      "before": {
+        "count": 3363,
+        "shallowBytes": 271340
+      },
+      "after": {
+        "count": 3626,
+        "shallowBytes": 322688
+      },
+      "countDelta": 263,
+      "shallowBytesDelta": 51348
+    },
+    {
+      "key": "code / system / ProtectedFixedArray",
+      "before": {
+        "count": 270,
+        "shallowBytes": 55764
+      },
+      "after": {
+        "count": 370,
+        "shallowBytes": 77324
+      },
+      "countDelta": 100,
+      "shallowBytesDelta": 21560
+    },
+    {
+      "key": "native / DOMRectReadOnly",
+      "before": {
+        "count": 396,
+        "shallowBytes": 22176
+      },
+      "after": {
+        "count": 724,
+        "shallowBytes": 40544
+      },
+      "countDelta": 328,
+      "shallowBytesDelta": 18368
+    },
+    {
+      "key": "native / blink::NetworkResourcesData::ResourceData",
+      "before": {
+        "count": 63,
+        "shallowBytes": 18144
+      },
+      "after": {
+        "count": 125,
+        "shallowBytes": 36000
+      },
+      "countDelta": 62,
+      "shallowBytesDelta": 17856
+    },
+    {
+      "key": "native / system / WeakArrayList",
+      "before": {
+        "count": 598,
+        "shallowBytes": 38460
+      },
+      "after": {
+        "count": 724,
+        "shallowBytes": 54692
+      },
+      "countDelta": 126,
+      "shallowBytesDelta": 16232
+    },
+    {
+      "key": "native / LayoutShift",
+      "before": {
+        "count": 82,
+        "shallowBytes": 12464
+      },
+      "after": {
+        "count": 150,
+        "shallowBytes": 22800
+      },
+      "countDelta": 68,
+      "shallowBytesDelta": 10336
+    },
+    {
+      "key": "native / PerformanceResourceTiming",
+      "before": {
+        "count": 62,
+        "shallowBytes": 8432
+      },
+      "after": {
+        "count": 124,
+        "shallowBytes": 16864
+      },
+      "countDelta": 62,
+      "shallowBytesDelta": 8432
+    },
+    {
+      "key": "code / system / Code",
+      "before": {
+        "count": 1477,
+        "shallowBytes": 106344
+      },
+      "after": {
+        "count": 1582,
+        "shallowBytes": 113904
+      },
+      "countDelta": 105,
+      "shallowBytesDelta": 7560
+    },
+    {
+      "key": "native / LayoutShiftAttribution",
+      "before": {
+        "count": 198,
+        "shallowBytes": 7920
+      },
+      "after": {
+        "count": 362,
+        "shallowBytes": 14480
+      },
+      "countDelta": 164,
+      "shallowBytesDelta": 6560
+    },
+    {
+      "key": "native / LargestContentfulPaint",
+      "before": {
+        "count": 27,
+        "shallowBytes": 3672
+      },
+      "after": {
+        "count": 69,
+        "shallowBytes": 9384
+      },
+      "countDelta": 42,
+      "shallowBytesDelta": 5712
+    },
+    {
+      "key": "native / InteractionContentfulPaint",
+      "before": {
+        "count": 27,
+        "shallowBytes": 2808
+      },
+      "after": {
+        "count": 69,
+        "shallowBytes": 7176
+      },
+      "countDelta": 42,
+      "shallowBytesDelta": 4368
+    },
+    {
+      "key": "code / system / TrustedWeakFixedArray",
+      "before": {
+        "count": 270,
+        "shallowBytes": 10328
+      },
+      "after": {
+        "count": 370,
+        "shallowBytes": 14440
+      },
+      "countDelta": 100,
+      "shallowBytesDelta": 4112
+    },
+    {
+      "key": "code / (object elements)",
+      "before": {
+        "count": 1,
+        "shallowBytes": 36
+      },
+      "after": {
+        "count": 121,
+        "shallowBytes": 2384
+      },
+      "countDelta": 120,
+      "shallowBytesDelta": 2348
+    },
+    {
+      "key": "native / blink::HeapHashTableBacking<blink::HashTable<blink::String, blink::KeyValuePair<blink::String, cppgc::internal::BasicMember<blink::NetworkResourcesData::ResourceData, cppgc::internal::StrongMemberTag, cppgc::int",
+      "before": {
+        "count": 1,
+        "shallowBytes": 2056
+      },
+      "after": {
+        "count": 1,
+        "shallowBytes": 4104
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 2048
+    },
+    {
+      "key": "native / blink::HeapHashTableBacking<blink::HashTable<cppgc::internal::BasicMember<blink::ContextLifecycleObserver, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>, blink::KeyValuePair<cppgc:",
+      "before": {
+        "count": 1,
+        "shallowBytes": 2056
+      },
+      "after": {
+        "count": 1,
+        "shallowBytes": 4104
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 2048
+    },
+    {
+      "key": "native / system / ProtectedFixedArray",
+      "before": {
+        "count": 271,
+        "shallowBytes": 4220
+      },
+      "after": {
+        "count": 371,
+        "shallowBytes": 5904
+      },
+      "countDelta": 100,
+      "shallowBytesDelta": 1684
+    },
+    {
+      "key": "native / blink::ComputedStyleBase::StyleSurroundData",
+      "before": {
+        "count": 306,
+        "shallowBytes": 95472
+      },
+      "after": {
+        "count": 310,
+        "shallowBytes": 96720
+      },
+      "countDelta": 4,
+      "shallowBytesDelta": 1248
+    },
+    {
+      "key": "native / blink::HeapHashTableBacking<blink::HashTable<blink::String, blink::KeyValuePair<blink::String, cppgc::internal::BasicMember<blink::MemoryCacheEntry, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWri",
+      "before": {
+        "count": 1,
+        "shallowBytes": 1032
+      },
+      "after": {
+        "count": 1,
+        "shallowBytes": 2056
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 1024
+    },
+    {
+      "key": "native / blink::CSSNumericLiteralValue",
+      "before": {
+        "count": 1119,
+        "shallowBytes": 26856
+      },
+      "after": {
+        "count": 1160,
+        "shallowBytes": 27840
+      },
+      "countDelta": 41,
+      "shallowBytesDelta": 984
+    },
+    {
+      "key": "native / blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::PerformanceEntry, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+      "before": {
+        "count": 48,
+        "shallowBytes": 1792
+      },
+      "after": {
+        "count": 48,
+        "shallowBytes": 2640
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 848
+    },
+    {
+      "key": "code / system / CodeWrapper",
+      "before": {
+        "count": 4203,
+        "shallowBytes": 11816
+      },
+      "after": {
+        "count": 4308,
+        "shallowBytes": 12656
+      },
+      "countDelta": 105,
+      "shallowBytesDelta": 840
+    },
+    {
+      "key": "native / system / SharedFunctionInfoWrapper",
+      "before": {
+        "count": 270,
+        "shallowBytes": 2160
+      },
+      "after": {
+        "count": 370,
+        "shallowBytes": 2960
+      },
+      "countDelta": 100,
+      "shallowBytesDelta": 800
+    },
+    {
+      "key": "native / blink::ComputedStyleBase::StyleBoxData",
+      "before": {
+        "count": 323,
+        "shallowBytes": 56848
+      },
+      "after": {
+        "count": 327,
+        "shallowBytes": 57552
+      },
+      "countDelta": 4,
+      "shallowBytesDelta": 704
+    },
+    {
+      "key": "native / blink::HeapVectorBacking<blink::GeometryMapperClipCache::ClipCacheEntry>",
+      "before": {
+        "count": 24,
+        "shallowBytes": 3648
+      },
+      "after": {
+        "count": 28,
+        "shallowBytes": 4256
+      },
+      "countDelta": 4,
+      "shallowBytesDelta": 608
+    },
+    {
+      "key": "native / blink::ShapeResultRun",
+      "before": {
+        "count": 922,
+        "shallowBytes": 51632
+      },
+      "after": {
+        "count": 931,
+        "shallowBytes": 52136
+      },
+      "countDelta": 9,
+      "shallowBytesDelta": 504
+    },
+    {
+      "key": "code / system / WeakFixedArray",
+      "before": {
+        "count": 897,
+        "shallowBytes": 46568
+      },
+      "after": {
+        "count": 897,
+        "shallowBytes": 47000
+      },
+      "countDelta": 0,
+      "shallowBytesDelta": 432
+    },
+    {
+      "key": "native / blink::ComputedStyleBase::StyleInheritedData",
+      "before": {
+        "count": 210,
+        "shallowBytes": 28560
+      },
+      "after": {
+        "count": 213,
+        "shallowBytes": 28968
+      },
+      "countDelta": 3,
+      "shallowBytesDelta": 408
+    },
+    {
+      "key": "native / system / ExternalStringData",
+      "before": {
+        "count": 599,
+        "shallowBytes": 522763
+      },
+      "after": {
+        "count": 605,
+        "shallowBytes": 523140
+      },
+      "countDelta": 6,
+      "shallowBytesDelta": 377
+    },
+    {
+      "key": "native / blink::ComputedStyleBase::StyleMisc2Data",
+      "before": {
+        "count": 113,
+        "shallowBytes": 39776
+      },
+      "after": {
+        "count": 114,
+        "shallowBytes": 40128
+      },
+      "countDelta": 1,
+      "shallowBytesDelta": 352
+    },
+    {
+      "key": "native / blink::HeapVectorBacking<blink::HarfBuzzRunGlyphData>",
+      "before": {
+        "count": 922,
+        "shallowBytes": 30816
+      },
+      "after": {
+        "count": 931,
+        "shallowBytes": 31160
+      },
+      "countDelta": 9,
+      "shallowBytesDelta": 344
+    },
+    {
+      "key": "native / blink::Font",
+      "before": {
+        "count": 69,
+        "shallowBytes": 11592
+      },
+      "after": {
+        "count": 71,
+        "shallowBytes": 11928
+      },
+      "countDelta": 2,
+      "shallowBytesDelta": 336
+    },
+    {
+      "key": "native / blink::ComputedStyleBase::StyleBackgroundData",
+      "before": {
+        "count": 136,
+        "shallowBytes": 13056
+      },
+      "after": {
+        "count": 139,
+        "shallowBytes": 13344
+      },
+      "countDelta": 3,
+      "shallowBytesDelta": 288
+    },
+    {
+      "key": "native / blink::HeapVectorBacking<blink::ShapeResultView::RunInfoPart>",
+      "before": {
+        "count": 71,
+        "shallowBytes": 26464
+      },
+      "after": {
+        "count": 72,
+        "shallowBytes": 26728
+      },
+      "countDelta": 1,
+      "shallowBytesDelta": 264
+    },
+    {
+      "key": "native / blink::ComputedStyleBase::StyleSVGData",
+      "before": {
+        "count": 153,
+        "shallowBytes": 12240
+      },
+      "after": {
+        "count": 156,
+        "shallowBytes": 12480
+      },
+      "countDelta": 3,
+      "shallowBytesDelta": 240
+    }
+  ],
+  "newObjects": [
+    {
+      "id": 218839,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 36
+    },
+    {
+      "id": 218897,
+      "type": "object",
+      "name": "uc",
+      "shallowBytes": 24
+    },
+    {
+      "id": 218899,
+      "type": "object",
+      "name": "uc",
+      "shallowBytes": 24
+    },
+    {
+      "id": 218901,
+      "type": "object",
+      "name": "uc",
+      "shallowBytes": 24
+    },
+    {
+      "id": 218903,
+      "type": "object",
+      "name": "uc",
+      "shallowBytes": 24
+    },
+    {
+      "id": 218905,
+      "type": "object",
+      "name": "uc",
+      "shallowBytes": 24
+    },
+    {
+      "id": 219029,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219687,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219695,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 219783,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219785,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219787,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219789,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219791,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 20
+    },
+    {
+      "id": 219793,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 20
+    },
+    {
+      "id": 219801,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219807,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219815,
+      "type": "object",
+      "name": "system / Context / scope @56917",
+      "shallowBytes": 36
+    },
+    {
+      "id": 219819,
+      "type": "object",
+      "name": "system / Context / scope @56917",
+      "shallowBytes": 36
+    },
+    {
+      "id": 219823,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 20
+    },
+    {
+      "id": 219825,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 20
+    },
+    {
+      "id": 219829,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 20
+    },
+    {
+      "id": 219831,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 20
+    },
+    {
+      "id": 219837,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219839,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219845,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219869,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219871,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 16
+    },
+    {
+      "id": 219905,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 220149,
+      "type": "object",
+      "name": "yh",
+      "shallowBytes": 24
+    },
+    {
+      "id": 220151,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 220179,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 220181,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 16
+    },
+    {
+      "id": 220293,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 16
+    },
+    {
+      "id": 220327,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 220609,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 220889,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 64
+    },
+    {
+      "id": 220913,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 220961,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 220963,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 221011,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 221017,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 48
+    },
+    {
+      "id": 221019,
+      "type": "object",
+      "name": "e",
+      "shallowBytes": 84
+    },
+    {
+      "id": 221021,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 52
+    },
+    {
+      "id": 236185,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 236201,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 237491,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 237495,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 237501,
+      "type": "object",
+      "name": "system / Context / scope @67109",
+      "shallowBytes": 20
+    },
+    {
+      "id": 237505,
+      "type": "object",
+      "name": "system / Context / scope @87685",
+      "shallowBytes": 28
+    },
+    {
+      "id": 237511,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 237525,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 237535,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 237539,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 237543,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 237629,
+      "type": "object",
+      "name": "system / Context / scope @67109",
+      "shallowBytes": 20
+    },
+    {
+      "id": 237685,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 237693,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 248751,
+      "type": "object",
+      "name": "e",
+      "shallowBytes": 84
+    },
+    {
+      "id": 248753,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249475,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249519,
+      "type": "object",
+      "name": "system / Context / scope @140439",
+      "shallowBytes": 20
+    },
+    {
+      "id": 249521,
+      "type": "object",
+      "name": "system / Context / scope @141957",
+      "shallowBytes": 20
+    },
+    {
+      "id": 249531,
+      "type": "object",
+      "name": "system / Context / scope @87685",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249533,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249535,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249549,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249551,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249577,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249591,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249605,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249619,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249633,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249641,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249683,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249699,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249703,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249707,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249711,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249725,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249729,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249737,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249743,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249753,
+      "type": "object",
+      "name": "QE.i",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249769,
+      "type": "object",
+      "name": "QE.i",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249777,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 48
+    },
+    {
+      "id": 249785,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249787,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249795,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249799,
+      "type": "object",
+      "name": "e",
+      "shallowBytes": 84
+    },
+    {
+      "id": 249807,
+      "type": "object",
+      "name": "QE.i",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249819,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249821,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249823,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249835,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249849,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249851,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249853,
+      "type": "object",
+      "name": "e",
+      "shallowBytes": 84
+    },
+    {
+      "id": 249855,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249861,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249863,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249865,
+      "type": "object",
+      "name": "e",
+      "shallowBytes": 84
+    },
+    {
+      "id": 249867,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249877,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249879,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249887,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249891,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249893,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249901,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249907,
+      "type": "object",
+      "name": "QE.i",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249913,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249915,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249923,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249939,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 249941,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 249943,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249953,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249965,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 249985,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 250003,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 250007,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250009,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 250017,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 250043,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 250057,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 250093,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 250099,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250101,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 250107,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250109,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 250115,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250117,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 250123,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250125,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 250131,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250133,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 250139,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250141,
+      "type": "object",
+      "name": "g",
+      "shallowBytes": 72
+    },
+    {
+      "id": 250147,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250207,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 250209,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 250211,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 250213,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 250215,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 250217,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 250219,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 250221,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 250227,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250265,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250303,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250341,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250379,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250417,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250455,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250493,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250531,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250569,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250607,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 60
+    },
+    {
+      "id": 250645,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250647,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250649,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250651,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250653,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250655,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250657,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250659,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250661,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250663,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250665,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 250697,
+      "type": "object",
+      "name": "system / Context / scope @49925",
+      "shallowBytes": 320
+    },
+    {
+      "id": 250733,
+      "type": "object",
+      "name": "Dg",
+      "shallowBytes": 64
+    },
+    {
+      "id": 250925,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 250935,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 250943,
+      "type": "object",
+      "name": "QE.i",
+      "shallowBytes": 28
+    },
+    {
+      "id": 250955,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250957,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 250959,
+      "type": "object",
+      "name": "e",
+      "shallowBytes": 84
+    },
+    {
+      "id": 250961,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 250965,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 250967,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 250975,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 250985,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 251003,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 251103,
+      "type": "object",
+      "name": "system / Context / scope @64129",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251115,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251123,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251125,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251131,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 251139,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251141,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251165,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251167,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251169,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251171,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251173,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251179,
+      "type": "object",
+      "name": "Dg",
+      "shallowBytes": 64
+    },
+    {
+      "id": 251193,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251195,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251197,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251199,
+      "type": "object",
+      "name": "yh",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251201,
+      "type": "object",
+      "name": "fu",
+      "shallowBytes": 32
+    },
+    {
+      "id": 251217,
+      "type": "object",
+      "name": "vh",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251221,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 251227,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251229,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251231,
+      "type": "object",
+      "name": "yh",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251247,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251249,
+      "type": "object",
+      "name": "e",
+      "shallowBytes": 84
+    },
+    {
+      "id": 251251,
+      "type": "object",
+      "name": "e",
+      "shallowBytes": 84
+    },
+    {
+      "id": 251253,
+      "type": "object",
+      "name": "e",
+      "shallowBytes": 84
+    },
+    {
+      "id": 251261,
+      "type": "object",
+      "name": "system / Context / scope @56917",
+      "shallowBytes": 36
+    },
+    {
+      "id": 251263,
+      "type": "object",
+      "name": "system / Context / scope @87685",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251267,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251269,
+      "type": "object",
+      "name": "system / Context / scope @56917",
+      "shallowBytes": 36
+    },
+    {
+      "id": 251271,
+      "type": "object",
+      "name": "system / Context / scope @87685",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251275,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251277,
+      "type": "object",
+      "name": "system / Context / scope @56917",
+      "shallowBytes": 36
+    },
+    {
+      "id": 251279,
+      "type": "object",
+      "name": "system / Context / scope @87685",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251283,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251285,
+      "type": "object",
+      "name": "system / Context / scope @56917",
+      "shallowBytes": 36
+    },
+    {
+      "id": 251287,
+      "type": "object",
+      "name": "system / Context / scope @87685",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251291,
+      "type": "object",
+      "name": "system / Context / scope @56917",
+      "shallowBytes": 36
+    },
+    {
+      "id": 251293,
+      "type": "object",
+      "name": "system / Context / scope @87685",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251297,
+      "type": "object",
+      "name": "system / Context / scope @56917",
+      "shallowBytes": 36
+    },
+    {
+      "id": 251299,
+      "type": "object",
+      "name": "system / Context / scope @87685",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251303,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251307,
+      "type": "object",
+      "name": "Yo",
+      "shallowBytes": 36
+    },
+    {
+      "id": 251309,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 20
+    },
+    {
+      "id": 251311,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 20
+    },
+    {
+      "id": 251313,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251315,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251319,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251333,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251335,
+      "type": "object",
+      "name": "yh",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251347,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251355,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251357,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251369,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251371,
+      "type": "object",
+      "name": "yh",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251385,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251399,
+      "type": "object",
+      "name": "Jd",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251439,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251441,
+      "type": "object",
+      "name": "yh",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251457,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251459,
+      "type": "object",
+      "name": "yh",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251479,
+      "type": "object",
+      "name": "system / Context / scope @70053",
+      "shallowBytes": 20
+    },
+    {
+      "id": 251481,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251497,
+      "type": "object",
+      "name": "system / Context / scope @170335",
+      "shallowBytes": 20
+    },
+    {
+      "id": 251503,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 44
+    },
+    {
+      "id": 251511,
+      "type": "object",
+      "name": "system / Context / scope @72997",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251517,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251523,
+      "type": "object",
+      "name": "system / Context / scope @45221",
+      "shallowBytes": 36
+    },
+    {
+      "id": 251529,
+      "type": "object",
+      "name": "system / Context / scope @50417",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251535,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 48
+    },
+    {
+      "id": 251553,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251557,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251559,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251575,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 251579,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 48
+    },
+    {
+      "id": 251595,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251599,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251601,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251613,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251637,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251641,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251653,
+      "type": "object",
+      "name": "system / Context / scope @87685",
+      "shallowBytes": 28
+    },
+    {
+      "id": 251657,
+      "type": "object",
+      "name": "system / Context / scope @56917",
+      "shallowBytes": 36
+    },
+    {
+      "id": 251659,
+      "type": "object",
+      "name": "Hd",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251665,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251667,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251669,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251671,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251673,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251675,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 251677,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251731,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251795,
+      "type": "object",
+      "name": "_h",
+      "shallowBytes": 32
+    },
+    {
+      "id": 251799,
+      "type": "object",
+      "name": "eh",
+      "shallowBytes": 48
+    },
+    {
+      "id": 251801,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251803,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 251809,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 252045,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 252067,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252103,
+      "type": "object",
+      "name": "system / Context / scope @64169",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252113,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 252115,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 252117,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 252119,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 252121,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 252123,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 252127,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 252129,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 36
+    },
+    {
+      "id": 252137,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 252139,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 252147,
+      "type": "object",
+      "name": "system / Context / scope @64191",
+      "shallowBytes": 28
+    },
+    {
+      "id": 252153,
+      "type": "object",
+      "name": "system / Context / scope @83349",
+      "shallowBytes": 40
+    },
+    {
+      "id": 252169,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 252171,
+      "type": "object",
+      "name": "system / Context / scope @46905",
+      "shallowBytes": 36
+    },
+    {
+      "id": 252179,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 252181,
+      "type": "object",
+      "name": "Arguments",
+      "shallowBytes": 16
+    },
+    {
+      "id": 252191,
+      "type": "object",
+      "name": "system / Context / scope @70263",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252193,
+      "type": "object",
+      "name": "system / Context / scope @67109",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252195,
+      "type": "object",
+      "name": "system / Context / scope @70263",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252197,
+      "type": "object",
+      "name": "system / Context / scope @67109",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252199,
+      "type": "object",
+      "name": "system / Context / scope @67109",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252201,
+      "type": "object",
+      "name": "system / Context / scope @70263",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252203,
+      "type": "object",
+      "name": "system / Context / scope @67109",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252205,
+      "type": "object",
+      "name": "system / Context / scope @70263",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252207,
+      "type": "object",
+      "name": "system / Context / scope @67109",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252209,
+      "type": "object",
+      "name": "system / Context / scope @70263",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252211,
+      "type": "object",
+      "name": "system / Context / scope @67109",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252213,
+      "type": "object",
+      "name": "system / Context / scope @70263",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252219,
+      "type": "object",
+      "name": "system / Context / scope @67109",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252221,
+      "type": "object",
+      "name": "system / Context / scope @69233",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252223,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 252227,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 252229,
+      "type": "object",
+      "name": "Array",
+      "shallowBytes": 16
+    },
+    {
+      "id": 252231,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 28
+    },
+    {
+      "id": 252235,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 252241,
+      "type": "object",
+      "name": "r",
+      "shallowBytes": 56
+    },
+    {
+      "id": 252253,
+      "type": "object",
+      "name": "system / Context / scope @59813",
+      "shallowBytes": 28
+    },
+    {
+      "id": 252285,
+      "type": "object",
+      "name": "system / Context / scope @64149",
+      "shallowBytes": 20
+    },
+    {
+      "id": 252293,
+      "type": "object",
+      "name": "Object",
+      "shallowBytes": 24
+    },
+    {
+      "id": 252311,
+      "type": "object",
+      "name": "QE.i",
+      "shallowBytes": 28
+    }
+  ],
+  "detached": {
+    "before": [
+      {
+        "id": 175753,
+        "type": "native",
+        "name": "<div>",
+        "shallowBytes": 120
+      },
+      {
+        "id": 175755,
+        "type": "native",
+        "name": "<div>",
+        "shallowBytes": 120
+      },
+      {
+        "id": 175909,
+        "type": "native",
+        "name": "<div>",
+        "shallowBytes": 120
+      },
+      {
+        "id": 191615,
+        "type": "native",
+        "name": "<ng-component>",
+        "shallowBytes": 120
+      }
+    ],
+    "after": [
+      {
+        "id": 175753,
+        "type": "native",
+        "name": "<div>",
+        "shallowBytes": 120
+      },
+      {
+        "id": 175755,
+        "type": "native",
+        "name": "<div>",
+        "shallowBytes": 120
+      },
+      {
+        "id": 175909,
+        "type": "native",
+        "name": "<div>",
+        "shallowBytes": 120
+      },
+      {
+        "id": 191615,
+        "type": "native",
+        "name": "<ng-component>",
+        "shallowBytes": 120
+      }
+    ]
+  },
+  "selectedPaths": [
+    {
+      "node": {
+        "id": 252599,
+        "type": "code",
+        "name": "system / InstructionStream",
+        "shallowBytes": 23616
+      },
+      "found": true,
+      "path": [
+        {
+          "node": {
+            "id": 1,
+            "type": "synthetic",
+            "name": "",
+            "shallowBytes": 0
+          },
+          "edge": "1",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "shallowBytes": 0
+          },
+          "edge": "10",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "shallowBytes": 0
+          },
+          "edge": "8 / V8PerContextData::context_",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 7787,
+            "type": "native",
+            "name": "system / NativeContext / http://127.0.0.1:4205",
+            "shallowBytes": 1244
+          },
+          "edge": "global_object",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 78315,
+            "type": "object",
+            "name": "Window [JSGlobalObject] / http://127.0.0.1:4205",
+            "shallowBytes": 24
+          },
+          "edge": "_scrollLeft",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 71005,
+            "type": "closure",
+            "name": "i",
+            "shallowBytes": 32
+          },
+          "edge": "context",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 135699,
+            "type": "object",
+            "name": "system / Context / scope @44693",
+            "shallowBytes": 24
+          },
+          "edge": "previous",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 73933,
+            "type": "object",
+            "name": "system / Context / scope @44027",
+            "shallowBytes": 6376
+          },
+          "edge": "Qp",
+          "edgeType": "context"
+        },
+        {
+          "node": {
+            "id": 150679,
+            "type": "closure",
+            "name": "Qp",
+            "shallowBytes": 32
+          },
+          "edge": "code",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 220883,
+            "type": "code",
+            "name": "system / Code",
+            "shallowBytes": 72
+          },
+          "edge": "instruction_stream",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 252599,
+            "type": "code",
+            "name": "system / InstructionStream",
+            "shallowBytes": 23616
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "id": 253515,
+        "type": "code",
+        "name": "system / TrustedByteArray",
+        "shallowBytes": 13308
+      },
+      "found": true,
+      "path": [
+        {
+          "node": {
+            "id": 1,
+            "type": "synthetic",
+            "name": "",
+            "shallowBytes": 0
+          },
+          "edge": "1",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "shallowBytes": 0
+          },
+          "edge": "10",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "shallowBytes": 0
+          },
+          "edge": "8 / V8PerContextData::context_",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 7787,
+            "type": "native",
+            "name": "system / NativeContext / http://127.0.0.1:4205",
+            "shallowBytes": 1244
+          },
+          "edge": "global_object",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 78315,
+            "type": "object",
+            "name": "Window [JSGlobalObject] / http://127.0.0.1:4205",
+            "shallowBytes": 24
+          },
+          "edge": "_scrollLeft",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 71005,
+            "type": "closure",
+            "name": "i",
+            "shallowBytes": 32
+          },
+          "edge": "context",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 135699,
+            "type": "object",
+            "name": "system / Context / scope @44693",
+            "shallowBytes": 24
+          },
+          "edge": "previous",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 73933,
+            "type": "object",
+            "name": "system / Context / scope @44027",
+            "shallowBytes": 6376
+          },
+          "edge": "Qp",
+          "edgeType": "context"
+        },
+        {
+          "node": {
+            "id": 150679,
+            "type": "closure",
+            "name": "Qp",
+            "shallowBytes": 32
+          },
+          "edge": "code",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 220883,
+            "type": "code",
+            "name": "system / Code",
+            "shallowBytes": 72
+          },
+          "edge": "deoptimization_data",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 253513,
+            "type": "code",
+            "name": "system / ProtectedFixedArray",
+            "shallowBytes": 3308
+          },
+          "edge": "0",
+          "edgeType": "hidden"
+        },
+        {
+          "node": {
+            "id": 253515,
+            "type": "code",
+            "name": "system / TrustedByteArray",
+            "shallowBytes": 13308
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "id": 252603,
+        "type": "code",
+        "name": "system / InstructionStream",
+        "shallowBytes": 11008
+      },
+      "found": true,
+      "path": [
+        {
+          "node": {
+            "id": 1,
+            "type": "synthetic",
+            "name": "",
+            "shallowBytes": 0
+          },
+          "edge": "1",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "shallowBytes": 0
+          },
+          "edge": "10",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "shallowBytes": 0
+          },
+          "edge": "8 / V8PerContextData::context_",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 7787,
+            "type": "native",
+            "name": "system / NativeContext / http://127.0.0.1:4205",
+            "shallowBytes": 1244
+          },
+          "edge": "global_object",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 78315,
+            "type": "object",
+            "name": "Window [JSGlobalObject] / http://127.0.0.1:4205",
+            "shallowBytes": 24
+          },
+          "edge": "EventTarget",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 87985,
+            "type": "closure",
+            "name": "EventTarget",
+            "shallowBytes": 32
+          },
+          "edge": "prototype",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 62157,
+            "type": "object",
+            "name": "EventTarget",
+            "shallowBytes": 28
+          },
+          "edge": "addEventListener",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 62149,
+            "type": "closure",
+            "name": "",
+            "shallowBytes": 32
+          },
+          "edge": "code",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 219673,
+            "type": "code",
+            "name": "system / Code",
+            "shallowBytes": 72
+          },
+          "edge": "instruction_stream",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 252603,
+            "type": "code",
+            "name": "system / InstructionStream",
+            "shallowBytes": 11008
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "id": 252515,
+        "type": "code",
+        "name": "system / InstructionStream",
+        "shallowBytes": 7296
+      },
+      "found": true,
+      "path": [
+        {
+          "node": {
+            "id": 1,
+            "type": "synthetic",
+            "name": "",
+            "shallowBytes": 0
+          },
+          "edge": "1",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "shallowBytes": 0
+          },
+          "edge": "10",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "shallowBytes": 0
+          },
+          "edge": "8 / V8PerContextData::context_",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 7787,
+            "type": "native",
+            "name": "system / NativeContext / http://127.0.0.1:4205",
+            "shallowBytes": 1244
+          },
+          "edge": "global_object",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 78315,
+            "type": "object",
+            "name": "Window [JSGlobalObject] / http://127.0.0.1:4205",
+            "shallowBytes": 24
+          },
+          "edge": "_scrollLeft",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 71005,
+            "type": "closure",
+            "name": "i",
+            "shallowBytes": 32
+          },
+          "edge": "context",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 135699,
+            "type": "object",
+            "name": "system / Context / scope @44693",
+            "shallowBytes": 24
+          },
+          "edge": "previous",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 73933,
+            "type": "object",
+            "name": "system / Context / scope @44027",
+            "shallowBytes": 6376
+          },
+          "edge": "qa",
+          "edgeType": "context"
+        },
+        {
+          "node": {
+            "id": 137375,
+            "type": "closure",
+            "name": "r",
+            "shallowBytes": 32
+          },
+          "edge": "prototype",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 134463,
+            "type": "object",
+            "name": "Object",
+            "shallowBytes": 28
+          },
+          "edge": "paused",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 66099,
+            "type": "closure",
+            "name": "",
+            "shallowBytes": 32
+          },
+          "edge": "code",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 236567,
+            "type": "code",
+            "name": "system / Code",
+            "shallowBytes": 72
+          },
+          "edge": "instruction_stream",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 252515,
+            "type": "code",
+            "name": "system / InstructionStream",
+            "shallowBytes": 7296
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "id": 252771,
+        "type": "code",
+        "name": "system / InstructionStream",
+        "shallowBytes": 5440
+      },
+      "found": true,
+      "path": [
+        {
+          "node": {
+            "id": 1,
+            "type": "synthetic",
+            "name": "",
+            "shallowBytes": 0
+          },
+          "edge": "1",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "shallowBytes": 0
+          },
+          "edge": "10",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "shallowBytes": 0
+          },
+          "edge": "8 / V8PerContextData::context_",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 7787,
+            "type": "native",
+            "name": "system / NativeContext / http://127.0.0.1:4205",
+            "shallowBytes": 1244
+          },
+          "edge": "global_object",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 78315,
+            "type": "object",
+            "name": "Window [JSGlobalObject] / http://127.0.0.1:4205",
+            "shallowBytes": 24
+          },
+          "edge": "_scrollLeft",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 71005,
+            "type": "closure",
+            "name": "i",
+            "shallowBytes": 32
+          },
+          "edge": "context",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 135699,
+            "type": "object",
+            "name": "system / Context / scope @44693",
+            "shallowBytes": 24
+          },
+          "edge": "previous",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 73933,
+            "type": "object",
+            "name": "system / Context / scope @44027",
+            "shallowBytes": 6376
+          },
+          "edge": "rh",
+          "edgeType": "context"
+        },
+        {
+          "node": {
+            "id": 71757,
+            "type": "closure",
+            "name": "rh",
+            "shallowBytes": 32
+          },
+          "edge": "code",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 220399,
+            "type": "code",
+            "name": "system / Code",
+            "shallowBytes": 72
+          },
+          "edge": "instruction_stream",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 252771,
+            "type": "code",
+            "name": "system / InstructionStream",
+            "shallowBytes": 5440
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "id": 252455,
+        "type": "code",
+        "name": "system / InstructionStream",
+        "shallowBytes": 4480
+      },
+      "found": true,
+      "path": [
+        {
+          "node": {
+            "id": 1,
+            "type": "synthetic",
+            "name": "",
+            "shallowBytes": 0
+          },
+          "edge": "1",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "shallowBytes": 0
+          },
+          "edge": "10",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "shallowBytes": 0
+          },
+          "edge": "8 / V8PerContextData::context_",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 7787,
+            "type": "native",
+            "name": "system / NativeContext / http://127.0.0.1:4205",
+            "shallowBytes": 1244
+          },
+          "edge": "global_object",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 78315,
+            "type": "object",
+            "name": "Window [JSGlobalObject] / http://127.0.0.1:4205",
+            "shallowBytes": 24
+          },
+          "edge": "_scrollLeft",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 71005,
+            "type": "closure",
+            "name": "i",
+            "shallowBytes": 32
+          },
+          "edge": "context",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 135699,
+            "type": "object",
+            "name": "system / Context / scope @44693",
+            "shallowBytes": 24
+          },
+          "edge": "previous",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 73933,
+            "type": "object",
+            "name": "system / Context / scope @44027",
+            "shallowBytes": 6376
+          },
+          "edge": "qN",
+          "edgeType": "context"
+        },
+        {
+          "node": {
+            "id": 67829,
+            "type": "closure",
+            "name": "r",
+            "shallowBytes": 32
+          },
+          "edge": "code",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 220279,
+            "type": "code",
+            "name": "system / Code",
+            "shallowBytes": 72
+          },
+          "edge": "instruction_stream",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 252455,
+            "type": "code",
+            "name": "system / InstructionStream",
+            "shallowBytes": 4480
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "id": 252755,
+        "type": "code",
+        "name": "system / InstructionStream",
+        "shallowBytes": 4480
+      },
+      "found": true,
+      "path": [
+        {
+          "node": {
+            "id": 1,
+            "type": "synthetic",
+            "name": "",
+            "shallowBytes": 0
+          },
+          "edge": "1",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "shallowBytes": 0
+          },
+          "edge": "10",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "shallowBytes": 0
+          },
+          "edge": "8 / V8PerContextData::context_",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 7787,
+            "type": "native",
+            "name": "system / NativeContext / http://127.0.0.1:4205",
+            "shallowBytes": 1244
+          },
+          "edge": "global_object",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 78315,
+            "type": "object",
+            "name": "Window [JSGlobalObject] / http://127.0.0.1:4205",
+            "shallowBytes": 24
+          },
+          "edge": "Zone",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 99385,
+            "type": "closure",
+            "name": "e",
+            "shallowBytes": 32
+          },
+          "edge": "prototype",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 110357,
+            "type": "object",
+            "name": "Object",
+            "shallowBytes": 12
+          },
+          "edge": "run",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 62989,
+            "type": "closure",
+            "name": "run",
+            "shallowBytes": 28
+          },
+          "edge": "code",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 219701,
+            "type": "code",
+            "name": "system / Code",
+            "shallowBytes": 72
+          },
+          "edge": "instruction_stream",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 252755,
+            "type": "code",
+            "name": "system / InstructionStream",
+            "shallowBytes": 4480
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "id": 252687,
+        "type": "code",
+        "name": "system / InstructionStream",
+        "shallowBytes": 3968
+      },
+      "found": true,
+      "path": [
+        {
+          "node": {
+            "id": 1,
+            "type": "synthetic",
+            "name": "",
+            "shallowBytes": 0
+          },
+          "edge": "1",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "shallowBytes": 0
+          },
+          "edge": "10",
+          "edgeType": "element"
+        },
+        {
+          "node": {
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "shallowBytes": 0
+          },
+          "edge": "8 / V8PerContextData::context_",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 7787,
+            "type": "native",
+            "name": "system / NativeContext / http://127.0.0.1:4205",
+            "shallowBytes": 1244
+          },
+          "edge": "global_object",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 78315,
+            "type": "object",
+            "name": "Window [JSGlobalObject] / http://127.0.0.1:4205",
+            "shallowBytes": 24
+          },
+          "edge": "Zone",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 99385,
+            "type": "closure",
+            "name": "e",
+            "shallowBytes": 32
+          },
+          "edge": "prototype",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 110357,
+            "type": "object",
+            "name": "Object",
+            "shallowBytes": 12
+          },
+          "edge": "runTask",
+          "edgeType": "property"
+        },
+        {
+          "node": {
+            "id": 63169,
+            "type": "closure",
+            "name": "runTask",
+            "shallowBytes": 28
+          },
+          "edge": "code",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 219703,
+            "type": "code",
+            "name": "system / Code",
+            "shallowBytes": 72
+          },
+          "edge": "instruction_stream",
+          "edgeType": "internal"
+        },
+        {
+          "node": {
+            "id": 252687,
+            "type": "code",
+            "name": "system / InstructionStream",
+            "shallowBytes": 3968
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2235 @@
+{
+  "startedAt": "2026-10-15T14:27:04.657Z",
+  "url": "http://127.0.0.1:4205/HappyGradSweetie/",
+  "revision": "1251d209ff84453026889bc1e59266d8522af8db",
+  "renderer": "Isolated Edge headless / Chromium emulation, NOT Safari or physical iPhone/iPad",
+  "host": {
+    "os": "win32",
+    "release": "10.0.26100",
+    "cpu": "13th Gen Intel(R) Core(TM) i5-13400F",
+    "logicalCpus": 16
+  },
+  "limitations": [
+    "Muted output does not verify audible music.",
+    "Local production preview with no network/CPU throttling; not a field performance score.",
+    "No Safari hardware, native toolbar, real trackpad or physical pinch evidence."
+  ],
+  "sources": [
+    {
+      "file": "src/app/data/content-rendering.spec.ts",
+      "sha256": "70b09fca74a9602246790938d8d5553e3ca2748607124a3fa021f0521b0f7785"
+    },
+    {
+      "file": "src/app/app.config.ts",
+      "sha256": "95de03f192890a937cf2ca8997bd8d44e1ff145974607017d6cd738cbd321670"
+    },
+    {
+      "file": "src/app/app.css",
+      "sha256": "4d688f4c57087c75ef43d1cad04640fdbcb75c47545a79e08c8c249a7e6d0cd9"
+    },
+    {
+      "file": "src/app/app.html",
+      "sha256": "3e9e930505a0b9c6702a5beae84cfdd8b768590f916c506bd5f742b85bc57d16"
+    },
+    {
+      "file": "src/app/app.spec.ts",
+      "sha256": "081f8fa4fa959807898eb912659be9465646a132ff7a72090a030f03589ae4e4"
+    },
+    {
+      "file": "src/app/app.ts",
+      "sha256": "f4fee62400cef1fc41496a2e9544500f48b3acf87056cf3a0116c01cde9d9c47"
+    },
+    {
+      "file": "src/app/components/closing-section/closing-section.css",
+      "sha256": "58e216f3ea694eeb29b508968726b0ee01fc9deeacd1492bb861c25d8820cfb3"
+    },
+    {
+      "file": "src/app/components/closing-section/closing-section.html",
+      "sha256": "743945fd0d75ba44fe6ebbe354d730f1c1fb99b8afd6fd7796f994f6b829b7e3"
+    },
+    {
+      "file": "src/app/components/closing-section/closing-section.ts",
+      "sha256": "e35d02dc091d9ad6cfaf96bc7e67a1deb7338b5723a7ec7ea9c9358162ccc0e2"
+    },
+    {
+      "file": "src/app/components/gift-intro/gift-intro.css",
+      "sha256": "ac6328c7df2a821466dc1ac5a81798f0c3b94bb73f3cf6248104bfd956126e8c"
+    },
+    {
+      "file": "src/app/components/gift-intro/gift-intro.html",
+      "sha256": "38b2fb6778250e2dfc95cd61d375ecabdbd9537f7ba30fc2b833ad67a5906fbd"
+    },
+    {
+      "file": "src/app/components/gift-intro/gift-intro.ts",
+      "sha256": "e8d2db47ed3767730356d02d37159910ea52af40d34a25922847808e6e4d26d0"
+    },
+    {
+      "file": "src/app/components/graduation-hero/graduation-hero.css",
+      "sha256": "0d5f4937603060110c58805a731865c7709cacbbdd49bdb655bc2a0e6ff63253"
+    },
+    {
+      "file": "src/app/components/graduation-hero/graduation-hero.html",
+      "sha256": "743348b597ef1369922a27de72a09c4205f179041ef3f76d12201a605b37ba16"
+    },
+    {
+      "file": "src/app/components/graduation-hero/graduation-hero.spec.ts",
+      "sha256": "eefe12777b9a011e87a11e671b887afe91c2b2d3cca03cbbfd3984ce915dafa3"
+    },
+    {
+      "file": "src/app/components/graduation-hero/graduation-hero.ts",
+      "sha256": "85a362ff63e21fd7b7dcd03e801686840fe8a39f21eca72490369e0b375f9987"
+    },
+    {
+      "file": "src/app/components/graduation-invitation/graduation-invitation.css",
+      "sha256": "bd30b916070f42cd34242b87699e4f8fa5436a709687cd0a063dd9ea9bcd4ef8"
+    },
+    {
+      "file": "src/app/components/graduation-invitation/graduation-invitation.html",
+      "sha256": "4d26336850cb2806eaf834367d6ed666a06c3bc9440b9a489125a8c0337fff03"
+    },
+    {
+      "file": "src/app/components/graduation-invitation/graduation-invitation.ts",
+      "sha256": "88f15d250051f2ad73d2f4550d96a8444164a7f307d7e0aaa5da1d0d1679bc6a"
+    },
+    {
+      "file": "src/app/components/graduation-letter/graduation-letter.css",
+      "sha256": "25189ad21fd7e4a6665bfd3c20834561ac0418afe896df9555b65fa82bb895a3"
+    },
+    {
+      "file": "src/app/components/graduation-letter/graduation-letter.html",
+      "sha256": "7f638a3678db4e4c38755524b279f44d6c270dd9d96fbae39270a454d6916f11"
+    },
+    {
+      "file": "src/app/components/graduation-letter/graduation-letter.ts",
+      "sha256": "13ba87c5cafbe3a17399da2eedb649e9cf4086cc68ecc8a981cfad727a56b52e"
+    },
+    {
+      "file": "src/app/components/graduation-message/graduation-message.css",
+      "sha256": "b4e1622eb8b412479b0bc81165681431afd16f83b9f7465472e8cc7c27ade373"
+    },
+    {
+      "file": "src/app/components/graduation-message/graduation-message.html",
+      "sha256": "5aa38d1e4f467d4b1cc94e3d98ee15d3868649aac64700b87d04d3f4ba5ef09d"
+    },
+    {
+      "file": "src/app/components/graduation-message/graduation-message.ts",
+      "sha256": "66ddc57379982a0542ea0804577776c0f56b317269fdd6650033a6dc202e37f5"
+    },
+    {
+      "file": "src/app/components/graduation-portrait/graduation-portrait.css",
+      "sha256": "78ba05bc1d1c1086cf2d4e088f2f52f0e16d82548c289a821e7bd1ee9cce3722"
+    },
+    {
+      "file": "src/app/components/graduation-portrait/graduation-portrait.html",
+      "sha256": "f39e4af1ed921f9c902bd3c7c395dbdcbcc43724a44555a3b1052112c953a53c"
+    },
+    {
+      "file": "src/app/components/graduation-portrait/graduation-portrait.spec.ts",
+      "sha256": "3492581009dea697ce776819b4f538b4f404d7f6d0f5c0db879f9ba977c9b6a3"
+    },
+    {
+      "file": "src/app/components/graduation-portrait/graduation-portrait.ts",
+      "sha256": "ee50c33da6f1e2f91bb381263ff4a6fa861f8d454d178d69e5685fc3b5fbb11d"
+    },
+    {
+      "file": "src/app/components/interactive-photo-gallery/interactive-photo-gallery.css",
+      "sha256": "68cb34d015ec45d5a6135676ceb9f988372ae800fdb788e7dd23ab5af5019d70"
+    },
+    {
+      "file": "src/app/components/interactive-photo-gallery/interactive-photo-gallery.html",
+      "sha256": "1db4d06c814627d2e4841121d561cdce0c5e1f68e64a6ce22c0f395716ed5154"
+    },
+    {
+      "file": "src/app/components/interactive-photo-gallery/interactive-photo-gallery.spec.ts",
+      "sha256": "59a0dfba34eddb0e0921b71d240d8c279e0bf5322f40c233a459169b1854aa4e"
+    },
+    {
+      "file": "src/app/components/interactive-photo-gallery/interactive-photo-gallery.ts",
+      "sha256": "3544257a0f6c534e8f836080848acb1c0d5e3f5ecc6e48b0af18ffef5ec667a8"
+    },
+    {
+      "file": "src/app/components/music-control/music-control.css",
+      "sha256": "185f1bd23a4b83e324051c74f3774b75125be6f369eca23f4cdac89b8f10c730"
+    },
+    {
+      "file": "src/app/components/music-control/music-control.html",
+      "sha256": "a14d948faefeb36aa53c7ceb75a4d6d72e715984b008dc09bceb24dcd167c4a0"
+    },
+    {
+      "file": "src/app/components/music-control/music-control.spec.ts",
+      "sha256": "c97a86dfa977311611021b60f04990c817d46e962de9c880c46d5a40d36b82fa"
+    },
+    {
+      "file": "src/app/components/music-control/music-control.ts",
+      "sha256": "b5fca6e051b5b26065d35e5b4afc57a575cb7be0c562e6aa78bdd83b8750fe51"
+    },
+    {
+      "file": "src/app/components/photo-lightbox/photo-lightbox.css",
+      "sha256": "0189d0a7e3f14b54751a00e3bb9845d1bafec3fe9f013ad43cdd114d0caf0413"
+    },
+    {
+      "file": "src/app/components/photo-lightbox/photo-lightbox.html",
+      "sha256": "913c1a733ddc7cc358f74f9ddaa209ec437c0d174db3954171a8ea85203153be"
+    },
+    {
+      "file": "src/app/components/photo-lightbox/photo-lightbox.ts",
+      "sha256": "7949396d51fd240b4df00e2883c3792f209c48f423669a010919edeea79b0429"
+    },
+    {
+      "file": "src/app/components/section-navigator/section-navigator.css",
+      "sha256": "bd52d595ee66b18c83f3ee5a1999c9ad754588d776e22b22ac13b783d2a9f6d1"
+    },
+    {
+      "file": "src/app/components/section-navigator/section-navigator.html",
+      "sha256": "549499d4bc7fc86c5cc74cdf98316ef445935f4c96b1b6672cb66ac5d4edd3c9"
+    },
+    {
+      "file": "src/app/components/section-navigator/section-navigator.spec.ts",
+      "sha256": "5b9de5babe2771dc3ba54b41822467f35eec88602176d26c84a85c64ae531a47"
+    },
+    {
+      "file": "src/app/components/section-navigator/section-navigator.ts",
+      "sha256": "a15154f4a332a6691f9e03f6eb9f2675c6f988098a7d9a3acec7014003f223e5"
+    },
+    {
+      "file": "src/app/data/celebration-content.spec.ts",
+      "sha256": "13348e5bc307965379371167c5401a32cd2721a1ac3f8bfc94b43d2ac46f04f3"
+    },
+    {
+      "file": "src/app/data/celebration-content.ts",
+      "sha256": "ffb6d14d82784eb61a50a42371046761c44d6f038023f2f7daa857a61851fe24"
+    },
+    {
+      "file": "src/app/directives/opening-story.directive.spec.ts",
+      "sha256": "a2e1bbd93a3e9ba0a4e693df0165ee89ec1716bb4fcf3b8638df18ce156bd19c"
+    },
+    {
+      "file": "src/app/directives/opening-story.directive.ts",
+      "sha256": "573c7331940b8528ef19c1cf49f26bd1d825fb75571220e003cc8c5b4f71564b"
+    },
+    {
+      "file": "src/app/models/celebration.models.ts",
+      "sha256": "b7e6cb39d257ec57c9bd94d114d862b51bb81238d85e01eed24d36c2b2346f60"
+    },
+    {
+      "file": "src/app/utils/gallery-layout.spec.ts",
+      "sha256": "b93c3be081bb9138ef03434df6194bf499a3daaed963cf4a6f4419ac879abf2c"
+    },
+    {
+      "file": "src/app/utils/gallery-layout.ts",
+      "sha256": "f8a9896a189840eb3b49aeea9effb22628eca5a10218ffc08683d04975e8d708"
+    },
+    {
+      "file": "src/app/utils/gallery-presentation.spec.ts",
+      "sha256": "dc1cef9651b9e4d861d0dc2b648f8eef7dcb69e5f72dfd7619096602e638fd54"
+    },
+    {
+      "file": "src/app/utils/gallery-presentation.ts",
+      "sha256": "03d0952f55ae2b17f3a2591ff203a7c8e93f68aa2135289040fb9a68a50a7394"
+    },
+    {
+      "file": "src/app/utils/opening-story.spec.ts",
+      "sha256": "e02df1ba747eae33bf98c717ca7e47327bbf7be0f322eff8440e4860ca721348"
+    },
+    {
+      "file": "src/app/utils/opening-story.ts",
+      "sha256": "411977c3eec4f17710f2066a5e2aa1f6bc3391e1446a49a2718268ed41ca9531"
+    },
+    {
+      "file": "src/app/utils/section-alignment.spec.ts",
+      "sha256": "97b6d76631a89ad4975493725e002c172bd5b62b86d07f4f90faef12ed8110a3"
+    },
+    {
+      "file": "src/app/utils/section-alignment.ts",
+      "sha256": "95cb397344c4be57e064ef543a9d44d15e84c8866b24cfcb250162b3e3aae492"
+    },
+    {
+      "file": "src/app/utils/section-scroll-controller.spec.ts",
+      "sha256": "6857758ec9922f3b8e08c52d9e7a95888cb671103f3204594e6008b25d6749ba"
+    },
+    {
+      "file": "src/app/utils/section-scroll-controller.ts",
+      "sha256": "cc111e2b7e9cef7ff9a8fdce358dd3f47c70c0beb4232f3162b2a21dbe6e1ee9"
+    },
+    {
+      "file": "src/index.html",
+      "sha256": "b4e938a2d80aa88c8bed8eeb1faaa36c2dbaabc94a88db9afc5ff7bd1bbec202"
+    },
+    {
+      "file": "src/main.ts",
+      "sha256": "5e221b3afc582920a8ddba7983c538e9792b6ae99c9591c4acf2fb5ca78fbe74"
+    },
+    {
+      "file": "src/styles.css",
+      "sha256": "0523d523f23b1bd02b6ce774c33a27897fc427d4a58229619fb1ce36a9fd6555"
+    }
+  ],
+  "artifact": [
+    {
+      "file": "404.html",
+      "bytes": 364,
+      "sha256": "991e72ffff307a8eb8553ea56a3a5a6a649b12bdd897fda956deddbe39a3f403"
+    },
+    {
+      "file": "index.html",
+      "bytes": 14912,
+      "sha256": "0bb12a74338ddf58160dd76222fe1e7b1538eb9c98d5b4ef1b066bc8001d241f"
+    },
+    {
+      "file": "main-OUJE5TSM.js",
+      "bytes": 428072,
+      "sha256": "35ab7d82b56d08aacbcbff2117685da416e17b2b153cf2bae13254d20f825dd9"
+    },
+    {
+      "file": "polyfills-5CFQRCPP.js",
+      "bytes": 34585,
+      "sha256": "15c6f58707b9b19116fde3a3f6a0ce9cf83427d64a91e95cb91fe1056c3da616"
+    },
+    {
+      "file": "styles-X2MFHRCQ.css",
+      "bytes": 14276,
+      "sha256": "ab5861efcc1d47dd62b1b758786b3aae7ca98cb96e8b7af41fbcfe9d5a1bd657"
+    }
+  ],
+  "cases": [
+    {
+      "name": "desktop",
+      "samples": [
+        {
+          "selector": ".gift-intro__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.84px",
+          "text": "Một món quà nhỏ dành riêng cho vợ iu",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".hero__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.2px",
+          "text": "17.10.2026 · Ngày đặc biệt của vợ iu",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".hero__subheading",
+          "color": "rgb(59, 72, 101)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "28.8px",
+          "text": "Một cột mốc thật đẹp của Nguyễn Võ Mai Khuê.",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 8.734471931475744
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 7.900523297736701
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 5.258211940281594
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 6.164886998830095
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 7.097552423949015
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 9.127163513882609
+            }
+          ]
+        },
+        {
+          "selector": ".invitation__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Một ngày thật đặc biệt",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".invitation__degree",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "12.8px",
+          "text": "Cử nhân Luật",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": "#message .section__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Từ anh, gửi vợ iu",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".gallery__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Những khoảnh khắc thật xinh",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".letter__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Một lá thư nhỏ từ anh",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "network": [
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/",
+          "status": 200,
+          "type": "Document",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/polyfills-5CFQRCPP.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/styles-X2MFHRCQ.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/main-OUJE5TSM.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/hero/mai-khue-cutout-768.webp",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/32.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/33.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/1.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/34.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/2.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/3.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/4.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Audio/Ariana%20Grande%20bye%20Altare%20Remix.mp3",
+          "status": 200,
+          "type": "Media",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko40yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-iNM8.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-htM8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko50yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYpntKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-h9M8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYp3tKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/6.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/5.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/30.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/31.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        }
+      ],
+      "screenshots": [
+        "desktop-intro-navy.png",
+        "desktop-home-navy.png",
+        "desktop-invitation-navy.png",
+        "desktop-message-navy.png",
+        "desktop-memories-navy.png",
+        "desktop-letter-navy.png"
+      ],
+      "button": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(39, 50, 75)",
+        "ratio": 12.772885045185616
+      }
+    },
+    {
+      "name": "iphone",
+      "samples": [
+        {
+          "selector": ".gift-intro__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.84px",
+          "text": "Một món quà nhỏ dành riêng cho vợ iu",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".hero__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "10.08px",
+          "text": "17.10.2026 · Ngày đặc biệt của vợ iu",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".hero__subheading",
+          "color": "rgb(59, 72, 101)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "21.6px",
+          "text": "Một cột mốc thật đẹp của Nguyễn Võ Mai Khuê.",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 8.734471931475744
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 7.900523297736701
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 5.258211940281594
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 6.164886998830095
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 7.097552423949015
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 9.127163513882609
+            }
+          ]
+        },
+        {
+          "selector": ".invitation__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Một ngày thật đặc biệt",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".invitation__degree",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "12.8px",
+          "text": "Cử nhân Luật",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": "#message .section__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Từ anh, gửi vợ iu",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".gallery__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Những khoảnh khắc thật xinh",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".letter__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Một lá thư nhỏ từ anh",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "network": [
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/",
+          "status": 200,
+          "type": "Document",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-h9M8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-htM8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-iNM8.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYpntKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYp3tKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko50yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko40yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/polyfills-5CFQRCPP.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/styles-X2MFHRCQ.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/main-OUJE5TSM.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/hero/mai-khue-cutout-768.webp",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/31.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/30.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/32.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/33.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/34.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/1.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/2.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/3.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/4.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/5.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/6.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Audio/Ariana%20Grande%20bye%20Altare%20Remix.mp3",
+          "status": 200,
+          "type": "Media",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/",
+          "status": 200,
+          "type": "Document",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/polyfills-5CFQRCPP.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/styles-X2MFHRCQ.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-h9M8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-htM8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-iNM8.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYpntKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYp3tKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko50yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko40yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/main-OUJE5TSM.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/hero/mai-khue-cutout-768.webp",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/30.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/31.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/32.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/33.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/34.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/1.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/3.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/2.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/4.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/5.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/6.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Audio/Ariana%20Grande%20bye%20Altare%20Remix.mp3",
+          "status": 200,
+          "type": "Media",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "disk": false,
+          "protocol": "http/1.1"
+        }
+      ],
+      "screenshots": [
+        "iphone-intro-navy.png",
+        "iphone-home-navy.png",
+        "iphone-invitation-navy.png",
+        "iphone-message-navy.png",
+        "iphone-memories-navy.png",
+        "iphone-letter-navy.png"
+      ],
+      "button": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(39, 50, 75)",
+        "ratio": 12.772885045185616
+      }
+    },
+    {
+      "name": "ipad",
+      "samples": [
+        {
+          "selector": ".gift-intro__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.84px",
+          "text": "Một món quà nhỏ dành riêng cho vợ iu",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".hero__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.2px",
+          "text": "17.10.2026 · Ngày đặc biệt của vợ iu",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".hero__subheading",
+          "color": "rgb(59, 72, 101)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "23.2px",
+          "text": "Một cột mốc thật đẹp của Nguyễn Võ Mai Khuê.",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 8.734471931475744
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 7.900523297736701
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 5.258211940281594
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 6.164886998830095
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 7.097552423949015
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 9.127163513882609
+            }
+          ]
+        },
+        {
+          "selector": ".invitation__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Một ngày thật đặc biệt",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".invitation__degree",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "12.8px",
+          "text": "Cử nhân Luật",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": "#message .section__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Từ anh, gửi vợ iu",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".gallery__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Những khoảnh khắc thật xinh",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        },
+        {
+          "selector": ".letter__eyebrow",
+          "color": "rgb(39, 50, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11.52px",
+          "text": "Một lá thư nhỏ từ anh",
+          "ratios": [
+            {
+              "background": "#fff9f3",
+              "ratio": 12.223338142397496
+            },
+            {
+              "background": "#f7ede3",
+              "ratio": 11.056280050785947
+            },
+            {
+              "background": "#eab8be",
+              "ratio": 7.358533300546614
+            },
+            {
+              "background": "#f4ccb9",
+              "ratio": 8.627367399833014
+            },
+            {
+              "background": "#e7e0f1",
+              "ratio": 9.932573364702984
+            },
+            {
+              "background": "#ffffff",
+              "ratio": 12.772885045185616
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "network": [
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/32.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/4.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/5.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/31.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/",
+          "status": 200,
+          "type": "Document",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-h9M8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-htM8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-iNM8.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYpntKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYp3tKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko50yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko40yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/polyfills-5CFQRCPP.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/styles-X2MFHRCQ.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/main-OUJE5TSM.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/hero/mai-khue-cutout-768.webp",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/31.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/32.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/33.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/34.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/1.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/3.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/2.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/4.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/5.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Audio/Ariana%20Grande%20bye%20Altare%20Remix.mp3",
+          "status": 200,
+          "type": "Media",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/",
+          "status": 200,
+          "type": "Document",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/polyfills-5CFQRCPP.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/styles-X2MFHRCQ.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-h9M8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-htM8Efs.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5LDf-iNM8.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYpntKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYp3tKgS4.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko50yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko40yyygA.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2",
+          "status": 200,
+          "type": "Font",
+          "disk": false,
+          "protocol": "h2"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/main-OUJE5TSM.js",
+          "status": 200,
+          "type": "Script",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/hero/mai-khue-cutout-768.webp",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/32.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/31.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/33.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/34.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/1.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/2.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/3.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/4.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Image/thumb/5.jpg",
+          "status": 200,
+          "type": "Image",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/Audio/Ariana%20Grande%20bye%20Altare%20Remix.mp3",
+          "status": 200,
+          "type": "Media",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "disk": false,
+          "protocol": "http/1.1"
+        },
+        {
+          "url": "http://127.0.0.1:4205/HappyGradSweetie/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "disk": false,
+          "protocol": "http/1.1"
+        }
+      ],
+      "screenshots": [
+        "ipad-intro-navy.png",
+        "ipad-home-navy.png",
+        "ipad-invitation-navy.png",
+        "ipad-message-navy.png",
+        "ipad-memories-navy.png",
+        "ipad-letter-navy.png"
+      ],
+      "button": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(39, 50, 75)",
+        "ratio": 12.772885045185616
+      }
+    }
+  ],
+  "errors": [],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.45",
+    "revision": "@50f24ef2aa5369a074b8888b7db82d9c0652d642",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.4"
+  },
+  "checks": [
+    {
+      "label": "desktop .gift-intro__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "desktop gift button >=4.5",
+      "passed": true
+    },
+    {
+      "label": "desktop .hero__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "desktop .hero__subheading >=4.5",
+      "passed": true
+    },
+    {
+      "label": "desktop .invitation__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "desktop .invitation__degree >=4.5",
+      "passed": true
+    },
+    {
+      "label": "desktop #message .section__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "desktop .gallery__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "desktop .letter__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "desktop no unexpected errors",
+      "passed": true
+    },
+    {
+      "label": "iphone .gift-intro__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "iphone gift button >=4.5",
+      "passed": true
+    },
+    {
+      "label": "iphone .hero__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "iphone .hero__subheading >=4.5",
+      "passed": true
+    },
+    {
+      "label": "iphone .invitation__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "iphone .invitation__degree >=4.5",
+      "passed": true
+    },
+    {
+      "label": "iphone #message .section__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "iphone .gallery__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "iphone .letter__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "iphone no unexpected errors",
+      "passed": true
+    },
+    {
+      "label": "ipad .gift-intro__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "ipad gift button >=4.5",
+      "passed": true
+    },
+    {
+      "label": "ipad .hero__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "ipad .hero__subheading >=4.5",
+      "passed": true
+    },
+    {
+      "label": "ipad .invitation__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "ipad .invitation__degree >=4.5",
+      "passed": true
+    },
+    {
+      "label": "ipad #message .section__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "ipad .gallery__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "ipad .letter__eyebrow >=4.5",
+      "passed": true
+    },
+    {
+      "label": "ipad no unexpected errors",
+      "passed": true
+    }
+  ],
+  "failed": [],
+  "finishedAt": "2026-10-15T14:27:25.849Z"
+}
