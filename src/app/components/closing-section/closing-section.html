@@ -7,7 +7,8 @@
   <div class="closing__inner">
     <p class="closing__sparkle" aria-hidden="true">✦</p>
     <h2 id="closing-title">{{ content.title }}</h2>
-    <p>{{ content.body }}</p>
+    <p class="closing__body">{{ content.body }}</p>
+    <p class="closing__highlight">{{ content.finalHighlight }}</p>
     <div class="closing__actions">
       <a href="#memories">{{ content.actionLabel }} <span aria-hidden="true">↑</span></a>
       <button type="button" (click)="replayRequested.emit()">{{ content.replayLabel }} <span aria-hidden="true">↺</span></button>

@@ -14,6 +14,6 @@ export class GiftIntroComponent implements AfterViewInit {
   @Output() readonly opened = new EventEmitter<void>();
 
   ngAfterViewInit(): void {
-    queueMicrotask(() => this.openButton?.nativeElement.focus());
+    queueMicrotask(() => this.openButton?.nativeElement.focus({ preventScroll: true }));
   }
 }

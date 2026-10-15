@@ -57,6 +57,7 @@ export interface LetterContent {
 export interface ClosingContent {
   readonly title: string;
   readonly body: string;
+  readonly finalHighlight: string;
   readonly actionLabel: string;
   readonly replayLabel: string;
 }
@@ -65,6 +66,7 @@ export interface GalleryContent {
   readonly eyebrow: string;
   readonly title: string;
   readonly lead: string;
+  readonly instruction: string;
 }
 
 export interface MusicConfig {

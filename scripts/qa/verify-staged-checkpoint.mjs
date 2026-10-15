@@ -1,7 +1,7 @@
 // Validate the exact staged tree without stashing or changing the user's files.
 // Generated snapshots stay under ignored .angular/; installed node_modules is reused.
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, symlinkSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, symlinkSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -17,7 +17,10 @@ const run = args => execFileSync(process.execPath, [cli, ...args], {
   cwd: target, stdio: 'inherit', env: process.env,
 });
 console.log(`Validating staged checkpoint: ${target}`);
-run(['test', '--watch=false', '--browsers=ChromeHeadless']);
+const edgeQA = existsSync(path.join(target, 'scripts/qa/karma-edge.cjs'));
+run(['test', '--watch=false', ...(edgeQA
+  ? ['--karma-config=scripts/qa/karma-edge.cjs', '--browsers=EdgeHeadlessQA']
+  : ['--browsers=ChromeHeadless'])]);
 run(['build', '--configuration=github-pages']);
 execFileSync(process.execPath, ['scripts/prepare-github-pages.mjs'], {
   cwd: target, stdio: 'inherit',

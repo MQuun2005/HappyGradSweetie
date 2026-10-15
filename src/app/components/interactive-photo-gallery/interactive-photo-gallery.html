@@ -42,7 +42,8 @@
     }
   </div>
   <p id="gallery-instructions" class="gallery__hint">
-    Kéo ngang để khám phá · Chạm ảnh để mở
+    {{ content.instruction }}
+    <span class="gallery__gesture-hint">Kéo ngang để khám phá đủ 34 ảnh.</span>
     <span class="sr-only">Dùng phím mũi tên trái, phải để chọn ảnh; Enter hoặc Space để mở. Khi focus trong thư viện, chuyển động sẽ tạm dừng.</span>
   </p>
   <p class="sr-only" aria-live="polite" aria-atomic="true">Ảnh {{ activePhotoNumber() }} / {{ photoCount() }}</p>

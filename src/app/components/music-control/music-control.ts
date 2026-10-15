@@ -149,7 +149,8 @@ export class MusicControlComponent implements AfterViewInit, OnChanges, OnDestro
     const duration = 600;
 
     const step = (now: number) => {
-      const progress = Math.min(1, (now - start) / duration);
+      // RAF's frame timestamp can slightly precede performance.now() at scheduling.
+      const progress = Math.min(1, Math.max(0, (now - start) / duration));
       audio.volume = target * progress;
       if (progress < 1 && !audio.paused) {
         this.fadeFrame = requestAnimationFrame(step);

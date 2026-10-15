@@ -7,9 +7,12 @@
   position: fixed;
   z-index: 200;
   inset: 0;
-  display: grid;
-  overflow: hidden;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: max(1.25rem, var(--safe-area-top)) max(1.25rem, var(--safe-area-right))
     max(1.25rem, var(--safe-area-bottom)) max(1.25rem, var(--safe-area-left));
   background: rgb(255 249 243 / 92%);
@@ -20,9 +23,12 @@
   position: relative;
   z-index: 1;
   inline-size: min(100%, 35rem);
+  flex: none;
+  margin-block: auto;
+  overflow-wrap: anywhere;
   border: 1px solid var(--color-border);
   border-radius: 1.5rem;
-  padding: clamp(2.25rem, 7vw, 4.5rem);
+  padding: clamp(1.5rem, 6vw, 3.5rem);
   background: var(--color-card);
   box-shadow: 0 28px 80px rgb(39 50 75 / 18%);
   text-align: center;
@@ -85,13 +91,13 @@
 }
 
 h1 {
-  max-inline-size: 13ch;
+  max-inline-size: 16ch;
   margin: 0 auto;
   color: var(--color-navy);
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  font-size: clamp(2.4rem, 6vw, 3.7rem);
   font-weight: 600;
-  line-height: 0.92;
+  line-height: 1.08;
   letter-spacing: -0.04em;
 }
 
@@ -123,7 +129,8 @@ button:hover {
 }
 
 .gift-intro__glow {
-  position: absolute;
+  position: fixed;
+  pointer-events: none;
   border-radius: 50%;
   filter: blur(4px);
 }

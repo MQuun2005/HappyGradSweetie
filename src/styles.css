@@ -42,7 +42,8 @@ html[data-scroll-coordinator] {
 }
 
 body {
-  min-width: 20rem;
+  /* Enlarging text must not force a 640px layout viewport on a 393px phone. */
+  min-width: min(20rem, 100%);
   margin: 0;
   overflow-x: clip;
   background: var(--color-ivory);

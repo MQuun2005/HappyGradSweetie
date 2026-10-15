@@ -316,7 +316,8 @@ h1 {
     inset-inline: 0.5rem;
   }
   .hero__name {
-    font-size: clamp(4.25rem, 20vw, 6rem);
+    /* Decorative only: text zoom must not widen the mobile layout viewport. */
+    font-size: min(20vw, 6rem);
   }
   .hero__lead {
     margin-inline: auto;

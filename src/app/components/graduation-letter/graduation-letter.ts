@@ -37,7 +37,9 @@ export class GraduationLetterComponent implements AfterViewInit, OnDestroy {
           this.observer?.disconnect();
         }
       },
-      { threshold: 0.25 },
+      // A long letter can be taller than four viewports with enlarged text.
+      // Reveal on entry, not on an unreachable percentage of the entire sheet.
+      { threshold: 0 },
     );
     this.observer.observe(this.letterRef.nativeElement);
   }
