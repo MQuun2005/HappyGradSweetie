@@ -37,7 +37,7 @@
 
 .gift-intro__eyebrow {
   margin: 0;
-  color: var(--color-rose);
+  color: var(--color-navy);
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -113,10 +113,10 @@ button {
   align-items: center;
   gap: 0.7rem;
   margin-block-start: 2rem;
-  border: 1px solid var(--color-rose);
+  border: 1px solid var(--color-navy);
   border-radius: 999px;
   padding: 0.85rem 1.2rem 0.85rem 1.4rem;
-  background: var(--color-rose);
+  background: var(--color-navy);
   box-shadow: 0 10px 22px rgb(185 112 125 / 25%);
   color: #fff;
   font-weight: 700;

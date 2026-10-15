@@ -41,6 +41,6 @@ img {
 }
 
 .portrait__unavailable span {
-  color: var(--color-rose);
+  color: var(--color-navy);
   font-size: 2rem;
 }
