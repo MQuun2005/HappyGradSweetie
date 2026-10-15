@@ -34,6 +34,8 @@ export class MusicControlComponent implements AfterViewInit, OnChanges, OnDestro
   private hasTriedGesture = false;
   private fadeFrame?: number;
   private removeGestureRetry?: () => void;
+  private destroyed = false;
+  private playbackGeneration = 0;
 
   ngAfterViewInit(): void {
     this.hasViewInitialized = true;
@@ -44,6 +46,7 @@ export class MusicControlComponent implements AfterViewInit, OnChanges, OnDestro
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {
+      this.playbackGeneration++;
       this.cancelFade();
       this.removeGestureRetry?.();
       this.removeGestureRetry = undefined;
@@ -60,12 +63,15 @@ export class MusicControlComponent implements AfterViewInit, OnChanges, OnDestro
   }
 
   ngOnDestroy(): void {
+    this.destroyed = true;
+    this.playbackGeneration++;
     this.cancelFade();
     this.removeGestureRetry?.();
+    this.audioRef?.nativeElement.pause();
   }
 
   playFromUserGesture(): void {
-    if (this.hasTriedGesture || this.isUnavailable()) {
+    if (this.destroyed || this.hasTriedGesture || this.isUnavailable()) {
       return;
     }
 
@@ -94,7 +100,7 @@ export class MusicControlComponent implements AfterViewInit, OnChanges, OnDestro
 
   private async play(isAutoplayAttempt: boolean): Promise<void> {
     const audio = this.audioRef?.nativeElement;
-    if (!audio || !this.config.src || this.isUnavailable()) {
+    if (this.destroyed || !audio || !this.config.src || this.isUnavailable()) {
       return;
     }
 
@@ -107,11 +113,14 @@ export class MusicControlComponent implements AfterViewInit, OnChanges, OnDestro
     audio.loop = this.config.loop;
     audio.volume = 0;
 
+    const generation = this.playbackGeneration;
     try {
       await audio.play();
+      if (this.destroyed || generation !== this.playbackGeneration) return;
       this.isAutoplayBlocked.set(false);
       this.fadeToConfiguredVolume(audio);
     } catch {
+      if (this.destroyed || generation !== this.playbackGeneration) return;
       this.isPlaying.set(false);
       this.isAutoplayBlocked.set(true);
       if (isAutoplayAttempt) {
@@ -126,7 +135,8 @@ export class MusicControlComponent implements AfterViewInit, OnChanges, OnDestro
     }
 
     const retry = (event: Event) => {
-      if (event instanceof KeyboardEvent && (event.ctrlKey || event.metaKey || event.altKey)) {
+      if (event instanceof KeyboardEvent && (event.ctrlKey || event.metaKey || event.altKey
+        || event.repeat || event.isComposing || ['Shift', 'Control', 'Alt', 'Meta', 'Escape'].includes(event.key))) {
         return;
       }
 
@@ -135,8 +145,10 @@ export class MusicControlComponent implements AfterViewInit, OnChanges, OnDestro
       this.playFromUserGesture();
     };
 
-    document.addEventListener('pointerdown', retry, { once: true, capture: true });
-    document.addEventListener('keydown', retry, { once: true, capture: true });
+    // Remove both listeners only after an eligible gesture. A once-listener also
+    // consumes a rejected modifier key and silently loses the keyboard retry.
+    document.addEventListener('pointerdown', retry, { capture: true });
+    document.addEventListener('keydown', retry, { capture: true });
     this.removeGestureRetry = () => {
       document.removeEventListener('pointerdown', retry, true);
       document.removeEventListener('keydown', retry, true);

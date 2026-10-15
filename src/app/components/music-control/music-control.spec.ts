@@ -45,4 +45,35 @@ describe('MusicControlComponent', () => {
     expect(audio.volume).toBeCloseTo(0.35);
   });
 
+  it('ignores modifier keys without consuming the one eligible autoplay retry', async () => {
+    fixture.detectChanges();
+    const audio = fixture.nativeElement.querySelector('audio') as HTMLAudioElement;
+    const play = spyOn(audio, 'play').and.rejectWith(new DOMException('Blocked', 'NotAllowedError'));
+    fixture.componentRef.setInput('autoplayEnabled', true);
+    fixture.detectChanges();
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(play).toHaveBeenCalledTimes(1);
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Control', ctrlKey: true }));
+    expect(play).toHaveBeenCalledTimes(1);
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    await Promise.resolve();
+    expect(play).toHaveBeenCalledTimes(2);
+    document.dispatchEvent(new PointerEvent('pointerdown'));
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    expect(play).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not schedule a fade after a pending play resolves after destroy', async () => {
+    fixture.detectChanges();
+    const audio = fixture.nativeElement.querySelector('audio') as HTMLAudioElement;
+    let resolve!: () => void;
+    spyOn(audio, 'play').and.returnValue(new Promise<void>(done => resolve = done));
+    const raf = spyOn(window, 'requestAnimationFrame').and.returnValue(1);
+    fixture.componentInstance.playFromUserGesture();
+    fixture.destroy();
+    resolve();
+    await Promise.resolve();
+    expect(raf).not.toHaveBeenCalled();
+  });
 });
