@@ -29,12 +29,15 @@ describe('celebrationContent', () => {
     expect(celebrationContent.invitation.school).toBe('Đại học Tôn Đức Thắng');
     expect(celebrationContent.invitation.dateLabel).toBe('17 tháng 10 năm 2026');
     expect(celebrationContent.letter.signature).toBe('Thương vợ iu nhiều lắm,\nQuân iu');
-    expect(celebrationContent.letter.paragraphs).toHaveSize(5);
+    expect(celebrationContent.letter.paragraphs).toHaveSize(4);
+    expect(
+      celebrationContent.letter.paragraphs.every((paragraph) => paragraph.trim().length > 0),
+    ).toBeTrue();
   });
 
-  it('exposes the approved copy from one data source', () => {
-    expect(celebrationContent.intro.title).toBe('Vợ iu ơi, anh có cái này cho vợ iu nè ♡');
-    expect(celebrationContent.intro.actionLabel).toBe('Vợ iu mở quà nha ♡');
+  it('exposes the polished copy from one data source', () => {
+    expect(celebrationContent.intro.title).toBe('Vợ iu ơi, anh có quà nè ♡');
+    expect(celebrationContent.intro.actionLabel).toBe('Mở quà với anh nha ♡');
     expect(celebrationContent.invitation.title).toBe('Ngày của cô cử nhân anh thương');
     expect(celebrationContent.message.title).toBe('Cho anh khen vợ iu một chút nha');
     expect(celebrationContent.gallery.title).toBe('34 tấm hình, một người anh thương');
@@ -42,12 +45,13 @@ describe('celebrationContent', () => {
       'Chạm vào tấm nào vợ iu thích để ngắm rõ hơn nha ♡',
     );
     expect(celebrationContent.closing.finalHighlight).toBe('Anh thương vợ iu. Nhiều lắm. ♡');
+    expect(celebrationContent.closing.title).toBe('Rồi mình cùng đón những ngày tiếp theo nha');
   });
 
   it('defines affectionate captions for all 34 photos', () => {
     expect(celebrationContent.photos.every((photo) => Boolean(photo.caption))).toBeTrue();
     expect(celebrationContent.photos.find((photo) => photo.id === 9)?.caption).toBe(
-      'Một chút dịu dàng của vợ iu.',
+      'Anh thích tấm này lắm.',
     );
   });
 
@@ -57,7 +61,7 @@ describe('celebrationContent', () => {
     expect(celebrationContent.music.volume).toBe(0.35);
     expect(celebrationContent.music.loop).toBeTrue();
     expect(hero.portraitSrc).toBe('Image/hero/mai-khue-cutout.webp');
-    expect(hero.title).toBe('Chúc mừng tốt nghiệp, vợ iu!');
+    expect(hero.title).toBe('Chúc mừng tốt nghiệp nhan cục dàng!');
     expect(photos).toHaveSize(34);
   });
 });

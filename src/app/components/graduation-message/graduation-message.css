@@ -11,9 +11,15 @@
 }
 
 .message {
+  position: relative;
+  isolation: isolate;
   max-inline-size: 52rem;
   margin: 0 auto;
   text-align: center;
+}
+
+.message > app-decorative-stars {
+  z-index: -1;
 }
 
 .message__marker,

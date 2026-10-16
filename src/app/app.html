@@ -24,6 +24,8 @@
   <app-closing-section [content]="content.closing" (replayRequested)="replayJourney()" />
 </main>
 
+<app-cursor-stardust [enabled]="!introVisible() && lightboxIndex() === null" />
+
 @if (!introVisible()) {
   <app-section-navigator
     [activeSectionId]="activeSectionId()"

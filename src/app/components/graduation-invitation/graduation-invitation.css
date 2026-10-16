@@ -40,6 +40,10 @@
   text-align: center;
 }
 
+.invitation > app-decorative-stars {
+  z-index: 1;
+}
+
 .invitation__card::before {
   position: absolute;
   inset: 0.7rem;

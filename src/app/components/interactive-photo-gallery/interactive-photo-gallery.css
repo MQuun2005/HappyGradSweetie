@@ -19,6 +19,11 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.gallery > app-decorative-stars {
+  /* A sibling of the 3D scene: never flatten or write transforms on its camera. */
+  z-index: -1;
+}
 .gallery__eyebrow {
   margin: 0;
   color: var(--color-navy);

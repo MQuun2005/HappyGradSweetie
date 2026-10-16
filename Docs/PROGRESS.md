@@ -4,6 +4,8 @@
 >
 > **PLAN1 hoàn thiện trong phạm vi được chấp thuận ngày 16/10.** Sau khi duyệt Chromium, bạn yêu cầu **miễn kiểm chứng thiết bị thật và commit/push theo phase**. Safari là **Waived — chưa kiểm thử**, không phải Passed; không còn chặn hoàn thành. [Hồ sơ phát hành](Reviews/plan1/RELEASE-2026-10-16.md) ghi các checkpoint mới và giới hạn còn được công bố.
 
+> **Bổ sung content ngày 16/10, sau `8e5b696`:** đã triển khai yêu cầu biên tập lời nhắn tự nhiên/tình cảm hơn; thư bốn đoạn, rút gọn các phần dẫn, giữ thông tin cá nhân và asset. **105 tests + production/Pages build PASS**, kiểm tra mới ba viewport Chromium và 36 screenshot. Xem [Content polish](Reviews/plan1/CONTENT-POLISH-2026-10-16.md). Bản copy mới đang local, chưa commit/push; không dùng approval/evidence cũ để tự xác nhận bản mới.
+
 ## 1. Tóm tắt nhanh
 
 | Hạng mục | Trạng thái hiện tại |
@@ -12,7 +14,7 @@
 | Cinematic Hero | Đã được bạn duyệt |
 | Scroll Storytelling | Đã được bạn duyệt |
 | 3D Gallery | Đã được bạn duyệt sau bản sửa hover ảnh kề |
-| Content integration | Đã được bạn duyệt ngày 14/10; 32 thay đổi copy giữ nguyên ở Phase 7 |
+| Content integration | Bản Phase 6/7 đã được duyệt; biên tập bổ sung ngày 16/10 sau `8e5b696` đã triển khai và kiểm tra, xem báo cáo Content polish |
 | E2E QA toàn hành trình | Chromium đã được duyệt; source cuối chạy lại 105 tests/Pages build, production build và integrity đạt ngày 16/10; thiết bị thật được miễn |
 | Final Creative Review | **Approved cho bản Chromium**; thiết bị thật **Waived by user**, không coi là Passed |
 | GitHub | Bảy commit theo phase đã push lên `master`, đến `1251d20` |

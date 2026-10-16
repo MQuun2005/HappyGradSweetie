@@ -1,0 +1,173 @@
+:host {
+  --star-color: #c9a46a;
+  --star-halo: rgb(233 189 126 / 48%);
+  --star-play-state: paused;
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+:host([data-variant='closing']),
+:host([data-variant='accent']) {
+  --star-color: #e8c78b;
+  --star-halo: rgb(246 207 141 / 34%);
+}
+
+.star {
+  position: absolute;
+  inline-size: var(--size);
+  block-size: var(--size);
+  margin: calc(var(--size) * -0.5);
+  animation: star-drift 9s ease-in-out var(--delay) infinite;
+}
+
+.star__rays {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  color: var(--star-color);
+  filter: drop-shadow(0 0 3px var(--star-halo));
+  animation: star-glimmer var(--duration) ease-in-out var(--delay) infinite;
+}
+
+.star__bloom {
+  position: absolute;
+  inset: -85%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgb(255 244 215 / 70%),
+    var(--star-halo) 18%,
+    transparent 68%
+  );
+  animation: star-bloom var(--duration) ease-in-out var(--delay) infinite;
+}
+
+.stardust {
+  position: absolute;
+  inline-size: 3px;
+  block-size: 3px;
+  border-radius: 50%;
+  background: var(--star-color);
+  box-shadow: 0 0 6px 1px var(--star-halo);
+  animation: dust-shimmer 7s ease-in-out var(--delay) infinite;
+}
+
+.star,
+.star__rays,
+.star__bloom,
+.stardust {
+  animation-play-state: var(--star-play-state);
+}
+
+@keyframes star-glimmer {
+  0%,
+  100% {
+    opacity: 0.48;
+    transform: scale(0.72) rotate(-9deg);
+  }
+  48% {
+    opacity: 1;
+    transform: scale(1.12) rotate(7deg);
+  }
+  68% {
+    opacity: 0.75;
+    transform: scale(0.94) rotate(3deg);
+  }
+}
+
+@keyframes star-bloom {
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: scale(0.6);
+  }
+  48% {
+    opacity: 0.72;
+    transform: scale(1.1);
+  }
+  68% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes star-drift {
+  0%,
+  100% {
+    transform: translateY(3px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes dust-shimmer {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: translateY(3px) scale(0.7);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-4px) scale(1);
+  }
+}
+
+@media (max-width: 47.99rem), (pointer: coarse) {
+  .star {
+    inline-size: calc(var(--size) * 0.8);
+    block-size: calc(var(--size) * 0.8);
+    margin: calc(var(--size) * -0.4);
+  }
+  .star--extra,
+  .stardust--extra {
+    display: none;
+  }
+  :host([data-variant='closing']) .star:nth-of-type(3) {
+    left: 4% !important;
+  }
+  :host([data-variant='closing']) .star:nth-of-type(4) {
+    left: 96% !important;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  /* On narrow paper sections, side gutters are smaller than a star.
+     Use the reserved top/bottom padding, not the readable sheet or its edges. */
+  :host([data-variant='paper']) .star:nth-of-type(1) {
+    left: 9% !important; top: 1.75rem !important;
+  }
+  :host([data-variant='paper']) .star:nth-of-type(2) {
+    left: 91% !important; top: 1.75rem !important;
+  }
+  :host([data-variant='paper']) .star:nth-of-type(3) {
+    left: 12% !important; top: auto !important; bottom: 1.75rem;
+  }
+  :host([data-variant='paper']) .star:nth-of-type(4) {
+    left: 88% !important; top: auto !important; bottom: 1.75rem;
+  }
+  :host([data-variant='paper']) .star:nth-of-type(n + 5),
+  :host([data-variant='paper']) .stardust { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star,
+  .star__rays,
+  .star__bloom,
+  .stardust {
+    animation: none;
+  }
+  .star__rays {
+    opacity: 0.8;
+  }
+  .star__bloom {
+    opacity: 0.24;
+  }
+  .stardust {
+    opacity: 0.45;
+  }
+}

@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 
 import { ClosingSectionComponent } from './components/closing-section/closing-section';
+import { CursorStardustComponent } from './components/cursor-stardust/cursor-stardust';
 import { GiftIntroComponent } from './components/gift-intro/gift-intro';
 import { GraduationHeroComponent } from './components/graduation-hero/graduation-hero';
 import { GraduationInvitationComponent } from './components/graduation-invitation/graduation-invitation';
@@ -37,6 +38,7 @@ import { SectionScrollController } from './utils/section-scroll-controller';
     MusicControlComponent,
     GraduationLetterComponent,
     ClosingSectionComponent,
+    CursorStardustComponent,
     PhotoLightboxComponent,
     GiftIntroComponent,
     SectionNavigatorComponent,

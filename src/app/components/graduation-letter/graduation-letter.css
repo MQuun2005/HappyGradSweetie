@@ -3,6 +3,8 @@
 }
 
 .letter-section {
+  position: relative;
+  isolation: isolate;
   min-block-size: var(--chapter-viewport);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -10,6 +12,10 @@
   padding: max(3.5rem, calc(2.5rem + var(--safe-area-top))) max(1.5rem, var(--safe-area-right))
     max(3.5rem, calc(2.5rem + var(--safe-area-bottom))) max(1.5rem, var(--safe-area-left));
   background: var(--color-card);
+}
+
+.letter-section > app-decorative-stars {
+  z-index: -1;
 }
 
 .letter {

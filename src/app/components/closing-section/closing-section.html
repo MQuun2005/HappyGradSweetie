@@ -1,11 +1,9 @@
 <section id="closing" class="closing" aria-labelledby="closing-title">
-  <div class="closing__sparkles" aria-hidden="true">
-    @for (sparkle of sparkles; track sparkle) {
-      <span></span>
-    }
-  </div>
+  <app-decorative-stars variant="closing" />
   <div class="closing__inner">
-    <p class="closing__sparkle" aria-hidden="true">✦</p>
+    <div class="closing__sparkle" aria-hidden="true">
+      <app-decorative-stars variant="accent" />
+    </div>
     <h2 id="closing-title">{{ content.title }}</h2>
     <p class="closing__body">{{ content.body }}</p>
     <p class="closing__highlight">{{ content.finalHighlight }}</p>

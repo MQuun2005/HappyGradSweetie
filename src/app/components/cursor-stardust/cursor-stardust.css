@@ -1,0 +1,42 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 91;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  contain: strict;
+}
+
+.particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  inline-size: 28px;
+  block-size: 28px;
+  opacity: 0;
+  color: #c9a46a;
+  background: radial-gradient(
+    circle,
+    rgb(255 244 215 / 65%),
+    rgb(233 189 126 / 25%) 22%,
+    transparent 70%
+  );
+}
+
+.particle:nth-child(3n) {
+  color: #d39ba6;
+}
+.particle svg {
+  position: absolute;
+  inset: 25%;
+  inline-size: 50%;
+  block-size: 50%;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  :host {
+    display: none;
+  }
+}

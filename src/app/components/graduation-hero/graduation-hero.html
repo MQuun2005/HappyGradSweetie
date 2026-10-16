@@ -4,7 +4,11 @@
   <div class="hero__layout">
     <header class="hero__heading">
       <p class="hero__eyebrow" data-hero-heading>{{ content.eyebrow }}</p>
-      <h1 id="hero-title" data-hero-heading>{{ content.title }}</h1>
+      <h1 id="hero-title" data-hero-heading>
+        @for (line of titleLines; track $index) {
+          <span class="hero__title-line" [class.hero__title-dedication]="$index === 2">{{ line }}</span>
+        }
+      </h1>
       <p class="hero__subheading" data-hero-heading>{{ content.subheading }}</p>
     </header>
 
@@ -46,12 +50,7 @@
               />
             </div>
           </div>
-          <span class="hero__sparkle hero__sparkle--one" data-hero-decoration aria-hidden="true"
-            >✧</span
-          >
-          <span class="hero__sparkle hero__sparkle--two" data-hero-decoration aria-hidden="true"
-            >✧</span
-          >
+          <app-decorative-stars class="hero__sparkles" variant="portrait" data-hero-decoration />
         </div>
       </div>
     </div>

@@ -10,10 +10,12 @@ import {
 } from '@angular/core';
 
 import { LetterContent } from '../../models/celebration.models';
+import { DecorativeStarsComponent } from '../decorative-stars/decorative-stars';
 
 @Component({
   selector: 'app-graduation-letter',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [DecorativeStarsComponent],
   templateUrl: './graduation-letter.html',
   styleUrl: './graduation-letter.css',
 })

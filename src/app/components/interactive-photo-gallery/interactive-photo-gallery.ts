@@ -25,6 +25,7 @@ import {
   positiveModulo,
 } from '../../utils/gallery-layout';
 import { PresentationViewport, presentGalleryCard } from '../../utils/gallery-presentation';
+import { DecorativeStarsComponent } from '../decorative-stars/decorative-stars';
 
 interface RenderedGalleryCard {
   readonly logicalIndex: number;
@@ -41,6 +42,7 @@ const approach = (value: number, target: number, step: number) =>
 @Component({
   selector: 'app-interactive-photo-gallery',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [DecorativeStarsComponent],
   templateUrl: './interactive-photo-gallery.html',
   styleUrl: './interactive-photo-gallery.css',
 })

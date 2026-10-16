@@ -1,0 +1,32 @@
+@for (star of stars; track $index) {
+  <span
+    class="star"
+    [class.star--extra]="$index >= 6"
+    [style.left.%]="star[0]"
+    [style.top.%]="star[1]"
+    [style.--size]="star[2] + 'px'"
+    [style.--delay]="star[3] + 's'"
+    [style.--duration]="star[4] + 's'"
+  >
+    <span class="star__bloom"></span>
+    <svg class="star__rays" viewBox="0 0 40 40" focusable="false" aria-hidden="true">
+      <path
+        d="M20 0C22 14 26 18 40 20C26 22 22 26 20 40C18 26 14 22 0 20C14 18 18 14 20 0Z"
+        fill="currentColor"
+      />
+      <path
+        d="M20 7C21 16 24 19 33 20C24 21 21 24 20 33C19 24 16 21 7 20C16 19 19 16 20 7Z"
+        fill="#fff9ed"
+      />
+    </svg>
+  </span>
+}
+@for (point of dust; track $index) {
+  <span
+    class="stardust"
+    [class.stardust--extra]="$index >= 4"
+    [style.left.%]="point[0]"
+    [style.top.%]="point[1]"
+    [style.--delay]="$index * -1.3 + 's'"
+  ></span>
+}
