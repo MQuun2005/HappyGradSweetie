@@ -49,7 +49,9 @@ h2 {
   line-height: 1.85;
   opacity: 0;
   transform: translateY(0.7rem);
-  transition: opacity 450ms ease, transform 450ms ease;
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
 }
 
 .letter--entered p:not(.letter__eyebrow) {

@@ -11,7 +11,7 @@ describe('gallery layout', () => {
     for (const count of [0, 1, 2, 5, 34]) {
       const indices = getVirtualLogicalIndices(33.95, config, count);
       expect(indices.length).toBe(Math.min(count, 11));
-      expect(new Set(indices.map(i => positiveModulo(i, count))).size).toBe(indices.length);
+      expect(new Set(indices.map((i) => positiveModulo(i, count))).size).toBe(indices.length);
     }
   });
 
@@ -21,9 +21,9 @@ describe('gallery layout', () => {
       const a = getArcCardLayout(index, 33.95, 34, config);
       const b = getArcCardLayout(index, 34.05, 34, config);
       expect(a.photoIndex).toBe(b.photoIndex);
-      expect(Math.abs(a.x-b.x)).toBeLessThan(17);
-      expect(Math.abs(a.z-b.z)).toBeLessThan(19);
-      const normalized = getArcCardLayout(index-34, .05, 34, config);
+      expect(Math.abs(a.x - b.x)).toBeLessThan(17);
+      expect(Math.abs(a.z - b.z)).toBeLessThan(19);
+      const normalized = getArcCardLayout(index - 34, 0.05, 34, config);
       expect(normalized.x).toBe(b.x);
       expect(normalized.z).toBe(b.z);
       expect(normalized.photoIndex).toBe(b.photoIndex);

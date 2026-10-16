@@ -38,15 +38,19 @@ describe('celebrationContent', () => {
     expect(celebrationContent.invitation.title).toBe('Ngày của vợ iu');
     expect(celebrationContent.message.title).toBe('Anh tự hào về vợ iu nhiều lắm');
     expect(celebrationContent.gallery.title).toBe('34 khoảnh khắc anh muốn ngắm mãi');
-    expect(celebrationContent.gallery.instruction).toBe('Chạm vào một bức ảnh để ngắm vợ iu rõ hơn nhé.');
+    expect(celebrationContent.gallery.instruction).toBe(
+      'Chạm vào một bức ảnh để ngắm vợ iu rõ hơn nhé.',
+    );
     expect(celebrationContent.closing.finalHighlight).toBe('Anh thương vợ iu. Nhiều lắm.');
   });
 
   it('keeps captions sparse and tied to the same eight photo IDs', () => {
-    expect(celebrationContent.photos.filter(photo => photo.caption).map(photo => photo.id))
-      .toEqual([1, 5, 9, 14, 18, 23, 29, 34]);
-    expect(celebrationContent.photos.find(photo => photo.id === 9)?.caption)
-      .toBe('Rạng rỡ theo cách của riêng vợ iu.');
+    expect(
+      celebrationContent.photos.filter((photo) => photo.caption).map((photo) => photo.id),
+    ).toEqual([1, 5, 9, 14, 18, 23, 29, 34]);
+    expect(celebrationContent.photos.find((photo) => photo.id === 9)?.caption).toBe(
+      'Rạng rỡ theo cách của riêng vợ iu.',
+    );
   });
 
   it('does not add contact numbers or reset the approved audio/portrait configuration', () => {

@@ -66,14 +66,18 @@ export class OpeningStoryDirective implements AfterViewInit, OnChanges, OnDestro
       this.layoutObserver.observe(this.hero!);
       const slot = this.host.nativeElement.querySelector<HTMLElement>('.hero__portrait-slot');
       if (slot) this.layoutObserver.observe(slot);
-      const portrait = this.host.nativeElement.querySelector<HTMLElement>('.hero__portrait-position .hero__portrait');
+      const portrait = this.host.nativeElement.querySelector<HTMLElement>(
+        '.hero__portrait-position .hero__portrait',
+      );
       if (portrait) {
         this.portraitObserver = new MutationObserver(() => this.scheduleLayout());
         this.portraitObserver.observe(portrait, { attributes: true, attributeFilter: ['class'] });
       }
       this.host.nativeElement.addEventListener('load', this.onAssetLoad, true);
       this.view!.addEventListener('resize', this.onResize, { passive: true });
-      void this.document.fonts.ready.then(() => { if (!this.destroyed) this.scheduleLayout(); });
+      void this.document.fonts.ready.then(() => {
+        if (!this.destroyed) this.scheduleLayout();
+      });
       this.refreshLayout();
       this.reconcile();
     });
@@ -123,8 +127,7 @@ export class OpeningStoryDirective implements AfterViewInit, OnChanges, OnDestro
     const box = this.hero.getBoundingClientRect();
     const viewportHeight =
       this.view.visualViewport?.height ?? this.document.documentElement.clientHeight;
-    const visible =
-      box.bottom > viewportHeight * 0.2 && box.top < viewportHeight * 0.8;
+    const visible = box.bottom > viewportHeight * 0.2 && box.top < viewportHeight * 0.8;
     if (!visible) {
       if (this.timeline) this.finish();
       else if (this.played) this.setState('complete');
@@ -145,7 +148,8 @@ export class OpeningStoryDirective implements AfterViewInit, OnChanges, OnDestro
     this.setState('running');
     try {
       this.context = gsap.context(() => {
-        const query = (selector: string) => this.host.nativeElement.querySelectorAll<HTMLElement>(selector);
+        const query = (selector: string) =>
+          this.host.nativeElement.querySelectorAll<HTMLElement>(selector);
         this.timeline = gsap.timeline({
           defaults: { ease: 'power2.out' },
           onComplete: () => this.finish(),
@@ -199,8 +203,14 @@ export class OpeningStoryDirective implements AfterViewInit, OnChanges, OnDestro
     if (this.timeline && this.enabled && !this.suspended && !this.document.hidden) this.finish();
     else if (!this.played) this.reconcile();
   };
-  private readonly onVisibility = (): void => { this.reconcile(); this.syncSuspension(); };
-  private readonly onMotionPreference = (): void => { this.reconcile(); this.refreshLayout(); };
+  private readonly onVisibility = (): void => {
+    this.reconcile();
+    this.syncSuspension();
+  };
+  private readonly onMotionPreference = (): void => {
+    this.reconcile();
+    this.refreshLayout();
+  };
   private readonly onFocus = (): void => {
     if (this.timeline) this.finish();
   };
@@ -218,20 +228,39 @@ export class OpeningStoryDirective implements AfterViewInit, OnChanges, OnDestro
     const box = slot.getBoundingClientRect();
     const width = root.clientWidth;
     const height = root.clientHeight;
-    const left = box.left - heroBox.left, top = box.top - heroBox.top;
+    const left = box.left - heroBox.left,
+      top = box.top - heroBox.top;
     host.style.setProperty('--portrait-left', `${left}px`);
     host.style.setProperty('--portrait-top', `${top}px`);
     host.style.setProperty('--portrait-width', `${box.width}px`);
     host.style.setProperty('--portrait-height', `${box.height}px`);
     host.style.setProperty('--story-viewport', `${height}px`);
-    const fineHover = this.view.matchMedia('(hover: hover) and (pointer: fine)').matches
-      && !this.view.matchMedia('(any-pointer: coarse)').matches;
-    const profile = getStoryProfile({ width, height, fineHover, reducedMotion: !!this.media?.matches,
+    const fineHover =
+      this.view.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+      !this.view.matchMedia('(any-pointer: coarse)').matches;
+    const profile = getStoryProfile({
+      width,
+      height,
+      fineHover,
+      reducedMotion: !!this.media?.matches,
       fallback: !!host.querySelector('.hero__portrait--fallback'),
-      contentFits: heroBox.height <= height + 8, portraitHeight: box.height });
+      contentFits: heroBox.height <= height + 8,
+      portraitHeight: box.height,
+    });
     // Toolbar-only changes on touch do not rebuild the timeline or the normal-flow chapters.
-    const key = [profile, width, fineHover ? height : 0, box.width, box.height, heroBox.height].join(':');
-    if (key === this.layoutKey) { this.trigger?.refresh(); this.syncSuspension(); return; }
+    const key = [
+      profile,
+      width,
+      fineHover ? height : 0,
+      box.width,
+      box.height,
+      heroBox.height,
+    ].join(':');
+    if (key === this.layoutKey) {
+      this.trigger?.refresh();
+      this.syncSuspension();
+      return;
+    }
     this.layoutKey = key;
     this.scrollContext?.revert();
     this.scrollContext = undefined;
@@ -248,18 +277,33 @@ export class OpeningStoryDirective implements AfterViewInit, OnChanges, OnDestro
         const timeline = gsap.timeline({ paused: true, defaults: { ease: 'none' } });
         if (profile === 'sticky') {
           timeline
-            .to(portrait, { x: travel.x * 0.5, y: travel.y * 0.5, scale: 0.94, duration: 0.3 }, 0.15)
+            .to(
+              portrait,
+              { x: travel.x * 0.5, y: travel.y * 0.5, scale: 0.94, duration: 0.3 },
+              0.15,
+            )
             .to(portrait, { x: travel.x, y: travel.y, scale: 0.86, duration: 0.3 }, 0.45)
             .to(portrait, { scale: 0.84, opacity: 0, duration: 0.25 }, 0.75)
             .fromTo(card, { y: 24 }, { y: 0, duration: 0.55 }, 0.45);
         } else {
-          timeline.to(portrait, { y: width < 768 ? 16 : 24, scale: width < 768 ? 0.98 : 0.96, duration: 1 }, 0);
+          timeline.to(
+            portrait,
+            { y: width < 768 ? 16 : 24, scale: width < 768 ? 0.98 : 0.96, duration: 1 },
+            0,
+          );
         }
         this.scrollTimeline = timeline;
         this.trigger = ScrollTrigger.create({
-          trigger: this.hero, start: 'top top', endTrigger: invitation, end: 'top top',
-          animation: timeline, scrub: 0.45, pin: false,
-          onUpdate: self => { host.dataset['storyProgress'] = self.progress.toFixed(3); },
+          trigger: this.hero,
+          start: 'top top',
+          endTrigger: invitation,
+          end: 'top top',
+          animation: timeline,
+          scrub: 0.45,
+          pin: false,
+          onUpdate: (self) => {
+            host.dataset['storyProgress'] = self.progress.toFixed(3);
+          },
         });
       }, host);
       this.synchronize();
@@ -274,9 +318,16 @@ export class OpeningStoryDirective implements AfterViewInit, OnChanges, OnDestro
 
   /** Instant anchors/restoration should not wait for numeric scrub catch-up. */
   synchronize(): void {
-    if (!this.trigger || !this.scrollTimeline || !this.view || !this.enabled || this.suspended) return;
+    if (!this.trigger || !this.scrollTimeline || !this.view || !this.enabled || this.suspended)
+      return;
     this.trigger.update();
-    const progress = Math.max(0, Math.min(1, (this.view.scrollY - this.trigger.start) / (this.trigger.end - this.trigger.start || 1)));
+    const progress = Math.max(
+      0,
+      Math.min(
+        1,
+        (this.view.scrollY - this.trigger.start) / (this.trigger.end - this.trigger.start || 1),
+      ),
+    );
     this.trigger.getTween()?.pause();
     this.scrollTimeline.progress(progress);
     this.host.nativeElement.dataset['storyProgress'] = progress.toFixed(3);
@@ -294,9 +345,11 @@ export class OpeningStoryDirective implements AfterViewInit, OnChanges, OnDestro
 
   private scheduleLayout(): void {
     if (this.layoutFrame || this.destroyed || !this.view) return;
-    this.layoutFrame = this.view.requestAnimationFrame(() => { this.layoutFrame = 0; this.refreshLayout(); });
+    this.layoutFrame = this.view.requestAnimationFrame(() => {
+      this.layoutFrame = 0;
+      this.refreshLayout();
+    });
   }
   private readonly onResize = (): void => this.scheduleLayout();
   private readonly onAssetLoad = (): void => this.scheduleLayout();
 }
-

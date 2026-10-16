@@ -1,36 +1,64 @@
-<section id="memories" class="gallery" [class.gallery--compact]="isCompact()"
-  [class.gallery--tablet]="isTablet()" aria-labelledby="memories-title">
+<section
+  id="memories"
+  class="gallery"
+  [class.gallery--compact]="isCompact()"
+  [class.gallery--tablet]="isTablet()"
+  aria-labelledby="memories-title"
+>
   <header class="gallery__header">
     <p class="gallery__eyebrow">{{ content.eyebrow }}</p>
     <h2 id="memories-title">{{ content.title }}</h2>
     <p>{{ content.lead }}</p>
   </header>
-  <div #scene class="gallery__scene" role="region"
-    aria-label="Thư viện ảnh tốt nghiệp dạng vòng cung 3D" aria-describedby="gallery-instructions"
-    tabindex="0" [style.--card-width]="cardWidth() + 'px'" (keydown)="onSceneKeydown($event)">
+  <div
+    #scene
+    class="gallery__scene"
+    role="region"
+    aria-label="Thư viện ảnh tốt nghiệp dạng vòng cung 3D"
+    aria-describedby="gallery-instructions"
+    tabindex="0"
+    [style.--card-width]="cardWidth() + 'px'"
+    (keydown)="onSceneKeydown($event)"
+  >
     @if (photoCount() === 0) {
       <p class="gallery__empty" role="status">Chưa có ảnh để hiển thị.</p>
     } @else {
-      <div class="gallery__stage" [class.gallery__stage--suspended]="isSuspended()"
-        [style.transform]="stageTransform()">
+      <div
+        class="gallery__stage"
+        [class.gallery__stage--suspended]="isSuspended()"
+        [style.transform]="stageTransform()"
+      >
         @for (card of renderedCards(); track card.photo.id) {
-          <div #rail class="photo-card__rail" [attr.data-logical-index]="card.logicalIndex"
-            (click)="requestPhoto(card)">
-            <button class="photo-card" type="button"
+          <div
+            #rail
+            class="photo-card__rail"
+            [attr.data-logical-index]="card.logicalIndex"
+            (click)="requestPhoto(card)"
+          >
+            <button
+              class="photo-card"
+              type="button"
               [class.photo-card--front]="isInteractive(card.logicalIndex)"
               [class.photo-card--back]="!isInteractive(card.logicalIndex)"
               [class.photo-card--broken]="isBroken(card.photo.id)"
               [attr.aria-label]="'Mở ' + card.photo.alt"
               [attr.aria-current]="isActive(card) ? 'true' : null"
-              [attr.aria-posinset]="card.layout.photoIndex + 1" [attr.aria-setsize]="photoCount()"
+              [attr.aria-posinset]="card.layout.photoIndex + 1"
+              [attr.aria-setsize]="photoCount()"
               [attr.aria-hidden]="!isInteractive(card.logicalIndex)"
-              [attr.tabindex]="isInteractive(card.logicalIndex) ? 0 : -1">
+              [attr.tabindex]="isInteractive(card.logicalIndex) ? 0 : -1"
+            >
               @if (isBroken(card.photo.id)) {
                 <span class="photo-card__fallback">Không thể tải ảnh này</span>
               } @else {
-                <img [src]="card.photo.thumbnailSrc" [alt]="card.photo.alt"
+                <img
+                  [src]="card.photo.thumbnailSrc"
+                  [alt]="card.photo.alt"
                   [loading]="isInteractive(card.logicalIndex) ? 'eager' : 'lazy'"
-                  decoding="async" draggable="false" (error)="markImageFailed(card.photo.id)" />
+                  decoding="async"
+                  draggable="false"
+                  (error)="markImageFailed(card.photo.id)"
+                />
               }
               @if (card.photo.caption) {
                 <span class="photo-card__caption">{{ card.photo.caption }}</span>
@@ -44,7 +72,12 @@
   <p id="gallery-instructions" class="gallery__hint">
     {{ content.instruction }}
     <span class="gallery__gesture-hint">Kéo ngang để khám phá đủ 34 ảnh.</span>
-    <span class="sr-only">Dùng phím mũi tên trái, phải để chọn ảnh; Enter hoặc Space để mở. Khi focus trong thư viện, chuyển động sẽ tạm dừng.</span>
+    <span class="sr-only"
+      >Dùng phím mũi tên trái, phải để chọn ảnh; Enter hoặc Space để mở. Khi focus trong thư viện,
+      chuyển động sẽ tạm dừng.</span
+    >
   </p>
-  <p class="sr-only" aria-live="polite" aria-atomic="true">Ảnh {{ activePhotoNumber() }} / {{ photoCount() }}</p>
+  <p class="sr-only" aria-live="polite" aria-atomic="true">
+    Ảnh {{ activePhotoNumber() }} / {{ photoCount() }}
+  </p>
 </section>

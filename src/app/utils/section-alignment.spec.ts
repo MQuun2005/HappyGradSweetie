@@ -68,8 +68,12 @@ describe('Section alignment policy (one correction after native scrolling)', () 
   });
 
   it('treats a rounded subpixel midpoint as a tie on touch', () => {
-    expect(chooseAlignment(input({ touch: true, y: 1349.6, direction: 1 })).target?.id).toBe('message');
-    expect(chooseAlignment(input({ touch: true, y: 1350.4, direction: -1 })).target?.id).toBe('invitation');
+    expect(chooseAlignment(input({ touch: true, y: 1349.6, direction: 1 })).target?.id).toBe(
+      'message',
+    );
+    expect(chooseAlignment(input({ touch: true, y: 1350.4, direction: -1 })).target?.id).toBe(
+      'invitation',
+    );
   });
   it('does not repeatedly correct an already aligned section', () => {
     for (const y of [900, 903, 1798, 1800]) expect(chooseAlignment(input({ y })).target).toBeNull();

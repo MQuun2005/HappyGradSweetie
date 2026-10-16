@@ -93,7 +93,11 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
   }
 
   get activePhoto(): Photo | null {
-    if (this.activeIndex === null || this.activeIndex < 0 || this.activeIndex >= this.photos.length) {
+    if (
+      this.activeIndex === null ||
+      this.activeIndex < 0 ||
+      this.activeIndex >= this.photos.length
+    ) {
       return null;
     }
 
@@ -192,7 +196,8 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
     }
 
     this.isScrollLocked = true;
-    this.previousFocus = this.document.activeElement instanceof HTMLElement ? this.document.activeElement : undefined;
+    this.previousFocus =
+      this.document.activeElement instanceof HTMLElement ? this.document.activeElement : undefined;
     this.lockedScrollY = typeof window === 'undefined' ? 0 : window.scrollY;
     this.originalBodyStyles = {
       position: this.document.body.style.position,
@@ -205,7 +210,9 @@ export class PhotoLightboxComponent implements OnChanges, OnDestroy {
     };
 
     const scrollbarWidth =
-      typeof window === 'undefined' ? 0 : window.innerWidth - this.document.documentElement.clientWidth;
+      typeof window === 'undefined'
+        ? 0
+        : window.innerWidth - this.document.documentElement.clientWidth;
     this.renderer.setStyle(this.document.body, 'position', 'fixed');
     this.renderer.setStyle(this.document.body, 'top', `-${this.lockedScrollY}px`);
     this.renderer.setStyle(this.document.body, 'left', '0');

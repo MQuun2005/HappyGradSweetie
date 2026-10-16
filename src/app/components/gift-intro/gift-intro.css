@@ -120,7 +120,9 @@ button {
   box-shadow: 0 10px 22px rgb(185 112 125 / 25%);
   color: #fff;
   font-weight: 700;
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 button:hover {

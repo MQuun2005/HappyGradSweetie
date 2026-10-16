@@ -36,7 +36,10 @@ describe('MusicControlComponent', () => {
     spyOnProperty(audio, 'paused', 'get').and.returnValue(true);
     spyOn(performance, 'now').and.returnValue(1000);
     let frame!: FrameRequestCallback;
-    spyOn(window, 'requestAnimationFrame').and.callFake(callback => { frame = callback; return 1; });
+    spyOn(window, 'requestAnimationFrame').and.callFake((callback) => {
+      frame = callback;
+      return 1;
+    });
     fixture.componentInstance.playFromUserGesture();
     await Promise.resolve();
     expect(() => frame(997)).not.toThrow();
@@ -48,7 +51,9 @@ describe('MusicControlComponent', () => {
   it('ignores modifier keys without consuming the one eligible autoplay retry', async () => {
     fixture.detectChanges();
     const audio = fixture.nativeElement.querySelector('audio') as HTMLAudioElement;
-    const play = spyOn(audio, 'play').and.rejectWith(new DOMException('Blocked', 'NotAllowedError'));
+    const play = spyOn(audio, 'play').and.rejectWith(
+      new DOMException('Blocked', 'NotAllowedError'),
+    );
     fixture.componentRef.setInput('autoplayEnabled', true);
     fixture.detectChanges();
     await Promise.resolve();
@@ -68,7 +73,7 @@ describe('MusicControlComponent', () => {
     fixture.detectChanges();
     const audio = fixture.nativeElement.querySelector('audio') as HTMLAudioElement;
     let resolve!: () => void;
-    spyOn(audio, 'play').and.returnValue(new Promise<void>(done => resolve = done));
+    spyOn(audio, 'play').and.returnValue(new Promise<void>((done) => (resolve = done)));
     const raf = spyOn(window, 'requestAnimationFrame').and.returnValue(1);
     fixture.componentInstance.playFromUserGesture();
     fixture.destroy();

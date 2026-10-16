@@ -119,12 +119,10 @@ export class SectionScrollController {
       this.view.history.replaceState(state, '', `#${id}`);
     }
     this.beginCommand({ id, kind: 'navigation' });
-    this.document
-      .getElementById(id)!
-      .scrollIntoView({
-        block: 'start',
-        behavior: smooth && !this.reduced.matches ? 'smooth' : 'instant',
-      });
+    this.document.getElementById(id)!.scrollIntoView({
+      block: 'start',
+      behavior: smooth && !this.reduced.matches ? 'smooth' : 'instant',
+    });
     if (!smooth || this.reduced.matches) this.callbacks.synchronize();
     this.checkStableAfterQuiet();
   }
@@ -289,7 +287,8 @@ export class SectionScrollController {
         ? this.metrics.find((section) => section.id === this.command!.id)?.top
         : this.command.y;
       const maximum = Math.max(0, this.document.documentElement.scrollHeight - this.height);
-      const target = requested === undefined ? undefined : Math.max(0, Math.min(requested, maximum));
+      const target =
+        requested === undefined ? undefined : Math.max(0, Math.min(requested, maximum));
       // A stale native scrollend or a few stalled frames must not release the
       // target lock while the browser's smooth scroll is still in transit.
       if (target !== undefined && Math.abs(this.view.scrollY - target) > 4) {

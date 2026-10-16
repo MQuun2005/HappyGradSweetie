@@ -31,14 +31,18 @@
   flex-direction: column;
   inline-size: min(92vw, 28.5rem);
   block-size: min(88dvh, 50rem);
-  max-block-size: calc(100dvh - max(0.75rem, var(--safe-area-top)) - max(0.75rem, var(--safe-area-bottom)));
+  max-block-size: calc(
+    100dvh - max(0.75rem, var(--safe-area-top)) - max(0.75rem, var(--safe-area-bottom))
+  );
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
   border: 1px solid rgb(212 176 106 / 45%);
   border-radius: 1.25rem;
   background: var(--color-navy);
-  box-shadow: 0 30px 80px rgb(0 0 0 / 60%), 0 0 0 1px rgb(212 176 106 / 20%);
+  box-shadow:
+    0 30px 80px rgb(0 0 0 / 60%),
+    0 0 0 1px rgb(212 176 106 / 20%);
   color: var(--color-ivory);
   animation: lightboxPopIn 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -84,7 +88,11 @@ button {
   color: var(--color-ivory);
   font-size: 1.15rem;
   cursor: pointer;
-  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 button:not(:disabled):hover {

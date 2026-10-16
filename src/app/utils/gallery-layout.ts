@@ -133,8 +133,7 @@ export function getArcCardLayout(
     config.radiusZ * (Math.cos(radians) - 1) -
     config.cameraCompensation * Math.sin(radians);
   const y =
-    config.verticalTravel * Math.sin(radians) -
-    config.verticalDrop * (1 - Math.cos(radians));
+    config.verticalTravel * Math.sin(radians) - config.verticalDrop * (1 - Math.cos(radians));
   const yawRadians = (config.cameraYaw * Math.PI) / 180;
   const projectedDepth = -x * Math.sin(yawRadians) + z * Math.cos(yawRadians);
 
@@ -157,7 +156,9 @@ export function getArcCardLayout(
     // still provide near/far depth. This also avoids intersecting adjacent planes.
     rotateY: Number(Math.max(-48, Math.min(48, -angle * 0.45 + config.cardYawBias)).toFixed(2)),
     rotateZ: Number((-angle * 0.12).toFixed(2)),
-    scale: Number(Math.max(0.74, 1 - distance * (config.visibleRadius === 1 ? 0.10 : 0.035)).toFixed(3)),
+    scale: Number(
+      Math.max(0.74, 1 - distance * (config.visibleRadius === 1 ? 0.1 : 0.035)).toFixed(3),
+    ),
     opacity: Number(opacity.toFixed(3)),
     projectedDepth: Number(projectedDepth.toFixed(2)),
     isFront,

@@ -77,7 +77,9 @@ button {
   text-decoration: none;
 }
 
-.closing__actions span { flex: none; }
+.closing__actions span {
+  flex: none;
+}
 
 button {
   border: 0;
@@ -99,17 +101,43 @@ button {
   content: '✦';
 }
 
-.closing__sparkles span:nth-child(1) { inset: 14% auto auto 10%; }
-.closing__sparkles span:nth-child(2) { inset: 27% auto auto 22%; animation-delay: -1.1s; }
-.closing__sparkles span:nth-child(3) { inset: 13% 13% auto auto; animation-delay: -2.2s; }
-.closing__sparkles span:nth-child(4) { inset: 37% 7% auto auto; animation-delay: -0.7s; }
-.closing__sparkles span:nth-child(5) { inset: auto auto 16% 8%; animation-delay: -2.8s; }
-.closing__sparkles span:nth-child(6) { inset: auto 17% 12% auto; animation-delay: -1.6s; }
-.closing__sparkles span:nth-child(n + 7) { display: none; }
+.closing__sparkles span:nth-child(1) {
+  inset: 14% auto auto 10%;
+}
+.closing__sparkles span:nth-child(2) {
+  inset: 27% auto auto 22%;
+  animation-delay: -1.1s;
+}
+.closing__sparkles span:nth-child(3) {
+  inset: 13% 13% auto auto;
+  animation-delay: -2.2s;
+}
+.closing__sparkles span:nth-child(4) {
+  inset: 37% 7% auto auto;
+  animation-delay: -0.7s;
+}
+.closing__sparkles span:nth-child(5) {
+  inset: auto auto 16% 8%;
+  animation-delay: -2.8s;
+}
+.closing__sparkles span:nth-child(6) {
+  inset: auto 17% 12% auto;
+  animation-delay: -1.6s;
+}
+.closing__sparkles span:nth-child(n + 7) {
+  display: none;
+}
 
 @keyframes closing-sparkle {
-  0%, 100% { opacity: 0.28; transform: scale(0.75) rotate(0); }
-  50% { opacity: 0.88; transform: scale(1.15) rotate(45deg); }
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(0.75) rotate(0);
+  }
+  50% {
+    opacity: 0.88;
+    transform: scale(1.15) rotate(45deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

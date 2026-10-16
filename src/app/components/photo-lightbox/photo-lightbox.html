@@ -50,7 +50,12 @@
           }
         </div>
         <nav aria-label="Điều hướng ảnh phóng to">
-          <button type="button" [disabled]="!canGoPrevious" (click)="previous()" aria-label="Ảnh trước">
+          <button
+            type="button"
+            [disabled]="!canGoPrevious"
+            (click)="previous()"
+            aria-label="Ảnh trước"
+          >
             <span aria-hidden="true">←</span>
           </button>
           <button type="button" [disabled]="!canGoNext" (click)="next()" aria-label="Ảnh tiếp theo">

@@ -39,7 +39,9 @@ describe('SectionScrollController lifecycle', () => {
     y = 0;
     root = document.createElement('html');
     Object.defineProperties(root, {
-      clientWidth: { value: 1440 }, clientHeight: { value: 900 }, scrollHeight: { value: 5400 },
+      clientWidth: { value: 1440 },
+      clientHeight: { value: 900 },
+      scrollHeight: { value: 5400 },
     });
     const location = new URL('http://localhost/');
     let historyState: unknown = { otherFeature: 'keep-me' };

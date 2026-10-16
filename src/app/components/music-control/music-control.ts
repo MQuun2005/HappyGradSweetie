@@ -135,8 +135,15 @@ export class MusicControlComponent implements AfterViewInit, OnChanges, OnDestro
     }
 
     const retry = (event: Event) => {
-      if (event instanceof KeyboardEvent && (event.ctrlKey || event.metaKey || event.altKey
-        || event.repeat || event.isComposing || ['Shift', 'Control', 'Alt', 'Meta', 'Escape'].includes(event.key))) {
+      if (
+        event instanceof KeyboardEvent &&
+        (event.ctrlKey ||
+          event.metaKey ||
+          event.altKey ||
+          event.repeat ||
+          event.isComposing ||
+          ['Shift', 'Control', 'Alt', 'Meta', 'Escape'].includes(event.key))
+      ) {
         return;
       }
 
