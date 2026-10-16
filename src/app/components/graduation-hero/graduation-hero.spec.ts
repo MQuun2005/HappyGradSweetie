@@ -16,7 +16,7 @@ describe('GraduationHeroComponent', () => {
   it('renders approved copy, a single h1 and decorative text outside the accessibility tree', () => {
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelectorAll('h1').length).toBe(1);
-    expect(root.querySelector('h1')!.textContent).toBe('Vợ iu tốt nghiệp rồi!');
+    expect(root.querySelector('h1')!.textContent).toBe('Chúc mừng tốt nghiệp, vợ iu!');
     expect(root.querySelector('.hero__subheading')!.textContent).toContain('Nguyễn Võ Mai Khuê');
     expect(root.querySelector('.hero__name')!.getAttribute('aria-hidden')).toBe('true');
     expect(root.querySelector('.hero__portrait-scroll .hero__portrait-entrance')).not.toBeNull();

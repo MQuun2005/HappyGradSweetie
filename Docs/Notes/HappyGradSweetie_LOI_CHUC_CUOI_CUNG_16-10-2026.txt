@@ -1,0 +1,346 @@
+HAPPYGRADSWEETIE — LỜI CHÚC CUỐI CÙNG DÀNH CHO MAI KHUÊ
+Bản nội dung: 16/10/2026
+Người viết lời chúc: Quân iu
+Người nhận: Nguyễn Võ Mai Khuê (vợ iu)
+
+============================================================
+HƯỚNG DẪN DÀNH CHO NGƯỜI ÁP DỤNG NỘI DUNG (KHÔNG HIỂN THỊ TRÊN WEB)
+============================================================
+
+Đây là bản lời văn để thay thế nội dung hiện có của HappyGradSweetie. Các tên
+trường phía dưới bám sát celebrationContent trong
+src/app/data/celebration-content.ts. Chỉ cập nhật nội dung text, giữ nguyên các
+trường ảnh, kích thước, nguồn nhạc, ID/order ảnh, và mọi cơ chế tương tác.
+
+Giữ thông tin chính xác:
+- Người nhận: Nguyễn Võ Mai Khuê.
+- Cách gọi thân mật: vợ iu.
+- Người gửi: Quân iu.
+- Ngành học: Luật, danh xưng trong website: Cử nhân Luật.
+- Trường: Đại học Tôn Đức Thắng.
+- Ngày lễ tốt nghiệp: 17/10/2026.
+
+Nội dung được viết để đọc vào tối 16/10, trong lễ 17/10, hoặc nhiều ngày sau
+vẫn hợp. Không tự thêm chi tiết về lễ trao bằng, buổi hẹn hò, số năm yêu nhau,
+những lần thức trắng hay chuyện đời tư chưa được xác nhận.
+
+Giọng văn: người yêu nói với người yêu, gần gũi, dịu dàng, có chút trêu yêu;
+không kiểu diễn văn chúc mừng, không sáo ngữ, không spam “vợ iu” ở mỗi câu.
+
+============================================================
+01. INTRO — MỞ MÓN QUÀ
+============================================================
+
+intro.eyebrow:
+Một món quà nhỏ xíu cho vợ iu
+
+intro.title:
+Vợ iu ơi, anh có cái này cho vợ iu nè ♡
+
+intro.body:
+Anh gom mấy tấm hình anh thích, thêm một chút yêu thương với những lời anh muốn nói, rồi cất hết vào đây. Không phải món quà gì to tát đâu, nhưng anh làm riêng cho vợ iu đó. Mở ra xem với anh nha.
+
+intro.actionLabel:
+Vợ iu mở quà nha ♡
+
+============================================================
+02. HERO — CHÚC MỪNG TỐT NGHIỆP
+============================================================
+
+hero.eyebrow:
+17.10.2026 · Ngày đặc biệt của vợ iu
+
+hero.title:
+Chúc mừng tốt nghiệp, vợ iu!
+
+hero.subheading:
+Nguyễn Võ Mai Khuê · Cử nhân Luật
+
+hero.lead:
+Nói nhỏ nè, anh tự hào về vợ iu lắm. Không chỉ vì tấm bằng đâu, mà vì vợ iu đã đi hết một chặng đường của riêng mình. Cho anh khoe một chút nhé: cô cử nhân xinh này là người yêu anh đó.
+
+hero.ctaLabel:
+Còn một chút nữa, vợ iu xem nha
+
+hero.scrollHint:
+Kéo xuống với anh một xíu nè ♡
+
+[GIỮ NGUYÊN hero.portraitSrc, portraitFallback, portraitSrcSet, portraitAlt,
+portraitWidth, portraitHeight. Không thay file ảnh Hero.]
+
+============================================================
+03. INVITATION — NGÀY CỦA VỢ IU
+============================================================
+
+invitation.eyebrow:
+Một ngày đáng nhớ
+
+invitation.title:
+Ngày của cô cử nhân anh thương
+
+invitation.recipient:
+Nguyễn Võ Mai Khuê
+
+invitation.degree:
+Cử nhân Luật
+
+invitation.school:
+Đại học Tôn Đức Thắng
+
+invitation.dateLabel:
+17 tháng 10 năm 2026
+
+invitation.note:
+Anh muốn giữ ngày 17/10 ở đây, để mỗi lần mở lại, vợ iu nhớ mình đã đi đến một cột mốc thật đẹp. Mong ngày ấy có thật nhiều nụ cười, nhiều tấm hình xinh và những người thương vợ iu ở bên. Phần tự hào về vợ iu thì để anh lo.
+
+============================================================
+04. MESSAGE — MỘT LỜI KHEN TỪ ANH
+============================================================
+
+message.eyebrow:
+Anh muốn nói với vợ iu
+
+message.title:
+Cho anh khen vợ iu một chút nha
+
+message.body:
+Đi học, thi cử, rồi bao nhiêu chuyện phải lo... chắc chắn không phải ngày nào cũng dễ dàng. Vậy mà vợ iu đã đi đến cột mốc này rồi. Anh thấy vui thay cho vợ iu, thật đó. Nếu sau này có hôm nào vợ iu hơi nghi ngờ bản thân, nhớ mở lại trang này nhé. Có một người luôn nghĩ vợ iu giỏi lắm, và người đó là anh.
+
+============================================================
+05. 3D GALLERY — 34 TẤM HÌNH
+============================================================
+
+gallery.eyebrow:
+Một góc nhỏ để ngắm vợ iu
+
+gallery.title:
+34 tấm hình, một người anh thương
+
+gallery.lead:
+Có tấm anh vừa nhìn đã thấy vui, có tấm lại muốn ngắm lâu thêm một chút. Anh gom hết vào đây vì tiếc chẳng muốn bỏ tấm nào. Ba mươi bốn tấm nghe thì nhiều, mà sao anh vẫn thấy chưa đủ nhỉ?
+
+gallery.instruction:
+Chạm vào tấm nào vợ iu thích để ngắm rõ hơn nha ♡
+
+[Ghi chú: gallery template đã có thêm dòng hướng dẫn kéo ngang. Giữ nguyên
+hướng dẫn thao tác, nhưng tránh lặp hai câu có cùng ý.]
+
+------------------------------------------------------------
+34 CAPTION ẢNH — ÁNH XẠ ĐÚNG SỐ ID 1 ĐẾN 34
+------------------------------------------------------------
+
+photos[1].caption:
+Cô cử nhân của anh đây rồi.
+
+photos[2].caption:
+Mũ tốt nghiệp hợp vợ iu ghê.
+
+photos[3].caption:
+Tấm này anh nhìn hơi lâu đó nha.
+
+photos[4].caption:
+Xinh kiểu rất Mai Khuê.
+
+photos[5].caption:
+Cho anh lưu tấm này vào mục yêu thích.
+
+photos[6].caption:
+Tự nhiên nhìn ảnh này thấy vui.
+
+photos[7].caption:
+Vợ iu biết mình đáng yêu không vậy?
+
+photos[8].caption:
+Định chọn ít ảnh thôi mà anh không làm được.
+
+photos[9].caption:
+Một chút dịu dàng của vợ iu.
+
+photos[10].caption:
+Tấm này cũng phải giữ lại chứ.
+
+photos[11].caption:
+Anh hơi thiên vị vợ iu, chắc chắn luôn.
+
+photos[12].caption:
+Khuê của anh, dễ thương ghê.
+
+photos[13].caption:
+Lại thêm một tấm khiến anh mỉm cười.
+
+photos[14].caption:
+Chẳng cần làm gì đặc biệt, vẫn xinh.
+
+photos[15].caption:
+Anh thích những khoảnh khắc thế này.
+
+photos[16].caption:
+Một góc rất riêng của vợ iu.
+
+photos[17].caption:
+Cô cử nhân Luật làm anh mất tập trung rồi.
+
+photos[18].caption:
+Sao ngắm mãi vẫn chưa thấy chán ta?
+
+photos[19].caption:
+Cứ là vợ iu thôi, đã đáng yêu lắm rồi.
+
+photos[20].caption:
+Thêm một tấm ảnh anh muốn cất kỹ.
+
+photos[21].caption:
+Một tấm ảnh nhỏ, một niềm vui to.
+
+photos[22].caption:
+Tấm này cho anh khoe một xíu nhé.
+
+photos[23].caption:
+Nhìn vợ iu là anh lại thấy tự hào.
+
+photos[24].caption:
+Đáng yêu kiểu rất tự nhiên.
+
+photos[25].caption:
+Giữ lại một chút của ngày đáng nhớ.
+
+photos[26].caption:
+Có vợ iu trong ảnh là anh thấy xinh rồi.
+
+photos[27].caption:
+Anh chọn ảnh khó thật, vì ảnh nào cũng thích.
+
+photos[28].caption:
+Album này toàn ảnh của người anh thương.
+
+photos[29].caption:
+Thích tấm này. Chấm hết.
+
+photos[30].caption:
+Vợ iu cứ rạng rỡ theo cách của mình nha.
+
+photos[31].caption:
+Để dành mai mốt mở ra ngắm tiếp.
+
+photos[32].caption:
+Cho anh xem thêm một tấm nữa đi.
+
+photos[33].caption:
+Cảm ơn vợ iu vì đã cố gắng đến đây.
+
+photos[34].caption:
+Hết ảnh rồi mà anh vẫn muốn ngắm tiếp.
+
+[Ghi chú: Chỉ sửa thuộc tính caption trong object photos của mỗi ID. Giữ
+nguyên src, thumbnailSrc, alt, title, order, featured. Không đổi thứ tự ảnh.
+Các caption được viết theo cảm nhận chung, không khẳng định bối cảnh trong ảnh
+chưa được kiểm tra.]
+
+============================================================
+06. LOVE LETTER — THƯ ANH GỬI VỢ IU
+============================================================
+
+letter.eyebrow:
+Mấy lời anh muốn giữ riêng cho vợ iu
+
+letter.title:
+Gửi vợ iu của anh
+
+letter.paragraphs[1]:
+Vợ iu à, trước tiên cho anh nói điều quan trọng nhất nha: chúc mừng tốt nghiệp, cô cử nhân Luật của anh. Viết mấy chữ này thôi mà anh đã thấy vui rồi. Nghĩ đến ngày tốt nghiệp của vợ iu, anh vừa mừng, vừa muốn ôm vợ iu một cái thật lâu. Một ngày như vậy đáng được giữ lại thật kỹ mà.
+
+letter.paragraphs[2]:
+Anh không biết hết những ngày vợ iu đã phải cố gắng ra sao, và anh cũng không muốn nói như thể mình hiểu tất cả. Nhưng anh biết để đi tới đây chẳng dễ chút nào. Cho nên hôm nay, vợ iu nhớ tự khen mình một chút nhé. Không cần đợi ai công nhận đâu, vì những gì vợ iu đã làm được vốn đã rất đáng tự hào rồi.
+
+letter.paragraphs[3]:
+Cũng phải thú nhận là anh hơi thiên vị vợ iu. Nhìn tấm ảnh nào anh cũng thấy xinh, đọc tên Nguyễn Võ Mai Khuê bên cạnh hai chữ Cử nhân Luật là lại muốn khoe. Nhưng điều làm anh thương nhất không phải chiếc mũ tốt nghiệp hay tấm bằng, mà là chính cô gái đã cố gắng đi đến ngày này. Anh mong vợ iu cũng nhìn bản thân bằng ánh mắt dịu dàng như thế.
+
+letter.paragraphs[4]:
+Chặng đường sau này chắc sẽ có thêm nhiều điều mới, có những hôm háo hức và cũng có thể có những hôm chẳng vui lắm. Anh không dám hứa sẽ làm mọi chuyện dễ dàng hơn, nhưng anh muốn là người vợ iu có thể kể chuyện cùng, than thở một chút, hoặc chỉ ngồi cạnh mà không cần nói gì. Vợ iu không phải lúc nào cũng cần mạnh mẽ đâu. Mệt thì mình nghỉ một chút, rồi từ từ đi tiếp nhé.
+
+letter.paragraphs[5]:
+À, còn một chuyện nữa. Anh đã ngồi lựa ảnh, viết chữ, sửa đi sửa lại cái website này cũng kha khá lần. Có lúc chỉ một chi tiết nhỏ thôi mà anh loay hoay mãi. Nhưng cứ nghĩ đến lúc vợ iu mở ra xem, anh lại muốn làm thêm một chút nữa. Có thể món quà này chưa hoàn hảo, nhưng tình cảm anh đặt vào đây là thật. Mong mỗi lần ghé lại, vợ iu đều thấy mình được yêu thương. Chúc mừng tốt nghiệp nha, tình yêu của anh.
+
+letter.signature:
+Thương vợ iu nhiều lắm,
+Quân iu
+
+[Ghi chú kỹ thuật: letter.paragraphs là array có 5 phần tử, index thật trong
+TypeScript sẽ là 0..4. Giữ xuống dòng của signature bằng ký tự \n khi đưa
+vào string TypeScript. Không đưa chữ "paragraphs[1]" lên UI.]
+
+============================================================
+07. CLOSING — LỜI KẾT
+============================================================
+
+closing.title:
+Mình còn nhiều ngày thật đẹp ở phía trước, vợ iu nhỉ?
+
+closing.body:
+Anh mong vợ iu được làm điều mình thích, gặp những người tử tế, có những ngày thật vui và những hôm mệt thì được nghỉ ngơi một chút. Mình không cần vội trở thành ai cả. Cứ sống theo cách vợ iu thấy hạnh phúc nhé. Còn anh, anh mong sẽ được ở bên, nghe vợ iu kể thêm thật nhiều chuyện và cùng vợ iu đón những cột mốc tiếp theo.
+
+closing.finalHighlight:
+Anh thương vợ iu. Nhiều lắm. ♡
+
+closing.actionLabel:
+Ngắm vợ iu thêm một xíu
+
+closing.replayLabel:
+Mở lại từ đầu nha ♡
+
+============================================================
+08. CHỮ NHỎ NGOÀI DỮ LIỆU CHÍNH — TÙY CHỌN
+============================================================
+
+Chỉ áp dụng khi tìm thấy đúng chuỗi chữ trên website. Không buộc tạo trường
+mới nếu code chưa có.
+
+sectionNavigator.home:
+Lời chúc đầu tiên
+
+sectionNavigator.invitation:
+Ngày của vợ iu
+
+sectionNavigator.message:
+Anh có điều muốn nói
+
+sectionNavigator.memories:
+34 chiếc ảnh xinh
+
+sectionNavigator.letter:
+Thư gửi vợ iu
+
+sectionNavigator.closing:
+Lời cuối anh gửi
+
+photoLightbox.loading:
+Đợi anh mở ảnh xíu nha…
+
+photoLightbox.error:
+Tấm này chưa mở được rồi. Mình xem tấm khác nha.
+
+[Ghi chú: Với các aria-label phục vụ accessibility như "Ảnh trước", "Ảnh
+tiếp theo", "Đóng ảnh phóng to", nên giữ ngắn, rõ chức năng. Không đổi lời
+thông báo lỗi theo hướng che giấu sự cố kỹ thuật.]
+
+============================================================
+09. KIỂM TRA CUỐI SAU KHI TÍCH HỢP (KHÔNG HIỂN THỊ)
+============================================================
+
+[ ] Tất cả field intro, hero, invitation, message, gallery, letter, closing
+    khớp CelebrationContent interface đang có.
+[ ] Có đủ 34 caption, đúng thứ tự ID 1..34.
+[ ] Không thay thông tin tên, ngành, trường, ngày, người gửi.
+[ ] Không còn những câu khẳng định sự kiện chưa diễn ra hoặc chưa xác thực:
+    "đã bước lên bục", "đã nhận bằng", "mấy đêm thức trắng"...
+[ ] Không thêm kỷ niệm do AI tự suy đoán.
+[ ] Không thay các đường dẫn ảnh, portrait, nhạc, metadata khác.
+[ ] Không thêm scroll effects, không thiết kế lại UI.
+[ ] Tất cả tiếng Việt hiển thị đẹp ở iPhone 16 và iPad Gen 10.
+[ ] Không tràn chữ trong Hero, thiệp, thư, captions và Closing.
+[ ] Bốn phần đầu + 5 đoạn thư có nhịp đọc tự nhiên, không bị "vợ iu"
+    lặp gượng ép.
+[ ] Build và test liên quan thành công.
+[ ] Không tự commit, push, deploy trước khi chủ dự án duyệt.
+
+HẾT FILE NỘI DUNG

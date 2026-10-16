@@ -27,7 +27,7 @@ describe('SectionNavigatorComponent', () => {
 
     const activeDot = fixture.nativeElement.querySelector('.section-nav__dot--active');
     expect(activeDot).not.toBeNull();
-    expect(activeDot?.getAttribute('aria-label')).toContain('Kỷ niệm 3D');
+    expect(activeDot?.getAttribute('aria-label')).toContain('34 chiếc ảnh xinh');
   });
 
   it('emits sectionSelected when clicked', () => {

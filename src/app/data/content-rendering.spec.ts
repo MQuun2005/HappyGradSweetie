@@ -52,7 +52,7 @@ describe('Phase 6 content rendering', () => {
     );
   });
 
-  it('renders all four complete letter paragraphs and preserves the signature newline', () => {
+  it('renders all complete letter paragraphs and preserves the signature newline', () => {
     const fixture = TestBed.createComponent(GraduationLetterComponent);
     fixture.componentRef.setInput('content', celebrationContent.letter);
     fixture.detectChanges();
@@ -63,7 +63,7 @@ describe('Phase 6 content rendering', () => {
       ...celebrationContent.letter.paragraphs,
     ]);
     const footer = fixture.nativeElement.querySelector('footer') as HTMLElement;
-    expect(footer.textContent).toBe('Thương vợ iu rất nhiều,\nQuân iu');
+    expect(footer.textContent).toBe('Thương vợ iu nhiều lắm,\nQuân iu');
     expect(getComputedStyle(footer).whiteSpace).toBe('pre-line');
   });
 

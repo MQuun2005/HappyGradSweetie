@@ -17,12 +17,12 @@ export class SectionNavigatorComponent {
   @Output() readonly sectionSelected = new EventEmitter<string>();
 
   readonly sections: readonly NavSectionItem[] = [
-    { id: 'home', label: 'Trang đầu', number: '01' },
-    { id: 'invitation', label: 'Thiệp tốt nghiệp', number: '02' },
-    { id: 'message', label: 'Lời nhắn nhủ', number: '03' },
-    { id: 'memories', label: 'Kỷ niệm 3D', number: '04' },
-    { id: 'letter', label: 'Lá thư từ anh', number: '05' },
-    { id: 'closing', label: 'Khép lại & Khởi đầu', number: '06' },
+    { id: 'home', label: 'Lời chúc đầu tiên', number: '01' },
+    { id: 'invitation', label: 'Ngày của vợ iu', number: '02' },
+    { id: 'message', label: 'Anh có điều muốn nói', number: '03' },
+    { id: 'memories', label: '34 chiếc ảnh xinh', number: '04' },
+    { id: 'letter', label: 'Thư gửi vợ iu', number: '05' },
+    { id: 'closing', label: 'Lời cuối anh gửi', number: '06' },
   ];
 
   select(id: string): void {
