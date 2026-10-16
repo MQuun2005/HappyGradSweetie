@@ -44,10 +44,8 @@ describe('celebrationContent', () => {
     expect(celebrationContent.closing.finalHighlight).toBe('Anh thương vợ iu. Nhiều lắm.');
   });
 
-  it('keeps captions sparse and tied to the same eight photo IDs', () => {
-    expect(
-      celebrationContent.photos.filter((photo) => photo.caption).map((photo) => photo.id),
-    ).toEqual([1, 5, 9, 14, 18, 23, 29, 34]);
+  it('defines affectionate captions for all 34 photos', () => {
+    expect(celebrationContent.photos.every((photo) => Boolean(photo.caption))).toBeTrue();
     expect(celebrationContent.photos.find((photo) => photo.id === 9)?.caption).toBe(
       'Rạng rỡ theo cách của riêng vợ iu.',
     );
